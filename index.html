@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Integral Labs — High-Converting Websites Built in 7 Days</title>
+    <meta name="description"
+        content="We build high-converting websites that turn traffic into qualified leads — in 7 days. Web engineering & conversion optimization for scaling businesses." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e61919",
+                        "primary-dark": "#b40000",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a0e0e",
+                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animated gradient hero bg */
+        .hero-bg {
+            background: linear-gradient(135deg, #1a0e0e 0%, #2a0a0a 40%, #1a0e0e 100%);
+        }
+
+        /* Ticker tape animation */
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-inner {
+            animation: ticker 20s linear infinite;
+        }
+
+        .ticker-inner:hover {
+            animation-play-state: paused;
+        }
+
+        /* Pulse dot */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Counter fade-up */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        /* Mobile nav active */
+        .nav-link.active .nav-icon {
+            color: #e61919;
+        }
+
+        .nav-link.active .nav-label {
+            color: #e61919;
+        }
+
+        /* FAQ accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Card hover lift */
+        .card-hover {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(230, 25, 25, 0.15);
+        }
+
+        /* CTA button press */
+        .btn-press {
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn-press:active {
+            transform: translateY(3px);
+            box-shadow: none !important;
+        }
+
+        /* Scroll progress bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #e61919;
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Mobile nav spacer */
+        .mobile-spacer {
+            height: 88px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-slate-900 font-display overflow-x-hidden">
+
+    <!-- Scroll Progress -->
+    <div id="progress-bar" style="width:0%"></div>
+
+    <!-- ═══════════════════════════ DESKTOP NAV ═══════════════════════════ -->
+    <nav id="main-nav"
+        class="sticky top-0 z-50 bg-background-light/90 backdrop-blur-md border-b border-slate-200 hidden md:block">
+        <div class="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto">
+            <a href="#home" class="flex items-center gap-2">
+                <div class="bg-primary text-white p-1.5 rounded-lg">
+                    <span class="material-symbols-outlined text-[20px]">bolt</span>
+                </div>
+                <span class="text-slate-900 text-xl font-black tracking-tight uppercase">Integral Labs</span>
+            </a>
+            <div class="flex items-center gap-8 text-sm font-bold">
+                <a href="#services" class="text-slate-500 hover:text-primary transition-colors">Services</a>
+                <a href="#work" class="text-slate-500 hover:text-primary transition-colors">Work</a>
+                <a href="#results" class="text-slate-500 hover:text-primary transition-colors">Results</a>
+                <a href="#process" class="text-slate-500 hover:text-primary transition-colors">Process</a>
+                <a href="#faq" class="text-slate-500 hover:text-primary transition-colors">FAQ</a>
+                <a href="#contact"
+                    class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full text-sm font-black transition-colors shadow-lg shadow-primary/20">
+                    Book Free Call →
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════ MOBILE HEADER ═══════════════════════════ -->
+    <header
+        class="sticky top-0 z-50 flex items-center bg-background-light/90 backdrop-blur-md px-4 py-3 border-b border-slate-200 justify-between md:hidden">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary text-white p-1 rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">bolt</span>
+            </div>
+            <span class="text-slate-900 text-lg font-black tracking-tight uppercase">Integral Labs</span>
+        </div>
+        <a href="#contact"
+            class="bg-primary text-white text-xs font-black py-2 px-4 rounded-full uppercase tracking-wider">
+            Free Call
+        </a>
+    </header>
+
+    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <section id="home" class="hero-bg relative overflow-hidden">
+        <!-- Grid overlay -->
+        <div class="absolute inset-0 opacity-[0.04]"
+            style="background-image: linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px;">
+        </div>
+        <!-- Red glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="relative z-10 px-6 py-20 md:py-32 max-w-5xl mx-auto">
+            <!-- Badge -->
+            <div
+                class="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 text-primary px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+                <span class="pulse-dot w-2 h-2 rounded-full bg-primary inline-block"></span>
+                7-Day Delivery Guarantee
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-white text-4xl md:text-6xl font-black leading-[1.08] tracking-tight mb-6">
+                We Build High-Converting<br />
+                Websites That Turn Traffic<br />
+                Into Qualified Leads —
+                <span class="text-primary underline decoration-4 underline-offset-4"> In 7 Days.</span>
+            </h1>
+
+            <p class="text-slate-300 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mb-10">
+                Stop losing money on traffic. We engineer performance-driven websites for scaling businesses that crave
+                growth.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-14">
+                <a href="#contact"
+                    class="btn-press flex items-center justify-center bg-primary hover:bg-primary-dark text-white h-14 px-8 rounded-xl font-black text-lg shadow-[0_8px_0_0_rgba(180,0,0,1)] gap-2">
+                    Book My Free Strategy Call
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="#results"
+                    class="flex items-center justify-center border-2 border-white/20 text-white/80 hover:border-primary hover:text-primary h-14 px-8 rounded-xl font-bold text-lg transition-colors gap-2">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    See Proven Results
+                </a>
+            </div>
+
+            <!-- Social proof row -->
+            <div class="flex items-center gap-4">
+                <div class="flex -space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-primary bg-slate-700 flex items-center justify-center text-xs font-black text-white">
+                        M</div>
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-primary bg-slate-600 flex items-center justify-center text-xs font-black text-white">
+                        J</div>
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-primary bg-slate-800 flex items-center justify-center text-xs font-black text-white">
+                        S</div>
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-primary bg-slate-700 flex items-center justify-center text-xs font-black text-white">
+                        +</div>
+                </div>
+                <div>
+                    <div class="flex gap-0.5 mb-0.5">
+                        <span class="material-symbols-outlined text-yellow-400 text-sm"
+                            style="font-variation-settings:'FILL' 1">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-sm"
+                            style="font-variation-settings:'FILL' 1">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-sm"
+                            style="font-variation-settings:'FILL' 1">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-sm"
+                            style="font-variation-settings:'FILL' 1">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-sm"
+                            style="font-variation-settings:'FILL' 1">star</span>
+                    </div>
+                    <span class="text-slate-400 text-xs font-semibold">Trusted by 20+ Founders</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="relative z-10 border-t border-white/10 bg-white/5 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-6 py-8 grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="text-white text-3xl font-black">20+</div>
+                    <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mt-1">Projects Delivered</div>
+                </div>
+                <div class="border-x border-white/10">
+                    <div class="text-primary text-3xl font-black">7</div>
+                    <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mt-1">Days Average Build</div>
+                </div>
+                <div>
+                    <div class="text-white text-3xl font-black">3.8x</div>
+                    <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mt-1">Average ROI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ LOGO TICKER ═══════════════════════════ -->
+    <div class="bg-white border-y border-slate-100 py-5 overflow-hidden">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.25em] text-center mb-4">Trusted by
+            Restaurants &amp; Local Businesses</p>
+        <div class="relative overflow-hidden">
+            <div class="ticker-inner flex gap-12 whitespace-nowrap items-center opacity-80 w-max">
+                <!-- Set 1 -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" class="h-7 shrink-0">
+                    <rect width="140" height="36" rx="6" fill="#c0392b" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">SPICE
+                        ROUTE</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#6d4c41" /><text x="10" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="16" fill="white">CHAI
+                        BROS</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 36" class="h-7 shrink-0">
+                    <rect width="150" height="36" rx="6" fill="#1565c0" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">MUMBAI
+                        BITES</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 36" class="h-7 shrink-0">
+                    <rect width="130" height="36" rx="6" fill="#558b2f" /><text x="10" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">DESI
+                        DHABA</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" class="h-7 shrink-0">
+                    <rect width="140" height="36" rx="6" fill="#e65100" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="14" fill="white">THE CURRY
+                        CO.</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#00838f" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="16"
+                        fill="white">QUICKEATS</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 36" class="h-7 shrink-0">
+                    <rect width="130" height="36" rx="6" fill="#6a1b9a" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">MASALA
+                        HUB</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#37474f" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15"
+                        fill="white">NAANSTOP</text>
+                </svg>
+                <!-- Set 2 — duplicate for seamless loop -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" class="h-7 shrink-0">
+                    <rect width="140" height="36" rx="6" fill="#c0392b" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">SPICE
+                        ROUTE</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#6d4c41" /><text x="10" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="16" fill="white">CHAI
+                        BROS</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 36" class="h-7 shrink-0">
+                    <rect width="150" height="36" rx="6" fill="#1565c0" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">MUMBAI
+                        BITES</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 36" class="h-7 shrink-0">
+                    <rect width="130" height="36" rx="6" fill="#558b2f" /><text x="10" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">DESI
+                        DHABA</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" class="h-7 shrink-0">
+                    <rect width="140" height="36" rx="6" fill="#e65100" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="14" fill="white">THE CURRY
+                        CO.</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#00838f" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="16"
+                        fill="white">QUICKEATS</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 36" class="h-7 shrink-0">
+                    <rect width="130" height="36" rx="6" fill="#6a1b9a" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15" fill="white">MASALA
+                        HUB</text>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" class="h-7 shrink-0">
+                    <rect width="120" height="36" rx="6" fill="#37474f" /><text x="8" y="25"
+                        font-family="Arial Black,sans-serif" font-weight="900" font-size="15"
+                        fill="white">NAANSTOP</text>
+                </svg>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════ PROBLEM ═══════════════════════════ -->
+    <section class="px-6 py-20 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-primary font-black text-sm uppercase tracking-widest mb-3">The Brutal Truth</p>
+            <h2 class="text-slate-900 text-3xl md:text-4xl font-black leading-tight mb-4">
+                Your Website Looks Good…<br />
+                <span class="text-primary">But Doesn't Convert.</span>
+            </h2>
+            <p class="text-slate-500 font-medium mb-12 max-w-xl">92% of ad traffic never converts because of a leaky
+                bucket website. We plug the leaks and double your ROI.</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-hover flex flex-col gap-3 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span class="material-symbols-outlined text-primary text-3xl">timer_off</span>
+                    <h3 class="font-black text-lg">Visitors Leave in 5 Seconds</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Confusing messaging and slow load times kill your
+                        bounce rate before they see your offer.</p>
+                </div>
+                <div class="card-hover flex flex-col gap-3 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span class="material-symbols-outlined text-primary text-3xl">trending_down</span>
+                    <h3 class="font-black text-lg">High Ad Spend, Zero ROI</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">You're throwing money into Meta and Google ads,
+                        but your landing page is a leaking bucket.</p>
+                </div>
+                <div class="card-hover flex flex-col gap-3 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                    <h3 class="font-black text-lg">Weak Messaging</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Copy that talks about "features" instead of
+                        triggering an emotional buy decision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ SERVICES / PROCESS ═══════════════════════════ -->
+    <section id="services" class="bg-slate-950 overflow-hidden">
+        <style>
+            .step-glow {
+                box-shadow: 0 0 0 8px rgba(204, 0, 0, 0.15), 0 0 32px rgba(204, 0, 0, 0.25);
+            }
+
+            .process-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .process-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            }
+
+            @keyframes shimmer {
+
+                0%,
+                100% {
+                    opacity: 1
+                }
+
+                50% {
+                    opacity: 0.6
+                }
+            }
+
+            .connector-dot {
+                animation: shimmer 2s ease-in-out infinite;
+            }
+        </style>
+
+        <!-- Top label + headline -->
+        <div class="px-6 pt-20 pb-0 max-w-5xl mx-auto">
+            <p class="text-primary font-black text-xs uppercase tracking-[0.25em] mb-5">Our Process</p>
+            <h2 class="text-white text-4xl md:text-6xl font-black leading-none mb-4">
+                The Integral <span class="text-primary">Conversion Architecture™</span>
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+                Most agencies redesign. We <span class="text-white font-bold">engineer revenue systems</span> — built on
+                consumer psychology, data, and a repeatable 7-day sprint.
+            </p>
+            <!-- Stat pills -->
+            <div class="flex flex-wrap gap-3 mb-14">
+                <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
+                    <span class="text-white text-sm font-bold">Avg. 3.4× conversion lift</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse inline-block"></span>
+                    <span class="text-white text-sm font-bold">Delivered in 7 days</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse inline-block"></span>
+                    <span class="text-white text-sm font-bold">40+ touchpoints audited</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline + Cards -->
+        <div class="px-6 pb-0 max-w-5xl mx-auto">
+
+            <!-- Timeline connector row -->
+            <div class="hidden md:flex items-center mb-0 px-8 relative">
+                <div
+                    class="flex-1 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent absolute left-0 right-0 top-1/2">
+                </div>
+                <!-- Step indicators -->
+                <div class="flex w-full justify-between relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary step-glow flex items-center justify-center font-black text-white text-2xl">
+                            1</div>
+                        <span class="text-primary text-xs font-black uppercase tracking-widest">Day 1</span>
+                    </div>
+                    <div class="flex items-center gap-2 connector-dot">
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-14 h-14 rounded-full bg-slate-800 border-2 border-slate-600 flex items-center justify-center font-black text-primary text-2xl">
+                            2</div>
+                        <span class="text-slate-400 text-xs font-black uppercase tracking-widest">Day 2–5</span>
+                    </div>
+                    <div class="flex items-center gap-2 connector-dot" style="animation-delay:0.5s">
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary step-glow flex items-center justify-center font-black text-white text-2xl">
+                            3</div>
+                        <span class="text-primary text-xs font-black uppercase tracking-widest">Day 6–7</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Cards -->
+            <div class="grid md:grid-cols-3 gap-5 mt-6 pb-16 items-stretch">
+
+                <!-- Card 1: Audit -->
+                <div
+                    class="process-card bg-slate-900 rounded-2xl p-6 border border-slate-800 flex flex-col gap-4 h-full">
+                    <!-- Mobile step number -->
+                    <div class="flex items-center gap-3 md:hidden">
+                        <div
+                            class="w-10 h-10 rounded-full bg-primary step-glow flex items-center justify-center font-black text-white text-lg shrink-0">
+                            1</div>
+                        <span class="text-primary text-xs font-black uppercase tracking-widest">Day 1</span>
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block bg-primary/15 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3">Discovery</span>
+                        <h3 class="text-white text-xl font-black leading-tight">Deep Conversion Audit</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">We run your site through <span
+                            class="text-white font-bold">40+ conversion touchpoints</span> — heatmaps, session
+                        recordings, Core Web Vitals, copy clarity, and mobile UX — to find exactly where money is
+                        leaking.</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">local_fire_department</span>Heatmaps
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">speed</span>Core Vitals</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">psychology</span>Copy audit</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">phone_iphone</span>Mobile UX
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-800 pt-4 mt-auto">
+                        <p class="text-primary text-[10px] font-black uppercase tracking-widest mb-1">You get →</p>
+                        <p class="text-white text-sm font-semibold">A prioritised leak report — the exact 5–8 changes
+                            that move your conversion rate the most.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Build -->
+                <div
+                    class="process-card bg-slate-900 rounded-2xl p-6 border border-slate-800 flex flex-col gap-4 h-full">
+                    <div class="flex items-center gap-3 md:hidden">
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center font-black text-primary text-lg shrink-0">
+                            2</div>
+                        <span class="text-slate-400 text-xs font-black uppercase tracking-widest">Day 2 – 5</span>
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block bg-slate-800 text-slate-400 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3">Build</span>
+                        <h3 class="text-white text-xl font-black leading-tight">Engineering & Trust Architecture</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">We rebuild what's broken — not the whole
+                        site for the sake of it. Landing pages, checkout flows, mobile UX, and trust signals engineered
+                        with <span class="text-white font-bold">buyer psychology in every pixel</span>.</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">design_services</span>Visual
+                            hierarchy</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">verified</span>Trust signals
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">shopping_cart</span>Checkout
+                            rebuild</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">bolt</span>Performance</div>
+                    </div>
+                    <div class="border-t border-slate-800 pt-4 mt-auto">
+                        <p class="text-primary text-[10px] font-black uppercase tracking-widest mb-1">What changes →</p>
+                        <p class="text-white text-sm font-semibold">Your site stops looking like marketing — and starts
+                            behaving like a salesperson. Faster. Clearer. Built to close.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Launch -->
+                <div
+                    class="process-card bg-slate-900 rounded-2xl p-6 border border-primary/30 flex flex-col gap-4 ring-1 ring-primary/20 h-full">
+                    <div class="flex items-center gap-3 md:hidden">
+                        <div
+                            class="w-10 h-10 rounded-full bg-primary step-glow flex items-center justify-center font-black text-white text-lg shrink-0">
+                            3</div>
+                        <span class="text-primary text-xs font-black uppercase tracking-widest">Day 6 – 7</span>
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block bg-primary text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3">🚀
+                            Go Live</span>
+                        <h3 class="text-white text-xl font-black leading-tight">Launch, Iterate & Scale</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">We ship, we watch, we win. Live data feeds
+                        rapid A/B iteration cycles, CTA refinements, and ad-to-landing alignment. Then we hand you a
+                        <span class="text-white font-bold">Growth Playbook</span> so your team keeps scaling.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">rocket_launch</span>Live deploy
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">science</span>A/B iteration</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">query_stats</span>Monitoring
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400"><span
+                                class="material-symbols-outlined text-primary text-sm">menu_book</span>Growth Playbook
+                        </div>
+                    </div>
+                    <div class="border-t border-primary/20 pt-4 mt-auto bg-primary/5 rounded-xl px-4 py-3 -mx-2">
+                        <p class="text-primary text-[10px] font-black uppercase tracking-widest mb-1">Our guarantee →
+                        </p>
+                        <p class="text-white text-sm font-semibold">If your conversion rate doesn't improve measurably
+                            in 30 days of launch, we keep working — free.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom differentiator bar -->
+        <div class="border-t border-slate-800 bg-slate-900/60">
+            <div
+                class="max-w-5xl mx-auto px-6 py-10 grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+                <div class="flex items-start gap-4 py-6 md:py-0 md:pr-8">
+                    <span class="material-symbols-outlined text-primary text-3xl shrink-0 mt-0.5">timer</span>
+                    <div>
+                        <h4 class="text-white font-black mb-1">Speed is our edge</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Kickoff to live in 14 days — not 3 months.
+                            Your ad budget keeps running; your site shouldn't hold it back.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 py-6 md:py-0 md:px-8">
+                    <span class="material-symbols-outlined text-primary text-3xl shrink-0 mt-0.5">insights</span>
+                    <div>
+                        <h4 class="text-white font-black mb-1">Data, not opinions</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Every decision is backed by behaviour data. We
+                            don't "think" it'll work — we show you precisely why it will.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 py-6 md:py-0 md:pl-8">
+                    <span class="material-symbols-outlined text-primary text-3xl shrink-0 mt-0.5">handshake</span>
+                    <div>
+                        <h4 class="text-white font-black mb-1">Skin in the game</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Our guarantee means we don't get paid well
+                            unless you grow. Aligned incentives. Zero bloat. Pure results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- ═══════════════════════════ RESULTS ═══════════════════════════ -->
+    <style>
+        .cs-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cs-body.open {
+            max-height: 2000px;
+        }
+
+        .cs-chevron {
+            transition: transform 0.35s ease;
+        }
+
+        .cs-card.open .cs-chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+    <section id="results" class="px-6 py-20 bg-white">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Section header -->
+            <p class="text-primary font-black text-sm uppercase tracking-widest mb-3">Real Clients. Real Numbers.</p>
+            <h2 class="text-slate-900 text-3xl md:text-4xl font-black leading-tight mb-4">Case Studies That<br /><span
+                    class="text-primary">Speak for Themselves.</span></h2>
+            <p class="text-slate-500 font-medium mb-10 max-w-2xl">Tap any card to read the full story — what broke, what
+                we fixed, and what changed.</p>
+
+            <!-- ── CASE STUDY 1 ── -->
+            <div id="cs1" class="cs-card mb-5 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                <!-- Always-visible header row -->
+                <button onclick="toggleCS('cs1')"
+                    class="w-full text-left bg-slate-900 px-6 py-5 flex items-center gap-4 hover:bg-slate-800 transition-colors">
+                    <div class="flex-1">
+                        <span class="text-primary font-black text-xs uppercase tracking-widest">Case Study 01 · B2B SaaS
+                            · 14 Days</span>
+                        <h3 class="text-white text-lg font-black mt-0.5">Velocity Media — Fintech Landing Page</h3>
+                        <!-- Mini stat pills always visible -->
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="bg-white/10 text-white font-black text-sm px-3 py-1 rounded-full">Bounce
+                                62%→38%</span>
+                            <span class="bg-primary/20 text-primary font-black text-sm px-3 py-1 rounded-full">Conv.
+                                1.2%→4.8%</span>
+                            <span class="bg-white/10 text-white font-black text-sm px-3 py-1 rounded-full">+37%
+                                Leads</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 shrink-0">
+                        <span class="cs-chevron material-symbols-outlined text-slate-400 text-2xl">expand_more</span>
+                        <span class="text-slate-500 text-[10px] font-black uppercase hidden md:block">Read Story</span>
+                    </div>
+                </button>
+
+                <!-- Expandable body -->
+                <div class="cs-body bg-white">
+                    <div class="p-6 md:p-8 space-y-6">
+                        <!-- Problem -->
+                        <div>
+                            <p class="text-primary font-black text-xs uppercase tracking-widest mb-2">The Problem</p>
+                            <p class="text-slate-700 font-semibold leading-relaxed">Velocity Media was spending <span
+                                    class="text-slate-900 font-black">₹1.2L/month on Google Ads</span> driving traffic
+                                to a landing page untouched for 3 years. Bounce rate: <span
+                                    class="text-primary font-black">62%</span> — 6 out of 10 visitors left without doing
+                                anything. They were bleeding money every single day.</p>
+                        </div>
+                        <!-- What we did -->
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                            <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-3">What We Did</p>
+                            <div class="space-y-2 text-sm text-slate-600">
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Rewrote
+                                        all headline copy to laser-focus on the single biggest pain their buyers
+                                        felt</span></div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Rebuilt
+                                        from zero — mobile-first, sub-2s load, Core Web Vitals all green</span></div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Moved
+                                        CTA above the fold, added urgency cues, social proof strip, and a risk-reversal
+                                        guarantee</span></div>
+                            </div>
+                        </div>
+                        <!-- Metrics -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">62%→38%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Bounce Rate</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">+37%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Qualified Leads</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">1.2%→4.8%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Conv. Rate</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">14 Days</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">To Launch</div>
+                            </div>
+                        </div>
+                        <!-- Quote -->
+                        <div class="flex gap-3 items-start bg-slate-900 rounded-2xl p-5">
+                            <span class="text-primary text-4xl font-black leading-none">"</span>
+                            <div>
+                                <p class="text-white font-medium italic leading-relaxed mb-3">They fixed in 14 days what
+                                    our previous agency couldn't fix in 14 months. It literally doubled our business
+                                    overnight.</p>
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-black text-white text-xs">
+                                        M</div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">Marcus Chen</p>
+                                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">CEO,
+                                            Velocity Media</p>
+                                    </div>
+                                    <div class="flex gap-0.5 ml-auto">
+                                        <span class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── CASE STUDY 2 ── -->
+            <div id="cs2" class="cs-card mb-5 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                <button onclick="toggleCS('cs2')"
+                    class="w-full text-left bg-slate-900 px-6 py-5 flex items-center gap-4 hover:bg-slate-800 transition-colors">
+                    <div class="flex-1">
+                        <span class="text-primary font-black text-xs uppercase tracking-widest">Case Study 02 · DTC
+                            E-comm · 30-Day Results</span>
+                        <h3 class="text-white text-lg font-black mt-0.5">NutriCore — Health & Wellness Store</h3>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="bg-white/10 text-white font-black text-sm px-3 py-1 rounded-full">Cart Abandon
+                                78%→41%</span>
+                            <span class="bg-primary/20 text-primary font-black text-sm px-3 py-1 rounded-full">2.5×
+                                ROAS</span>
+                            <span class="bg-white/10 text-white font-black text-sm px-3 py-1 rounded-full">22% Carts
+                                Recovered</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 shrink-0">
+                        <span class="cs-chevron material-symbols-outlined text-slate-400 text-2xl">expand_more</span>
+                        <span class="text-slate-500 text-[10px] font-black uppercase hidden md:block">Read Story</span>
+                    </div>
+                </button>
+                <div class="cs-body bg-white">
+                    <div class="p-6 md:p-8 space-y-6">
+                        <div>
+                            <p class="text-primary font-black text-xs uppercase tracking-widest mb-2">The Problem</p>
+                            <p class="text-slate-700 font-semibold leading-relaxed">NutriCore had a <span
+                                    class="text-slate-900 font-black">₹3L/month Meta ads budget</span> but a <span
+                                    class="text-primary font-black">78% cart abandonment rate</span>. Customers added
+                                products then vanished — mostly on mobile, where checkout was a broken 6-step nightmare.
+                                Every ad rupee was leaking.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                            <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-3">What We Did</p>
+                            <div class="space-y-2 text-sm text-slate-600">
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Rebuilt
+                                        mobile checkout: 6 steps → 2. One-click address autofill, sticky CTA.</span>
+                                </div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Added
+                                        trust signals at every friction point — SSL, refund guarantee, 5-star review
+                                        widget</span></div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Exit-intent
+                                        popup + 3-email abandoned cart sequence that recovered 22% of lost carts</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">78%→41%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Cart Abandon</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">+45%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Conv. Rate</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">2.5×</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">ROAS</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">22%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Carts Recovered</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start bg-slate-900 rounded-2xl p-5">
+                            <span class="text-primary text-4xl font-black leading-none">"</span>
+                            <div>
+                                <p class="text-white font-medium italic leading-relaxed mb-3">Within 10 days of the new
+                                    site going live, my ROAS jumped from 1.1× to 2.8×. The checkout rebuild alone paid
+                                    for itself in the first week.</p>
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-black text-white text-xs">
+                                        P</div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">Priya Sharma</p>
+                                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                                            Founder, NutriCore</p>
+                                    </div>
+                                    <div class="flex gap-0.5 ml-auto">
+                                        <span class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── CASE STUDY 3 ── -->
+            <div id="cs3"
+                class="cs-card mb-10 rounded-2xl overflow-hidden border border-primary/30 shadow-sm ring-1 ring-primary/10">
+                <button onclick="toggleCS('cs3')"
+                    class="w-full text-left bg-primary px-6 py-5 flex items-center gap-4 hover:bg-primary-dark transition-colors">
+                    <div class="flex-1">
+                        <span class="text-white/70 font-black text-xs uppercase tracking-widest">Case Study 03 · Most
+                            Recent · EdTech · 11 Days</span>
+                        <h3 class="text-white text-lg font-black mt-0.5">GrowthPilot — EdTech Lead Generation</h3>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="bg-white/20 text-white font-black text-sm px-3 py-1 rounded-full">Conv.
+                                0.6%→3.1%</span>
+                            <span class="bg-white/20 text-white font-black text-sm px-3 py-1 rounded-full">18→93
+                                Leads/mo</span>
+                            <span class="bg-white/20 text-white font-black text-sm px-3 py-1 rounded-full">CPL
+                                −68%</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 shrink-0">
+                        <span class="cs-chevron material-symbols-outlined text-white/60 text-2xl">expand_more</span>
+                        <span class="text-white/50 text-[10px] font-black uppercase hidden md:block">Read Story</span>
+                    </div>
+                </button>
+                <div class="cs-body bg-white">
+                    <div class="p-6 md:p-8 space-y-6">
+                        <div>
+                            <p class="text-primary font-black text-xs uppercase tracking-widest mb-2">The Problem</p>
+                            <p class="text-slate-700 font-semibold leading-relaxed">GrowthPilot got <span
+                                    class="text-slate-900 font-black">3,000 monthly visitors</span> but only <span
+                                    class="text-primary font-black">18 form submissions</span> — 0.6% conversion. Their
+                                homepage tried to speak to corporates, students, and career-switchers all at once,
+                                persuading absolutely none of them.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                            <p class="text-slate-900 font-black text-xs uppercase tracking-widest mb-3">What We Did</p>
+                            <div class="space-y-2 text-sm text-slate-600">
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Built
+                                        3 dedicated landing pages, one per audience — with targeted messaging and proof
+                                        for each</span></div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Replaced
+                                        their 9-field form with a 2-step quiz funnel (goal → phone). Completion jumped
+                                        immediately.</span></div>
+                                <div class="flex gap-2"><span
+                                        class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span><span>Added
+                                        placement stats, hiring logos, salary outcome data, and live student counters as
+                                        proof triggers</span></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">0.6%→3.1%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Conv. Rate</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">18→93</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Monthly Leads</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">−68%</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">Cost per Lead</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <div class="text-2xl font-black text-primary">4 Days</div>
+                                <div class="text-slate-500 text-[10px] font-black uppercase mt-1">To Launch</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start bg-slate-900 rounded-2xl p-5">
+                            <span class="text-primary text-4xl font-black leading-none">"</span>
+                            <div>
+                                <p class="text-white font-medium italic leading-relaxed mb-3">Our cost per lead dropped
+                                    68% in the first month. Sales team went from 2 calls a day to 8. Game-changing.</p>
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-black text-white text-xs">
+                                        R</div>
+                                    <div>
+                                        <p class="text-white font-black text-sm">Rahul Verma</p>
+                                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                                            Co-Founder, GrowthPilot</p>
+                                    </div>
+                                    <div class="flex gap-0.5 ml-auto">
+                                        <span class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span><span
+                                            class="material-symbols-outlined text-yellow-400 text-xs"
+                                            style="font-variation-settings:'FILL' 1">star</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center">
+                <p class="text-slate-500 font-medium mb-4">Want results like these?</p>
+                <a href="#contact"
+                    class="btn-press inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white h-14 px-10 rounded-xl font-black text-lg shadow-[0_6px_0_0_rgba(180,0,0,1)]">
+                    Get Your Free Audit
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    </div>
+    </section>
+
+    <!-- ═══════════════════════════ PORTFOLIO ═══════════════════════════ -->
+    <section id="work" class="px-6 py-20 bg-background-light">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-primary font-black text-sm uppercase tracking-widest mb-3">Our Work</p>
+            <h2 class="text-slate-900 text-3xl md:text-4xl font-black leading-tight mb-4">Portfolio</h2>
+            <p class="text-slate-500 font-medium mb-10 max-w-2xl">Real websites built for real businesses. Each tier
+                unlocks more power — choose what fits your stage of growth.</p>
+
+            <!-- Category Tabs -->
+            <div class="flex gap-2 mb-10" id="portfolio-tabs">
+                <button data-cat="business" onclick="switchCat('business')"
+                    class="port-tab active-tab px-5 py-2.5 rounded-full font-black text-sm transition-all bg-primary text-white">
+                    <span class="material-symbols-outlined text-sm align-middle mr-1">business_center</span>Business
+                </button>
+                <button data-cat="food" onclick="switchCat('food')"
+                    class="port-tab px-5 py-2.5 rounded-full font-black text-sm transition-all bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary">
+                    <span class="material-symbols-outlined text-sm align-middle mr-1">restaurant</span>Food
+                </button>
+                <button data-cat="education" onclick="switchCat('education')"
+                    class="port-tab px-5 py-2.5 rounded-full font-black text-sm transition-all bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary">
+                    <span class="material-symbols-outlined text-sm align-middle mr-1">school</span>Education
+                </button>
+            </div>
+
+            <!-- Tier legend -->
+            <div class="flex gap-4 mb-8 flex-wrap">
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-500"><span
+                        class="w-3 h-3 rounded-full bg-slate-400 inline-block"></span>Easy — Frontend essentials</div>
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-500"><span
+                        class="w-3 h-3 rounded-full bg-primary/60 inline-block"></span>Medium — More features</div>
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-500"><span
+                        class="w-3 h-3 rounded-full bg-primary inline-block"></span>Ultra — Full stack, everything</div>
+            </div>
+
+            <!-- ── BUSINESS ── -->
+            <div id="cat-business" class="port-panel grid md:grid-cols-3 gap-6">
+
+                <!-- Business Easy -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://business-low.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Business Easy Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-slate-700 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Easy</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Business Starter</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Clean, fast business site with a
+                            professional home, services overview, and contact — fully mobile-ready.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Landing Page</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Mobile-First</span>
+                        </div>
+                        <a href="https://business-low.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Business Medium -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary/30 shadow-sm overflow-hidden flex flex-col ring-1 ring-primary/20">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://business-med.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Business Medium Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary/80 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Medium</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Business Pro</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Elevated site with team section,
+                            portfolio showcase, testimonials, and lead capture forms wired up.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Multi-Page</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Lead Forms</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Testimonials</span>
+                        </div>
+                        <a href="https://business-med.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Business Ultra -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary shadow-sm overflow-hidden flex flex-col relative">
+                    <div
+                        class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-wider uppercase">
+                        Most Popular</div>
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://business-top.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Business Ultra Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Ultra</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Business Ultra</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Full-stack business platform — CRM
+                            integration, blog, analytics dashboard, custom booking, and full SEO suite.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">CRM</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Blog</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Analytics</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Booking</span>
+                        </div>
+                        <a href="https://business-top.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── FOOD ── -->
+            <div id="cat-food" class="port-panel hidden grid md:grid-cols-3 gap-6">
+
+                <!-- Food Easy -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://portfoliosite-integral-labs-cafe-ba-tau.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Food Easy Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-slate-700 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Easy</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Café Starter</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Beautiful frontend-only café site
+                            — stunning aesthetics, menu display, and brand identity. Fully mobile-optimized.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Frontend Only</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Menu</span>
+                        </div>
+                        <a href="https://portfoliosite-integral-labs-cafe-ba-tau.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Food Medium -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary/30 shadow-sm overflow-hidden flex flex-col ring-1 ring-primary/20">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://portfoliosite1-kappa.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Food Medium Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary/80 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Medium</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Restaurant Pro</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Full restaurant site with table
+                            reservations, events, and gallery — everything except online delivery ordering.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Reservations</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Gallery</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Events</span>
+                        </div>
+                        <a href="https://portfoliosite1-kappa.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Food Ultra -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary shadow-sm overflow-hidden flex flex-col relative">
+                    <div
+                        class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-wider uppercase">
+                        Most Popular</div>
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://portfoliosite-labs-cafe-max-4dls.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Food Ultra Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Ultra</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">Restaurant Ultra</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">The complete F&B platform —
+                            reservations, online delivery ordering, payment gateway, loyalty & CRM, all integrated.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Online Ordering</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Payments</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">CRM</span>
+                        </div>
+                        <a href="https://portfoliosite-labs-cafe-max-4dls.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── EDUCATION ── -->
+            <div id="cat-education" class="port-panel hidden grid md:grid-cols-3 gap-6">
+
+                <!-- Education Easy -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://education-easy.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Education Easy Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-slate-700 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Easy</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">EdTech Starter</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Professional education website
+                            showcasing courses, faculty, and institution highlights — clean and trust-building.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Courses</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Faculty</span>
+                        </div>
+                        <a href="https://education-easy.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Education Medium -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary/30 shadow-sm overflow-hidden flex flex-col ring-1 ring-primary/20">
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://education-med.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Education Medium Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary/80 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Medium</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">EdTech Pro</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Advanced institution platform with
+                            admissions forms, event calendar, blog, and student portal entry point.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Admissions</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Events</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Blog</span>
+                        </div>
+                        <a href="https://education-med.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Education Ultra -->
+                <div
+                    class="card-hover bg-white rounded-2xl border border-primary shadow-sm overflow-hidden flex flex-col relative">
+                    <div
+                        class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-wider uppercase">
+                        Most Popular</div>
+                    <div class="relative h-44 bg-slate-100 overflow-hidden">
+                        <iframe src="https://portfoliosite-labs-edu-max.vercel.app/"
+                            class="w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none border-0"
+                            loading="lazy" title="Education Ultra Preview"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent pointer-events-none">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Ultra</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-1">EdTech Ultra</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">Full education ecosystem — LMS,
+                            student dashboard, online payments, admissions pipeline, and analytics reporting.</p>
+                        <div class="flex gap-2 flex-wrap text-[10px] font-black text-slate-400 uppercase mb-4">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">LMS</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Payments</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Analytics</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded">Portal</span>
+                        </div>
+                        <a href="https://portfoliosite-labs-edu-max.vercel.app/" target="_blank"
+                            class="btn-press flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-2.5 rounded-xl font-black text-sm transition-colors shadow-[0_4px_0_0_rgba(180,0,0,1)]">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>View Live Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ PROCESS ═══════════════════════════ -->
+    <section id="process" class="px-6 py-20 bg-background-light">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-primary font-black text-sm uppercase tracking-widest mb-3">Our Process</p>
+            <h2 class="text-slate-900 text-3xl md:text-4xl font-black leading-tight mb-4 italic">
+                Conversion Architecture™
+            </h2>
+            <p class="text-slate-500 font-medium mb-14 max-w-xl">A battle-tested system to diagnose, fix, and scale your
+                digital presence in the shortest time possible.</p>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-200 md:left-1/2 md:-translate-x-px"></div>
+
+                <div class="space-y-10">
+                    <!-- Phase 1 -->
+                    <div class="relative flex gap-6 md:gap-0">
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-black text-xl shrink-0 border-4 border-background-light z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
+                            1</div>
+                        <div class="flex-1 md:w-1/2 md:pr-12 md:text-right md:ml-0">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover md:mr-0">
+                                <h3 class="font-black text-xl mb-2">Deep Audit (Day 1–2)</h3>
+                                <p class="text-slate-500 text-sm leading-relaxed">We analyze 40+ conversion touchpoints
+                                    where you're losing money and high-intent users. No guesswork — pure data.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="relative flex gap-6 md:gap-0">
+                        <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right"></div>
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-black text-xl shrink-0 border-4 border-background-light z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
+                            2</div>
+                        <div class="flex-1 md:w-1/2 md:ml-auto md:pl-12">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover">
+                                <h3 class="font-black text-xl mb-2">Technical Repair (Day 3–8)</h3>
+                                <p class="text-slate-500 text-sm leading-relaxed">Rebuilding core vitals, checkout flow,
+                                    and mobile accessibility for frictionless buying. Speed, trust, and clarity — all at
+                                    once.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="relative flex gap-6 md:gap-0">
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-black text-xl shrink-0 border-4 border-background-light z-10 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
+                            3</div>
+                        <div class="flex-1 md:w-1/2 md:pr-12 md:text-right">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover">
+                                <h3 class="font-black text-xl mb-2">Launch & Optimize (Day 9–14)</h3>
+                                <p class="text-slate-500 text-sm leading-relaxed">We ship, monitor, and iterate. Now
+                                    that your bucket is sealed, we turn up the spend for maximum efficiency and ROI.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ OFFER / GUARANTEE ═══════════════════════════ -->
+    <section class="px-6 py-20 bg-primary overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            <h2 class="text-white text-3xl md:text-4xl font-black mb-4">Our 7-Day Turnaround Guarantee</h2>
+            <p class="text-white/80 text-lg font-medium mb-10 max-w-2xl mx-auto">
+                We deliver your site within 7 days or we work for free until it's done. Zero risk, pure results.
+            </p>
+
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 max-w-md mx-auto">
+                <div class="text-white text-xl font-black uppercase tracking-widest mb-1">Included Free</div>
+                <div class="text-white text-5xl font-black mb-2">Conversion<br />Analysis</div>
+                <div class="text-white/70 text-sm font-bold uppercase tracking-widest mb-8">Worth ₹15,000 — Yours Free
+                </div>
+                <a href="#contact"
+                    class="btn-press block w-full bg-white text-primary py-4 rounded-xl font-black text-lg shadow-xl shadow-black/20 hover:bg-slate-100 transition-colors">
+                    Claim My Free Analysis →
+                </a>
+                <p class="text-white/50 text-xs mt-4 font-medium">No credit card. Only 5 slots available per month.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
+    <section id="faq" class="px-6 py-20 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-primary font-black text-sm uppercase tracking-widest mb-3 text-center">Common Questions</p>
+            <h2 class="text-3xl md:text-4xl font-black mb-12 text-center">Everything You Need to Know</h2>
+
+            <div class="flex flex-col gap-3" id="faq-list">
+                <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left">
+                        <h3 class="font-black text-slate-900">How can you build it so fast?</h3>
+                        <span class="material-symbols-outlined text-primary faq-icon shrink-0">add</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-slate-500 text-sm leading-relaxed pb-5">We have a battle-tested design system and
+                            a team of specialized engineers. We don't start from scratch — we start from best-practice
+                            templates and customize aggressively for your brand and market.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left">
+                        <h3 class="font-black text-slate-900">Will I own the website completely?</h3>
+                        <span class="material-symbols-outlined text-primary faq-icon shrink-0">add</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-slate-500 text-sm leading-relaxed pb-5">Yes. Once payment is complete, you own
+                            100% of the code, the design files, and all content. No lock-in, no subscriptions unless you
+                            choose ongoing support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left">
+                        <h3 class="font-black text-slate-900">Do you handle SEO?</h3>
+                        <span class="material-symbols-outlined text-primary faq-icon shrink-0">add</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-slate-500 text-sm leading-relaxed pb-5">Every site we build is SEO-ready — proper
+                            meta tags, semantic HTML, fast page speed, and structured data. Deep ongoing SEO strategy is
+                            available as an add-on service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left">
+                        <h3 class="font-black text-slate-900">What is your typical pricing?</h3>
+                        <span class="material-symbols-outlined text-primary faq-icon shrink-0">add</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-slate-500 text-sm leading-relaxed pb-5">Projects start at ₹25,000 for a single
+                            high-converting landing page and scale up based on complexity. Book a free strategy call and
+                            we'll give you a precise quote with no obligation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left">
+                        <h3 class="font-black text-slate-900">What if I'm not happy with the result?</h3>
+                        <span class="material-symbols-outlined text-primary faq-icon shrink-0">add</span>
+                    </button>
+                    <div class="faq-answer px-5">
+                        <p class="text-slate-500 text-sm leading-relaxed pb-5">We offer unlimited revisions during the
+                            build phase. After launch, if your metrics don't improve in 30 days, we'll do a free audit
+                            and re-build any underperforming sections. Your results are our reputation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ CONTACT / FINAL CTA ═══════════════════════════ -->
+    <section id="contact" class="px-6 py-20 bg-slate-900 text-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Left copy -->
+                <div>
+                    <p class="text-primary font-black text-sm uppercase tracking-widest mb-3">Ready to Stop Losing
+                        Leads?</p>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">
+                        Start Your Project <span class="text-primary">Today.</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg font-medium leading-relaxed mb-8">
+                        Schedule your free strategy call. We'll audit your current site live, identify your biggest
+                        conversion leaks, and show you exactly how we'd fix them — no fluff, no sales pitch.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            </div>
+                            <span class="font-semibold">Free 30-min strategy call, zero obligation</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            </div>
+                            <span class="font-semibold">Live conversion audit of your site</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-sm">check</span>
+                            </div>
+                            <span class="font-semibold">Custom roadmap — delivered same call</span>
+                        </div>
+                    </div>
+                    <!-- Prominent strategy call CTA -->
+                    <button onclick="openStrategyModal()"
+                        class="btn-press w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white h-14 px-8 rounded-xl font-black text-lg shadow-[0_6px_0_0_rgba(180,0,0,1)] transition-colors">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        Book My Free Strategy Call
+                    </button>
+                    <div class="mt-5 flex items-center gap-2">
+                        <span class="pulse-dot w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
+                        <span class="text-slate-400 text-sm font-bold">Now accepting projects for March 2026</span>
+                    </div>
+                </div>
+
+                <!-- Right quick-contact form -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
+                    <h3 class="text-xl font-black mb-2">Quick Message</h3>
+                    <p class="text-slate-400 text-sm mb-6">Rather send a message? We reply within 4 hours.</p>
+                    <form id="contact-form" class="space-y-4" onsubmit="handleContactSubmit(event)">
+                        <div>
+                            <label class="text-slate-400 text-xs font-bold uppercase tracking-wider block mb-1.5">Full
+                                Name</label>
+                            <input id="cf-name" type="text" required placeholder="Your name"
+                                class="w-full bg-white/10 border border-white/10 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white/15 transition-colors" />
+                        </div>
+                        <div>
+                            <label class="text-slate-400 text-xs font-bold uppercase tracking-wider block mb-1.5">Email
+                                Address</label>
+                            <input id="cf-email" type="email" required placeholder="you@company.com"
+                                class="w-full bg-white/10 border border-white/10 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white/15 transition-colors" />
+                        </div>
+                        <div>
+                            <label class="text-slate-400 text-xs font-bold uppercase tracking-wider block mb-1.5">Your
+                                Website</label>
+                            <input id="cf-url" type="url" placeholder="https://yoursite.com"
+                                class="w-full bg-white/10 border border-white/10 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white/15 transition-colors" />
+                        </div>
+                        <div>
+                            <label
+                                class="text-slate-400 text-xs font-bold uppercase tracking-wider block mb-1.5">Message</label>
+                            <textarea id="cf-message" rows="3" placeholder="What are you working on?"
+                                class="w-full bg-white/10 border border-white/10 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white/15 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" id="cf-submit"
+                            class="btn-press w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-black text-sm shadow-none mt-1 transition-colors flex items-center justify-center gap-2 border border-white/20">
+                            <span id="cf-btn-text">Send Message</span>
+                            <span class="material-symbols-outlined text-sm" id="cf-btn-icon">send</span>
+                        </button>
+                        <p class="text-slate-500 text-xs text-center font-medium">100% confidential · No spam ever</p>
+                    </form>
+                    <div id="cf-success" class="hidden text-center py-6">
+                        <div
+                            class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
+                            <span class="material-symbols-outlined text-green-400 text-2xl">check_circle</span>
+                        </div>
+                        <h4 class="font-black text-lg mb-1">Message received!</h4>
+                        <p class="text-slate-400 text-sm">We'll reply within 4 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ STRATEGY CALL MODAL ═══════════════════════════ -->
+    <div id="strategy-modal" class="fixed inset-0 z-[200] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm" onclick="closeStrategyModal()"></div>
+        <!-- Panel -->
+        <div class="absolute inset-0 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-lg bg-white md:rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            style="max-height:100dvh">
+            <!-- Header -->
+            <div class="bg-slate-900 px-6 py-5 flex items-center justify-between shrink-0">
+                <div>
+                    <p class="text-primary font-black text-xs uppercase tracking-widest">Book Your Free Strategy Call
+                    </p>
+                    <p class="text-white font-bold text-sm mt-0.5">Takes 90 seconds · Zero obligation</p>
+                </div>
+                <button onclick="closeStrategyModal()" class="text-slate-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+            <!-- Progress bar -->
+            <div class="bg-slate-200 h-1 shrink-0">
+                <div id="modal-progress" class="bg-primary h-full transition-all duration-300" style="width:20%"></div>
+            </div>
+            <!-- Steps container -->
+            <div class="flex-1 overflow-y-auto p-6 md:p-8">
+
+                <!-- Step 1: Business type -->
+                <div id="step-1" class="modal-step">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Step 1 of 5</p>
+                    <h3 class="text-slate-900 text-xl font-black mb-6">What type of business do you run?</h3>
+                    <div class="grid grid-cols-2 gap-3" id="biz-type-grid">
+                        <button onclick="selectOption(this,'biz-type')" data-value="E-commerce"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">shopping_bag</span>
+                            <span class="font-black text-slate-900 text-sm">E-Commerce</span>
+                        </button>
+                        <button onclick="selectOption(this,'biz-type')" data-value="SaaS / Tech"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">code</span>
+                            <span class="font-black text-slate-900 text-sm">SaaS / Tech</span>
+                        </button>
+                        <button onclick="selectOption(this,'biz-type')" data-value="Service Business"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">handyman</span>
+                            <span class="font-black text-slate-900 text-sm">Service Business</span>
+                        </button>
+                        <button onclick="selectOption(this,'biz-type')" data-value="Education / EdTech"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">school</span>
+                            <span class="font-black text-slate-900 text-sm">Education</span>
+                        </button>
+                        <button onclick="selectOption(this,'biz-type')" data-value="Restaurant / Food"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">restaurant</span>
+                            <span class="font-black text-slate-900 text-sm">Restaurant / Food</span>
+                        </button>
+                        <button onclick="selectOption(this,'biz-type')" data-value="Other"
+                            class="option-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl block mb-2">more_horiz</span>
+                            <span class="font-black text-slate-900 text-sm">Other</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Biggest problem -->
+                <div id="step-2" class="modal-step hidden">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Step 2 of 5</p>
+                    <h3 class="text-slate-900 text-xl font-black mb-6">What's your biggest challenge right now?</h3>
+                    <div class="space-y-3">
+                        <button onclick="selectOption(this,'problem')" data-value="Low conversion rate"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">trending_down</span>
+                            <span class="font-bold text-slate-800 text-sm">Low conversion rate — traffic exists but
+                                nobody buys/enquires</span>
+                        </button>
+                        <button onclick="selectOption(this,'problem')" data-value="High ad spend, low ROI"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">money_off</span>
+                            <span class="font-bold text-slate-800 text-sm">High ad spend, low ROI — ads bring visitors
+                                who don't convert</span>
+                        </button>
+                        <button onclick="selectOption(this,'problem')" data-value="Poor mobile experience"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">smartphone</span>
+                            <span class="font-bold text-slate-800 text-sm">Poor mobile experience — desktop looks fine,
+                                mobile is a mess</span>
+                        </button>
+                        <button onclick="selectOption(this,'problem')" data-value="Weak messaging / copy"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">edit_note</span>
+                            <span class="font-bold text-slate-800 text-sm">Weak messaging — visitors don't understand
+                                what I offer</span>
+                        </button>
+                        <button onclick="selectOption(this,'problem')" data-value="Need a new website"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">web</span>
+                            <span class="font-bold text-slate-800 text-sm">I need a completely new website built
+                                fast</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Ad budget -->
+                <div id="step-3" class="modal-step hidden">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Step 3 of 5</p>
+                    <h3 class="text-slate-900 text-xl font-black mb-6">What's your monthly ad spend (or planned budget)?
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="selectOption(this,'budget')" data-value="Under ₹25k/mo"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="font-black text-slate-900">Under ₹25,000 / month</span>
+                            <span class="text-slate-400 text-xs block mt-0.5">Just getting started</span>
+                        </button>
+                        <button onclick="selectOption(this,'budget')" data-value="₹25k – ₹1L/mo"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="font-black text-slate-900">₹25,000 – ₹1 Lakh / month</span>
+                            <span class="text-slate-400 text-xs block mt-0.5">Active campaigns running</span>
+                        </button>
+                        <button onclick="selectOption(this,'budget')" data-value="₹1L – ₹5L/mo"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="font-black text-slate-900">₹1 Lakh – ₹5 Lakhs / month</span>
+                            <span class="text-slate-400 text-xs block mt-0.5">Scaling aggressively</span>
+                        </button>
+                        <button onclick="selectOption(this,'budget')" data-value="₹5L+/mo"
+                            class="option-btn w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-primary hover:bg-primary/5 transition-all">
+                            <span class="font-black text-slate-900">₹5 Lakhs+ / month</span>
+                            <span class="text-slate-400 text-xs block mt-0.5">High volume operations</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Website URL -->
+                <div id="step-4" class="modal-step hidden">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Step 4 of 5</p>
+                    <h3 class="text-slate-900 text-xl font-black mb-2">What's your website URL?</h3>
+                    <p class="text-slate-500 text-sm mb-6">We'll do a quick audit before the call so the session is
+                        fully tailored to you.</p>
+                    <input id="modal-url" type="url" placeholder="https://yourwebsite.com"
+                        class="w-full border-2 border-slate-200 focus:border-primary rounded-2xl px-5 py-4 text-slate-900 font-medium text-sm outline-none transition-colors" />
+                    <p class="text-slate-400 text-xs mt-2">Don't have one yet? Leave blank — we'll still help.</p>
+                    <button onclick="nextStep(5)"
+                        class="mt-6 w-full bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-2xl font-black text-sm transition-colors">
+                        Continue →
+                    </button>
+                </div>
+
+                <!-- Step 5: Contact info -->
+                <div id="step-5" class="modal-step hidden">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Step 5 of 5</p>
+                    <h3 class="text-slate-900 text-xl font-black mb-2">Where should we reach you?</h3>
+                    <p class="text-slate-500 text-sm mb-6">We'll confirm your free 30-min slot within 24 hours.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-slate-600 text-xs font-black uppercase tracking-wider block mb-1.5">Full
+                                Name *</label>
+                            <input id="modal-name" type="text" required placeholder="Your name"
+                                class="w-full border-2 border-slate-200 focus:border-primary rounded-2xl px-5 py-4 text-slate-900 font-medium text-sm outline-none transition-colors" />
+                        </div>
+                        <div>
+                            <label class="text-slate-600 text-xs font-black uppercase tracking-wider block mb-1.5">Email
+                                Address *</label>
+                            <input id="modal-email" type="email" required placeholder="you@company.com"
+                                class="w-full border-2 border-slate-200 focus:border-primary rounded-2xl px-5 py-4 text-slate-900 font-medium text-sm outline-none transition-colors" />
+                        </div>
+                        <div>
+                            <label class="text-slate-600 text-xs font-black uppercase tracking-wider block mb-1.5">Phone
+                                (WhatsApp only)</label>
+                            <input id="modal-phone" type="tel" placeholder="+91 94706 50991"
+                                class="w-full border-2 border-slate-200 focus:border-primary rounded-2xl px-5 py-4 text-slate-900 font-medium text-sm outline-none transition-colors" />
+                        </div>
+                    </div>
+                    <button onclick="submitStrategyForm()" id="modal-submit-btn"
+                        class="btn-press mt-6 w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-2xl font-black text-base shadow-[0_6px_0_0_rgba(180,0,0,1)] transition-colors flex items-center justify-center gap-2">
+                        <span id="modal-btn-text">Book My Free Strategy Call</span>
+                        <span class="material-symbols-outlined" id="modal-btn-icon">rocket_launch</span>
+                    </button>
+                    <p class="text-slate-400 text-xs text-center mt-3">No credit card · No spam · 100% confidential</p>
+                </div>
+
+                <!-- Success state -->
+                <div id="modal-success" class="hidden text-center py-8">
+                    <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+                        <span class="material-symbols-outlined text-green-500 text-4xl">check_circle</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 text-2xl mb-2">You're booked! 🎉</h3>
+                    <p class="text-slate-500 leading-relaxed mb-2">We've received your details and will reach out on
+                        WhatsApp / email within <strong>24 hours</strong> to lock in your free 30-min strategy call.</p>
+                    <p class="text-slate-400 text-sm">Check your email for confirmation.</p>
+                    <button onclick="closeStrategyModal()"
+                        class="mt-6 bg-slate-900 text-white px-8 py-3 rounded-xl font-black text-sm">Close</button>
+                </div>
+
+            </div>
+
+            <!-- Footer nav -->
+            <div id="modal-footer-nav"
+                class="border-t border-slate-100 px-6 py-4 flex items-center justify-between shrink-0 bg-white">
+                <button id="modal-back-btn" onclick="prevStep()"
+                    class="text-slate-500 hover:text-slate-900 font-bold text-sm flex items-center gap-1 transition-colors"
+                    style="visibility:hidden">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+                </button>
+                <p class="text-slate-400 text-xs font-bold" id="step-counter">Step 1 of 5</p>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="px-6 py-12 bg-background-dark border-t border-white/5 text-center">
+        <div class="flex items-center justify-center mb-4">
+            <div class="bg-primary text-white p-1 rounded-lg">
+                <span class="material-symbols-outlined text-[20px]">bolt</span>
+            </div>
+            <span class="text-white text-lg font-black uppercase tracking-tight ml-2">Integral Labs</span>
+        </div>
+        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-6">Web Engineering &amp; Conversion
+            Optimization</p>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/919470650991" target="_blank"
+                class="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-black px-5 py-2.5 rounded-full transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                WhatsApp Us
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com/integral__labs" target="_blank"
+                class="flex items-center gap-2 text-white text-sm font-black px-5 py-2.5 rounded-full hover:opacity-90"
+                style="background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+                @integral__labs
+            </a>
+        </div>
+        <p class="text-slate-600 text-[11px]">© 2026 Integral Labs. All rights reserved.</p>
+    </footer>
+
+    <!-- ═══════════════════════════ MOBILE NAV ═══════════════════════════ -->
+    <nav
+        class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-3 pb-6 flex items-center justify-between z-50 md:hidden">
+        <a href="#home" class="nav-link active flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined nav-icon text-primary text-2xl">home</span>
+            <span class="nav-label text-[10px] font-black uppercase text-primary">Home</span>
+        </a>
+        <a href="#work" class="nav-link flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined nav-icon text-slate-400 text-2xl">cases</span>
+            <span class="nav-label text-[10px] font-black uppercase text-slate-400">Work</span>
+        </a>
+        <div class="relative -top-5">
+            <a href="#contact"
+                class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-background-light">
+                <span class="material-symbols-outlined text-2xl">add_call</span>
+            </a>
+        </div>
+        <a href="#results" class="nav-link flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined nav-icon text-slate-400 text-2xl">query_stats</span>
+            <span class="nav-label text-[10px] font-black uppercase text-slate-400">Results</span>
+        </a>
+        <a href="#faq" class="nav-link flex flex-col items-center gap-1">
+            <span class="material-symbols-outlined nav-icon text-slate-400 text-2xl">contact_support</span>
+            <span class="nav-label text-[10px] font-black uppercase text-slate-400">FAQ</span>
+        </a>
+    </nav>
+
+    <!-- Spacer for mobile nav -->
+    <div class="h-24 md:hidden"></div>
+
+    <!-- Floating CTA (desktop only) -->
+    <div class="fixed bottom-8 right-8 z-50 hidden md:block">
+        <a href="#contact"
+            class="bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center shadow-primary/40 hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">calendar_today</span>
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+            document.getElementById('progress-bar').style.width = pct + '%';
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // Mobile Nav active state on scroll
+        const sections = document.querySelectorAll('section[id], header[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        const isActive = href === '#' + id || (id === 'home' && href === '#home');
+                        link.classList.toggle('active', isActive);
+                        const icon = link.querySelector('.nav-icon');
+                        const label = link.querySelector('.nav-label');
+                        if (icon) icon.classList.toggle('text-primary', isActive);
+                        if (icon) icon.classList.toggle('text-slate-400', !isActive);
+                        if (label) label.classList.toggle('text-primary', isActive);
+                        if (label) label.classList.toggle('text-slate-400', !isActive);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        sections.forEach(s => observer.observe(s));
+
+        // Case study accordion
+        function toggleCS(id) {
+            const card = document.getElementById(id);
+            const body = card.querySelector('.cs-body');
+            const isOpen = card.classList.contains('open');
+            // close all first
+            document.querySelectorAll('.cs-card').forEach(c => {
+                c.classList.remove('open');
+                c.querySelector('.cs-body').classList.remove('open');
+            });
+            // open clicked one if it wasn't open
+            if (!isOpen) {
+                card.classList.add('open');
+                body.classList.add('open');
+            }
+        }
+
+        // Portfolio tab switcher
+        function switchCat(cat) {
+            document.querySelectorAll('.port-panel').forEach(p => p.classList.add('hidden'));
+            document.getElementById('cat-' + cat).classList.remove('hidden');
+            document.querySelectorAll('.port-tab').forEach(btn => {
+                const isActive = btn.dataset.cat === cat;
+                btn.classList.toggle('active-tab', isActive);
+                btn.classList.toggle('bg-primary', isActive);
+                btn.classList.toggle('text-white', isActive);
+                btn.classList.toggle('bg-white', !isActive);
+                btn.classList.toggle('border', !isActive);
+                btn.classList.toggle('border-slate-200', !isActive);
+                btn.classList.toggle('text-slate-600', !isActive);
+            });
+        }
+
+        // ── Form Configuration (Web3Forms) ──────────────────────────────────
+        // 1. Go to https://web3forms.com/ and enter your email.
+        // 2. You will receive an Access Key in your inbox.
+        // 3. Paste that Access Key below.
+        const WEB3FORMS_ACCESS_KEY = 'bba00fff-be54-425c-b040-efe6fc12c724';
+
+        // ── Quick contact form submit ────────────────────────────────────────
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('cf-submit');
+            const btnText = document.getElementById('cf-btn-text');
+            const btnIcon = document.getElementById('cf-btn-icon');
+
+            btn.disabled = true;
+            btnText.textContent = 'Sending…';
+            btnIcon.textContent = 'hourglass_top';
+
+            const payload = {
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: "New Quick Message - Integral Labs",
+                from_name: document.getElementById('cf-name').value,
+                name: document.getElementById('cf-name').value,
+                email: document.getElementById('cf-email').value,
+                website: document.getElementById('cf-url').value,
+                message: document.getElementById('cf-message').value
+            };
+
+            try {
+                if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+                    console.warn('Web3Forms Access Key is missing. Data logged to console:', payload);
+                    await new Promise(r => setTimeout(r, 1000));
+                } else {
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (!result.success) console.error('Web3Forms Error:', result.message);
+                }
+            } catch (err) {
+                console.error('Submission error:', err);
+            }
+
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('cf-success').classList.remove('hidden');
+        }
+
+        // ── Strategy call modal ──────────────────────────────────────────────
+        let modalStep = 1;
+        const modalData = { bizType: '', problem: '', budget: '', url: '', name: '', email: '', phone: '' };
+
+        function openStrategyModal() {
+            modalStep = 1;
+            Object.keys(modalData).forEach(k => modalData[k] = '');
+            // reset steps
+            document.querySelectorAll('.modal-step').forEach(s => s.classList.add('hidden'));
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('modal-success').classList.add('hidden');
+            document.getElementById('modal-footer-nav').classList.remove('hidden');
+            // reset option buttons
+            document.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('border-primary', 'bg-primary/5');
+                b.classList.add('border-slate-200');
+            });
+            updateModalNav();
+            document.getElementById('strategy-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStrategyModal() {
+            document.getElementById('strategy-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function updateModalNav() {
+            const progress = (modalStep / 5) * 100;
+            document.getElementById('modal-progress').style.width = progress + '%';
+            document.getElementById('step-counter').textContent = 'Step ' + modalStep + ' of 5';
+            document.getElementById('modal-back-btn').style.visibility = modalStep > 1 ? 'visible' : 'hidden';
+        }
+
+        function nextStep(to) {
+            document.getElementById('step-' + modalStep).classList.add('hidden');
+            modalStep = to;
+            document.getElementById('step-' + modalStep).classList.remove('hidden');
+            updateModalNav();
+        }
+
+        function prevStep() {
+            if (modalStep <= 1) return;
+            document.getElementById('step-' + modalStep).classList.add('hidden');
+            modalStep--;
+            document.getElementById('step-' + modalStep).classList.remove('hidden');
+            updateModalNav();
+        }
+
+        function selectOption(btn, field) {
+            // deselect siblings in same group
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('border-primary', 'bg-primary/5');
+                b.classList.add('border-slate-200');
+            });
+            btn.classList.add('border-primary', 'bg-primary/5');
+            btn.classList.remove('border-slate-200');
+            const val = btn.dataset.value;
+            if (field === 'biz-type') { modalData.bizType = val; setTimeout(() => nextStep(2), 280); }
+            else if (field === 'problem') { modalData.problem = val; setTimeout(() => nextStep(3), 280); }
+            else if (field === 'budget') { modalData.budget = val; setTimeout(() => nextStep(4), 280); }
+        }
+
+        async function submitStrategyForm() {
+            const name = document.getElementById('modal-name').value.trim();
+            const email = document.getElementById('modal-email').value.trim();
+            if (!name || !email) {
+                alert('Please enter your name and email to proceed.');
+                return;
+            }
+
+            const btn = document.getElementById('modal-submit-btn');
+            const btnText = document.getElementById('modal-btn-text');
+            const btnIcon = document.getElementById('modal-btn-icon');
+            btn.disabled = true;
+            btnText.textContent = 'Booking your call…';
+            btnIcon.textContent = 'hourglass_top';
+
+            const payload = {
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: "New Strategy Call Booking - Integral Labs",
+                from_name: name,
+                name: name,
+                email: email,
+                phone: document.getElementById('modal-phone').value.trim(),
+                website: document.getElementById('modal-url').value.trim(),
+                bizType: modalData.bizType,
+                problem: modalData.problem,
+                budget: modalData.budget
+            };
+
+            try {
+                if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+                    console.warn('Web3Forms Access Key is missing. Data logged to console:', payload);
+                    await new Promise(r => setTimeout(r, 1200));
+                } else {
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (!result.success) console.error('Web3Forms Error:', result.message);
+                }
+            } catch (err) {
+                console.error('Booking error:', err);
+            }
+
+            document.getElementById('step-5').classList.add('hidden');
+            document.getElementById('modal-footer-nav').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
+        }
+
+        // Escape key closes modal
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStrategyModal(); });
+    </script>
+</body>
+
+</html>
