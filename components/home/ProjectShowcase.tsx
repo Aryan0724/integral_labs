@@ -62,7 +62,7 @@ const ProjectShowcase = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative z-50 bg-black overflow-hidden min-h-screen flex items-center">
+    <section id="work" ref={containerRef} className="relative z-50 bg-black overflow-hidden min-h-screen flex items-center">
       <div className="absolute top-20 left-20 z-20">
         <motion.h2 
           initial={{ opacity: 0, x: -20 }}
