@@ -1,82 +1,116 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Search, PenTool, Database, Code2, ShieldCheck, Rocket } from "lucide-react";
 
 const steps = [
-  { title: "Discovery", icon: Search, description: "Deep dive into business goals and technical requirements." },
-  { title: "Planning", icon: PenTool, description: "Detailed system design, UI/UX mapping, and sprint planning." },
-  { title: "Architecture", icon: Database, description: "Building scalable backend structures and data models." },
-  { title: "Development", icon: Code2, description: "High-performance engineering with clean, modular code." },
-  { title: "Testing", icon: ShieldCheck, description: "Rigorous QA, security audits, and load testing." },
-  { title: "Deployment", icon: Rocket, description: "Vercel optimized deployment with CI/CD automation." },
+  { title: "Discovery", icon: Search, color: "text-blue-400" },
+  { title: "Planning", icon: PenTool, color: "text-purple-400" },
+  { title: "Architecture", icon: Database, color: "text-cyan-400" },
+  { title: "Development", icon: Code2, color: "text-indigo-400" },
+  { title: "Testing", icon: ShieldCheck, color: "text-emerald-400" },
+  { title: "Deployment", icon: Rocket, color: "text-blue-500" },
 ];
+
+const ProcessStep = ({ step, index }: { step: any, index: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="relative flex flex-col items-center group"
+    >
+      <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-500 group-hover:-translate-y-2">
+        <step.icon className={`w-8 h-8 ${step.color}`} />
+      </div>
+      <h3 className="text-white font-bold text-sm tracking-widest uppercase mb-2">{step.title}</h3>
+      <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white/50 transition-colors" />
+    </motion.div>
+  );
+};
 
 const Process = () => {
   return (
-    <section id="process" className="py-24 bg-background relative overflow-hidden">
+    <section id="process" className="relative z-30 py-32 bg-black">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Development System</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Our systematic approach ensures precision engineering and predictable high-quality delivery.
-          </p>
+        <div className="text-center mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold text-white tracking-tight"
+          >
+            The Engineering <span className="text-white/30">Lifecycle.</span>
+          </motion.h2>
         </div>
 
         <div className="relative">
-          {/* Connecting Line */}
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent hidden lg:block" />
+          {/* Animated Connecting Line Path */}
+          <div className="absolute top-10 left-0 w-full h-[2px] hidden lg:block overflow-hidden">
+            <motion.div 
+              initial={{ x: "-100%" }}
+              whileInView={{ x: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
+              className="w-1/2 h-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
+            />
+            <div className="absolute inset-0 border-b border-dashed border-white/10" />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 lg:gap-4 relative z-10">
             {steps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col items-center text-center group"
-              >
-                <div className="relative z-10 w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/30 transition-all shadow-xl">
-                  <step.icon className="w-8 h-8 text-white/70 group-hover:text-white transition-colors" />
-                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center">
-                    {index + 1}
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
+              <ProcessStep key={step.title} step={step} index={index} />
             ))}
           </div>
         </div>
 
-        {/* Technical Visual - Architecture Diagram Mockup */}
-        <div className="mt-24 p-8 rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
-          <div className="flex flex-col md:flex-row items-center justify-around gap-12 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-32 h-32 rounded-xl border border-white/20 bg-white/5 flex items-center justify-center">
-                <Database className="w-12 h-12 text-white" />
+        {/* Immersive Architecture Visual */}
+        <div className="mt-40 relative h-[400px] w-full max-w-5xl mx-auto rounded-3xl border border-white/5 bg-white/[0.01] overflow-hidden flex items-center justify-center group">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+          
+          <div className="relative z-10 flex flex-col items-center gap-12">
+            <div className="flex items-center gap-20">
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="w-24 h-24 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl"
+              >
+                <Database className="text-blue-400 w-10 h-10" />
+              </motion.div>
+              <div className="w-32 h-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-purple-500/0 relative">
+                <motion.div 
+                  animate={{ left: ["0%", "100%"] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-[-2px] w-2 h-1 bg-white shadow-[0_0_10px_#fff]"
+                />
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">Core Database</span>
-            </div>
-            <div className="hidden md:block w-32 h-[1px] bg-white/20" />
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-40 h-40 rounded-full border border-white/20 bg-white/5 flex items-center justify-center relative">
-                <div className="absolute inset-0 border-2 border-dashed border-white/10 rounded-full animate-[spin_20s_linear_infinite]" />
-                <Code2 className="w-16 h-16 text-white" />
+              <motion.div 
+                animate={{ scale: [1.1, 1, 1.1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="w-32 h-32 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl relative"
+              >
+                <div className="absolute inset-0 border border-dashed border-white/20 rounded-full animate-spin-slow" />
+                <Code2 className="text-purple-400 w-12 h-12" />
+              </motion.div>
+              <div className="w-32 h-[1px] bg-gradient-to-r from-purple-500/0 via-purple-500/50 to-emerald-500/0 relative">
+                <motion.div 
+                  animate={{ left: ["0%", "100%"] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
+                  className="absolute top-[-2px] w-2 h-1 bg-white shadow-[0_0_10px_#fff]"
+                />
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">API Layer</span>
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+                className="w-24 h-24 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl"
+              >
+                <Rocket className="text-emerald-400 w-10 h-10" />
+              </motion.div>
             </div>
-            <div className="hidden md:block w-32 h-[1px] bg-white/20" />
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-32 h-32 rounded-xl border border-white/20 bg-white/5 flex items-center justify-center">
-                <Rocket className="w-12 h-12 text-white" />
-              </div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">Edge Deployment</span>
-            </div>
+            
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/30">System Infrastructure Flow</span>
           </div>
         </div>
       </div>

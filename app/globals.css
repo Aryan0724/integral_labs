@@ -23,32 +23,10 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+  --animate-spin-slow: spin 8s linear infinite;
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 240 10% 3.9%;
-  --radius: 0.5rem;
-}
-
-.dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   --card: 240 10% 3.9%;
@@ -68,6 +46,7 @@
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 240 4.9% 83.9%;
+  --radius: 1.5rem;
 }
 
 @layer base {
@@ -75,31 +54,19 @@
     border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 .glass {
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50;
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .premium-card {
-  @apply relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/[0.08] hover:border-white/20;
-}
-
-.glow {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  pointer-events: none;
+  @apply relative overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10;
 }
 
 @keyframes float {
@@ -110,4 +77,9 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.99);
+  color: #000;
 }

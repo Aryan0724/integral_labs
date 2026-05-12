@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import Scene from "@/components/visuals/Scene";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased bg-background text-foreground`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+      <body className={`${inter.className} antialiased bg-black text-foreground selection:bg-white selection:text-black`}>
+        <SmoothScrollProvider>
+          <Scene />
+          <Navbar />
+          <main className="relative z-10">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

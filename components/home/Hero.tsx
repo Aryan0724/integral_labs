@@ -1,123 +1,167 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Terminal, Zap, Shield, Cpu } from "lucide-react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-background">
-      {/* Animated Background Gradients */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[50%] h-[50%] bg-white/[0.03] blur-[100px] rounded-full" />
-      </div>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center">
+  useEffect(() => {
+    if (!visualRef.current) return;
+
+    gsap.to(visualRef.current, {
+      scale: 0.8,
+      borderRadius: "48px",
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    gsap.to(stickyRef.current, {
+      opacity: 0,
+      y: -100,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "80% top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }, []);
+
+  const headline = "Building Modern Software Systems For Scalable Businesses.";
+  const words = headline.split(" ");
+
+  return (
+    <section ref={containerRef} className="relative z-10 min-h-[150vh] bg-black overflow-hidden">
+      <div ref={stickyRef} className="sticky top-0 h-screen flex flex-col items-center pt-32 md:pt-40">
+        <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/70 mb-8"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/70 mb-8 backdrop-blur-sm"
           >
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            Modern Engineering Agency
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            Elite Software Engineering Agency
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
-          >
-            Building Modern <span className="text-white/40">Software Systems</span> <br />
-            For Scalable Businesses.
-          </motion.h1>
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.05]">
+            {words.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: i * 0.05,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="inline-block mr-[0.2em]"
+              >
+                {word === "Software" || word === "Systems" ? (
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                    {word}
+                  </span>
+                ) : (
+                  word
+                )}
+              </motion.span>
+            ))}
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg md:text-xl text-white/50 max-w-2xl mb-12 leading-relaxed font-light"
           >
             Integral Labs develops high-performance web applications, SaaS platforms, 
-            machine learning systems, and automation infrastructure for startups and modern businesses.
+            machine learning systems, and automation infrastructure.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center gap-6"
           >
             <Link
               href="#contact"
-              className="group bg-white text-black px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 hover:bg-white/90 transition-all"
+              className="group bg-white text-black px-10 py-5 rounded-full font-bold text-lg flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               Start a Project
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#services"
-              className="px-8 py-4 rounded-full font-bold text-lg text-white border border-white/10 hover:bg-white/5 transition-all"
+              className="px-10 py-5 rounded-full font-bold text-lg text-white border border-white/10 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
             >
               Explore Services
             </Link>
           </motion.div>
+        </div>
 
-          {/* Technical Visual - Dashboard Preview / Mockup */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mt-20 relative w-full max-w-5xl aspect-[16/9] rounded-2xl border border-white/10 bg-white/5 overflow-hidden shadow-2xl"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-            <div className="absolute top-0 left-0 right-0 h-10 border-b border-white/5 flex items-center px-4 gap-2 bg-white/5">
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="ml-4 h-4 w-32 bg-white/10 rounded" />
-            </div>
-            
-            <div className="p-12 pt-20 grid grid-cols-12 gap-6 h-full">
-              <div className="col-span-8 flex flex-col gap-6">
-                <div className="h-40 w-full rounded-xl border border-white/10 bg-white/5 p-6">
-                  <div className="flex gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/10" />
-                    <div className="flex-1 space-y-2">
-                      <div className="h-4 w-1/3 bg-white/20 rounded" />
-                      <div className="h-3 w-1/2 bg-white/10 rounded" />
-                    </div>
+        {/* Cinematic Visual Section */}
+        <div 
+          ref={visualRef}
+          className="mt-16 md:mt-24 relative w-full max-w-6xl aspect-[21/9] min-h-[300px] md:min-h-[500px] bg-white/5 border border-white/10 overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] flex items-center justify-center group"
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-20" />
+          
+          {/* Layered Interactive Mockup Visuals */}
+          <div className="grid grid-cols-12 gap-6 w-full h-full p-12 relative z-10 opacity-40 group-hover:opacity-100 transition-opacity duration-1000">
+            <div className="col-span-8 space-y-6">
+              <div className="h-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-8">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/50 flex items-center justify-center">
+                    <Terminal className="text-blue-400" />
                   </div>
-                  <div className="h-12 w-full bg-white/5 rounded-lg border border-white/5" />
+                  <div className="h-4 w-48 bg-white/10 rounded-full" />
                 </div>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="h-40 rounded-xl border border-white/10 bg-white/5" />
-                  <div className="h-40 rounded-xl border border-white/10 bg-white/5" />
+                <div className="space-y-4">
+                  <div className="h-8 w-full bg-white/5 rounded-lg" />
+                  <div className="h-8 w-3/4 bg-white/5 rounded-lg" />
+                  <div className="h-32 w-full bg-white/5 rounded-xl border border-white/5" />
                 </div>
-              </div>
-              <div className="col-span-4 flex flex-col gap-6">
-                <div className="flex-1 rounded-xl border border-white/10 bg-white/5" />
               </div>
             </div>
+            <div className="col-span-4 space-y-6">
+              <div className="h-1/2 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md" />
+              <div className="h-1/2 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md" />
+            </div>
+          </div>
 
-            {/* Floating Terminal Element */}
-            <div className="absolute bottom-10 right-10 z-20 w-80 h-48 rounded-xl bg-black border border-white/10 p-4 shadow-2xl animate-float">
-              <div className="flex items-center gap-2 mb-4">
-                <Terminal className="w-4 h-4 text-white/50" />
-                <span className="text-[10px] text-white/50 font-mono">deployment_logs.sh</span>
-              </div>
-              <div className="space-y-1 font-mono text-[10px]">
-                <div className="text-green-400">✔ Initializing system architecture...</div>
-                <div className="text-white/70">→ Scaling cluster node-01</div>
-                <div className="text-white/70">→ Building production bundle</div>
-                <div className="text-green-400">✔ Deployment successful in 2.4s</div>
-                <div className="text-white/30">$ waiting for traffic...</div>
-              </div>
-            </div>
+          {/* Floating UI Badges */}
+          <motion.div 
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-20 z-30 p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-3"
+          >
+            <Zap className="text-yellow-400 w-5 h-5" />
+            <span className="text-xs font-bold text-white/80">99.9% Performance</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, 20, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-20 right-20 z-30 p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-3"
+          >
+            <Shield className="text-green-400 w-5 h-5" />
+            <span className="text-xs font-bold text-white/80">Enterprise Secure</span>
           </motion.div>
         </div>
       </div>
