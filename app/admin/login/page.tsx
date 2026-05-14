@@ -54,7 +54,7 @@ export default function AdminLogin() {
                 <input
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                   className={`w-full bg-white/[0.03] border ${error ? 'border-red-500/50' : 'border-white/5'} rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-white/20 transition-all font-mono tracking-widest`}
                   placeholder="••••••••••••"
                 />

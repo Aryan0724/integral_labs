@@ -183,24 +183,24 @@ export default function AdminDashboard() {
                           <TextInput 
                             label="Primary Headline" 
                             value={content.hero.title} 
-                            onChange={(v) => updateField("hero", "title", v)} 
+                            onChange={(v: string) => updateField("hero", "title", v)} 
                           />
                           <TextArea 
                             label="Department Subtext" 
                             value={content.hero.subtext} 
-                            onChange={(v) => updateField("hero", "subtext", v)} 
+                            onChange={(v: string) => updateField("hero", "subtext", v)} 
                           />
                        </FieldGroup>
                        <FieldGroup title="Action Systems">
                           <TextInput 
                             label="Primary CTA (Contact)" 
                             value={content.hero.primaryCta} 
-                            onChange={(v) => updateField("hero", "primaryCta", v)} 
+                            onChange={(v: string) => updateField("hero", "primaryCta", v)} 
                           />
                           <TextInput 
                             label="Secondary CTA (Portfolio)" 
                             value={content.hero.secondaryCta} 
-                            onChange={(v) => updateField("hero", "secondaryCta", v)} 
+                            onChange={(v: string) => updateField("hero", "secondaryCta", v)} 
                           />
                        </FieldGroup>
                     </div>
@@ -212,12 +212,12 @@ export default function AdminDashboard() {
                           <TextInput 
                             label="Section Label" 
                             value={content.services.title} 
-                            onChange={(v) => updateField("services", "title", v)} 
+                            onChange={(v: string) => updateField("services", "title", v)} 
                           />
                           <TextArea 
                             label="Capabilities Description" 
                             value={content.services.description} 
-                            onChange={(v) => updateField("services", "description", v)} 
+                            onChange={(v: string) => updateField("services", "description", v)} 
                           />
                        </FieldGroup>
                        <FieldGroup title="Service Architecture (Read-Only)">
@@ -239,12 +239,12 @@ export default function AdminDashboard() {
                           <TextInput 
                             label="Main Heading" 
                             value={content.portfolio.title} 
-                            onChange={(v) => updateField("portfolio", "title", v)} 
+                            onChange={(v: string) => updateField("portfolio", "title", v)} 
                           />
                           <TextArea 
                             label="Portfolio Description" 
                             value={content.portfolio.description} 
-                            onChange={(v) => updateField("portfolio", "description", v)} 
+                            onChange={(v: string) => updateField("portfolio", "description", v)} 
                           />
                        </FieldGroup>
                     </div>
@@ -256,12 +256,12 @@ export default function AdminDashboard() {
                           <TextInput 
                             label="Main Heading" 
                             value={content.groups.title} 
-                            onChange={(v) => updateField("groups", "title", v)} 
+                            onChange={(v: string) => updateField("groups", "title", v)} 
                           />
                           <TextArea 
                             label="Ecosystem Description" 
                             value={content.groups.description} 
-                            onChange={(v) => updateField("groups", "description", v)} 
+                            onChange={(v: string) => updateField("groups", "description", v)} 
                           />
                        </FieldGroup>
                     </div>
@@ -287,7 +287,7 @@ export default function AdminDashboard() {
   );
 }
 
-function FieldGroup({ title, children }: any) {
+function FieldGroup({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -301,28 +301,28 @@ function FieldGroup({ title, children }: any) {
   );
 }
 
-function TextInput({ label, value, onChange }: any) {
+function TextInput({ label, value, onChange }: { label: string, value: string, onChange: (v: string) => void }) {
   return (
     <div className="space-y-3">
       <label className="text-[11px] font-bold text-white/40 uppercase tracking-tight">{label}</label>
       <input 
         type="text" 
         value={value} 
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
         className="w-full bg-white/[0.03] border border-white/5 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-white/20 transition-all font-light"
       />
     </div>
   );
 }
 
-function TextArea({ label, value, onChange }: any) {
+function TextArea({ label, value, onChange }: { label: string, value: string, onChange: (v: string) => void }) {
   return (
     <div className="space-y-3">
       <label className="text-[11px] font-bold text-white/40 uppercase tracking-tight">{label}</label>
       <textarea 
         rows={4}
         value={value} 
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e.target.value)}
         className="w-full bg-white/[0.03] border border-white/5 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-white/20 transition-all font-light resize-none leading-relaxed"
       />
     </div>

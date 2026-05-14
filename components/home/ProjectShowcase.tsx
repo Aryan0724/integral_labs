@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/lib/data/projects";
 
-function ProjectCard({ project, index, scrollYProgress }: any) {
+function ProjectCard({ project, index, scrollYProgress }: { project: any, index: number, scrollYProgress: MotionValue<number> }) {
   const containerRef = useRef(null);
   
   // Parallax effects

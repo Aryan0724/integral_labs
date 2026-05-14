@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
-function QuadrantCard({ q, i, smoothProgress, rotation }: { q: any, i: number, smoothProgress: MotionValue<number>, rotation: MotionValue<number> }) {
+function QuadrantCard({ q, i, smoothProgress }: { q: { title: string, description: string }, i: number, smoothProgress: MotionValue<number> }) {
   const opacity = useTransform(smoothProgress, [0.1 + i * 0.2, 0.2 + i * 0.2, 0.25 + i * 0.2, 0.35 + i * 0.2], [0, 1, 1, 0]);
   const scale = useTransform(smoothProgress, [0.1 + i * 0.2, 0.2 + i * 0.2, 0.25 + i * 0.2, 0.35 + i * 0.2], [0.95, 1, 1, 0.95]);
   const yMove = useTransform(smoothProgress, [0.1 + i * 0.2, 0.2 + i * 0.2, 0.25 + i * 0.2, 0.35 + i * 0.2], [20, 0, 0, -20]);
@@ -88,7 +88,6 @@ export default function IntegralStandard() {
                   q={q} 
                   i={i} 
                   smoothProgress={smoothProgress} 
-                  rotation={rotation} 
                 />
               ))}
             </div>
