@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -153,12 +153,16 @@ function DashboardMock() {
   );
 }
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
+    transition: { 
+      duration: 0.55, 
+      delay: i * 0.08, 
+      ease: [0.16, 1, 0.3, 1] as const 
+    },
   }),
 };
 
@@ -249,7 +253,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
             className="relative h-[440px] hidden lg:block"
           >
             <DashboardMock />
