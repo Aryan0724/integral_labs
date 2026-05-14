@@ -1,12 +1,1 @@
-"use client";
-
-export default function ResearchPage() {
-  return (
-    <div className="min-h-screen bg-black pt-32 px-6">
-      <h1 className="text-4xl font-bold text-white mb-8">R&D Initiatives</h1>
-      <p className="text-white/50 max-w-2xl font-light leading-relaxed">
-        Our ongoing research into autonomous systems and future tech.
-      </p>
-    </div>
-  );
-}
+"use client"; export default function Page() { return <div>Research</div> }

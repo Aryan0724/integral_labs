@@ -1,12 +1,1 @@
-"use client";
-
-export default function DivisionsPage() {
-  return (
-    <div className="min-h-screen bg-black pt-32 px-6">
-      <h1 className="text-4xl font-bold text-white mb-8">Our Divisions</h1>
-      <p className="text-white/50 max-w-2xl font-light leading-relaxed">
-        Exploring the specialized units within the Integral Labs ecosystem.
-      </p>
-    </div>
-  );
-}
+"use client"; export default function Page() { return <div>Divisions</div> }

@@ -1,13 +1,1 @@
-"use client";
-
-export default function AboutPage() {
-  return (
-    <div className="min-h-screen bg-black pt-32 px-6">
-      <h1 className="text-4xl font-bold text-white mb-8">About Integral Labs</h1>
-      <p className="text-white/50 max-w-2xl font-light leading-relaxed">
-        We are the software engineering division of Integral Group, dedicated to building
-        high-performance systems and intelligent automation.
-      </p>
-    </div>
-  );
-}
+"use client"; export default function Page() { return <div>About</div> }

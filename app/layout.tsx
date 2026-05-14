@@ -25,8 +25,10 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <Scene />
           <Navbar />
-          <main className="relative z-10">{children}</main>
-          <Footer />
+          <main className="relative z-10">
+            {children}
+            <Footer />
+          </main>
         </SmoothScrollProvider>
       </body>
     </html>

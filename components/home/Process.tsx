@@ -1,121 +1,127 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Search, PenTool, Database, Code2, ShieldCheck, Rocket } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Search, PenTool, Layers, Code2, ShieldCheck, Rocket } from "lucide-react";
 
 const steps = [
-  { title: "Discovery", icon: Search, color: "text-blue-400" },
-  { title: "Planning", icon: PenTool, color: "text-purple-400" },
-  { title: "Architecture", icon: Database, color: "text-cyan-400" },
-  { title: "Development", icon: Code2, color: "text-indigo-400" },
-  { title: "Testing", icon: ShieldCheck, color: "text-emerald-400" },
-  { title: "Deployment", icon: Rocket, color: "text-blue-500" },
+  { 
+    title: "Discovery", 
+    desc: "Mapping project goals and technical constraints.",
+    icon: Search, 
+    color: "text-blue-400" 
+  },
+  { 
+    title: "Architecture", 
+    desc: "Designing the systems for infinite scale.",
+    icon: Layers, 
+    color: "text-purple-400" 
+  },
+  { 
+    title: "Development", 
+    desc: "Precision engineering with modern stacks.",
+    icon: Code2, 
+    color: "text-cyan-400" 
+  },
+  { 
+    title: "Deployment", 
+    desc: "Seamless rollout to global edge infrastructure.",
+    icon: Rocket, 
+    color: "text-emerald-400" 
+  },
 ];
 
-const ProcessStep = ({ step, index }: { step: any, index: number }) => {
+export default function Process() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative flex flex-col items-center group"
-    >
-      <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/10 flex items-center justify-center mb-6 group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-500 group-hover:-translate-y-2">
-        <step.icon className={`w-8 h-8 ${step.color}`} />
-      </div>
-      <h3 className="text-white font-bold text-sm tracking-widest uppercase mb-2">{step.title}</h3>
-      <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white/50 transition-colors" />
-    </motion.div>
-  );
-};
-
-const Process = () => {
-  return (
-    <section id="process" className="relative z-30 py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="process" className="relative py-40 bg-black overflow-hidden">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-32">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 mb-6"
+          >
+            The Workflow
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-white tracking-tight"
+            className="text-display text-4xl md:text-7xl font-bold text-white mb-10"
           >
-            The Engineering <span className="text-white/30">Lifecycle.</span>
+            System <span className="text-white/40 italic font-medium">Lifecycle.</span>
           </motion.h2>
         </div>
 
-        <div className="relative">
-          {/* Animated Connecting Line Path */}
-          <div className="absolute top-10 left-0 w-full h-[2px] hidden lg:block overflow-hidden">
+        <div className="relative max-w-6xl mx-auto">
+          {/* Animated Connecting Line */}
+          <div className="absolute top-[40px] left-0 w-full h-[1px] hidden lg:block overflow-hidden">
+            <div className="absolute inset-0 bg-white/5 border-b border-dashed border-white/20" />
             <motion.div 
               initial={{ x: "-100%" }}
               whileInView={{ x: "100%" }}
               viewport={{ once: true }}
-              transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
-              className="w-1/2 h-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent w-1/2 h-full"
             />
-            <div className="absolute inset-0 border-b border-dashed border-white/10" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 lg:gap-4 relative z-10">
-            {steps.map((step, index) => (
-              <ProcessStep key={step.title} step={step} index={index} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="w-20 h-20 rounded-3xl bg-black border border-white/10 flex items-center justify-center mb-8 relative z-20 group-hover:border-white/30 group-hover:scale-110 transition-all duration-700">
+                  <div className="absolute inset-0 bg-white/5 rounded-3xl group-hover:bg-blue-500/10 transition-colors" />
+                  <step.icon className={`w-8 h-8 relative z-10 ${step.color}`} />
+                </div>
+                
+                <h3 className="text-[12px] uppercase tracking-[0.3em] font-bold text-white mb-4">{step.title}</h3>
+                <p className="text-white/40 text-sm font-light leading-relaxed max-w-[200px]">
+                  {step.desc}
+                </p>
+
+                {/* Animated Pulse */}
+                <div className="mt-8 relative">
+                   <div className="w-2 h-2 rounded-full bg-white/20" />
+                   <motion.div 
+                    animate={{ scale: [1, 2.5], opacity: [1, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-0 w-2 h-2 rounded-full bg-white/40"
+                   />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Immersive Architecture Visual */}
-        <div className="mt-40 relative h-[400px] w-full max-w-5xl mx-auto rounded-3xl border border-white/5 bg-white/[0.01] overflow-hidden flex items-center justify-center group">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
-          
-          <div className="relative z-10 flex flex-col items-center gap-12">
-            <div className="flex items-center gap-20">
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="w-24 h-24 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl"
-              >
-                <Database className="text-blue-400 w-10 h-10" />
-              </motion.div>
-              <div className="w-32 h-[1px] bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-purple-500/0 relative">
-                <motion.div 
-                  animate={{ left: ["0%", "100%"] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-[-2px] w-2 h-1 bg-white shadow-[0_0_10px_#fff]"
+        {/* Cinematic Data Visualization Overlay */}
+        <div className="mt-40 max-w-5xl mx-auto glass p-12 rounded-[60px] border-white/5 overflow-hidden flex items-center justify-center relative">
+          <div className="absolute inset-0 bg-grid-small opacity-[0.05]" />
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="flex items-center gap-12 mb-8">
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 1, 0.3]
+                  }}
+                  transition={{ duration: 3, delay: i * 1, repeat: Infinity }}
+                  className="w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6]"
                 />
-              </div>
-              <motion.div 
-                animate={{ scale: [1.1, 1, 1.1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="w-32 h-32 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl relative"
-              >
-                <div className="absolute inset-0 border border-dashed border-white/20 rounded-full animate-spin-slow" />
-                <Code2 className="text-purple-400 w-12 h-12" />
-              </motion.div>
-              <div className="w-32 h-[1px] bg-gradient-to-r from-purple-500/0 via-purple-500/50 to-emerald-500/0 relative">
-                <motion.div 
-                  animate={{ left: ["0%", "100%"] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
-                  className="absolute top-[-2px] w-2 h-1 bg-white shadow-[0_0_10px_#fff]"
-                />
-              </div>
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
-                className="w-24 h-24 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-xl"
-              >
-                <Rocket className="text-emerald-400 w-10 h-10" />
-              </motion.div>
+              ))}
             </div>
-            
-            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-white/30">System Infrastructure Flow</span>
+            <span className="text-[10px] font-mono tracking-[0.5em] text-white/20">Operational_Protocol_v.01</span>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Process;
+}

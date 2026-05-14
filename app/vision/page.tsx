@@ -1,12 +1,1 @@
-"use client";
-
-export default function VisionPage() {
-  return (
-    <div className="min-h-screen bg-black pt-32 px-6">
-      <h1 className="text-4xl font-bold text-white mb-8">Our Vision</h1>
-      <p className="text-white/50 max-w-2xl font-light leading-relaxed">
-        Architecting the long-term future of digital ecosystems.
-      </p>
-    </div>
-  );
-}
+"use client"; export default function Page() { return <div>Vision</div> }

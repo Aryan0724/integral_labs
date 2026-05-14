@@ -17,11 +17,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "/about" },
-    { name: "Ecosystem", href: "/ecosystem" },
-    { name: "Divisions", href: "/divisions" },
-    { name: "Vision", href: "/vision" },
-    { name: "Research", href: "/research" },
+    { name: "Services", href: "#services" },
+    { name: "Process", href: "#process" },
+    { name: "Stack", href: "#tech-stack" },
+    { name: "Work", href: "#work" },
   ];
 
   return (
@@ -38,7 +37,7 @@ const Navbar = () => {
             <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center group-hover:rotate-[15deg] transition-transform duration-500">
               <div className="w-5 h-5 bg-black rotate-45" />
             </div>
-            <span className="font-bold text-xl tracking-tighter text-white uppercase italic">Integral</span>
+            <span className="font-bold text-xl tracking-tighter text-white uppercase italic">Integral Labs</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
