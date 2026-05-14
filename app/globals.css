@@ -50,26 +50,26 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 240 10% 2%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --accent: 263 70% 50%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.75rem;
+    --ring: 263 70% 50%;
+    --radius: 1rem;
   }
 }
 
@@ -78,14 +78,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-black text-foreground antialiased;
+    @apply bg-[#0A0A0A] text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 /* Typography Enhancements */
 .text-display {
-  @apply font-bold tracking-tight leading-[1.1] uppercase;
+  @apply font-bold tracking-tight leading-[1.05] uppercase;
 }
 
 .glass {
@@ -97,52 +97,57 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/50;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/30;
+}
+
+.text-gradient-purple {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#EC4899];
 }
 
 .noise {
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
   filter: contrast(150%) brightness(1000%);
-  @apply fixed inset-0 opacity-[0.03] pointer-events-none z-[9999];
-}
-
-.text-gradient-purple {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-400;
+  @apply fixed inset-0 opacity-[0.02] pointer-events-none z-[9999];
 }
 
 .bg-purple-glow {
-  background: radial-gradient(circle at center, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
 }
 
 /* Custom Grid */
 .bg-grid {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 .bg-grid-small {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-black;
+  @apply bg-[#0A0A0A];
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  @apply bg-white/10 rounded-full hover:bg-purple-500/50 transition-all duration-300;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-white text-black;
+  @apply bg-purple-600 text-white;
 }
+
+.magnetic-button {
+  @apply relative overflow-hidden transition-transform duration-300 active:scale-95;
+}
+

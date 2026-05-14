@@ -4,8 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Globe, Shield, Terminal, Zap } from "lucide-react";
-import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,46 +53,63 @@ export default function ProjectShowcase() {
 
     if (!section || !container) return;
 
-    const totalWidth = container.scrollWidth - window.innerWidth;
-
     let ctx = gsap.context(() => {
+      const getScrollAmount = () => {
+        const containerWidth = container.scrollWidth;
+        return -(containerWidth - window.innerWidth);
+      };
+
       gsap.to(container, {
-        x: -totalWidth,
+        x: getScrollAmount,
         ease: "none",
         scrollTrigger: {
           trigger: section,
           pin: true,
           scrub: 1,
           start: "top top",
-          end: () => "+=" + totalWidth,
+          end: () => `+=${container.scrollWidth + window.innerHeight}`,
           invalidateOnRefresh: true,
+          anticipatePin: 1,
+          refreshPriority: 1,
         },
       });
     });
 
-    return () => ctx.revert();
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 1000);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <section 
       id="work" 
       ref={sectionRef} 
-      className="relative bg-black overflow-hidden h-screen flex items-center"
+      className="relative bg-black overflow-hidden h-screen flex flex-col justify-center"
     >
-      {/* Background Section Identifier */}
-      <div className="absolute top-48 left-10 md:left-20 z-10 flex flex-col gap-4 pointer-events-none">
+      {/* Background Section Identifier - Pushed higher to avoid Navbar overlap */}
+      <div className="absolute top-40 left-10 md:left-20 z-20 flex flex-col gap-4 pointer-events-none">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="flex items-center gap-2"
         >
           <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-          <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/40">Portfolio_Archive</span>
+          <span className="text-[10px] uppercase tracking-[0.5em] font-black text-white/40">Portfolio_Archive</span>
         </motion.div>
         <motion.h2 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          className="text-display text-5xl md:text-8xl font-bold text-white leading-none"
+          className="text-display text-5xl md:text-8xl font-black text-white leading-none tracking-tighter"
         >
           Selected <br /> <span className="text-white/40 italic font-medium">Builds.</span>
         </motion.h2>
@@ -101,15 +117,15 @@ export default function ProjectShowcase() {
 
       <div 
         ref={containerRef} 
-        className="flex items-center gap-20 pl-[40vw] pr-[20vw] h-full"
+        className="flex items-center gap-20 pl-[40vw] pr-[40vw] h-[60vh] relative z-10"
       >
         {projects.map((project, i) => (
           <div 
             key={project.title}
-            className="flex-shrink-0 w-[80vw] lg:w-[65vw] h-[70vh] relative group"
+            className="flex-shrink-0 w-[85vw] lg:w-[60vw] h-full relative group project-card"
           >
             {/* Glow Effect */}
-            <div className={`absolute inset-[-10%] ${project.color} blur-[120px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000`} />
+            <div className={`absolute inset-[-10%] ${project.color} blur-[120px] opacity-0 group-hover:opacity-30 transition-opacity duration-1000`} />
             
             <div className="relative w-full h-full glass rounded-[60px] overflow-hidden p-8 flex flex-col group-hover:border-white/20 transition-all duration-700">
               {/* Top Bar Mockup */}
@@ -121,7 +137,7 @@ export default function ProjectShowcase() {
                     <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                   </div>
                   <div className="h-6 w-px bg-white/10" />
-                  <span className="text-[9px] uppercase tracking-widest font-bold text-white/30">{project.category}</span>
+                  <span className="text-[9px] uppercase tracking-widest font-black text-white/30">{project.category}</span>
                 </div>
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-700">
                   <ArrowUpRight className="w-6 h-6" />
@@ -136,10 +152,10 @@ export default function ProjectShowcase() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-12 flex flex-col justify-end">
-                   <h3 className="text-display text-4xl md:text-6xl font-bold text-white mb-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
+                   <h3 className="text-display text-4xl md:text-6xl font-black text-white mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 tracking-tighter">
                       {project.title}
                    </h3>
-                   <p className="text-white/40 text-lg font-light leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 max-w-xl">
+                   <p className="text-white/40 text-sm md:text-lg font-light leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 max-w-xl">
                       {project.description}
                    </p>
                 </div>
@@ -160,7 +176,7 @@ export default function ProjectShowcase() {
       </div>
 
       {/* Navigation Instruction */}
-      <div className="absolute bottom-10 right-20 flex items-center gap-4">
+      <div className="absolute bottom-10 right-20 flex items-center gap-4 z-20">
         <span className="text-[8px] uppercase tracking-[0.5em] text-white/20">Scroll to explore archive</span>
         <div className="h-[1px] w-20 bg-gradient-to-r from-white/20 to-transparent" />
       </div>

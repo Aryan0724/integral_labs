@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Scene from "@/components/visuals/Scene";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Integral Labs | Modern Software Engineering & Intelligent Automation",
-  description: "Integral Labs develops high-performance web applications, SaaS platforms, machine learning systems, and automation infrastructure for startups and modern businesses.",
-  keywords: "Web Development, SaaS Development, Machine Learning, Automation Systems, Software Engineering Agency",
+  title: "Integral Labs | Digital Product Studio & Engineering Intelligence",
+  description: "Integral Labs is a premium digital studio crafting high-performance web applications, AI-driven systems, and industrial-grade automation for the next generation of founders.",
+  keywords: "Software Engineering, AI Automation, Digital Studio, Web Development Agency, Product Design, SaaS Engineering",
 };
 
 export default function RootLayout({
@@ -21,17 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased bg-black text-foreground selection:bg-white selection:text-black`}>
+      <body className={`${outfit.className} antialiased bg-[#0A0A0A] text-foreground selection:bg-purple-600 selection:text-white`}>
         <SmoothScrollProvider>
           <Scene />
           <div className="noise" />
           <Navbar />
           <main className="relative z-10">
             {children}
-            <Footer />
           </main>
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>
   );
 }
+
