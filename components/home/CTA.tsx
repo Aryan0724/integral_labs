@@ -7,58 +7,47 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className="section-padding border-t border-white/5">
+    <section className="section-padding py-32 border-t border-white/5">
       <div className="container">
-        <div className="relative rounded-2xl border border-white/6 bg-[#0d0d0d] overflow-hidden p-12 md:p-20 text-center">
-          {/* Subtle background accent */}
-          <div className="absolute inset-0 grid-texture opacity-60 pointer-events-none" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[#6366f1]/5 blur-[100px] pointer-events-none" />
+        <div className="surface rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden">
+          {/* Subtle accent glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[#6366f1]/10 blur-[100px] rounded-full pointer-events-none" />
+          
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="badge mb-8 bg-white/5 text-white/60"
+          >
+            Ready to build?
+          </motion.div>
 
-          <div className="relative z-10 max-w-[480px] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="badge mb-6 mx-auto"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
-              Ready when you are
-            </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-display text-[36px] sm:text-[56px] text-white mb-10 leading-tight max-w-[600px]"
+          >
+            Build Better
+            <br />
+            Software Systems.
+          </motion.h2>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.06 }}
-              className="text-display text-[32px] sm:text-[44px] text-white mb-5"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link
+              href="/contact"
+              className="group flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-[15px] hover:bg-[#eee] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
             >
-              Build Better
-              <br />Software Systems.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.12 }}
-              className="text-[15px] text-[#666] leading-[1.7] mb-8"
-            >
-              Modern products engineered for usability,
-              scalability, and performance.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.18 }}
-            >
-              <Link href="/contact" className="btn-primary text-[14px] px-6 py-3 inline-flex">
-                Start A Project
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          </div>
+              Start A Project
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
