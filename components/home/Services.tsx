@@ -2,101 +2,173 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LayoutDashboard, Bot, Zap, MonitorSmartphone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const products = [
+const services = [
   {
-    icon: LayoutDashboard,
+    index: "01",
     title: "SaaS Platforms",
-    description: "Modern scalable software systems for startups and businesses.",
-    tag: "Platform",
+    description:
+      "Modern scalable software systems for startups and businesses. End-to-end development from architecture to deployment.",
+    tags: ["Architecture", "Cloud", "API Design"],
   },
   {
-    icon: Bot,
+    index: "02",
     title: "AI Products",
-    description: "Machine learning systems and intelligent digital tools.",
-    tag: "Logic",
+    description:
+      "Machine learning systems and intelligent digital tools powered by modern ML infrastructure and model pipelines.",
+    tags: ["ML", "LLM", "Inference"],
   },
   {
-    icon: Zap,
-    title: "Automation Infrastructure",
-    description: "Workflow systems designed to improve operational efficiency.",
-    tag: "Automation",
+    index: "03",
+    title: "Automation",
+    description:
+      "Workflow systems designed to improve operational efficiency. Custom pipelines and integration networks.",
+    tags: ["Workflows", "Integration", "Data"],
   },
   {
-    icon: MonitorSmartphone,
+    index: "04",
     title: "Frontend Systems",
-    description: "Premium frontend experiences and scalable interface systems.",
-    tag: "Interface",
+    description:
+      "Premium frontend experiences and scalable interface systems built for performance and accessibility.",
+    tags: ["React", "Motion", "TypeScript"],
   },
 ];
 
 export default function Services() {
   return (
-    <section className="section-padding border-t border-white/[0.04]">
+    <section className="relative py-32 overflow-hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      {/* Blueprint grid lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 bottom-0 w-px" style={{ background: "rgba(255,255,255,0.02)" }} />
+      </div>
+
       <div className="container">
-        <div className="max-w-[480px] mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="badge mb-6"
-          >
-            Capabilities
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-display text-[32px] sm:text-[42px] text-white mb-6"
-          >
-            Software Products Built
-            <br />For Modern Businesses
-          </motion.h2>
+        {/* Section header */}
+        <div className="flex items-end justify-between mb-20 gap-8">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <div className="h-px w-6 bg-white/20" />
+              <span className="font-mono text-[9px] tracking-[0.25em] uppercase" style={{ color: "rgba(255,255,255,0.3)" }}>
+                Capabilities
+              </span>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-[42px] sm:text-[58px] text-white"
+              style={{ fontWeight: 300, letterSpacing: "-0.04em" }}
+            >
+              What We
+              <br />
+              <span style={{ fontStyle: "italic", opacity: 0.4 }}>Build</span>
+            </motion.h2>
+          </div>
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-[#71717a] text-[15px] leading-relaxed"
+            className="hidden md:block max-w-[320px] text-[14px] leading-[1.8]"
+            style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300 }}
           >
-            Scalable digital systems designed with usability, performance, and
-            long-term adaptability in mind.
+            Scalable digital systems designed with usability, performance, and long-term adaptability in mind.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.03] border border-white/[0.04] rounded-2xl overflow-hidden shadow-2xl">
-          {products.map((product, i) => {
-            const Icon = product.icon;
-            return (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: i * 0.1 }}
-                className="group bg-black p-12 hover:bg-[#050505] transition-all duration-700 relative overflow-hidden"
-              >
-                <div className="flex justify-between items-start mb-16">
-                  <div className="w-10 h-10 rounded-lg border border-white/[0.05] flex items-center justify-center bg-white/[0.01] group-hover:border-white/20 transition-all duration-500">
-                    <Icon className="w-4 h-4 text-[#71717a] group-hover:text-white transition-colors duration-500" />
-                  </div>
-                  <span className="text-[10px] font-mono text-[#3f3f46] tracking-[0.2em] uppercase group-hover:text-[#71717a] transition-colors">
-                    {product.tag}
-                  </span>
-                </div>
+        {/* Services grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: "rgba(255,255,255,0.04)" }}>
+          {services.map((service, i) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.8, delay: i * 0.08 }}
+              className="group relative p-10 cursor-default"
+              style={{ background: "#0f0f0f" }}
+            >
+              {/* Corner nodes */}
+              <div className="corner-node corner-node-tl" />
+              {i % 2 === 1 && <div className="corner-node corner-node-tr" />}
+              {i >= 2 && <div className="corner-node corner-node-bl" />}
+              {i >= 2 && i % 2 === 1 && <div className="corner-node corner-node-br" />}
 
-                <h3 className="text-[17px] font-semibold text-white mb-4 group-hover:translate-x-1 transition-transform duration-500">
-                  {product.title}
-                </h3>
-                <p className="text-[14px] text-[#52525b] group-hover:text-[#71717a] leading-[1.7] max-w-[280px] transition-colors duration-500">
-                  {product.description}
-                </p>
-              </motion.div>
-            );
-          })}
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{ background: "rgba(139,92,246,0.025)" }}
+              />
+
+              {/* Index */}
+              <div className="flex items-center justify-between mb-12">
+                <span
+                  className="font-mono text-[10px] tracking-[0.2em]"
+                  style={{ color: "rgba(255,255,255,0.15)" }}
+                >
+                  {service.index}
+                </span>
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center border opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-1 group-hover:translate-x-0"
+                  style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+                >
+                  <ArrowUpRight size={12} style={{ color: "rgba(255,255,255,0.5)" }} />
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-[22px] font-light tracking-tight text-white mb-4 group-hover:translate-x-0.5 transition-transform duration-500"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="text-[13px] leading-[1.75] mb-8"
+                style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300 }}
+              >
+                {service.description}
+              </p>
+
+              {/* Tags */}
+              <div className="flex items-center gap-4">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[9px] tracking-[0.15em] uppercase"
+                    style={{ color: "rgba(255,255,255,0.2)" }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom measurement */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex items-center justify-end gap-3 mt-6 pointer-events-none"
+        >
+          <div className="w-px h-3 bg-white/10" />
+          <div className="h-px w-24 bg-white/06" />
+          <span className="blueprint-label">4 services</span>
+          <div className="h-px w-24 bg-white/06" />
+          <div className="w-px h-3 bg-white/10" />
+        </motion.div>
       </div>
     </section>
   );

@@ -1,164 +1,214 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Marquee from "@/components/shared/Marquee";
 
-// Realistic Dashboard UI for Hero
-function HeroDashboard() {
+// Ghost cursor positions
+const ghostCursors = [
+  { name: "Sophie", color: "#a78bfa", x: "25%", y: "40%", delay: 0 },
+  { name: "Carl", color: "#60a5fa", x: "75%", y: "30%", delay: 1.5 },
+];
+
+function GhostCursor({ name, color, delay }: { name: string; color: string; delay: number }) {
   return (
-    <div className="w-full aspect-[16/11] bg-[#050505] rounded-xl overflow-hidden border border-white/[0.04] shadow-2xl relative">
-      {/* Surgical Titlebar */}
-      <div className="h-10 border-b border-white/[0.03] px-4 flex items-center justify-between bg-black/40 backdrop-blur-md">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-white/[0.02] border border-white/[0.04]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/[0.02] border border-white/[0.04]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/[0.02] border border-white/[0.04]" />
-        </div>
-        <div className="text-[10px] font-mono text-[#333] tracking-widest uppercase">System: Deployment Active</div>
+    <motion.div
+      className="ghost-cursor"
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: [0, 1, 1, 0],
+        x: [0, 15, -10, 5, 0],
+        y: [0, -10, 15, -5, 0],
+      }}
+      transition={{
+        duration: 10,
+        delay,
+        repeat: Infinity,
+        repeatDelay: 5,
+        ease: "easeInOut",
+      }}
+    >
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
+        <path d="M0 0L0 14L4 10L7 16L9 15L6 9L11 9Z" fill={color} />
+      </svg>
+      <div
+        className="ghost-cursor-label"
+        style={{ background: color + "22", color, border: `1px solid ${color}44` }}
+      >
+        {name}
       </div>
+    </motion.div>
+  );
+}
 
-      <div className="flex h-[calc(100%-40px)]">
-        {/* Sidebar */}
-        <div className="w-40 border-r border-white/[0.03] flex flex-col p-5 gap-8">
-          <div className="space-y-4">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className={`w-1.5 h-1.5 rounded-sm ${i === 1 ? "bg-white/40 shadow-[0_0_8px_rgba(255,255,255,0.2)]" : "bg-white/5"}`} />
-                <div className={`h-1 rounded-full ${i === 1 ? "w-16 bg-white/10" : "w-10 bg-white/5"}`} />
-              </div>
-            ))}
-          </div>
-          <div className="mt-auto flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md bg-white/5" />
-            <div className="h-1 w-12 bg-white/5 rounded-full" />
-          </div>
-        </div>
+function IntegralGraphic() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      {/* Spinning Integral Sign */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="relative"
+      >
+        <svg
+          width="600"
+          height="600"
+          viewBox="0 0 100 100"
+          className="opacity-[0.03] text-white"
+        >
+          <text
+            x="50"
+            y="70"
+            fontSize="80"
+            textAnchor="middle"
+            fill="currentColor"
+            style={{ fontStyle: 'italic', fontWeight: 200 }}
+          >
+            ∫
+          </text>
+        </svg>
+        
+        {/* Orbiting elements */}
+        {[0, 90, 180, 270].map((angle, i) => (
+          <motion.div
+            key={angle}
+            className="absolute top-1/2 left-1/2"
+            style={{
+              transform: `rotate(${angle}deg) translateX(240px)`,
+            }}
+          >
+             <div className="w-1 h-1 bg-white/20 rounded-full" />
+             <div className="blueprint-label mt-2 -ml-4 opacity-40">node_0{i+1}</div>
+          </motion.div>
+        ))}
+      </motion.div>
 
-        {/* Main Content */}
-        <div className="flex-1 p-8 flex flex-col gap-10">
-          <div className="flex justify-between items-center">
-            <div className="space-y-2.5">
-              <div className="h-3.5 w-32 bg-white/10 rounded-full" />
-              <div className="h-1.5 w-24 bg-white/5 rounded-full" />
-            </div>
-            <div className="w-10 h-10 rounded-lg border border-white/5 bg-white/[0.01]" />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {[1, 2].map((i) => (
-              <div key={i} className="h-24 border border-white/[0.03] bg-white/[0.01] rounded-xl p-4 flex flex-col justify-between">
-                <div className="h-1.5 w-12 bg-white/5 rounded-full" />
-                <div className="flex items-baseline gap-2">
-                  <div className="h-4 w-20 bg-white/20 rounded-full" />
-                  <div className="h-2 w-8 bg-[#6366f1]/20 rounded-full" />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex-1 border border-white/[0.03] bg-[#030303] rounded-xl p-6 flex items-end gap-1.5">
-            {[30, 50, 40, 80, 60, 90, 45, 70, 35, 55, 40, 65, 50, 85].map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ delay: 0.8 + i * 0.03, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 bg-white/[0.04] rounded-t-[2px]"
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Pulsing rings */}
+      {[300, 500, 700].map((size, i) => (
+        <motion.div
+          key={size}
+          className="absolute rounded-full border border-white/[0.03]"
+          style={{ width: size, height: size }}
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 6 + i,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.5
+          }}
+        />
+      ))}
     </div>
   );
 }
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { 
-      duration: 0.8, 
-      delay: i * 0.1, 
-      ease: [0.22, 1, 0.36, 1] as const 
-    },
-  }),
-};
-
 export default function Hero() {
+  const [content, setContent] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    fetch('/api/cms')
+      .then(res => res.json())
+      .then(data => setContent(data.hero));
+  }, []);
+
+  if (!content) return <div className="min-h-screen bg-black" />;
+
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden">
-      {/* Signature Depth */}
-      <div className="absolute inset-0 grid-texture opacity-30 pointer-events-none" />
-      <div className="ambient-beam top-[-100px] left-[-100px]" />
-      <div className="ambient-beam bottom-[-100px] right-[-100px] bg-white/[0.01]" />
-      
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-20 items-center">
-          {/* Content */}
-          <div className="max-w-[480px]">
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              custom={0}
-              className="badge mb-10"
-            >
-              Systems Engineering
-            </motion.div>
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20">
+      <IntegralGraphic />
 
-            <motion.h1
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              custom={1}
-              className="text-display text-[42px] sm:text-[58px] text-white mb-8"
-            >
-              Building Modern
-              <br />
-              Software Systems.
-            </motion.h1>
-
-            <motion.p
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              custom={2}
-              className="text-[#71717a] text-[16px] leading-[1.8] mb-12"
-            >
-              Integral Labs develops scalable SaaS platforms, automation systems,
-              machine learning products, and modern digital infrastructure.
-            </motion.p>
-
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              custom={3}
-              className="flex items-center gap-5"
-            >
-              <Link href="/work" className="btn-primary">
-                Explore Products
-              </Link>
-              <Link href="/contact" className="btn-secondary group">
-                Start A Project
-                <ArrowUpRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Interface */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block relative"
+      {/* Ghost cursors */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
+        {ghostCursors.map((cursor) => (
+          <div
+            key={cursor.name}
+            className="absolute"
+            style={{ left: cursor.x, top: cursor.y }}
           >
-            <HeroDashboard />
-          </motion.div>
+            <GhostCursor name={cursor.name} color={cursor.color} delay={cursor.delay} />
+          </div>
+        ))}
+      </div>
+
+      <div className="container relative z-10 text-center">
+        {/* Editorial headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-[60px] sm:text-[90px] md:text-[120px] text-white mb-8 tracking-tighter leading-[0.9]"
+        >
+          {content.title.split('for').map((part: string, i: number) => (
+            <React.Fragment key={i}>
+              {part}
+              {i === 0 && <br />}
+            </React.Fragment>
+          ))}
+        </motion.h1>
+
+        {/* Agency Identity Subtext */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="text-[16px] sm:text-[18px] text-white/40 max-w-[650px] mx-auto mb-12 leading-relaxed"
+        >
+          {content.subtext}
+        </motion.p>
+
+        {/* CTA button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col items-center gap-8"
+        >
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <Link href="/contact" className="btn-gradient px-10 py-5 w-full sm:w-auto text-center">
+              <span>{content.primaryCta}</span>
+            </Link>
+            <Link 
+              href="/work" 
+              className="px-10 py-5 border border-purple-500/30 rounded-xl text-white hover:bg-purple-500/5 transition-all w-full sm:w-auto text-center font-bold tracking-tight shadow-[0_0_20px_rgba(139,92,246,0.1)]"
+            >
+              {content.secondaryCta}
+            </Link>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[10px] text-white/20 uppercase tracking-[0.2em]">
+              Operating under Integral Groups Protocol V2.4
+            </span>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Client Marquee */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-12 left-0 right-0"
+      >
+        <Marquee speed={60} className="opacity-20 hover:opacity-40 transition-opacity">
+          {["INTEGRAL", "AETHER", "VORTEX", "LUMINA", "NEXUS", "QUARTZ", "IONIC", "FLUX"].map((logo) => (
+            <div key={logo} className="mx-12 font-display text-lg tracking-[0.3em] font-light text-white">
+              {logo}
+            </div>
+          ))}
+        </Marquee>
+      </motion.div>
+
+      {/* Blueprint Annotations */}
+      <div className="absolute top-1/4 left-12 hidden xl:block">
+        <div className="measure-bar">
+          <div className="measure-line w-20" />
+          <span className="blueprint-label">DEPT:ENGINEERING</span>
         </div>
       </div>
     </section>

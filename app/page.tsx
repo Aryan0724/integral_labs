@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import Services from "@/components/home/Services";
+import IntegralStandard from "@/components/home/IntegralStandard";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
 import Process from "@/components/home/Process";
 import WhyUs from "@/components/home/WhyUs";
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
+      <IntegralStandard />
       <ProjectShowcase />
       <Process />
       <WhyUs />

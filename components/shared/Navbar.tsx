@@ -4,14 +4,16 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { X, Menu, Search } from "lucide-react";
 
-const navLinks = [
-  { label: "Products", href: "/work" },
-  { label: "Systems", href: "/services" },
-  { label: "Process", href: "/process" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+const leftLinks = [
+  { label: "SERVICES", href: "/services" },
+  { label: "WORK", href: "/work" },
+];
+
+const rightLinks = [
+  { label: "PROCESS", href: "/process" },
+  { label: "ABOUT", href: "/about" },
 ];
 
 export default function Navbar() {
@@ -27,75 +29,83 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 pointer-events-none">
-        <motion.div
-          initial={{ y: -10, opacity: 0 }}
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6 pointer-events-none">
+        <motion.header
+          initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className={`flex items-center justify-between px-5 h-11 rounded-full border border-white/[0.04] transition-all duration-700 pointer-events-auto bg-black/[0.6] backdrop-blur-xl ${
-            scrolled ? "w-[92%] max-w-[500px] border-white/10 shadow-2xl" : "w-[92%] max-w-[1000px]"
+          className={`pointer-events-auto flex items-center justify-between w-full max-w-[1200px] h-16 px-8 rounded-2xl border transition-all duration-500 shadow-2xl shadow-black/50 ${
+            scrolled 
+              ? "bg-black/90 backdrop-blur-md border-white/10 scale-[0.98]" 
+              : "bg-black border-white/5"
           }`}
         >
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="w-4 h-4 rounded-sm bg-white flex items-center justify-center transition-transform group-hover:scale-90">
-              <svg viewBox="0 0 16 16" fill="none" className="w-2.5 h-2.5">
-                <rect x="2" y="2" width="5" height="12" rx="0.5" fill="#000" />
-                <rect x="9" y="8" width="5" height="6" rx="0.5" fill="#000" />
-                <rect x="9" y="2" width="5" height="4" rx="0.5" fill="#6366f1" />
-              </svg>
-            </div>
-            {!scrolled && (
-              <span className="text-[12px] font-bold text-white tracking-tight">
-                Integral
-              </span>
-            )}
+          {/* Logo Area */}
+          <Link href="/" className="flex items-center gap-1 group">
+            <span className="font-display italic text-2xl text-white">∫</span>
+            <span className="text-[14px] font-bold tracking-[0.15em] text-white mt-1">NTEGRAL</span>
           </Link>
 
-          {/* Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <motion.div
-                key={link.label}
-                whileHover={{ y: -1 }}
-                className="relative px-3 py-1"
+          {/* Desktop Navigation - Agency Relevant */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <div className="flex items-center gap-6">
+              <Link
+                href="/groups"
+                className="px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/5 text-[9px] font-bold tracking-[0.1em] text-purple-400 hover:bg-purple-500/10 transition-all flex items-center gap-2"
               >
+                <div className="w-1 h-1 rounded-full bg-purple-400 animate-pulse" />
+                INTEGRAL GROUPS
+              </Link>
+              {leftLinks.map((link) => (
                 <Link
+                  key={link.label}
                   href={link.href}
-                  className={`text-[11px] font-semibold transition-colors duration-300 ${
-                    pathname === link.href ? "text-white" : "text-[#71717a] hover:text-[#a1a1aa]"
-                  }`}
+                  className="text-[10px] font-bold tracking-[0.1em] text-white/50 hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute bottom-0 left-3 right-3 h-px bg-white/20"
-                  />
-                )}
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
+            <div className="w-px h-4 bg-white/10 mx-2" />
+
+            <div className="flex items-center gap-6">
+              {rightLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[10px] font-bold tracking-[0.1em] text-white/50 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </nav>
 
-          {/* CTA */}
-          <div className="flex items-center gap-2">
+          {/* Action Area */}
+          <div className="flex items-center gap-6">
             <Link
               href="/contact"
-              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-[#f4f4f5] transition-all duration-300"
+              className="hidden sm:flex px-6 py-2 rounded-lg bg-white text-black text-[10px] font-bold tracking-[0.1em] hover:bg-white/90 transition-all"
             >
-              Start A Project
+              START PROJECT
             </Link>
 
-            <button
-              className="md:hidden text-[#71717a] hover:text-white transition-colors p-1"
-              onClick={() => setMobileOpen(!mobileOpen)}
-            >
-              {mobileOpen ? <X className="w-3.5 h-3.5" /> : <Menu className="w-3.5 h-3.5" />}
-            </button>
+            <div className="flex items-center gap-4 text-white/40">
+              <button className="hover:text-white transition-colors">
+                <Search size={18} />
+              </button>
+              <div className="w-px h-6 bg-white/10" />
+              <button 
+                onClick={() => setMobileOpen(true)}
+                className="hover:text-white transition-colors"
+              >
+                <Menu size={20} />
+              </button>
+            </div>
           </div>
-        </motion.div>
-      </header>
+        </motion.header>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -104,27 +114,54 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col justify-center px-12"
-            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 z-[60] bg-black p-12 flex flex-col justify-between"
           >
-            <nav className="flex flex-col gap-8">
-              {navLinks.map((link, i) => (
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-1">
+                <span className="font-display italic text-2xl text-white">∫</span>
+                <span className="text-[14px] font-bold tracking-[0.15em] text-white mt-1">NTEGRAL</span>
+              </div>
+              <button onClick={() => setMobileOpen(false)} className="text-white/40">
+                <X size={24} />
+              </button>
+            </div>
+            
+            <nav className="flex flex-col gap-6">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+              >
+                <Link
+                  href="/groups"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-bold tracking-[0.2em] text-purple-400 mb-4 inline-block"
+                >
+                  INTEGRAL GROUPS
+                </Link>
+              </motion.div>
+              {[...leftLinks, ...rightLinks].map((link, i) => (
                 <motion.div
                   key={link.label}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-4xl font-bold text-[#3f3f46] hover:text-white transition-colors"
+                    className="text-3xl font-display text-white/40 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
             </nav>
+
+            <div className="flex flex-col gap-8">
+               <Link href="/contact" className="w-full py-4 bg-white text-black text-center font-bold tracking-widest rounded-xl">
+                  START PROJECT
+               </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

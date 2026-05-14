@@ -3,48 +3,125 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const values = [
+  {
+    title: "Precision",
+    description:
+      "Every decision is deliberate. We engineer with surgical accuracy, removing everything that doesn't serve the system.",
+  },
+  {
+    title: "Restraint",
+    description:
+      "Simplicity is the hardest discipline. We strip complexity until only the essential remains.",
+  },
+  {
+    title: "Longevity",
+    description:
+      "Software that lasts. We build architectures that adapt to time, not just solve today's problem.",
+  },
+];
+
 export default function Philosophy() {
   return (
-    <section className="section-padding border-t border-white/[0.04]">
+    <section
+      className="relative py-36 overflow-hidden"
+      style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
+    >
+      {/* Blueprint vertical lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 bottom-0 left-[33.33%] w-px" style={{ background: "rgba(255,255,255,0.025)" }} />
+        <div className="absolute top-0 bottom-0 left-[66.66%] w-px" style={{ background: "rgba(255,255,255,0.025)" }} />
+        {/* Nodes */}
+        <div className="blueprint-node" style={{ top: "50%", left: "33.33%" }} />
+        <div className="blueprint-node" style={{ top: "50%", left: "66.66%" }} />
+      </div>
+
       <div className="container">
-        <div className="max-w-[720px] mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="badge mb-10"
+        {/* Overline */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-3 mb-16"
+        >
+          <div className="h-px w-6 bg-white/20" />
+          <span
+            className="font-mono text-[9px] tracking-[0.25em] uppercase"
+            style={{ color: "rgba(255,255,255,0.3)" }}
           >
             Philosophy
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display text-[32px] sm:text-[48px] text-white mb-10 leading-tight"
-          >
-            Built With 
-            <br />
-            Systems Thinking
-          </motion.h2>
+          </span>
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[17px] sm:text-[19px] text-[#555] leading-[1.6] max-w-[620px] mx-auto"
+        {/* Large statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-[860px] mb-24"
+        >
+          <p
+            className="font-display text-[32px] sm:text-[44px] md:text-[52px] leading-[1.1]"
+            style={{ color: "rgba(255,255,255,0.85)", fontWeight: 300, letterSpacing: "-0.04em" }}
           >
-            Integral Labs develops software systems focused on{" "}
-            <span className="text-white/80">clarity</span>,{" "}
-            <span className="text-white/80">scalability</span>,{" "}
-            <span className="text-white/80">usability</span>, and{" "}
-            <span className="text-white/80">operational efficiency</span>.
-            <br /><br />
-            We combine modern engineering, product thinking, and frontend precision 
-            to build software designed for long-term adaptability.
-          </motion.p>
+            We don&apos;t just write code — we design systems with{" "}
+            <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.35)" }}>
+              clarity,
+            </span>{" "}
+            <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.35)" }}>
+              scalability,
+            </span>{" "}
+            and{" "}
+            <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.35)" }}>
+              operational efficiency
+            </span>{" "}
+            at their core.
+          </p>
+        </motion.div>
+
+        {/* Values grid */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-px"
+          style={{ background: "rgba(255,255,255,0.04)" }}
+        >
+          {values.map((value, i) => (
+            <motion.div
+              key={value.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              className="relative p-10 group"
+              style={{ background: "#0f0f0f" }}
+            >
+              {/* Index */}
+              <div
+                className="font-mono text-[9px] tracking-[0.2em] uppercase mb-6"
+                style={{ color: "rgba(255,255,255,0.15)" }}
+              >
+                0{i + 1}
+              </div>
+              <h3
+                className="text-[20px] font-light text-white mb-4 group-hover:translate-x-0.5 transition-transform duration-500"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                {value.title}
+              </h3>
+              <p
+                className="text-[13px] leading-[1.75]"
+                style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300 }}
+              >
+                {value.description}
+              </p>
+
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{ background: "rgba(139,92,246,0.02)" }}
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

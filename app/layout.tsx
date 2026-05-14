@@ -3,6 +3,8 @@ import "./globals.css";
 import { Suspense } from "react";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import SmoothScroll from "@/components/shared/SmoothScroll";
+import ContactSidebar from "@/components/shared/ContactSidebar";
 
 export const metadata: Metadata = {
   title: "Integral Labs | Modern Software Engineering & Intelligent Systems",
@@ -18,18 +20,16 @@ export const metadata: Metadata = {
   },
 };
 
-import SmoothScroll from "@/components/shared/SmoothScroll";
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <div className="noise-overlay" />
+      <body suppressHydrationWarning>
         <Suspense fallback={null}>
           <SmoothScroll />
           <Navbar />
+          <ContactSidebar />
           <main>{children}</main>
           <Footer />
         </Suspense>

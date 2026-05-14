@@ -2,129 +2,126 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { projects } from "@/lib/data/projects";
 
-const products = [
-  {
-    title: "Aether Intelligence",
-    challenge: "Developing a real-time ML inference engine for supply chain logistics.",
-    system: "Distributed Rust-based data engine with predictive modeling dashboards.",
-    outcome: "40% reduction in delivery latency and automated risk mitigation.",
-    image: "/work/aether.png",
-    tags: ["Rust", "PyTorch", "Next.js"],
-  },
-  {
-    title: "Lumina OS",
-    challenge: "Creating a unified workspace for high-performance engineering teams.",
-    system: "Integrated desktop-class interface for cluster and infrastructure management.",
-    outcome: "Streamlined operational overhead and improved collaboration speed.",
-    image: "/work/lumina.png",
-    tags: ["Go", "React", "Electron"],
-  },
-  {
-    title: "Vortex Ledger",
-    challenge: "Building an immutable financial reconciliation system for high-volume trade.",
-    system: "Event-driven ledger architecture with real-time audit trails.",
-    outcome: "Zero reconciliation errors across 1.2M transactions per second.",
-    image: "/work/vortex.png",
-    tags: ["TypeScript", "Kafka", "PostgreSQL"],
-  },
-  {
-    title: "Nexus Control",
-    challenge: "Orchestrating industrial IoT devices across diverse edge environments.",
-    system: "Unified monitoring and command platform with real-time sensor fusion.",
-    outcome: "Full visibility and remote orchestration for 50k+ edge nodes.",
-    image: "/work/nexus.png",
-    tags: ["Python", "C++", "MQTT"],
-  },
-];
-
-export default function ProductsPage() {
+export default function WorkPage() {
   return (
-    <div className="pt-32 pb-24">
-      <div className="container">
-        <div className="max-w-[540px] mb-24">
+    <main className="min-h-screen bg-[#0f0f0f] pt-40 pb-24">
+      {/* Blueprint Header */}
+      <div className="container relative mb-32">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200vw] h-px bg-white/[0.03] pointer-events-none" />
+        
+        <div className="max-w-[700px]">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="badge mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="measure-bar mb-8"
           >
-            Products
+            <div className="measure-line w-12" />
+            <span className="blueprint-label uppercase tracking-[0.3em]">Engineering Portfolio</span>
           </motion.div>
+          
           <motion.h1
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-display text-[42px] sm:text-[56px] text-white mb-8"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[60px] md:text-[90px] font-display text-white mb-10 tracking-tighter leading-[0.85]"
           >
-            Engineering 
+            Our Digital 
             <br />
-            Digital Artifacts.
+            <span className="italic opacity-40">Artifacts.</span>
           </motion.h1>
+          
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#71717a] text-[17px] leading-relaxed"
+            transition={{ delay: 0.3 }}
+            className="text-white/30 text-lg leading-relaxed max-w-[500px] font-light"
           >
-            Selected product interfaces and software systems engineered for 
-            high-performance environments and scalable operational workflows.
+            A collection of high-performance software systems and intelligent interfaces built for the next generation of digital infrastructure.
           </motion.p>
         </div>
 
-        <div className="space-y-32">
-          {products.map((product, i) => (
+        {/* Decorative corner node */}
+        <div className="absolute top-0 right-0 p-8 border-l border-b border-white/5 hidden lg:block">
+           <span className="blueprint-label opacity-20">LOC: PORTFOLIO_V2.4</span>
+        </div>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+          {projects.map((project, i) => (
             <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 20 }}
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.1 }}
-              className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-start"
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="group relative"
             >
-              {/* Preview */}
-              <div className="surface rounded-2xl overflow-hidden border border-white/[0.06] bg-[#050505] shadow-2xl relative aspect-[16/10]">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-              </div>
+              <Link href={`/work/${project.id}`} className="block">
+                {/* Image Container */}
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/5 bg-[#111] shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:border-white/10">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity" />
+                  
+                  {/* Hover icon */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                     <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
+                        <ArrowUpRight size={24} />
+                     </div>
+                  </div>
 
-              {/* Details */}
-              <div className="pt-4">
-                <h2 className="text-[24px] font-semibold text-white mb-8 tracking-tight">{product.title}</h2>
+                  {/* Corner nodes */}
+                  <div className="absolute top-4 left-4 w-1 h-1 bg-white/20" />
+                  <div className="absolute top-4 right-4 w-1 h-1 bg-white/20" />
+                  <div className="absolute bottom-4 left-4 w-1 h-1 bg-white/20" />
+                  <div className="absolute bottom-4 right-4 w-1 h-1 bg-white/20" />
+                </div>
+              </Link>
+
+              {/* Info */}
+              <div className="mt-8 flex justify-between items-start">
+                <div>
+                  <div className="flex items-center gap-4 mb-3 opacity-30">
+                    <span className="font-mono text-[10px] tracking-widest uppercase">{project.category}</span>
+                    <div className="h-px w-8 bg-white" />
+                    <span className="font-mono text-[10px] tracking-widest uppercase">{project.year}</span>
+                  </div>
+                  <h2 className="text-3xl font-display text-white group-hover:italic transition-all">
+                    {project.title}
+                  </h2>
+                </div>
                 
-                <div className="space-y-8 mb-12">
-                  <div>
-                    <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-2">Challenge</div>
-                    <div className="text-[14px] text-[#71717a] leading-relaxed">{product.challenge}</div>
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-2">System</div>
-                    <div className="text-[14px] text-[#71717a] leading-relaxed">{product.system}</div>
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-2">Outcome</div>
-                    <div className="text-[14px] text-white/80 leading-relaxed font-medium">{product.outcome}</div>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-4 pt-4 border-t border-white/[0.04]">
-                  {product.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] font-mono text-[#52525b] uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <Link 
+                  href={`/work/${project.id}`}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:border-white group/btn transition-all duration-500"
+                >
+                  <ArrowUpRight size={16} className="text-white/40 group-hover/btn:text-black transition-colors" />
+                </Link>
               </div>
+              
+              <p className="mt-6 text-white/30 text-sm leading-relaxed max-w-[340px] font-light">
+                {project.intro.split('.')[0]}.
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
-    </div>
+      
+      {/* Background blueprint details */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]">
+         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+      </div>
+    </main>
   );
 }
