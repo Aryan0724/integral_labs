@@ -2,121 +2,72 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Target, Rocket, Shield, Users } from "lucide-react";
-import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-28 pb-24">
-      {/* Subtle background */}
-      <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
-
-      <div className="container relative z-10">
-        {/* Hero Section */}
-        <div className="max-w-[720px] mb-24">
+    <div className="pt-32 pb-24">
+      <div className="container">
+        <div className="max-w-[720px] mx-auto text-center mb-32">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="badge mb-6"
+            className="badge mb-10"
           >
-            Our Identity
+            Philosophy
           </motion.div>
           
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.06 }}
-            className="text-display text-[40px] sm:text-[56px] text-white mb-8 leading-[1.1]"
+            transition={{ delay: 0.1 }}
+            className="text-display text-[40px] sm:text-[64px] text-white mb-12 leading-tight"
           >
-            We Are The
+            Modern Software
             <br />
-            Engineering Standard.
+            Engineering With 
+            <br />
+            Product Thinking.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.12 }}
-            className="text-[16px] text-[#888] leading-[1.8] max-w-[600px]"
+            transition={{ delay: 0.2 }}
+            className="text-[18px] sm:text-[22px] text-[#71717a] leading-[1.6] max-w-[640px] mx-auto"
           >
-            Integral Labs is a high-performance collective of engineers, 
-            designers, and product specialists dedicated to building the industrial-grade 
-            infrastructure of modern digital platforms.
+            Integral Labs combines software engineering, product systems, 
+            frontend development, automation, and modern UX architecture 
+            to build scalable digital products.
           </motion.p>
         </div>
 
-        {/* Vision Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04] border border-white/[0.04] rounded-2xl overflow-hidden mb-32 shadow-2xl">
           {[
-            {
-              icon: <Target className="w-5 h-5 text-[#6366f1]" />,
-              title: "The Mission",
-              desc: "To accelerate business execution by deploying intelligent software systems that solve complex operational challenges."
-            },
-            {
-              icon: <Rocket className="w-5 h-5 text-[#6366f1]" />,
-              title: "The Vision",
-              desc: "Becoming the primary architectural layer for the world's most advanced digital ecosystems and AI-driven platforms."
-            },
-            {
-              icon: <Shield className="w-5 h-5 text-[#6366f1]" />,
-              title: "The Standard",
-              desc: "Uncompromising quality, scalable architecture, and performance that defines the benchmark of modern software."
-            }
+            { title: "Architectural Clarity", detail: "We prioritize systems that are easy to understand, maintain, and scale as requirements evolve." },
+            { title: "Engineering First", detail: "Our focus is on technical quality and performance, ensuring every interface is backed by a robust core." },
+            { title: "Product Mindset", detail: "We build with the end-user in mind, balancing technical complexity with practical usability." },
+            { title: "Continuous Evolution", detail: "Software is never finished. We design for long-term adaptability and iterative growth." },
           ].map((item, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={item.title}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="surface-2 p-10 rounded-2xl border border-white/5 group hover:border-white/10 transition-all duration-300"
+              transition={{ duration: 1, delay: i * 0.1 }}
+              className="bg-black p-12 group"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                {item.icon}
-              </div>
-              <h3 className="text-[15px] font-semibold text-white mb-3 tracking-tight">{item.title}</h3>
-              <p className="text-[13px] text-[#666] leading-[1.7]">{item.desc}</p>
+              <h2 className="text-[18px] font-semibold text-white mb-4 group-hover:text-white/80 transition-colors">{item.title}</h2>
+              <p className="text-[14px] text-[#52525b] leading-relaxed">{item.detail}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats Row - Minimalist */}
-        <div className="relative rounded-2xl border border-white/6 bg-[#0d0d0d] p-10 md:p-16 mb-32 overflow-hidden">
-          <div className="absolute inset-0 grid-texture opacity-30 pointer-events-none" />
-          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-12">
-            {[
-              { label: "Lines Deployed", value: "2.4M+", suffix: "Optimized" },
-              { label: "Uptime Avg", value: "99.99%", suffix: "Reliable" },
-              { label: "Client Retain", value: "100%", suffix: "Retention" },
-              { label: "Active Sprints", value: "14", suffix: "Continuous" }
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col">
-                <span className="text-[11px] font-medium text-[#6366f1] mb-2 tracking-wide uppercase">{stat.label}</span>
-                <span className="text-[32px] md:text-[44px] font-semibold text-white leading-none tracking-tight mb-1">{stat.value}</span>
-                <span className="text-[11px] text-[#444] font-medium uppercase tracking-widest">{stat.suffix}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Team Preview CTA */}
-        <div className="flex flex-col items-center text-center max-w-[600px] mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-display text-[28px] md:text-[36px] text-white mb-8"
-          >
-            Meet the Architects.
-          </motion.h2>
-          <Link 
-            href="/team"
-            className="btn-primary py-3 px-10 text-[14px]"
-          >
-            View Studio Team
-            <Users className="w-4 h-4" />
-          </Link>
+        <div className="max-w-[540px] mx-auto text-center border-t border-white/[0.04] pt-24">
+           <p className="text-[14px] text-[#3f3f46] leading-relaxed">
+             Integral Labs was founded on the belief that modern software development 
+             requires a unified approach between engineering, design, and product strategy. 
+             We are a studio focused on quality over volume.
+           </p>
         </div>
       </div>
     </div>

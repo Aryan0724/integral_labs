@@ -3,22 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const steps = [
-  { label: "Research", detail: "Define technical scope, constraints, and operational needs." },
-  { label: "UX", detail: "Map high-density user flows and architecture." },
-  { label: "Design", detail: "High-fidelity systems and component interface design." },
-  { label: "Development", detail: "Clean, performant code with CI/CD hardening." },
-  { label: "Scale", detail: "Global production deployment and monitoring." },
-];
+const steps = ["Research", "UX", "Design", "Development", "Scale"];
 
 export default function Process() {
   return (
-    <section className="section-padding border-t border-white/[0.04] relative overflow-hidden">
-      {/* Background Depth */}
-      <div className="ambient-beam bottom-[-200px] left-[-200px] bg-white/[0.01]" />
-
-      <div className="container relative z-10">
-        <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-32">
+    <section className="section-padding border-t border-white/[0.04]">
+      <div className="container">
+        <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-32 mb-20">
           <div className="max-w-[320px]">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -32,30 +23,48 @@ export default function Process() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-display text-[32px] sm:text-[42px] text-white"
+              transition={{ delay: 0.1 }}
+              className="text-display text-[32px] sm:text-[42px] text-white mb-8"
             >
               How We Build
             </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-[#52525b] text-[14px] leading-relaxed"
+            >
+              Every system is built through a structured process focused on
+              usability, scalability, engineering quality, and long-term
+              maintainability.
+            </motion.p>
           </div>
 
-          <div className="flex-1 max-w-[480px] space-y-12">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.label}
-                initial={{ opacity: 0, x: 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="flex items-start gap-10 group"
-              >
-                <div className="text-[11px] font-mono text-[#3f3f46] pt-1.5 group-hover:text-white transition-colors duration-500">0{i + 1}</div>
-                <div className="pb-8 border-b border-white/[0.03] w-full last:border-0 group-hover:border-white/10 transition-colors duration-700">
-                  <div className="text-[17px] font-semibold text-white mb-2 group-hover:translate-x-1 transition-transform duration-500">{step.label}</div>
-                  <div className="text-[14px] text-[#52525b] leading-relaxed group-hover:text-[#71717a] transition-colors">{step.detail}</div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="relative">
+              {/* Horizontal Line */}
+              <div className="absolute top-[11px] left-0 right-0 h-[1px] bg-white/[0.04] hidden md:block" />
+              
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+                {steps.map((step, i) => (
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: i * 0.1 }}
+                    className="relative flex flex-col items-center md:items-start group"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 relative z-10 group-hover:border-white/30 transition-colors">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#333] group-hover:bg-white transition-colors" />
+                    </div>
+                    <div className="text-[15px] font-semibold text-white mb-2">{step}</div>
+                    <div className="text-[11px] text-[#3f3f46] font-mono uppercase tracking-[0.15em]">Step 0{i + 1}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,8 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Products", href: "/work" },
   { label: "Systems", href: "/services" },
-  { label: "Process", href: "/team" },
+  { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -32,7 +33,7 @@ export default function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className={`flex items-center justify-between px-5 h-11 rounded-full border border-white/[0.04] transition-all duration-700 pointer-events-auto bg-black/[0.6] backdrop-blur-xl ${
-            scrolled ? "w-[92%] max-w-[440px] border-white/10 shadow-2xl" : "w-[92%] max-w-[1000px]"
+            scrolled ? "w-[92%] max-w-[500px] border-white/10 shadow-2xl" : "w-[92%] max-w-[1000px]"
           }`}
         >
           {/* Logo */}
@@ -51,7 +52,7 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Nav - High Fidelity Links */}
+          {/* Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <motion.div
@@ -81,7 +82,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-[#f4f4f5] transition-all duration-300 shadow-xl"
+              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-[#f4f4f5] transition-all duration-300"
             >
               Start A Project
             </Link>

@@ -21,8 +21,8 @@ export default function Philosophy() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
-            className="text-display text-[32px] sm:text-[44px] text-white mb-10 leading-tight"
+            transition={{ delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-display text-[32px] sm:text-[48px] text-white mb-10 leading-tight"
           >
             Built With 
             <br />
@@ -34,13 +34,16 @@ export default function Philosophy() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[17px] sm:text-[19px] text-[#555] leading-[1.6] max-w-[580px] mx-auto"
+            className="text-[17px] sm:text-[19px] text-[#555] leading-[1.6] max-w-[620px] mx-auto"
           >
-            We design software systems focused on{" "}
-            <span className="text-white/80">usability</span>,{" "}
+            Integral Labs develops software systems focused on{" "}
+            <span className="text-white/80">clarity</span>,{" "}
             <span className="text-white/80">scalability</span>,{" "}
-            <span className="text-white/80">performance</span>, and{" "}
-            <span className="text-white/80">long-term maintainability</span>.
+            <span className="text-white/80">usability</span>, and{" "}
+            <span className="text-white/80">operational efficiency</span>.
+            <br /><br />
+            We combine modern engineering, product thinking, and frontend precision 
+            to build software designed for long-term adaptability.
           </motion.p>
         </div>
       </div>

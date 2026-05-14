@@ -2,126 +2,113 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Globe, Send, MessageSquare, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen pt-28 pb-24">
-      {/* Subtle background */}
-      <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
-
-      <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-          {/* Info Side */}
-          <div className="lg:w-[400px]">
+    <div className="pt-32 pb-24 min-h-screen flex items-center">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          {/* Content */}
+          <div className="max-w-[440px]">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="badge mb-6"
             >
-              Contact Us
+              Contact
             </motion.div>
-            
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.06 }}
-              className="text-display text-[40px] sm:text-[52px] text-white mb-8 leading-[1.1]"
+              transition={{ delay: 0.1 }}
+              className="text-display text-[42px] sm:text-[56px] text-white mb-8"
             >
               Start A
               <br />
               Project.
             </motion.h1>
-
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.12 }}
-              className="text-[15px] text-[#888] leading-[1.8] mb-12"
+              transition={{ delay: 0.2 }}
+              className="text-[#71717a] text-[17px] leading-relaxed mb-12"
             >
-              Ready to architect the next standard of digital systems? 
-              Reach out and let&apos;s build better software together.
+              Have a software system in mind? We're available for new 
+              collaborations and engineering-led product development.
             </motion.p>
 
-            <div className="space-y-8">
-               <div className="flex items-start gap-5 group cursor-pointer">
-                  <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center group-hover:border-white/15 transition-all">
-                     <Mail className="w-4 h-4 text-[#6366f1]" />
-                  </div>
-                  <div>
-                     <span className="text-[11px] font-medium text-[#444] uppercase tracking-wider block mb-1">Email</span>
-                     <span className="text-[15px] font-medium text-white group-hover:text-[#6366f1] transition-colors">hello@integralgroups.in</span>
-                  </div>
-               </div>
-
-               <div className="flex items-start gap-5 group cursor-pointer">
-                  <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center group-hover:border-white/15 transition-all">
-                     <Globe className="w-4 h-4 text-[#6366f1]" />
-                  </div>
-                  <div>
-                     <span className="text-[11px] font-medium text-[#444] uppercase tracking-wider block mb-1">Location</span>
-                     <span className="text-[15px] font-medium text-white group-hover:text-[#6366f1] transition-colors">Bangalore, India</span>
-                  </div>
-               </div>
+            <div className="space-y-4 pt-12 border-t border-white/[0.04]">
+              <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-4">Direct Inquiries</div>
+              <a href="mailto:hello@integrallabs.ai" className="text-[18px] text-white hover:text-white/60 transition-colors block">
+                hello@integrallabs.ai
+              </a>
+              <div className="text-[14px] text-[#52525b]">Based in San Francisco / London</div>
             </div>
           </div>
 
-          {/* Form Side */}
-          <div className="flex-1">
-             <motion.div 
-               initial={{ opacity: 0, x: 20 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.8, delay: 0.2 }}
-               className="surface-2 p-8 md:p-12 rounded-2xl border border-white/6"
-             >
-                <form className="space-y-8">
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2.5">
-                         <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Full Name</label>
-                         <input 
-                           type="text" 
-                           placeholder="John Doe"
-                           className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all"
-                         />
-                      </div>
-                      <div className="space-y-2.5">
-                         <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Email Address</label>
-                         <input 
-                           type="email" 
-                           placeholder="john@company.com"
-                           className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all"
-                         />
-                      </div>
-                   </div>
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="surface p-8 md:p-12 border-white/[0.06] bg-[#050505] shadow-2xl rounded-2xl"
+          >
+            <form className="space-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Name</label>
+                  <input 
+                    type="text" 
+                    placeholder="John Doe" 
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Email</label>
+                  <input 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
+                  />
+                </div>
+              </div>
 
-                   <div className="space-y-4">
-                      <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">What can we help with?</label>
-                      <div className="flex flex-wrap gap-2">
-                         {["SaaS Platforms", "AI Products", "Automation", "Interface Design"].map(cat => (
-                           <button key={cat} type="button" className="px-4 py-2 rounded-lg border border-white/8 bg-[#080808] text-[12px] font-medium text-[#555] hover:border-[#6366f1]/40 hover:text-white transition-all">{cat}</button>
-                         ))}
-                      </div>
-                   </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Company</label>
+                  <input 
+                    type="text" 
+                    placeholder="Acme Corp" 
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Project Type</label>
+                  <select className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none appearance-none">
+                    <option className="bg-black">SaaS Platform</option>
+                    <option className="bg-black">AI System</option>
+                    <option className="bg-black">Automation</option>
+                    <option className="bg-black">Frontend</option>
+                  </select>
+                </div>
+              </div>
 
-                   <div className="space-y-2.5">
-                      <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Project Brief</label>
-                      <textarea 
-                        rows={5}
-                        placeholder="Tell us about your goals and timeline..."
-                        className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all resize-none"
-                      />
-                   </div>
+              <div className="space-y-2">
+                <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Message</label>
+                <textarea 
+                  rows={4}
+                  placeholder="Tell us about your project..." 
+                  className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none resize-none"
+                />
+              </div>
 
-                   <button 
-                     type="submit"
-                     className="btn-primary w-full py-4 text-[14px] flex justify-center"
-                   >
-                      Send Message
-                      <ArrowUpRight className="w-4 h-4" />
-                   </button>
-                </form>
-             </motion.div>
-          </div>
+              <button className="group flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-[14px] hover:bg-[#f4f4f5] transition-all hover:scale-[1.02] w-full justify-center">
+                Send Inquiry
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </form>
+          </motion.div>
         </div>
       </div>
     </div>
