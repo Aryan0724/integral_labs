@@ -56,10 +56,53 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-display text-6xl md:text-[120px] font-bold mb-12 text-white tracking-tight leading-[0.9]">
-            Architecting <br />
-            <span className="text-gradient-purple italic font-medium">Digital Supremacy.</span>
-          </h1>
+          <motion.h1 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
+            }}
+            className="text-display text-6xl md:text-[120px] font-bold mb-12 text-white tracking-tight leading-[0.9]"
+          >
+            {"Architecting".split("").map((char, i) => (
+              <motion.span 
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+            <br />
+            {"Digital".split(" ").map((word, i) => (
+              <motion.span 
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="text-gradient-purple italic font-medium inline-block mr-[0.2em]"
+              >
+                {word}
+              </motion.span>
+            ))}
+             {"Supremacy.".split(" ").map((word, i) => (
+              <motion.span 
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="text-gradient-purple italic font-medium inline-block mr-[0.2em]"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.h1>
 
           {/* Subheadline */}
           <motion.p

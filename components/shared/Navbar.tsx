@@ -30,8 +30,8 @@ const Navbar = () => {
     )}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-500 rounded-[32px] px-8 h-20",
-          scrolled ? "bg-black/40 backdrop-blur-2xl border border-white/10 shadow-2xl" : "bg-transparent border border-transparent"
+          "flex items-center justify-between transition-all duration-500 rounded-full px-8 h-20",
+          scrolled ? "bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl" : "bg-transparent border border-transparent"
         )}>
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center group-hover:rotate-[15deg] transition-transform duration-500">

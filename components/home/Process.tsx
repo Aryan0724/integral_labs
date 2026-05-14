@@ -101,26 +101,7 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Cinematic Data Visualization Overlay */}
-        <div className="mt-40 max-w-5xl mx-auto glass p-12 rounded-[60px] border-white/5 overflow-hidden flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-grid-small opacity-[0.05]" />
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="flex items-center gap-12 mb-8">
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 1, 0.3]
-                  }}
-                  transition={{ duration: 3, delay: i * 1, repeat: Infinity }}
-                  className="w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6]"
-                />
-              ))}
-            </div>
 
-          </div>
-        </div>
       </div>
     </section>
   );
