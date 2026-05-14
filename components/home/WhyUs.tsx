@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Philosophy() {
   return (
-    <section className="section-padding border-t border-white/5">
+    <section className="section-padding border-t border-white/[0.04]">
       <div className="container">
         <div className="max-w-[720px] mx-auto text-center">
           <motion.div
@@ -21,8 +21,8 @@ export default function Philosophy() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-display text-[32px] sm:text-[48px] text-white mb-10"
+            transition={{ delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+            className="text-display text-[32px] sm:text-[44px] text-white mb-10 leading-tight"
           >
             Built With 
             <br />
@@ -33,14 +33,14 @@ export default function Philosophy() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[18px] sm:text-[20px] text-[#888] leading-[1.6] max-w-[600px] mx-auto"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-[17px] sm:text-[19px] text-[#555] leading-[1.6] max-w-[580px] mx-auto"
           >
             We design software systems focused on{" "}
-            <span className="text-white">usability</span>,{" "}
-            <span className="text-white">scalability</span>,{" "}
-            <span className="text-white">performance</span>, and{" "}
-            <span className="text-white">long-term maintainability</span>.
+            <span className="text-white/80">usability</span>,{" "}
+            <span className="text-white/80">scalability</span>,{" "}
+            <span className="text-white/80">performance</span>, and{" "}
+            <span className="text-white/80">long-term maintainability</span>.
           </motion.p>
         </div>
       </div>
