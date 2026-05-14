@@ -7,13 +7,15 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code, Menu, X, ArrowRight, Zap } from "lucide-react";
 
+import { Logo } from "./Logo";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,26 +30,17 @@ const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-[100] transition-all duration-700",
-      scrolled ? "py-4" : "py-8"
+      scrolled ? "py-4" : "py-6"
     )}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={cn(
-          "flex items-center justify-between transition-all duration-700 rounded-full px-4 md:px-10 h-20",
+          "flex items-center justify-between transition-all duration-700 rounded-full px-6 md:px-10 h-16 md:h-20",
           scrolled 
-            ? "bg-black/40 backdrop-blur-3xl border border-white/10 shadow-[0_0_50px_-12px_rgba(124,58,237,0.3)]" 
+            ? "bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl" 
             : "bg-transparent border border-transparent"
         )}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 flex items-center justify-center">
-              <div className="absolute inset-0 bg-purple-600 rounded-2xl rotate-45 group-hover:rotate-[135deg] transition-all duration-700 opacity-20 blur-sm" />
-              <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:rotate-[15deg] transition-transform duration-500 shadow-2xl">
-                <div className="w-5 h-5 bg-black rotate-45 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="flex flex-col -gap-1">
-              <span className="font-black text-xl tracking-tighter text-white uppercase italic leading-none">Integral</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-500 leading-none">Labs</span>
-            </div>
+          <Link href="/">
+            <Logo />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">

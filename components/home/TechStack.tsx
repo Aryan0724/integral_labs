@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Activity, Terminal, Shield, Zap } from "lucide-react";
+import { Activity, Terminal, Shield, Zap, Globe } from "lucide-react";
 
 const technologies = [
   { name: "Next.js 16", category: "Framework", color: "from-blue-500/20" },
@@ -81,9 +81,9 @@ export default function TechStack() {
             <div className="space-y-8">
               <div className="flex items-center gap-3">
                  <Shield className="w-5 h-5 text-purple-500" />
-                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Encryption Layer</span>
+                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Security Protocol</span>
               </div>
-              <div className="text-5xl font-black text-white uppercase tracking-tighter">MILITARY</div>
+              <div className="text-5xl font-black text-white uppercase tracking-tighter">SOC2 TYPE II</div>
               <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
@@ -92,28 +92,30 @@ export default function TechStack() {
                   className="h-full bg-purple-500 shadow-[0_0_15px_#a855f7]" 
                 />
               </div>
+              <span className="text-[10px] font-black text-purple-500/50 uppercase tracking-widest">Certified Architecture</span>
             </div>
             <div className="space-y-8">
               <div className="flex items-center gap-3">
-                 <Activity className="w-5 h-5 text-blue-500" />
-                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Edge Latency</span>
+                 <Globe className="w-5 h-5 text-blue-500" />
+                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Network Engine</span>
               </div>
-              <div className="text-5xl font-black text-white uppercase tracking-tighter">0.02 MS</div>
+              <div className="text-5xl font-black text-white uppercase tracking-tighter">GLOBAL EDGE</div>
               <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
-                  whileInView={{ width: "95%" }}
+                  whileInView={{ width: "92%" }}
                   transition={{ duration: 3, ease: "easeOut", delay: 0.2 }}
                   className="h-full bg-blue-500 shadow-[0_0_15px_#3b82f6]" 
                 />
               </div>
+              <span className="text-[10px] font-black text-blue-500/50 uppercase tracking-widest">Multi-Region Deployment</span>
             </div>
             <div className="space-y-8">
               <div className="flex items-center gap-3">
                  <Zap className="w-5 h-5 text-emerald-500" />
-                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Core Uptime</span>
+                 <span className="text-[12px] uppercase tracking-[0.4em] font-black text-white/20">Infrastructure</span>
               </div>
-              <div className="text-5xl font-black text-white uppercase tracking-tighter">99.99 %</div>
+              <div className="text-5xl font-black text-white uppercase tracking-tighter">AUTO-SCALING</div>
               <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
@@ -122,6 +124,7 @@ export default function TechStack() {
                   className="h-full bg-emerald-500 shadow-[0_0_15px_#10b981]" 
                 />
               </div>
+              <span className="text-[10px] font-black text-emerald-500/50 uppercase tracking-widest">High-Availability Cluster</span>
             </div>
           </div>
         </div>

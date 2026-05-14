@@ -25,14 +25,14 @@ const team = [
   {
     name: "Marcus K.",
     role: "Lead AI Architect",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800",
+    image: "/team/marcus.png",
     bio: "Pioneering researcher in neural networks and distributed artificial intelligence systems.",
     socials: { github: "#", twitter: "#", linkedin: "#" }
   },
   {
     name: "Sarah L.",
     role: "Head of Operations",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800",
+    image: "/team/marcus.png", // Reusing the combined image or a placeholder for now
     bio: "Strategic operational lead ensuring the industrial-grade deployment of all studio projects.",
     socials: { github: "#", twitter: "#", linkedin: "#" }
   }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
@@ -25,11 +26,13 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <Scene />
           <div className="noise" />
-          <Navbar />
-          <main className="relative z-10">
-            {children}
-          </main>
-          <Footer />
+          <Suspense fallback={null}>
+            <Navbar />
+            <main className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+          </Suspense>
         </SmoothScrollProvider>
       </body>
     </html>

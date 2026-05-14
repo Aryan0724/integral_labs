@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Terminal, ArrowUpRight, Globe, Activity, Code2, Zap } from "lucide-react";
 import { GitHub, Twitter, LinkedIn } from "./SocialIcons";
+import { Logo } from "./Logo";
 
 export default function Footer() {
   return (
@@ -16,17 +17,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
           {/* Brand Column */}
           <div className="md:col-span-4">
-            <Link href="/" className="flex items-center gap-4 mb-10 group">
-              <div className="relative w-12 h-12 flex items-center justify-center">
-                <div className="absolute inset-0 bg-purple-600 rounded-2xl rotate-45 group-hover:rotate-[135deg] transition-all duration-700 opacity-20 blur-sm" />
-                <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:rotate-[15deg] transition-transform duration-500 shadow-2xl">
-                  <div className="w-5 h-5 bg-black rotate-45 group-hover:scale-110 transition-transform" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-black text-2xl tracking-tighter text-white uppercase italic leading-none">Integral</span>
-                <span className="text-[10px] uppercase tracking-[0.4em] text-purple-500 font-black">Labs</span>
-              </div>
+            <Link href="/">
+              <Logo className="mb-10" />
             </Link>
             <p className="text-white/40 text-lg font-light leading-relaxed mb-10 max-w-sm tracking-tight">
               A premium digital studio crafting high-performance software and industrial-grade intelligence for the next generation of founders.

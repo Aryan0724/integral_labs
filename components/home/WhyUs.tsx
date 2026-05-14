@@ -88,8 +88,8 @@ export default function WhyUs() {
               transition={{ delay: 0.4 }}
               className="text-xl md:text-2xl text-white/40 font-light leading-relaxed mb-16 max-w-xl tracking-tight"
             >
-              Elite engineering collective delivering technical dominance through speed, 
-              military-grade security, and autonomous intelligence.
+              Elite engineering collective delivering technical dominance through 
+              precision architecture, global-edge delivery, and AI-driven automation.
             </motion.p>
             
             <div className="space-y-8">

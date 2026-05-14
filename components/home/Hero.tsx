@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Zap, Activity, Globe, Shield, ChevronRight } from "lucide-react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Activity, Globe, ChevronRight, Code2, GitBranch } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0A0A0A]">
+    <section ref={containerRef} className="relative min-h-screen flex items-center pt-32 md:pt-48 overflow-hidden bg-[#0A0A0A]">
       {/* Background Motion System */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-grid opacity-[0.03]" />
@@ -87,11 +87,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full"
           >
             <Link 
               href="/contact" 
-              className="group relative h-24 bg-white text-black px-16 rounded-full flex items-center justify-center gap-4 overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+              className="group relative h-20 md:h-24 bg-white text-black px-12 md:px-16 rounded-full flex items-center justify-center gap-4 overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.1)] w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <span className="text-sm font-black uppercase tracking-[0.2em] relative z-10 group-hover:text-white transition-colors">Start Project</span>
@@ -99,7 +99,7 @@ export default function Hero() {
             </Link>
             <Link 
               href="/work" 
-              className="group h-24 px-16 rounded-full flex items-center justify-center gap-4 border border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/5 transition-all text-sm font-black uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(0,0,0,0.5)]"
+              className="group h-20 md:h-24 px-12 md:px-16 rounded-full flex items-center justify-center gap-4 border border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/5 transition-all text-sm font-black uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(0,0,0,0.5)] w-full sm:w-auto"
             >
               View Archive
             </Link>
@@ -107,71 +107,74 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating Industrial Elements */}
+      {/* Floating Studio Cards */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
-        {/* Metric Card */}
+        {/* Active Projects Card */}
         <motion.div 
-          animate={{ y: [0, -30, 0], rotate: [0, -2, 0] }}
+          animate={{ y: [0, -20, 0], rotate: [0, -1.5, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[25%] left-[5%] glass p-8 rounded-[40px] w-80 hidden xl:block border-purple-500/20 shadow-2xl"
+          className="absolute top-[28%] left-[4%] glass p-8 rounded-[40px] w-72 hidden xl:block border-purple-500/20 shadow-2xl"
         >
           <div className="flex items-center justify-between mb-6">
             <div className="flex gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/30" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30" />
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500/30" />
+              <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
             </div>
-            <Activity className="w-4 h-4 text-purple-500/50" />
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[9px] text-green-500 uppercase tracking-widest font-bold">Live</span>
+            </div>
           </div>
-          <div className="space-y-6">
-             <div className="flex justify-between items-end">
-               <div>
-                 <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] mb-1">System Load</p>
-                 <p className="text-3xl font-black text-white">0.024<span className="text-sm text-purple-500 ml-1">MS</span></p>
-               </div>
-               <div className="flex items-end gap-1 h-12">
-                  {[20, 50, 30, 80, 45, 90].map((h, i) => (
-                    <div key={i} className="w-1.5 bg-purple-500/20 rounded-full h-full relative overflow-hidden">
-                      <motion.div 
-                        animate={{ height: [`${h}%`, `${h*0.6}%`, `${h}%`] }}
-                        transition={{ duration: 2 + i * 0.3, repeat: Infinity }}
-                        className="absolute bottom-0 left-0 right-0 bg-purple-500"
-                      />
-                    </div>
-                  ))}
-               </div>
-             </div>
+          <div className="space-y-5">
+            <div>
+              <p className="text-[9px] text-white/25 uppercase tracking-[0.3em] mb-2">Active Engagements</p>
+              <p className="text-4xl font-black text-white">7 <span className="text-base text-purple-400 font-bold">Projects</span></p>
+            </div>
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
+              {["Aether Intelligence", "Nexus IoT Platform", "Lumina OS"].map((name, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <Code2 className="w-3 h-3 text-purple-500/50" />
+                  <span className="text-[10px] text-white/30 font-medium tracking-wide">{name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* Global Node Card */}
+        {/* Sprint Status Card */}
         <motion.div 
-          animate={{ y: [0, 30, 0], rotate: [0, 2, 0] }}
+          animate={{ y: [0, 25, 0], rotate: [0, 1.5, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[20%] right-[8%] glass p-8 rounded-[40px] w-80 hidden xl:block border-blue-500/20 shadow-2xl"
+          className="absolute bottom-[22%] right-[6%] glass p-8 rounded-[40px] w-72 hidden xl:block border-blue-500/20 shadow-2xl"
         >
-           <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                 <Globe className="w-7 h-7 text-blue-400" />
-              </div>
-              <div className="flex flex-col">
-                 <span className="text-[10px] font-black text-white tracking-widest uppercase">Nodes Active</span>
-                 <span className="text-2xl font-black text-blue-400">12,842</span>
-              </div>
-           </div>
-           <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
-              <div className="flex justify-between mb-2">
-                <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest">Network Health</span>
-                <span className="text-[8px] font-bold text-blue-400 uppercase tracking-widest">Optimal</span>
-              </div>
-              <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                <motion.div 
-                  animate={{ x: ["-100%", "100%"] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  className="h-full w-1/3 bg-blue-500/50" 
-                />
-              </div>
-           </div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+              <GitBranch className="w-6 h-6 text-blue-400" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[9px] font-black text-white/30 tracking-widest uppercase">Current Sprint</span>
+              <span className="text-lg font-black text-white">Sprint 14</span>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-[9px] text-white/20 uppercase tracking-widest font-bold">Velocity</span>
+              <span className="text-[9px] text-blue-400 uppercase tracking-widest font-bold">84 pts</span>
+            </div>
+            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "72%" }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                className="h-full bg-blue-500/60 rounded-full" 
+              />
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-[9px] text-white/20 uppercase tracking-widest font-bold">Completion</span>
+              <span className="text-[9px] text-white/40 uppercase tracking-widest font-bold">72%</span>
+            </div>
+          </div>
         </motion.div>
       </div>
 
