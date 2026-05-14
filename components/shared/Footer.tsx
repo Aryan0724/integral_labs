@@ -33,6 +33,15 @@ const footerNav = [
     ],
   },
   {
+    label: "Ecosystem",
+    links: [
+      { label: "Research", href: "/research" },
+      { label: "Vision", href: "/vision" },
+      { label: "Divisions", href: "/divisions" },
+      { label: "Lab", href: "/team" },
+    ],
+  },
+  {
     label: "Legal",
     links: [
       { label: "Privacy Policy", href: "#" },

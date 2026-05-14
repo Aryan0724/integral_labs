@@ -18,13 +18,17 @@ export const metadata: Metadata = {
   },
 };
 
+import SmoothScroll from "@/components/shared/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <div className="noise-overlay" />
         <Suspense fallback={null}>
+          <SmoothScroll />
           <Navbar />
           <main>{children}</main>
           <Footer />

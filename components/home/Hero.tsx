@@ -67,19 +67,30 @@ function DashboardMock() {
                 { label: "Revenue", value: "$48.2K", change: "+12.4%", up: true },
                 { label: "Active Users", value: "2,841", change: "+8.1%", up: true },
                 { label: "Churn Rate", value: "1.2%", change: "-0.3%", up: false },
-              ].map((kpi) => (
-                <div key={kpi.label} className="bg-[#111] rounded-lg p-2.5 border border-white/5">
+              ].map((kpi, i) => (
+                <motion.div
+                  key={kpi.label}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + i * 0.1, duration: 0.5 }}
+                  className="bg-[#111] rounded-lg p-2.5 border border-white/5"
+                >
                   <div className="text-[9px] text-[#555] mb-1">{kpi.label}</div>
                   <div className="text-[13px] font-semibold text-white mb-0.5">{kpi.value}</div>
                   <div className={`text-[9px] font-medium ${kpi.up ? "text-emerald-500" : "text-rose-500"}`}>
                     {kpi.change}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
             {/* Chart area */}
-            <div className="bg-[#0f0f0f] rounded-lg border border-white/5 p-3 mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="bg-[#0f0f0f] rounded-lg border border-white/5 p-3 mb-3"
+            >
               <div className="flex items-center justify-between mb-3">
                 <div className="text-[10px] text-[#666]">Monthly Revenue</div>
                 <div className="flex gap-1.5">
@@ -96,14 +107,24 @@ function DashboardMock() {
                     <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
                   </linearGradient>
                 </defs>
-                <path d="M0 48 C20 42 30 28 50 26 C70 24 80 36 100 30 C120 24 130 16 150 14 C170 12 180 22 200 18 L220 12 L220 60 L0 60 Z" fill="url(#chartGrad)" />
-                <path d="M0 48 C20 42 30 28 50 26 C70 24 80 36 100 30 C120 24 130 16 150 14 C170 12 180 22 200 18 L220 12" fill="none" stroke="#6366f1" strokeWidth="1.5" />
-                {/* Data points */}
-                {[[50,26],[100,30],[150,14],[220,12]].map(([x,y], i) => (
-                  <circle key={i} cx={x} cy={y} r="2" fill="#6366f1" />
-                ))}
+                <motion.path
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ delay: 1.3, duration: 1.5, ease: "easeInOut" }}
+                  d="M0 48 C20 42 30 28 50 26 C70 24 80 36 100 30 C120 24 130 16 150 14 C170 12 180 22 200 18 L220 12" 
+                  fill="none" 
+                  stroke="#6366f1" 
+                  strokeWidth="1.5" 
+                />
+                <motion.path
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.8, duration: 0.8 }}
+                  d="M0 48 C20 42 30 28 50 26 C70 24 80 36 100 30 C120 24 130 16 150 14 C170 12 180 22 200 18 L220 12 L220 60 L0 60 Z" 
+                  fill="url(#chartGrad)" 
+                />
               </svg>
-            </div>
+            </motion.div>
 
             {/* Activity feed */}
             <div className="bg-[#0f0f0f] rounded-lg border border-white/5 p-2.5">
