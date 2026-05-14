@@ -2,23 +2,23 @@
 @import "tailwindcss";
 
 /* ============================================
-   INTEGRAL LABS — ELITE PRODUCT DESIGN SYSTEM
-   Focused on restraint, rhythm, and realism.
-   Inspired by Apple, Linear, Vercel.
+   INTEGRAL LABS — WORLD-CLASS REFINEMENT
+   Focused on depth, realism, and motion precision.
+   Inspired by Vercel, Linear, and Raycast.
    ============================================ */
 
 @layer base {
   :root {
     --background: #000000;
-    --surface: #09090b;
-    --surface-2: #121214;
-    --border: rgba(255, 255, 255, 0.05);
-    --border-strong: rgba(255, 255, 255, 0.1);
+    --surface: #0a0a0a;
+    --surface-2: #0e0e10;
+    --border: rgba(255, 255, 255, 0.04);
+    --border-hover: rgba(255, 255, 255, 0.1);
     --text-primary: #ffffff;
-    --text-secondary: #a1a1aa;
-    --text-tertiary: #52525b;
+    --text-secondary: #71717a; /* Zinc 400 */
+    --text-tertiary: #3f3f46; /* Zinc 600 */
     --accent: #6366f1;
-    --selection: rgba(255, 255, 255, 0.08);
+    --selection: rgba(99, 102, 241, 0.15);
   }
 
   * {
@@ -50,14 +50,14 @@
 }
 
 /* ============================================
-   TYPOGRAPHY — RHYTHM & RESTRAINT
+   TYPOGRAPHY — PRECISION
    ============================================ */
 
 .text-display {
   font-family: 'Inter', sans-serif;
-  font-weight: 500; /* Confident but not dramatic */
+  font-weight: 500;
   letter-spacing: -0.05em;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .text-mono {
@@ -65,12 +65,8 @@
   letter-spacing: -0.02em;
 }
 
-.text-tight {
-  max-width: 540px;
-}
-
 /* ============================================
-   COMPOSITION
+   COMPOSITION & RHYTHM
    ============================================ */
 
 .container {
@@ -80,35 +76,37 @@
 }
 
 .section-padding {
-  padding: 80px 0;
+  padding: 96px 0;
 }
 
 .surface {
   background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
 .surface-2 {
   background: var(--surface-2);
   border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
 .glass {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
 }
 
 /* ============================================
-   TEXTURES — ALMOST INVISIBLE
+   SIGNATURE VISUAL SYSTEM: "LAYERED DEPTH"
    ============================================ */
 
 .grid-texture {
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-size: 40px 40px;
 }
 
 .noise-overlay {
@@ -116,64 +114,93 @@
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.01;
+  opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* ============================================
-   UI ELEMENTS
-   ============================================ */
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  border: 1px solid var(--border);
-  background: transparent;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+/* Signature Ambient Beam */
+.ambient-beam {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
 }
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
   background: #ffffff;
   color: #000000;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   text-decoration: none;
+  border: 1px solid transparent;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  background: #f4f4f5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   text-decoration: none;
 }
 
 .btn-secondary:hover {
   color: #fff;
-  border-color: var(--border-strong);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   UI REFINEMENTS
+   ============================================ */
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.01);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -181,12 +208,15 @@
    ============================================ */
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #111;
+  background: #18181b;
   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #27272a;
 }

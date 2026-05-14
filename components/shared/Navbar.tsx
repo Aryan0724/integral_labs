@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Products", href: "/work" },
@@ -28,16 +28,16 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 pointer-events-none">
         <motion.div
-          initial={{ y: -8, opacity: 0 }}
+          initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-          className={`flex items-center justify-between px-4 h-10 rounded-full border border-white/[0.04] transition-all duration-700 pointer-events-auto bg-black/[0.4] backdrop-blur-xl ${
-            scrolled ? "w-[90%] max-w-[440px] border-white/10 shadow-2xl" : "w-[90%] max-w-[1000px]"
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className={`flex items-center justify-between px-5 h-11 rounded-full border border-white/[0.04] transition-all duration-700 pointer-events-auto bg-black/[0.6] backdrop-blur-xl ${
+            scrolled ? "w-[92%] max-w-[440px] border-white/10 shadow-2xl" : "w-[92%] max-w-[1000px]"
           }`}
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="w-4 h-4 rounded-sm bg-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-sm bg-white flex items-center justify-center transition-transform group-hover:scale-90">
               <svg viewBox="0 0 16 16" fill="none" className="w-2.5 h-2.5">
                 <rect x="2" y="2" width="5" height="12" rx="0.5" fill="#000" />
                 <rect x="9" y="8" width="5" height="6" rx="0.5" fill="#000" />
@@ -51,18 +51,29 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Nav */}
-          <nav className="hidden md:flex items-center">
+          {/* Nav - High Fidelity Links */}
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
+              <motion.div
                 key={link.label}
-                href={link.href}
-                className={`px-3 py-1 text-[11px] font-semibold transition-colors duration-200 ${
-                  pathname === link.href ? "text-white" : "text-[#555] hover:text-[#999]"
-                }`}
+                whileHover={{ y: -1 }}
+                className="relative px-3 py-1"
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  className={`text-[11px] font-semibold transition-colors duration-300 ${
+                    pathname === link.href ? "text-white" : "text-[#71717a] hover:text-[#a1a1aa]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+                {pathname === link.href && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute bottom-0 left-3 right-3 h-px bg-white/20"
+                  />
+                )}
+              </motion.div>
             ))}
           </nav>
 
@@ -70,13 +81,13 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className="px-3 py-0.5 rounded-full bg-white text-black text-[10px] font-bold hover:opacity-80 transition-opacity"
+              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-[#f4f4f5] transition-all duration-300 shadow-xl"
             >
               Start A Project
             </Link>
 
             <button
-              className="md:hidden text-[#555] hover:text-white transition-colors p-1"
+              className="md:hidden text-[#71717a] hover:text-white transition-colors p-1"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? <X className="w-3.5 h-3.5" /> : <Menu className="w-3.5 h-3.5" />}
@@ -85,26 +96,32 @@ export default function Navbar() {
         </motion.div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/90 backdrop-blur-md md:hidden flex flex-col justify-center px-12"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col justify-center px-12"
             onClick={() => setMobileOpen(false)}
           >
-            <nav className="flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <Link
+            <nav className="flex flex-col gap-8">
+              {navLinks.map((link, i) => (
+                <motion.div
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-3xl font-semibold text-[#444] hover:text-white transition-colors"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-4xl font-bold text-[#3f3f46] hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
           </motion.div>

@@ -11,28 +11,32 @@ const projects = [
     category: "Analytics Platform",
     description: "Cloud-native data engine with real-time telemetry and predictive operational dashboards.",
     image: "/work/aether.png",
-    tags: ["Distributed Systems", "Rust", "Next.js"],
+    tags: ["Rust", "Distributed Systems"],
+    stats: "0.02ms Latency",
   },
   {
     title: "Lumina Workspace",
     category: "SaaS Product",
     description: "Collaborative interface for enterprise engineering teams to manage clusters and infrastructure.",
     image: "/work/lumina.png",
-    tags: ["Go", "React", "Terraform"],
+    tags: ["Go", "React"],
+    stats: "99.9% Uptime",
   },
   {
     title: "Vortex Ledger",
     category: "FinTech System",
     description: "High-throughput financial reconciliation engine with immutable ledger logging and audit systems.",
     image: "/work/vortex.png",
-    tags: ["TypeScript", "PostgreSQL", "Kafka"],
+    tags: ["TypeScript", "Kafka"],
+    stats: "1.2M req/sec",
   },
   {
     title: "Nexus Control",
     category: "Automation Interface",
     description: "Industrial IoT monitoring and orchestration platform with edge compute integration.",
     image: "/work/nexus.png",
-    tags: ["Python", "MQTT", "C++"],
+    tags: ["Python", "C++"],
+    stats: "Live Sync",
   },
 ];
 
@@ -40,75 +44,108 @@ export default function ProjectShowcase() {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
-  const springX = useSpring(x, { stiffness: 60, damping: 20 });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+  const springX = useSpring(x, { stiffness: 40, damping: 18 });
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] border-t border-white/5">
+    <section ref={targetRef} className="relative h-[300vh] border-t border-white/[0.04]">
+      {/* Background Depth */}
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         <div className="container mb-12">
           <div className="max-w-[480px]">
-            <div className="badge mb-4">Case Studies</div>
-            <h2 className="text-display text-[32px] sm:text-[40px] text-white">
-              Selected Product
-              <br />Interfaces
-            </h2>
-          </div>
-        </div>
-
-        {/* Scroll Track */}
-        <motion.div
-          style={{ x: springX }}
-          className="flex gap-6 pl-[max(24px,calc((100vw-1080px)/2+24px))]"
-        >
-          {projects.map((project, i) => (
             <motion.div
-              key={project.title}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="badge mb-6"
+            >
+              Case Studies
+            </motion.div>
+            <motion.h2
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="flex-shrink-0 w-[400px]"
+              transition={{ delay: 0.1 }}
+              className="text-display text-[32px] sm:text-[44px] text-white"
             >
-              <div className="surface rounded-2xl overflow-hidden border border-white/8 hover:border-white/15 transition-colors group">
-                {/* Visual */}
-                <div className="h-[240px] bg-[#080808] relative overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-[1.02] transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                  <div className="absolute top-4 left-4">
-                    <span className="badge text-[9px] bg-black/80 backdrop-blur-sm border-white/10">{project.category}</span>
-                  </div>
-                </div>
+              Selected Product
+              <br />Interfaces
+            </motion.h2>
+          </div>
+        </div>
 
-                {/* Info */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-[15px] font-semibold text-white">{project.title}</h3>
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                    </div>
-                  </div>
-                  <p className="text-[13px] text-[#555] leading-[1.65] mb-5">{project.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono text-[#333] border border-white/5 px-2 py-0.5 rounded bg-white/[0.01]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+        {/* Scroll Track - Wide viewport */}
+        <motion.div
+          style={{ x: springX }}
+          className="flex gap-8 pl-[max(32px,calc((100vw-1000px)/2+32px))]"
+        >
+          {projects.map((project, i) => (
+            <ProjectCard key={project.title} project={project} index={i} />
           ))}
-          {/* End padding */}
-          <div className="w-[10vw] flex-shrink-0" />
+          <div className="w-[20vw] flex-shrink-0" />
         </motion.div>
+
+        {/* Cinematic Progress Indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-white/[0.04] rounded-full overflow-hidden">
+          <motion.div
+            style={{ scaleX: scrollYProgress }}
+            className="h-full bg-white/20 origin-left"
+          />
+        </div>
       </div>
     </section>
+  );
+}
+
+function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="flex-shrink-0 w-[420px] group cursor-none"
+    >
+      <div className="surface bg-black border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-700 relative shadow-2xl">
+        {/* Visual Layer */}
+        <div className="h-[280px] bg-[#050505] relative overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover opacity-50 group-hover:opacity-80 group-hover:scale-[1.05] transition-all duration-[1.2s] ease-[0.22,1,0.36,1]"
+          />
+          {/* Glass Layered Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+          
+          <div className="absolute top-5 left-5 flex gap-2">
+            <span className="badge text-[9px] bg-black/60 backdrop-blur-md border-white/10 uppercase tracking-[0.15em]">{project.category}</span>
+          </div>
+
+          <div className="absolute bottom-5 left-5 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
+            <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">{project.stats}</span>
+          </div>
+        </div>
+
+        {/* Info Layer */}
+        <div className="p-8">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-[17px] font-semibold text-white tracking-tight">{project.title}</h3>
+            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
+              <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+            </div>
+          </div>
+          <p className="text-[14px] text-[#52525b] leading-[1.7] mb-6 line-clamp-2 group-hover:text-[#71717a] transition-colors">{project.description}</p>
+          
+          <div className="flex items-center gap-4">
+            {project.tags.map((tag) => (
+              <span key={tag} className="text-[10px] font-mono text-[#3f3f46] uppercase tracking-wider group-hover:text-[#52525b] transition-colors">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
