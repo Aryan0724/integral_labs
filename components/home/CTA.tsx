@@ -19,7 +19,7 @@ export default function CTA() {
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{ duration: 10, repeat: Infinity }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/20 blur-[150px] rounded-full"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-purple-600/20 blur-[150px] rounded-full"
             />
           </div>
 
@@ -28,9 +28,9 @@ export default function CTA() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-12 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-all duration-700"
+              className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-12 group-hover:border-purple-500/50 group-hover:bg-purple-500/10 transition-all duration-700"
             >
-              <Terminal className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors" />
+              <Terminal className="w-8 h-8 text-white group-hover:text-purple-400 transition-colors" />
             </motion.div>
 
             <motion.h2 
@@ -55,7 +55,7 @@ export default function CTA() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
               <Link 
                 href="mailto:hello@integrallabs.com" 
-                className="group relative h-20 bg-white text-black px-12 rounded-full flex items-center justify-center gap-4 overflow-hidden transition-all hover:bg-blue-600 hover:text-white w-full sm:w-auto"
+                className="group relative h-20 bg-white text-black px-12 rounded-full flex items-center justify-center gap-4 overflow-hidden transition-all hover:bg-purple-600 hover:text-white w-full sm:w-auto"
               >
                 <span className="text-xs font-bold uppercase tracking-widest relative z-10">Request a Proposal</span>
                 <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-1 transition-transform" />

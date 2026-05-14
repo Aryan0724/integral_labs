@@ -118,7 +118,7 @@ export default function Process() {
                 />
               ))}
             </div>
-            <span className="text-[10px] font-mono tracking-[0.5em] text-white/20">Operational_Protocol_v.01</span>
+
           </div>
         </div>
       </div>

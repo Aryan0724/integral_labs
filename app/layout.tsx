@@ -24,6 +24,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-black text-foreground selection:bg-white selection:text-black`}>
         <SmoothScrollProvider>
           <Scene />
+          <div className="noise" />
           <Navbar />
           <main className="relative z-10">
             {children}

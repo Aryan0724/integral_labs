@@ -59,7 +59,7 @@ const Navbar = () => {
             </Link>
             <Link
               href="#contact"
-              className="group bg-white text-black px-6 h-12 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:bg-blue-500 hover:text-white transition-all duration-500"
+              className="group bg-white text-black px-6 h-12 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:bg-purple-600 hover:text-white transition-all duration-500"
             >
               Start Project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

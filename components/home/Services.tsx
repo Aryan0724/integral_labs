@@ -6,32 +6,32 @@ import { Globe, Layout, Cpu, Zap, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    title: "Web Development",
+    title: "Web Intelligence",
     description: "High-performance web applications that merge stunning design with flawless technical execution.",
     icon: Globe,
-    color: "from-blue-500/20 to-cyan-500/20",
-    tags: ["React", "Next.js", "TypeScript", "Performance"],
+    color: "from-purple-500/20 to-indigo-500/20",
+    tags: ["React", "Next.js", "Three.js", "Performance"],
   },
   {
-    title: "SaaS Development",
-    description: "Custom SaaS ecosystems engineered for rapid scale, secure data handling, and elite user experiences.",
+    title: "SaaS Ecosystems",
+    description: "Custom SaaS infrastructure engineered for rapid scale, secure data handling, and elite user experiences.",
     icon: Layout,
-    color: "from-purple-500/20 to-pink-500/20",
-    tags: ["Cloud Infrastructure", "API Design", "Security", "Scale"],
+    color: "from-fuchsia-500/20 to-purple-500/20",
+    tags: ["Cloud-Native", "API Systems", "High Security", "Scale"],
   },
   {
     title: "Machine Learning",
-    description: "Integrating intelligent automation and predictive analytics into your core business operations.",
+    description: "Integrating autonomous intelligence and predictive analytics into your core business operations.",
     icon: Cpu,
-    color: "from-orange-500/20 to-red-500/20",
-    tags: ["AI Integration", "Data Systems", "Automation", "LLMs"],
+    color: "from-blue-500/20 to-indigo-500/20",
+    tags: ["Neural Nets", "Data Strategy", "Autonomous Agents", "LLMs"],
   },
   {
-    title: "Automation Systems",
-    description: "Eliminating operational friction through custom workflow automation and intelligent system design.",
+    title: "System Automation",
+    description: "Eliminating operational friction through custom industrial-grade workflow automation.",
     icon: Zap,
-    color: "from-green-500/20 to-emerald-500/20",
-    tags: ["Workflows", "Internal Tools", "Efficiency", "Scripting"],
+    color: "from-indigo-500/20 to-blue-500/20",
+    tags: ["Smart Workflows", "Protocol Design", "Speed Optimization"],
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Services() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 mb-6"
+              className="text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 mb-6"
             >
               Capabilities
             </motion.div>
@@ -89,7 +89,7 @@ export default function Services() {
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-12">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
-                    <service.icon className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors" />
+                    <service.icon className="w-8 h-8 text-white group-hover:text-purple-400 transition-colors" />
                   </div>
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 45 }}
