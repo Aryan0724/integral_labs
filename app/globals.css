@@ -2,24 +2,23 @@
 @import "tailwindcss";
 
 /* ============================================
-   INTEGRAL LABS — GLOBAL DESIGN SYSTEM
-   Clean, premium, engineering-focused
+   INTEGRAL LABS — CORE DESIGN SYSTEM
+   Modern, Premium, Engineering-focused.
+   Inspired by Linear, Vercel, Apple.
    ============================================ */
 
 @layer base {
   :root {
-    --background: #080808;
-    --surface: #0f0f0f;
-    --surface-2: #141414;
-    --surface-3: #1a1a1a;
+    --background: #000000;
+    --surface: #0a0a0a;
+    --surface-2: #0f0f0f;
     --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
-    --text-primary: #f2f2f2;
-    --text-secondary: #888;
-    --text-tertiary: #555;
-    --accent: #6366f1; /* Indigo — single subtle accent */
-    --accent-dim: rgba(99, 102, 241, 0.12);
-    --accent-border: rgba(99, 102, 241, 0.2);
+    --border-hover: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-tertiary: #444444;
+    --accent: #6366f1;
+    --accent-dim: rgba(99, 102, 241, 0.08);
   }
 
   * {
@@ -33,13 +32,12 @@
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
+    scroll-behavior: auto !important; /* Lenis handles smoothing */
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 15px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 14px;
     line-height: 1.6;
     background: var(--background);
     color: var(--text-primary);
@@ -47,19 +45,8 @@
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.25);
-    color: #f2f2f2;
-  }
-
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--surface-3);
-    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
   }
 }
 
@@ -70,31 +57,32 @@
 .text-display {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
 .text-mono {
-  font-family: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
+  font-family: 'Geist Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+.text-tight {
+  max-width: 600px;
 }
 
 /* ============================================
-   LAYOUT
+   LAYOUT & CONTAINERS
    ============================================ */
 
 .container {
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .section-padding {
-  padding: 120px 0;
+  padding: 100px 0;
 }
-
-/* ============================================
-   SURFACES & GLASS
-   ============================================ */
 
 .surface {
   background: var(--surface);
@@ -107,21 +95,21 @@
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
 }
 
 /* ============================================
-   GRID TEXTURE
+   TEXTURES (Extremely Subtle)
    ============================================ */
 
 .grid-texture {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
 .noise-overlay {
@@ -129,127 +117,77 @@
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.015;
+  opacity: 0.012;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-.text-tight {
-  max-width: 60ch;
-}
-
 /* ============================================
-   ACCENT & BADGE
+   UI ELEMENTS
    ============================================ */
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
+  padding: 4px 10px;
+  border-radius: 6px;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: var(--text-secondary);
   border: 1px solid var(--border);
   background: var(--surface);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
-
-/* ============================================
-   BUTTONS
-   ============================================ */
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 13px;
-  font-weight: 500;
-  color: #fff;
-  background: var(--accent);
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
+  font-weight: 600;
+  background: #ffffff;
+  color: #000000;
+  transition: all 0.2s ease;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .btn-primary:hover {
-  opacity: 0.88;
+  background: #eeeeee;
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
   background: transparent;
+  color: var(--text-primary);
   border: 1px solid var(--border);
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+  transition: all 0.2s ease;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .btn-secondary:hover {
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
   border-color: var(--border-hover);
   transform: translateY(-1px);
 }
 
 /* ============================================
-   DIVIDER
+   ANIMATIONS (Restrained)
    ============================================ */
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-
-/* ============================================
-   KEYFRAMES
-   ============================================ */
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes float-card {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes scan-line {
-  0% { top: 0%; }
-  100% { top: 100%; }
-}
-
-@keyframes dash-flow {
-  from { stroke-dashoffset: 100; }
-  to { stroke-dashoffset: 0; }
+.animate-fade {
+  animation: fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

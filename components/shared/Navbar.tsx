@@ -8,8 +8,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Products", href: "/work" },
+  { label: "Systems", href: "/services" },
   { label: "Process", href: "/team" },
-  { label: "Philosophy", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -28,41 +28,37 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 pointer-events-none">
         <motion.div
-          initial={{ y: -20, opacity: 0 }}
+          initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`flex items-center justify-between gap-8 px-4 h-11 rounded-full border border-white/8 transition-all duration-500 pointer-events-auto ${
-            scrolled 
-              ? "bg-[#0d0d0d]/80 backdrop-blur-xl shadow-lg shadow-black/20 w-[92%] max-w-[500px]" 
-              : "bg-transparent w-[92%] max-w-[1100px]"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className={`flex items-center justify-between px-4 h-11 rounded-full border border-white/8 transition-all duration-500 pointer-events-auto bg-black/60 backdrop-blur-xl ${
+            scrolled ? "w-[92%] max-w-[480px] shadow-2xl" : "w-[92%] max-w-[1080px]"
           }`}
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="w-5 h-5 rounded bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-95 transition-transform">
+            <div className="w-5 h-5 rounded bg-white flex items-center justify-center flex-shrink-0">
               <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3">
-                <rect x="2" y="2" width="5" height="12" rx="1" fill="#080808" />
-                <rect x="9" y="8" width="5" height="6" rx="1" fill="#080808" />
+                <rect x="2" y="2" width="5" height="12" rx="1" fill="#000" />
+                <rect x="9" y="8" width="5" height="6" rx="1" fill="#000" />
                 <rect x="9" y="2" width="5" height="4" rx="1" fill="#6366f1" />
               </svg>
             </div>
             {!scrolled && (
-              <span className="text-[13px] font-semibold text-white tracking-tight">
-                Integral
+              <span className="text-[13px] font-bold text-white tracking-tight">
+                Integral Labs
               </span>
             )}
           </Link>
 
-          {/* Centered Nav (Visible on Desktop) */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Nav */}
+          <nav className="hidden md:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`px-3 py-1 text-[13px] font-medium transition-colors duration-200 ${
-                  pathname === link.href
-                    ? "text-white"
-                    : "text-[#666] hover:text-[#aaa]"
+                className={`px-3 py-1 text-[12px] font-semibold transition-colors duration-200 ${
+                  pathname === link.href ? "text-white" : "text-[#777] hover:text-[#bbb]"
                 }`}
               >
                 {link.label}
@@ -70,21 +66,17 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA / Right Side */}
+          {/* CTA */}
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className={`hidden md:flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-semibold transition-all duration-300 ${
-                scrolled
-                  ? "bg-white text-black hover:bg-[#eee]"
-                  : "bg-white/5 text-white hover:bg-white/10"
-              }`}
+              className="flex items-center gap-1 px-3 py-1 rounded-full bg-white text-black text-[11px] font-bold hover:bg-[#eee] transition-colors"
             >
               Start A Project
               <ArrowUpRight className="w-3 h-3" />
             </Link>
 
-            {/* Mobile toggle */}
+            {/* Mobile menu button */}
             <button
               className="md:hidden text-[#888] hover:text-white transition-colors p-1"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -95,47 +87,42 @@ export default function Navbar() {
         </motion.div>
       </header>
 
-      {/* Mobile menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md md:hidden flex items-center justify-center p-6"
             onClick={() => setMobileOpen(false)}
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
+            <motion.nav
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-20 left-4 right-4 bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 shadow-2xl"
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="w-full max-w-xs flex flex-col gap-6 text-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <nav className="flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-[18px] font-medium text-[#888] hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="mt-4 pt-4 border-t border-white/5">
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-2 h-12 rounded-xl bg-white text-black font-semibold text-sm"
-                  >
-                    Start A Project
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </nav>
-            </motion.div>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-2xl font-bold text-[#888] hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="mt-4 flex items-center justify-center gap-2 h-14 rounded-2xl bg-white text-black font-bold text-lg"
+              >
+                Start A Project
+                <ArrowUpRight className="w-5 h-5" />
+              </Link>
+            </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>

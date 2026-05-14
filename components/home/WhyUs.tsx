@@ -22,7 +22,7 @@ export default function Philosophy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-display text-[32px] sm:text-[48px] text-white mb-10 leading-[1.1]"
+            className="text-display text-[32px] sm:text-[48px] text-white mb-10"
           >
             Built With 
             <br />
@@ -34,13 +34,13 @@ export default function Philosophy() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-[18px] sm:text-[22px] text-[#888] leading-[1.6] tracking-tight"
+            className="text-[18px] sm:text-[20px] text-[#888] leading-[1.6] max-w-[600px] mx-auto"
           >
             We design software systems focused on{" "}
             <span className="text-white">usability</span>,{" "}
-            <span className="text-white">clarity</span>,{" "}
-            <span className="text-white">scalability</span>, and{" "}
-            <span className="text-white">long-term adaptability</span>.
+            <span className="text-white">scalability</span>,{" "}
+            <span className="text-white">performance</span>, and{" "}
+            <span className="text-white">long-term maintainability</span>.
           </motion.p>
         </div>
       </div>
