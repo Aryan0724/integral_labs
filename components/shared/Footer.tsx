@@ -2,118 +2,117 @@
 
 import React from "react";
 import Link from "next/link";
-import { Terminal, ArrowUpRight, Globe, Activity, Code2, Zap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GitHub, Twitter, LinkedIn } from "./SocialIcons";
-import { Logo } from "./Logo";
+
+const footerNav = [
+  {
+    label: "Products",
+    links: [
+      { label: "SaaS Platforms", href: "/services" },
+      { label: "AI Products", href: "/services" },
+      { label: "Automation", href: "/services" },
+      { label: "Frontend Systems", href: "/services" },
+    ],
+  },
+  {
+    label: "Studio",
+    links: [
+      { label: "Work", href: "/work" },
+      { label: "Process", href: "/about" },
+      { label: "Philosophy", href: "/about" },
+      { label: "Team", href: "/team" },
+    ],
+  },
+  {
+    label: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Careers", href: "/contact" },
+    ],
+  },
+  {
+    label: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="relative py-32 bg-[#0A0A0A] border-t border-white/5 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-purple-600/5 blur-[150px] rounded-full opacity-20" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <Link href="/">
-              <Logo className="mb-10" />
+    <footer className="border-t border-white/5 bg-[#080808]">
+      <div className="container">
+        {/* Top: logo + nav */}
+        <div className="grid grid-cols-2 md:grid-cols-[1fr_repeat(4,auto)] gap-8 py-14">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2.5 group mb-4">
+              <div className="w-6 h-6 rounded-md bg-white flex items-center justify-center flex-shrink-0">
+                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
+                  <rect x="2" y="2" width="5" height="12" rx="1" fill="#080808" />
+                  <rect x="9" y="8" width="5" height="6" rx="1" fill="#080808" />
+                  <rect x="9" y="2" width="5" height="4" rx="1" fill="#6366f1" />
+                </svg>
+              </div>
+              <span className="text-[13px] font-semibold text-white tracking-tight">Integral Labs</span>
             </Link>
-            <p className="text-white/40 text-lg font-light leading-relaxed mb-10 max-w-sm tracking-tight">
-              A premium digital studio crafting high-performance software and industrial-grade intelligence for the next generation of founders.
+            <p className="text-[12px] text-[#555] leading-[1.7] max-w-[220px] mb-5">
+              A modern engineering and intelligent systems studio.
             </p>
-            <div className="flex items-center gap-4">
-              <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all">
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all">
-                <GitHub className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all">
-                <LinkedIn className="w-5 h-5" />
-              </Link>
+            <div className="flex items-center gap-3">
+              {[
+                { Icon: GitHub, href: "#" },
+                { Icon: Twitter, href: "#" },
+                { Icon: LinkedIn, href: "#" },
+              ].map(({ Icon, href }, i) => (
+                <Link
+                  key={i}
+                  href={href}
+                  className="w-7 h-7 rounded-md border border-white/8 bg-[#111] flex items-center justify-center text-[#555] hover:text-white hover:border-white/15 transition-all"
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="md:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-10">Studio</h4>
-            <ul className="space-y-6">
-              {[
-                { name: "Archive", href: "/work" },
-                { name: "Services", href: "/services" },
-                { name: "Our Story", href: "/about" },
-                { name: "Architects", href: "/team" }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-white/40 text-sm hover:text-white transition-colors font-medium flex items-center gap-2 group tracking-tight">
-                    {item.name} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all -translate-y-1 translate-x-1" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-10">Intelligence</h4>
-            <ul className="space-y-6">
-              {[
-                { name: "Research", href: "/research" },
-                { name: "Ecosystem", href: "/ecosystem" },
-                { name: "Vision", href: "/vision" },
-                { name: "Contact", href: "/contact" }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-white/40 text-sm hover:text-white transition-colors font-medium flex items-center gap-2 group tracking-tight">
-                    {item.name} <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all -translate-y-1 translate-x-1" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Status Column */}
-          <div className="md:col-span-4">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-10">System Status</h4>
-            <div className="glass p-8 rounded-[40px] border-white/5 space-y-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-6 opacity-10">
-                <Zap className="w-12 h-12 text-purple-500" />
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/20">Studio Node</span>
-                <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-green-500">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  Operational
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/20">Response Latency</span>
-                <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/60">0.024 MS</span>
-              </div>
-              <div className="pt-6 border-t border-white/5">
-                <div className="flex items-center gap-3">
-                  <Terminal className="w-4 h-4 text-purple-500" />
-                  <span className="text-[9px] font-mono text-white/20 tracking-wider">SECURED_BY_INTEGRAL_SHIELD_v2.4</span>
-                </div>
-              </div>
+          {/* Nav cols */}
+          {footerNav.map((col) => (
+            <div key={col.label}>
+              <div className="text-[11px] font-medium text-[#444] uppercase tracking-wider mb-4">{col.label}</div>
+              <ul className="space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[13px] text-[#555] hover:text-[#999] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-[10px] font-black uppercase tracking-[0.5em] text-white/10">
-            © 2026 INTEGRAL LABS • BUILT FOR INDUSTRIAL SCALE
-          </div>
-          <div className="flex items-center gap-10">
-            <Link href="#" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-all">Privacy</Link>
-            <Link href="#" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-all">Terms</Link>
-            <Link href="#" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-all">Sitemap</Link>
-          </div>
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-5 border-t border-white/5">
+          <p className="text-[11px] text-[#444]">
+            © 2026 Integral Labs. All rights reserved.
+          </p>
+          <Link
+            href="/contact"
+            className="flex items-center gap-1.5 text-[11px] text-[#555] hover:text-white transition-colors group"
+          >
+            hello@integralgroups.in
+            <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </div>
       </div>
     </footer>
   );
 }
-

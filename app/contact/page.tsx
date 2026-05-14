@@ -2,132 +2,122 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Zap, ArrowRight, MessageSquare, Globe } from "lucide-react";
-import Link from "next/link";
+import { Mail, Globe, Send, MessageSquare, ArrowUpRight } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[10%] right-0 w-[800px] h-[800px] bg-purple-600/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[10%] left-0 w-[800px] h-[800px] bg-blue-600/5 blur-[150px] rounded-full" />
-        <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      </div>
+    <div className="min-h-screen pt-28 pb-24">
+      {/* Subtle background */}
+      <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20">
+      <div className="container relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           {/* Info Side */}
-          <div className="lg:w-1/3">
+          <div className="lg:w-[400px]">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="badge mb-6"
             >
-              <MessageSquare className="w-3 h-3 text-purple-500" />
-              <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/50">Transmission Center</span>
+              Contact Us
             </motion.div>
             
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-display text-5xl md:text-7xl font-black text-white mb-10 leading-[0.9]"
+              transition={{ duration: 0.6, delay: 0.06 }}
+              className="text-display text-[40px] sm:text-[52px] text-white mb-8 leading-[1.1]"
             >
-              INITIATE <br />
-              <span className="text-gradient-purple italic font-medium">DEPLOYMENT.</span>
+              Start A
+              <br />
+              Project.
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-white/40 leading-relaxed mb-16 font-light tracking-tight"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.12 }}
+              className="text-[15px] text-[#888] leading-[1.8] mb-12"
             >
-              Ready to architect the next standard of digital intelligence? 
-              Reach out and let&apos;s build the future together.
+              Ready to architect the next standard of digital systems? 
+              Reach out and let&apos;s build better software together.
             </motion.p>
 
-            <div className="space-y-12">
-               <div className="flex items-center gap-6 group cursor-pointer">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-purple-600/20 group-hover:border-purple-500/50 transition-all">
-                     <Mail className="w-6 h-6 text-purple-500" />
+            <div className="space-y-8">
+               <div className="flex items-start gap-5 group cursor-pointer">
+                  <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center group-hover:border-white/15 transition-all">
+                     <Mail className="w-4 h-4 text-[#6366f1]" />
                   </div>
                   <div>
-                     <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] block mb-1">Email Interface</span>
-                     <span className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">hello@integralgroups.in</span>
+                     <span className="text-[11px] font-medium text-[#444] uppercase tracking-wider block mb-1">Email</span>
+                     <span className="text-[15px] font-medium text-white group-hover:text-[#6366f1] transition-colors">hello@integralgroups.in</span>
                   </div>
                </div>
 
-               <div className="flex items-center gap-6 group cursor-pointer">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all">
-                     <Globe className="w-6 h-6 text-blue-500" />
+               <div className="flex items-start gap-5 group cursor-pointer">
+                  <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center group-hover:border-white/15 transition-all">
+                     <Globe className="w-4 h-4 text-[#6366f1]" />
                   </div>
                   <div>
-                     <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] block mb-1">Global Node</span>
-                     <span className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Based in Bangalore, India</span>
+                     <span className="text-[11px] font-medium text-[#444] uppercase tracking-wider block mb-1">Location</span>
+                     <span className="text-[15px] font-medium text-white group-hover:text-[#6366f1] transition-colors">Bangalore, India</span>
                   </div>
                </div>
             </div>
           </div>
 
           {/* Form Side */}
-          <div className="lg:w-2/3">
+          <div className="flex-1">
              <motion.div 
-               initial={{ opacity: 0, y: 40 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.6 }}
-               className="glass p-10 md:p-20 rounded-[60px] border-white/5 shadow-2xl relative overflow-hidden"
+               initial={{ opacity: 0, x: 20 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="surface-2 p-8 md:p-12 rounded-2xl border border-white/6"
              >
-                <div className="absolute top-0 right-0 p-10">
-                   <Zap className="w-10 h-10 text-white/5" />
-                </div>
-
-                <form className="space-y-8 relative z-10">
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                         <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Full Name</label>
+                <form className="space-y-8">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2.5">
+                         <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Full Name</label>
                          <input 
                            type="text" 
-                           placeholder="Enter your name"
-                           className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder:text-white/10 focus:outline-none focus:border-purple-500/50 transition-all"
+                           placeholder="John Doe"
+                           className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all"
                          />
                       </div>
-                      <div className="space-y-3">
-                         <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Email Address</label>
+                      <div className="space-y-2.5">
+                         <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Email Address</label>
                          <input 
                            type="email" 
-                           placeholder="Enter your email"
-                           className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder:text-white/10 focus:outline-none focus:border-purple-500/50 transition-all"
+                           placeholder="john@company.com"
+                           className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all"
                          />
                       </div>
                    </div>
 
-                   <div className="space-y-3">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Project Category</label>
-                      <div className="flex flex-wrap gap-4">
-                         {["Web Dev", "AI/ML", "Automation", "Branding"].map(cat => (
-                           <button key={cat} type="button" className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-xs font-bold text-white/40 hover:border-purple-500/50 hover:text-white transition-all uppercase tracking-widest">{cat}</button>
+                   <div className="space-y-4">
+                      <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">What can we help with?</label>
+                      <div className="flex flex-wrap gap-2">
+                         {["SaaS Platforms", "AI Products", "Automation", "Interface Design"].map(cat => (
+                           <button key={cat} type="button" className="px-4 py-2 rounded-lg border border-white/8 bg-[#080808] text-[12px] font-medium text-[#555] hover:border-[#6366f1]/40 hover:text-white transition-all">{cat}</button>
                          ))}
                       </div>
                    </div>
 
-                   <div className="space-y-3">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Project Brief</label>
+                   <div className="space-y-2.5">
+                      <label className="text-[11px] font-medium text-[#444] uppercase tracking-wider ml-1">Project Brief</label>
                       <textarea 
-                        rows={6}
-                        placeholder="Describe your vision..."
-                        className="w-full bg-white/5 border border-white/10 rounded-[32px] px-8 py-6 text-white placeholder:text-white/10 focus:outline-none focus:border-purple-500/50 transition-all resize-none"
+                        rows={5}
+                        placeholder="Tell us about your goals and timeline..."
+                        className="w-full bg-[#080808] border border-white/8 rounded-xl px-5 py-4 text-[14px] text-white placeholder:text-[#333] focus:outline-none focus:border-[#6366f1]/50 transition-all resize-none"
                       />
                    </div>
 
                    <button 
                      type="submit"
-                     className="group w-full h-24 bg-white text-black rounded-full flex items-center justify-center gap-4 hover:scale-105 active:scale-95 transition-all shadow-2xl overflow-hidden relative"
+                     className="btn-primary w-full py-4 text-[14px] flex justify-center"
                    >
-                      <div className="absolute inset-0 bg-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                      <span className="text-sm font-black uppercase tracking-[0.3em] relative z-10 group-hover:text-white transition-colors">Send Transmission</span>
-                      <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:text-white transition-all" />
+                      Send Message
+                      <ArrowUpRight className="w-4 h-4" />
                    </button>
                 </form>
              </motion.div>

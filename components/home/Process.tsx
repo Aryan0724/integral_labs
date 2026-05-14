@@ -2,117 +2,110 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, Layers, Code2, Rocket, Activity, Terminal } from "lucide-react";
 
 const steps = [
-  { 
-    title: "Discovery", 
-    desc: "Mapping project goals and technical constraints.",
-    icon: Search, 
-    color: "text-purple-400" 
+  {
+    number: "01",
+    title: "Research",
+    description: "Define scope, constraints, and user needs. Validate assumptions with real data before writing any code.",
   },
-  { 
-    title: "Architecture", 
-    desc: "Designing the systems for infinite scale.",
-    icon: Layers, 
-    color: "text-blue-400" 
+  {
+    number: "02",
+    title: "UX",
+    description: "Map user flows, information architecture, and interaction patterns. Design for clarity before aesthetics.",
   },
-  { 
-    title: "Development", 
-    desc: "Precision engineering with modern stacks.",
-    icon: Code2, 
-    color: "text-fuchsia-400" 
+  {
+    number: "03",
+    title: "Design",
+    description: "High-fidelity interfaces with consistent design tokens, component systems, and responsive layouts.",
   },
-  { 
-    title: "Deployment", 
-    desc: "Seamless rollout to global edge infrastructure.",
-    icon: Rocket, 
-    color: "text-emerald-400" 
+  {
+    number: "04",
+    title: "Development",
+    description: "Clean, maintainable code with proper abstractions, testing, and performance optimization baked in.",
+  },
+  {
+    number: "05",
+    title: "Scale",
+    description: "Production hardening, monitoring, CI/CD pipelines, and documentation for long-term maintainability.",
   },
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="relative py-48 bg-[#0A0A0A] overflow-hidden border-t border-white/5">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-40">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
-          >
-            <Activity className="w-3 h-3 text-purple-500" />
-            <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white/50">The Protocol</span>
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-display text-5xl md:text-8xl font-black text-white mb-10 uppercase tracking-tighter"
-          >
-            SYSTEM <span className="text-gradient-purple italic font-medium">LIFECYCLE.</span>
-          </motion.h2>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto">
-          {/* Animated Connecting Line */}
-          <div className="absolute top-[50px] left-0 w-full h-[1px] hidden lg:block overflow-hidden">
-            <div className="absolute inset-0 bg-white/5 border-b border-dashed border-white/10" />
-            <motion.div 
-              initial={{ x: "-100%" }}
-              whileInView={{ x: "100%" }}
+    <section className="section-padding border-t border-white/5">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16 items-start">
+          {/* Left */}
+          <div className="lg:sticky lg:top-28">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent w-1/2 h-full"
-            />
+              className="badge mb-4"
+            >
+              Process
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+              className="text-display text-[30px] sm:text-[36px] text-white mb-4"
+            >
+              How We
+              <br />Build
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-[13px] text-[#666] leading-[1.7]"
+            >
+              Every system is built through a structured process focused on
+              usability, scalability, engineering quality, and long-term
+              maintainability.
+            </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 relative z-10">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.1 }}
-                className="flex flex-col items-center text-center group"
-              >
-                <div className="w-24 h-24 rounded-[40px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center mb-10 relative z-20 group-hover:border-purple-500/50 group-hover:scale-110 group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)] transition-all duration-700">
-                  <div className="absolute inset-0 bg-white/[0.02] rounded-[40px] group-hover:bg-purple-600/5 transition-colors" />
-                  <step.icon className={`w-10 h-10 relative z-10 ${step.color} group-hover:text-white transition-colors`} />
-                  
-                  {/* Step Number Badge */}
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-black text-white/30 group-hover:bg-purple-500 group-hover:text-white transition-all">
-                    0{i + 1}
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-black uppercase tracking-tighter text-white mb-6 group-hover:text-purple-400 transition-colors">{step.title}</h3>
-                <p className="text-white/40 text-lg font-light leading-relaxed max-w-[240px] tracking-tight group-hover:text-white/60 transition-colors">
-                  {step.desc}
-                </p>
+          {/* Right: Steps */}
+          <div className="relative">
+            {/* Vertical connector line */}
+            <div className="absolute left-[19px] top-8 bottom-8 w-px bg-white/5" />
 
-                {/* Animated Pulse Decoration */}
-                <div className="mt-12 relative">
-                   <div className="w-2 h-2 rounded-full bg-purple-500/30" />
-                   <motion.div 
-                    animate={{ scale: [1, 3], opacity: [0.5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 w-2 h-2 rounded-full bg-purple-500/50"
-                   />
-                </div>
-              </motion.div>
-            ))}
+            <div className="flex flex-col gap-0">
+              {steps.map((step, i) => (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.07 }}
+                  className="group flex gap-6 py-6 border-b border-white/5 last:border-0 cursor-default"
+                >
+                  {/* Step dot */}
+                  <div className="relative flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-full bg-[#111] border border-white/8 flex items-center justify-center group-hover:border-[#6366f1]/30 transition-colors duration-300">
+                      <span className="text-mono text-[11px] text-[#555] group-hover:text-[#6366f1] transition-colors">{step.number}</span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 pt-1">
+                    <h3 className="text-[14px] font-semibold text-white mb-1.5 group-hover:text-[#a5b4fc] transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-[13px] text-[#666] leading-[1.65]">
+                      {step.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

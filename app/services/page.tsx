@@ -6,124 +6,110 @@ import {
   Code2, 
   Cpu, 
   Zap, 
-  Globe, 
   Shield, 
-  Search, 
-  Terminal, 
-  Database, 
-  Layers,
-  ArrowRight,
+  ArrowUpRight,
   ChevronRight
 } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    title: "Digital Product Engineering",
-    category: "ENGINEERING",
-    icon: <Code2 className="w-8 h-8" />,
-    color: "from-blue-500 to-cyan-400",
-    description: "Building high-performance, scalable web applications and SaaS platforms using modern architectural patterns.",
+    title: "SaaS & Product Systems",
+    category: "Engineering",
+    icon: <Code2 className="w-5 h-5 text-[#6366f1]" />,
+    description: "Building high-performance, scalable web applications and SaaS platforms using modern architectural patterns and robust type-safety.",
     capabilities: ["Next.js & React Systems", "Distributed Microservices", "Real-time Architecture", "Full-stack Excellence"]
   },
   {
-    title: "Applied AI & Machine Intelligence",
-    category: "INTELLIGENCE",
-    icon: <Cpu className="w-8 h-8" />,
-    color: "from-purple-600 to-fuchsia-500",
-    description: "Deploying custom LLM integrations, predictive models, and autonomous agents that drive real business value.",
+    title: "Applied Intelligence",
+    category: "Intelligence",
+    icon: <Cpu className="w-5 h-5 text-[#6366f1]" />,
+    description: "Deploying custom LLM integrations, predictive models, and autonomous agents that drive real business value and operational efficiency.",
     capabilities: ["Custom LLM Training", "Neural Infrastructure", "Data Intelligence", "Autonomous Agents"]
   },
   {
-    title: "Industrial Automation Systems",
-    category: "AUTOMATION",
-    icon: <Zap className="w-8 h-8" />,
-    color: "from-amber-500 to-orange-400",
-    description: "Architecting complex workflow automations and infrastructure-as-code that eliminate operational bottlenecks.",
+    title: "Automation Infrastructure",
+    category: "Automation",
+    icon: <Zap className="w-5 h-5 text-[#6366f1]" />,
+    description: "Architecting complex workflow automations and infrastructure-as-code that eliminate operational bottlenecks and human error.",
     capabilities: ["Workflow Orchestration", "CI/CD Automation", "Infrastructure Management", "Legacy Modernization"]
   },
   {
-    title: "Cyber-Security & Data Sovereignty",
-    category: "SECURITY",
-    icon: <Shield className="w-8 h-8" />,
-    color: "from-emerald-500 to-teal-400",
-    description: "Ensuring your digital assets are protected by military-grade security protocols and redundant fail-safes.",
-    capabilities: ["Security Auditing", "Data Encryption", "Compliance Systems", "Zero Trust Architecture"]
+    title: "Interface Engineering",
+    category: "UX/UI",
+    icon: <Shield className="w-5 h-5 text-[#6366f1]" />,
+    description: "Premium frontend engineering and design systems built for modern usability, performance, and cross-platform consistency.",
+    capabilities: ["Design System Ops", "Motion Engineering", "Accessibility Systems", "Product Strategy"]
   }
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[20%] right-0 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[20%] left-0 w-[600px] h-[600px] bg-blue-600/5 blur-[150px] rounded-full" />
-        <div className="absolute inset-0 bg-grid opacity-[0.03]" />
-      </div>
+    <div className="min-h-screen pt-28 pb-24">
+      {/* Subtle background */}
+      <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10">
         {/* Header */}
-        <div className="max-w-4xl mb-32">
+        <div className="max-w-[600px] mb-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="badge mb-6"
           >
-            <Terminal className="w-3 h-3 text-purple-500" />
-            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/50">Service Capabilities</span>
+            Studio Capabilities
           </motion.div>
           
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-5xl md:text-8xl font-black text-white mb-10 leading-[0.9]"
+            transition={{ duration: 0.6, delay: 0.06 }}
+            className="text-display text-[40px] sm:text-[56px] text-white mb-8 leading-[1.1]"
           >
-            THE <span className="text-gradient-purple italic">CAPABILITIES</span> <br />
-            ECOSYSTEM.
+            Engineering
+            <br />
+            Modern Systems.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-2xl font-light tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
+            className="text-[16px] text-[#888] leading-[1.8]"
           >
-            We provide the technical horsepower required to scale ideas into industrial-grade digital empires.
+            We provide the technical horsepower and product thinking required 
+            to scale software systems from initial concept to industrial-grade deployment.
           </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-32">
           {services.map((service, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative glass p-12 rounded-[50px] border-white/5 hover:border-purple-500/30 transition-all duration-700"
+              className="group surface-2 p-10 rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-500"
             >
-              {/* Service Icon & Category */}
-              <div className="flex justify-between items-start mb-12">
-                <div className={`w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center group-hover:bg-gradient-to-br ${service.color} transition-all duration-700`}>
-                  <div className="text-white group-hover:scale-110 transition-transform duration-700">
-                    {service.icon}
-                  </div>
+              {/* Header */}
+              <div className="flex justify-between items-start mb-10">
+                <div className="w-12 h-12 rounded-xl bg-[#111] border border-white/8 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  {service.icon}
                 </div>
-                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] pt-2">{service.category}</span>
+                <span className="text-[11px] font-medium text-[#444] uppercase tracking-wider pt-2">{service.category}</span>
               </div>
 
               {/* Content */}
-              <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-purple-400 transition-colors">{service.title}</h3>
-              <p className="text-white/40 mb-10 text-lg leading-relaxed font-light tracking-tight">{service.description}</p>
+              <h3 className="text-[20px] font-semibold text-white mb-4 tracking-tight group-hover:text-white transition-colors">{service.title}</h3>
+              <p className="text-[14px] text-[#666] mb-8 leading-[1.7]">{service.description}</p>
 
               {/* Capabilities List */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
                 {service.capabilities.map((cap, j) => (
-                  <div key={j} className="flex items-center gap-3 text-sm text-white/60">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500/50" />
+                  <div key={j} className="flex items-center gap-2.5 text-[12px] text-[#555] group-hover:text-[#888] transition-colors">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/40" />
                     {cap}
                   </div>
                 ))}
@@ -132,34 +118,28 @@ export default function ServicesPage() {
               {/* CTA */}
               <Link 
                 href="/contact"
-                className="inline-flex items-center gap-3 text-[10px] font-black text-white uppercase tracking-[0.3em] group/btn"
+                className="btn-secondary py-2.5 px-6 text-[12px] group/btn"
               >
                 Inquire Deployment 
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-white group-hover/btn:text-black transition-all">
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </div>
+                <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </Link>
-
-              {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/5 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </motion.div>
           ))}
         </div>
 
-        {/* Process CTA */}
-        <div className="glass p-16 md:p-32 rounded-[80px] text-center border-white/5 relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid opacity-[0.05]" />
+        {/* Final CTA - Minimalist */}
+        <div className="relative rounded-2xl border border-white/6 bg-[#0d0d0d] p-12 md:p-24 text-center overflow-hidden">
+          <div className="absolute inset-0 grid-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center">
-            <h2 className="text-4xl md:text-7xl font-black text-white mb-10 uppercase tracking-tighter leading-[0.9]">
-              READY TO <br />
-              <span className="text-gradient-purple italic">INDUSTRIALIZE?</span>
+            <h2 className="text-display text-[32px] md:text-[44px] text-white mb-8 leading-[1.1]">
+              Ready to Build Better?
             </h2>
             <Link 
               href="/contact"
-              className="h-24 bg-white text-black px-20 rounded-full flex items-center justify-center gap-4 hover:scale-105 active:scale-95 transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)]"
+              className="btn-primary py-3 px-12 text-[14px]"
             >
-              <span className="text-sm font-black uppercase tracking-widest">Execute Proposal</span>
-              <Zap className="w-5 h-5 fill-black" />
+              Start A Project
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

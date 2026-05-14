@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ExternalLink, Filter, Code2, Cpu, Zap, Globe, Activity } from "lucide-react";
-import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const projects = [
   {
@@ -12,154 +12,156 @@ const projects = [
     title: "Aether Intelligence",
     category: "AI / ML",
     image: "/work/aether.png",
-    description: "Industrial-grade supply chain optimization platform driven by autonomous neural agents and real-time predictive analytics.",
-    tags: ["LLM Agents", "Neural Networks", "Data Intel"],
-    color: "from-purple-500/20 to-transparent"
+    description:
+      "Autonomous supply chain intelligence with real-time ML inference and predictive analytics dashboards.",
+    tags: ["FastAPI", "PyTorch", "Next.js"],
+    year: "2025",
   },
   {
     id: 2,
     title: "Lumina OS",
-    category: "PRODUCT",
+    category: "Product",
     image: "/work/lumina.png",
-    description: "A premium, glassmorphic operating system interface designed for high-performance creative studios and digital architects.",
-    tags: ["Next.js", "Glassmorphism", "Motion"],
-    color: "from-blue-500/20 to-transparent"
+    description:
+      "Modern operating interface for creative studios — file management, collaboration, and workspace tooling.",
+    tags: ["React", "Electron", "Supabase"],
+    year: "2025",
   },
   {
     id: 3,
     title: "Vortex Finance",
-    category: "FINTECH",
+    category: "FinTech",
     image: "/work/vortex.png",
-    description: "Decentralized liquidity protocol featuring advanced 3D visualization of capital flows and automated risk management.",
-    tags: ["DeFi", "Web3", "Capital Flow"],
-    color: "from-amber-500/20 to-transparent"
+    description:
+      "Automated financial operations platform with real-time reconciliation, ledger systems, and reporting.",
+    tags: ["TypeScript", "PostgreSQL", "Plaid"],
+    year: "2024",
   },
   {
     id: 4,
     title: "Nexus Systems",
-    category: "IOT / AUTOMATION",
+    category: "IoT",
     image: "/work/nexus.png",
-    description: "Rugged IoT monitoring dashboard for industrial factory floor management, featuring real-time sensor fusion.",
-    tags: ["IoT Core", "Sensor Fusion", "Real-time"],
-    color: "from-red-500/20 to-transparent"
-  }
+    description:
+      "Industrial IoT monitoring system with sensor fusion, alerting, and edge compute orchestration.",
+    tags: ["Python", "MQTT", "InfluxDB"],
+    year: "2024",
+  },
 ];
 
-const categories = ["ALL", "AI / ML", "PRODUCT", "FINTECH", "IOT / AUTOMATION"];
+const categories = ["All", "AI / ML", "Product", "FinTech", "IoT"];
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [active, setActive] = useState("All");
 
-  const filteredProjects = activeCategory === "ALL" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const filtered =
+    active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-40 pb-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[10%] left-0 w-[800px] h-[800px] bg-purple-600/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[10%] right-0 w-[800px] h-[800px] bg-blue-600/5 blur-[150px] rounded-full" />
-        <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <div className="min-h-screen pt-28 pb-24">
+      <div className="container">
         {/* Header */}
-        <div className="max-w-4xl mb-32">
+        <div className="max-w-[560px] mb-14">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
-          >
-            <Activity className="w-3 h-3 text-purple-500" />
-            <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white/50">Production Archive</span>
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-5xl md:text-8xl font-black text-white mb-12 leading-[0.9] tracking-tighter uppercase"
+            className="badge mb-4"
           >
-            SELECTED <br />
-            <span className="text-gradient-purple italic font-medium">DEPLOYMENTS.</span>
+            Selected Work
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.06 }}
+            className="text-display text-[36px] sm:text-[48px] text-white mb-4"
+          >
+            Product Archive
           </motion.h1>
-
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/40 font-light leading-relaxed max-w-2xl tracking-tight"
+            transition={{ delay: 0.12 }}
+            className="text-[14px] text-[#666] leading-[1.7]"
           >
-            A curated archive of high-performance systems and cinematic digital experiences 
-            engineered for the world&apos;s most ambitious founders.
+            A selection of systems and interfaces built for real operational use.
           </motion.p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-4 mb-32 border-b border-white/5 pb-12">
-          {categories.map((cat, i) => (
+        {/* Filter tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.16 }}
+          className="flex flex-wrap gap-1.5 mb-12 pb-10 border-b border-white/5"
+        >
+          {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-700 border ${
-                activeCategory === cat 
-                  ? "bg-white text-black border-white shadow-[0_0_50px_rgba(255,255,255,0.15)] scale-105" 
-                  : "bg-white/5 text-white/40 border-white/10 hover:border-white/30 hover:text-white"
+              onClick={() => setActive(cat)}
+              className={`text-[12px] px-3.5 py-1.5 rounded-lg transition-all duration-200 ${
+                active === cat
+                  ? "bg-white/8 text-white border border-white/10"
+                  : "text-[#555] hover:text-[#999] border border-transparent"
               }`}
             >
               {cat}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, i) => (
+            {filtered.map((project, i) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8, delay: i * 0.1 }}
-                className="group relative"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group surface rounded-xl overflow-hidden hover:border-white/10 transition-all duration-300"
+                style={{ borderColor: "var(--border)" }}
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[60px] border border-white/10 bg-white/[0.01] mb-12 transition-all duration-700 group-hover:border-purple-500/30 group-hover:shadow-[0_0_80px_-12px_rgba(124,58,237,0.2)]">
-                  {/* Image */}
-                  <Image 
-                    src={project.image} 
+                {/* Image */}
+                <div className="relative h-[220px] bg-[#111] overflow-hidden">
+                  <Image
+                    src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-[2000ms] group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                    className="object-cover opacity-70 group-hover:opacity-90 group-hover:scale-[1.02] transition-all duration-500"
                   />
-                  {/* Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-                  
-                  {/* View Project Button */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center scale-50 group-hover:scale-100 transition-transform duration-700 shadow-3xl">
-                       <ArrowRight className="w-10 h-10 text-black -rotate-45" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/80 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="badge text-[10px]">{project.category}</span>
+                  </div>
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="glass w-8 h-8 rounded-lg flex items-center justify-center">
+                      <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                     </div>
                   </div>
                 </div>
 
-                {/* Info */}
-                <div className="px-6">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <span className="text-[10px] font-black text-purple-500 uppercase tracking-[0.5em] mb-3 block">{project.category}</span>
-                      <h3 className="text-4xl font-black text-white uppercase tracking-tighter group-hover:text-purple-400 transition-colors">{project.title}</h3>
-                    </div>
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <h3 className="text-[14px] font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <span className="text-[11px] text-[#444] font-mono">{project.year}</span>
                   </div>
-                  <p className="text-white/40 text-lg leading-relaxed font-light tracking-tight max-w-xl group-hover:text-white/60 transition-colors mb-8">
+                  <p className="text-[13px] text-[#666] leading-[1.6] mb-4">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-3">
-                     {project.tags.map(tag => (
-                       <span key={tag} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[9px] font-black text-white/20 uppercase tracking-[0.2em] group-hover:text-white/40 transition-colors">{tag}</span>
-                     ))}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono text-[#555] bg-[#111] border border-white/5 px-2 py-0.5 rounded"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>
@@ -167,25 +169,18 @@ export default function WorkPage() {
           </AnimatePresence>
         </div>
 
-        {/* Footer CTA */}
-        <div className="mt-60 glass p-20 md:p-32 rounded-[80px] border-white/5 flex flex-col items-center text-center shadow-3xl relative overflow-hidden group">
-          <div className="absolute inset-0 bg-grid opacity-[0.05]" />
-          <div className="relative z-10">
-            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.6em] mb-12">Industrial Architecture</p>
-            <h2 className="text-4xl md:text-7xl font-black text-white mb-16 uppercase tracking-tighter">WANT TO BUILD <br /> <span className="text-gradient-purple italic font-medium">THE NEXT STANDARD?</span></h2>
-            <Link 
-              href="/contact"
-              className="group h-24 bg-white text-black px-20 rounded-full inline-flex items-center justify-center gap-6 hover:scale-105 active:scale-95 transition-all shadow-2xl"
-            >
-              <span className="text-sm font-black uppercase tracking-[0.2em]">Deploy Now</span>
-              <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center group-hover:rotate-45 transition-transform">
-                <ArrowRight className="w-5 h-5 text-white" />
-              </div>
-            </Link>
+        {/* Bottom CTA */}
+        <div className="mt-20 pt-14 border-t border-white/5 flex items-center justify-between">
+          <div>
+            <p className="text-[14px] text-white font-medium mb-1">Have a project in mind?</p>
+            <p className="text-[13px] text-[#555]">We work with a limited number of partners each quarter.</p>
           </div>
+          <Link href="/contact" className="btn-primary">
+            Start A Project
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
     </div>
   );
 }
-

@@ -2,125 +2,120 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Cpu, Zap, Globe, Shield, Rocket, Target, Users } from "lucide-react";
+import { ArrowRight, Target, Rocket, Shield, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full" />
-        <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      </div>
+    <div className="min-h-screen pt-28 pb-24">
+      {/* Subtle background */}
+      <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10">
         {/* Hero Section */}
-        <div className="max-w-4xl mb-32">
+        <div className="max-w-[720px] mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
+            className="badge mb-6"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]" />
-            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/50">Our Identity</span>
+            Our Identity
           </motion.div>
           
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-5xl md:text-8xl font-black text-white mb-10 leading-[0.9]"
+            transition={{ duration: 0.6, delay: 0.06 }}
+            className="text-display text-[40px] sm:text-[56px] text-white mb-8 leading-[1.1]"
           >
-            WE ARE THE <br />
-            <span className="text-gradient-purple italic font-medium">ENGINEERING</span> <br />
-            STANDARD.
+            We Are The
+            <br />
+            Engineering Standard.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-2xl font-light tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
+            className="text-[16px] text-[#888] leading-[1.8] max-w-[600px]"
           >
-            Integral Labs is more than a studio. We are a high-performance collective of engineers, 
-            designers, and AI specialists dedicated to building the industrial-grade infrastructure 
-            of the digital future.
+            Integral Labs is a high-performance collective of engineers, 
+            designers, and product specialists dedicated to building the industrial-grade 
+            infrastructure of modern digital platforms.
           </motion.p>
         </div>
 
         {/* Vision Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
           {[
             {
-              icon: <Target className="w-8 h-8 text-purple-500" />,
-              title: "THE MISSION",
-              desc: "To accelerate human progress by deploying intelligent, industrial-grade software systems that solve complex global challenges."
+              icon: <Target className="w-5 h-5 text-[#6366f1]" />,
+              title: "The Mission",
+              desc: "To accelerate business execution by deploying intelligent software systems that solve complex operational challenges."
             },
             {
-              icon: <Rocket className="w-8 h-8 text-blue-500" />,
-              title: "THE VISION",
+              icon: <Rocket className="w-5 h-5 text-[#6366f1]" />,
+              title: "The Vision",
               desc: "Becoming the primary architectural layer for the world's most advanced digital ecosystems and AI-driven platforms."
             },
             {
-              icon: <Shield className="w-8 h-8 text-purple-500" />,
-              title: "THE STANDARD",
-              desc: "Uncompromising quality, military-grade security, and performance that defines the absolute edge of what's possible."
+              icon: <Shield className="w-5 h-5 text-[#6366f1]" />,
+              title: "The Standard",
+              desc: "Uncompromising quality, scalable architecture, and performance that defines the benchmark of modern software."
             }
           ].map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="glass p-10 rounded-[40px] border-white/5 hover:border-purple-500/30 transition-all group"
+              transition={{ delay: i * 0.1 }}
+              className="surface-2 p-10 rounded-2xl border border-white/5 group hover:border-white/10 transition-all duration-300"
             >
-              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-lg bg-[#111] border border-white/8 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-black text-white mb-4 tracking-widest uppercase">{item.title}</h3>
-              <p className="text-white/40 leading-relaxed tracking-tight">{item.desc}</p>
+              <h3 className="text-[15px] font-semibold text-white mb-3 tracking-tight">{item.title}</h3>
+              <p className="text-[13px] text-[#666] leading-[1.7]">{item.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="relative glass p-12 md:p-24 rounded-[60px] overflow-hidden mb-40 border-white/5">
-          <div className="absolute inset-0 bg-purple-glow opacity-30" />
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+        {/* Stats Row - Minimalist */}
+        <div className="relative rounded-2xl border border-white/6 bg-[#0d0d0d] p-10 md:p-16 mb-32 overflow-hidden">
+          <div className="absolute inset-0 grid-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-12">
             {[
-              { label: "Code Deployed", value: "2.4M+", suffix: "LINES" },
-              { label: "Active Nodes", value: "12K+", suffix: "GLOBAL" },
-              { label: "System Uptime", value: "99.99", suffix: "PERCENT" },
-              { label: "Successful Sprints", value: "850+", suffix: "RELEASES" }
+              { label: "Lines Deployed", value: "2.4M+", suffix: "Optimized" },
+              { label: "Uptime Avg", value: "99.99%", suffix: "Reliable" },
+              { label: "Client Retain", value: "100%", suffix: "Retention" },
+              { label: "Active Sprints", value: "14", suffix: "Continuous" }
             ].map((stat, i) => (
               <div key={i} className="flex flex-col">
-                <span className="text-[10px] font-black text-purple-500 uppercase tracking-[0.4em] mb-4">{stat.label}</span>
-                <span className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-2">{stat.value}</span>
-                <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{stat.suffix}</span>
+                <span className="text-[11px] font-medium text-[#6366f1] mb-2 tracking-wide uppercase">{stat.label}</span>
+                <span className="text-[32px] md:text-[44px] font-semibold text-white leading-none tracking-tight mb-1">{stat.value}</span>
+                <span className="text-[11px] text-[#444] font-medium uppercase tracking-widest">{stat.suffix}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Team Preview CTA */}
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center max-w-[600px] mx-auto">
           <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-4xl md:text-6xl font-black text-white mb-12 uppercase tracking-tighter"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-display text-[28px] md:text-[36px] text-white mb-8"
           >
-            MEET THE <span className="text-gradient-purple italic">ARCHITECTS</span>
+            Meet the Architects.
           </motion.h2>
           <Link 
             href="/team"
-            className="group h-24 bg-white text-black px-16 rounded-full flex items-center justify-center gap-4 hover:scale-105 active:scale-95 transition-all shadow-2xl"
+            className="btn-primary py-3 px-10 text-[14px]"
           >
-            <span className="text-sm font-black uppercase tracking-widest">View Studio Team</span>
-            <Users className="w-5 h-5 group-hover:rotate-[15deg] transition-transform" />
+            View Studio Team
+            <Users className="w-4 h-4" />
           </Link>
         </div>
       </div>

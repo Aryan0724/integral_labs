@@ -32,7 +32,7 @@ const team = [
   {
     name: "Sarah L.",
     role: "Head of Operations",
-    image: "/team/marcus.png", // Reusing the combined image or a placeholder for now
+    image: "/team/marcus.png", // Reusing placeholder
     bio: "Strategic operational lead ensuring the industrial-grade deployment of all studio projects.",
     socials: { github: "#", twitter: "#", linkedin: "#" }
   }
@@ -40,104 +40,96 @@ const team = [
 
 export default function TeamPage() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[20%] left-1/4 w-[600px] h-[600px] bg-purple-600/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[20%] right-1/4 w-[600px] h-[600px] bg-blue-600/5 blur-[150px] rounded-full" />
-        <div className="absolute inset-0 bg-grid opacity-[0.02]" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <div className="min-h-screen pt-28 pb-24">
+      <div className="container relative z-10">
         {/* Header */}
-        <div className="max-w-4xl mb-32">
+        <div className="max-w-[560px] mb-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="badge mb-4"
           >
-            <Users className="w-3 h-3 text-purple-500" />
-            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/50">Studio Collective</span>
+            Studio Collective
           </motion.div>
           
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-5xl md:text-8xl font-black text-white mb-10 leading-[0.9]"
+            transition={{ duration: 0.6, delay: 0.06 }}
+            className="text-display text-[36px] sm:text-[48px] text-white mb-6"
           >
-            THE <span className="text-gradient-purple italic">ARCHITECTS</span> <br />
-            OF INNOVATION.
+            The Architects
+            <br />
+            of Systems.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/50 leading-relaxed max-w-2xl font-light tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
+            className="text-[14px] text-[#666] leading-[1.7]"
           >
             A high-performance unit of engineers and designers operating at the intersection of intelligence and aesthetics.
           </motion.p>
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative"
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[40px] border border-white/10 bg-white/5 mb-8 transition-all duration-700 group-hover:border-purple-500/50 group-hover:shadow-[0_0_50px_-12px_rgba(124,58,237,0.3)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/6 bg-[#111] mb-5 transition-all duration-300 group-hover:border-white/12">
                 <Image 
                   src={member.image} 
                   alt={member.name}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.02]"
                 />
                 
-                {/* Social Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                   <div className="flex gap-4">
-                      <Link href={member.socials.github} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                        <GitHub className="w-5 h-5" />
+                {/* Social Overlay - Minimalist */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                   <div className="flex gap-2.5">
+                      <Link href={member.socials.github} className="w-8 h-8 rounded-lg glass flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <GitHub className="w-4 h-4" />
                       </Link>
-                      <Link href={member.socials.twitter} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                        <Twitter className="w-5 h-5" />
+                      <Link href={member.socials.twitter} className="w-8 h-8 rounded-lg glass flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <Twitter className="w-4 h-4" />
                       </Link>
-                      <Link href={member.socials.linkedin} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                        <LinkedIn className="w-5 h-5" />
+                      <Link href={member.socials.linkedin} className="w-8 h-8 rounded-lg glass flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <LinkedIn className="w-4 h-4" />
                       </Link>
                    </div>
                 </div>
               </div>
 
-              <div className="px-4">
-                 <span className="text-[10px] font-black text-purple-500 uppercase tracking-[0.4em] mb-2 block">{member.role}</span>
-                 <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-4 group-hover:text-purple-400 transition-colors">{member.name}</h3>
-                 <p className="text-white/40 text-sm leading-relaxed font-light tracking-tight group-hover:text-white/60 transition-colors">{member.bio}</p>
+              <div className="px-1">
+                 <span className="text-[11px] font-medium text-[#6366f1] mb-1.5 block tracking-wide">{member.role}</span>
+                 <h3 className="text-[15px] font-semibold text-white mb-2">{member.name}</h3>
+                 <p className="text-[13px] text-[#555] leading-[1.6] line-clamp-2">{member.bio}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Join Us CTA */}
-        <div className="mt-40 glass p-16 md:p-24 rounded-[60px] border-white/5 flex flex-col md:flex-row items-center justify-between gap-12">
-           <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter">WANT TO <span className="text-gradient-purple italic">JOIN THE LAB?</span></h2>
-              <p className="text-white/40 text-lg font-light leading-relaxed">We are always looking for the world&apos;s most talented engineers and architects.</p>
+        {/* Join Us CTA - Redesigned for new system */}
+        <div className="relative rounded-2xl border border-white/6 bg-[#0d0d0d] overflow-hidden p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10">
+           <div className="absolute inset-0 grid-texture opacity-40 pointer-events-none" />
+           <div className="relative z-10 max-w-xl text-center md:text-left">
+              <h2 className="text-display text-[28px] md:text-[36px] text-white mb-4">Want to Join the Lab?</h2>
+              <p className="text-[14px] text-[#666] leading-[1.7]">We are always looking for the world&apos;s most talented engineers and architects who thrive at the intersection of complex systems and refined design.</p>
            </div>
            <Link 
-            href="/careers"
-            className="group h-24 bg-white text-black px-12 rounded-full flex items-center justify-center gap-4 hover:scale-105 transition-all shadow-2xl whitespace-nowrap"
+            href="/contact"
+            className="btn-primary relative z-10 py-3 px-8 text-[14px] whitespace-nowrap"
            >
-              <span className="text-sm font-black uppercase tracking-widest">Apply for Node</span>
-              <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center group-hover:rotate-45 transition-transform">
-                 <ArrowUpRight className="w-5 h-5 text-white" />
-              </div>
+              Apply for Node
+              <ArrowUpRight className="w-4 h-4" />
            </Link>
         </div>
       </div>

@@ -3,137 +3,133 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code, Menu, X, ArrowRight, Zap } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
-import { Logo } from "./Logo";
+const navLinks = [
+  { label: "Products", href: "/work" },
+  { label: "Build", href: "/services" },
+  { label: "Philosophy", href: "/about" },
+  { label: "Process", href: "/team" },
+];
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Work", href: "/work" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Team", href: "/team" },
-  ];
-
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-[100] transition-all duration-700",
-      scrolled ? "py-4" : "py-6"
-    )}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className={cn(
-          "flex items-center justify-between transition-all duration-700 rounded-full px-6 md:px-10 h-16 md:h-20",
-          scrolled 
-            ? "bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl" 
-            : "bg-transparent border border-transparent"
-        )}>
-          <Link href="/">
-            <Logo />
-          </Link>
-
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 relative group",
-                  pathname === link.href ? "text-white" : "text-white/40 hover:text-white"
-                )}
-              >
-                {link.name}
-                <span className={cn(
-                  "absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] bg-purple-500 transition-all duration-500",
-                  pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
-                )} />
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-6">
-            <Link 
-              href="/contact"
-              className="group relative bg-white text-black px-8 h-12 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95"
-            >
-              <div className="absolute inset-0 bg-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-              <span className="relative z-10 group-hover:text-white transition-colors">Start Project</span>
-              <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 group-hover:text-white transition-all" />
-            </Link>
-          </div>
-
-          <button 
-            className="md:hidden text-white w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors" 
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[120px] left-6 right-6 bg-black/90 backdrop-blur-3xl border border-white/10 rounded-[40px] p-10 md:hidden overflow-hidden shadow-2xl"
-          >
-            <div className="flex flex-col gap-10">
-              <div className="flex flex-col gap-6">
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "text-4xl font-black uppercase tracking-tighter transition-colors",
-                        pathname === link.href ? "text-purple-500" : "text-white/40 hover:text-white"
-                      )}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
+    <>
+      <motion.header
+        initial={{ y: -12, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "py-3"
+            : "py-5"
+        }`}
+      >
+        <div className="container">
+          <div className={`flex items-center justify-between rounded-xl transition-all duration-300 px-4 h-12 ${
+            scrolled
+              ? "glass shadow-lg shadow-black/20"
+              : "bg-transparent"
+          }`}>
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="w-6 h-6 rounded-md bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-95 transition-transform">
+                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
+                  <rect x="2" y="2" width="5" height="12" rx="1" fill="#080808" />
+                  <rect x="9" y="8" width="5" height="6" rx="1" fill="#080808" />
+                  <rect x="9" y="2" width="5" height="4" rx="1" fill="#6366f1" />
+                </svg>
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+              <span className="text-sm font-semibold text-white tracking-tight">
+                Integral Labs
+              </span>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`px-3 py-1.5 rounded-md text-sm transition-colors duration-200 ${
+                    pathname === link.href
+                      ? "text-white bg-white/5"
+                      : "text-[#888] hover:text-[#ccc]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* CTA */}
+            <div className="hidden md:flex items-center gap-3">
+              <Link
+                href="/contact"
+                className="flex items-center gap-1.5 text-sm font-medium text-white bg-[#6366f1] hover:bg-[#5558e8] transition-colors px-4 py-1.5 rounded-lg"
               >
+                Start A Project
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              className="md:hidden text-[#888] hover:text-white transition-colors p-1"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-20 left-4 right-4 z-40 rounded-xl glass p-4 shadow-xl shadow-black/40 md:hidden"
+          >
+            <nav className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-3 py-2.5 rounded-lg text-sm text-[#888] hover:text-white hover:bg-white/5 transition-all"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="mt-2 pt-2 border-t border-white/5">
                 <Link
                   href="/contact"
-                  className="bg-white text-black w-full py-6 rounded-3xl text-center font-black text-xl uppercase tracking-widest flex items-center justify-center gap-3"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 text-sm font-medium text-white bg-[#6366f1] hover:bg-[#5558e8] transition-colors px-4 py-2.5 rounded-lg"
                 >
-                  Start Project
-                  <Zap className="w-6 h-6 fill-black" />
+                  Start A Project
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
-              </motion.div>
-            </div>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
-};
-
-export default Navbar;
-
+}
