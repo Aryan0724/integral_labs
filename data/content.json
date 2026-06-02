@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Digital products for world-class agencies.",
+    "subtext": "We are the Creative Engineering Department of Integral Groups. Crafting high-performance websites, bespoke SaaS, and intelligent automation systems.",
+    "primaryCta": "Start a project —>",
+    "secondaryCta": "See Portfolio"
+  },
+  "services": {
+    "title": "Capabilities",
+    "description": "Scalable digital systems designed with usability, performance, and long-term adaptability in mind.",
+    "list": [
+      {
+        "id": "web-dev",
+        "title": "Web Development",
+        "description": "High-performance marketing sites and interactive digital experiences.",
+        "tags": [
+          "Architecture",
+          "Motion",
+          "Performance"
+        ]
+      },
+      {
+        "id": "saas",
+        "title": "App / SaaS Build",
+        "description": "Architecting bespoke software products and scalable cloud platforms.",
+        "tags": [
+          "Architecture",
+          "Cloud",
+          "API Design"
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "Intelligent Automation",
+        "description": "Streamlining operations with robust, self-healing workflow engines.",
+        "tags": [
+          "Workflows",
+          "Integration",
+          "Data"
+        ]
+      },
+      {
+        "id": "ai",
+        "title": "AI and ML Systems",
+        "description": "Integrating intelligent models into your core business operations.",
+        "tags": [
+          "ML",
+          "LLM",
+          "Inference"
+        ]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Case Studies.",
+    "description": "A collection of high-performance software systems and intelligent interfaces built for the next generation of digital infrastructure."
+  },
+  "groups": {
+    "title": "The Global Ecosystem.",
+    "description": "Integral Groups is a multi-disciplinary conglomerate engineering the next decade of digital infrastructure, creative automation, and secure protocols."
+  }
+}
