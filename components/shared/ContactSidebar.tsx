@@ -56,9 +56,9 @@ export default function ContactSidebar() {
 
                {/* Direct Options */}
                <div className="space-y-4">
-                  <a href="mailto:hello@integralgroups.in" className="flex items-center gap-4 p-4 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all text-white/60 hover:text-white">
+                  <a href="mailto:contact@integralgroups.in" className="flex items-center gap-4 p-4 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all text-white/60 hover:text-white">
                      <Mail size={18} />
-                     <span className="text-sm">hello@integralgroups.in</span>
+                     <span className="text-sm">contact@integralgroups.in</span>
                   </a>
                   <a href="tel:+919470650991" className="flex items-center gap-4 p-4 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all text-white/60 hover:text-white">
                      <Phone size={18} />

@@ -40,8 +40,8 @@ export default function ContactPage() {
 
             <div className="space-y-4 pt-12 border-t border-white/[0.04]">
               <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-4">Direct Inquiries</div>
-              <a href="mailto:hello@integrallabs.ai" className="text-[18px] text-white hover:text-white/60 transition-colors block">
-                hello@integrallabs.ai
+              <a href="mailto:contact@integralgroups.in" className="text-[18px] text-white hover:text-white/60 transition-colors block">
+                contact@integralgroups.in
               </a>
               <div className="text-[14px] text-[#52525b]">Based in Bhimtal, Uttarakhand, India</div>
             </div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Name</label>
                   <input 
                     type="text" 
-                    placeholder="John Doe" 
+                    placeholder="Aarav Sharma" 
                     className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
                   />
                 </div>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Email</label>
                   <input 
                     type="email" 
-                    placeholder="john@example.com" 
+                    placeholder="aarav.sharma@example.com" 
                     className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
                   />
                 </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Company</label>
                   <input 
                     type="text" 
-                    placeholder="Acme Corp" 
+                    placeholder="Zenith Tech India" 
                     className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
                   />
                 </div>
