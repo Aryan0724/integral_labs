@@ -119,7 +119,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-2xl font-display text-white italic">Inquiry Received!</h3>
                 <p className="text-sm text-[#71717a] max-w-[320px] mx-auto leading-relaxed">
-                  Thank you Aarav. We've routed this proposal straight to our team and we'll be in touch shortly.
+                  Thank you. We've routed this proposal straight to our team and we'll be in touch shortly.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
