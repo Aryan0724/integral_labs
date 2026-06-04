@@ -6,19 +6,38 @@ import { Lock, ShieldAlert, ArrowRight } from "lucide-react";
 
 export default function AdminLogin() {
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!password) return;
     
-    // In a real app, this would be a server action or API call
-    // For this agency platform, we use a default "integral_secure_2024"
-    if (password === "integral_secure_2024") {
-      document.cookie = "admin_auth=authenticated; path=/; max-age=86400"; // 24h
-      window.location.href = "/admin";
-    } else {
+    setLoading(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      if (res.ok) {
+        // httpOnly cookie is set by server response headers, but we also set document.cookie to align with local client redirect & routing expectation
+        document.cookie = "admin_auth=authenticated; path=/; max-age=86400";
+        window.location.href = "/admin";
+      } else {
+        setError(true);
+        setTimeout(() => setError(false), 2000);
+      }
+    } catch (err) {
+      console.error(err);
       setError(true);
       setTimeout(() => setError(false), 2000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,9 +91,10 @@ export default function AdminLogin() {
 
             <button
               type="submit"
-              className="w-full flex items-center justify-between bg-white text-black px-6 py-4 rounded-xl text-xs font-bold hover:bg-gray-200 transition-all shadow-xl group"
+              disabled={loading}
+              className="w-full flex items-center justify-between bg-white text-black px-6 py-4 rounded-xl text-xs font-bold hover:bg-gray-200 transition-all shadow-xl group disabled:opacity-50"
             >
-              INITIALIZE SESSION
+              {loading ? "INITIALIZING..." : "INITIALIZE SESSION"}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </form>

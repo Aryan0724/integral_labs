@@ -8,7 +8,7 @@ import Marquee from "@/components/shared/Marquee";
 
 // Ghost cursor positions
 const ghostCursors = [
-  { name: "Tanuj", color: "#a78bfa", x: "25%", y: "40%", delay: 0 },
+  { name: "Tanuj", color: "#a78bfa", x: "25%", y: "20%", delay: 0 },
   { name: "Aryan", color: "#60a5fa", x: "75%", y: "30%", delay: 1.5 },
 ];
 

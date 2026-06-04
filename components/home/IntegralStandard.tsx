@@ -11,21 +11,21 @@ function QuadrantCard({ q, i, smoothProgress }: { q: { title: string, descriptio
   return (
     <motion.div
       style={{ opacity, scale, y: yMove }}
-      className={`flex flex-col justify-center max-w-[340px] pointer-events-auto ${
-        i === 0 ? "justify-self-start self-start text-left" :
-        i === 1 ? "justify-self-end self-start text-right" :
-        i === 2 ? "justify-self-start self-end text-left" :
-        "justify-self-end self-end text-right"
+      className={`flex flex-col justify-center max-w-[340px] pointer-events-auto col-start-1 row-start-1 md:col-start-auto md:row-start-auto justify-self-center self-center text-center ${
+        i === 0 ? "md:justify-self-start md:self-start md:text-left" :
+        i === 1 ? "md:justify-self-end md:self-start md:text-right" :
+        i === 2 ? "md:justify-self-start md:self-end md:text-left" :
+        "md:justify-self-end md:self-end md:text-right"
       }`}
     >
-      <div className={`measure-bar mb-6 opacity-40 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
+      <div className={`measure-bar mb-4 md:mb-6 opacity-40 justify-center ${i % 2 === 1 ? "md:flex-row-reverse" : ""} ${i % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
         <div className="measure-line w-12" />
         <span className="blueprint-label">0{i+1}.SERVICE</span>
       </div>
-      <h3 className="text-[28px] md:text-[44px] lg:text-[52px] font-display text-white mb-6 tracking-tighter leading-[0.85]">
+      <h3 className="text-[24px] sm:text-[28px] md:text-[44px] lg:text-[52px] font-display text-white mb-4 md:mb-6 tracking-tighter leading-[0.85]">
         {q.title}
       </h3>
-      <p className="text-[14px] md:text-[16px] text-white/30 leading-relaxed font-light">
+      <p className="text-[13px] md:text-[16px] text-white/30 leading-relaxed font-light">
         {q.description}
       </p>
     </motion.div>
@@ -58,30 +58,30 @@ export default function IntegralStandard() {
       {content && (
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
           
-          {/* Main Rotating Assembly */}
+          {/* Main Rotating Assembly - Hidden on mobile to avoid layout clutter */}
           <motion.div 
             style={{ rotate: rotation }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none"
           >
             <div className="absolute w-[200vw] h-px bg-white/[0.03]" />
             <div className="absolute h-[200vw] w-px bg-white/[0.03]" />
             
             {[0, 90, 180, 270].map((angle, i) => (
-              <div 
-                key={angle}
-                className="absolute"
-                style={{ transform: `rotate(${angle}deg) translateY(-350px)` }}
-              >
-                <span className="blueprint-label -rotate-90 origin-center opacity-40">
-                  ALIGN_COORD_P{i}
-                </span>
-              </div>
+               <div 
+                 key={angle}
+                 className="absolute"
+                 style={{ transform: `rotate(${angle}deg) translateY(-350px)` }}
+               >
+                 <span className="blueprint-label -rotate-90 origin-center opacity-40">
+                   ALIGN_COORD_P{i}
+                 </span>
+               </div>
             ))}
           </motion.div>
 
           {/* Content Layer */}
-          <div className="container relative z-10 w-full h-full pointer-events-none">
-            <div className="grid grid-cols-2 grid-rows-2 w-full h-full p-12 md:p-24 lg:p-32">
+          <div className="container relative z-10 w-full h-full pointer-events-none flex items-center justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 md:grid-rows-2 w-full max-w-[1200px] h-full p-6 sm:p-12 md:p-24 lg:p-32">
               {content.list.map((q: any, i: number) => (
                 <QuadrantCard 
                   key={q.title} 
@@ -93,8 +93,8 @@ export default function IntegralStandard() {
             </div>
           </div>
 
-          {/* Central Hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+          {/* Central Hub - Hidden or scaled down on mobile */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:block">
             <div className="absolute inset-0 -m-64 bg-[#0f0f0f] rounded-full [mask-image:radial-gradient(circle,transparent_40%,black_100%)] pointer-events-none opacity-50" />
             
             <motion.div
@@ -118,7 +118,7 @@ export default function IntegralStandard() {
           </div>
 
           {/* Status indicator */}
-          <div className="absolute bottom-12 right-12">
+          <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12">
             <div className="flex flex-col items-end gap-2">
                 <span className="blueprint-label text-purple-400">AGENCY_MODE:ACTIVE</span>
                 <div className="w-12 h-px bg-purple-400/20" />
