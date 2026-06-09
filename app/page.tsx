@@ -6,6 +6,7 @@ import WhyUs from "@/components/home/WhyUs";
 import Founders from "@/components/home/Founders";
 import CTA from "@/components/home/CTA";
 import InteractiveBackground from "@/components/shared/InteractiveBackground";
+import SystemSandbox from "@/components/home/SystemSandbox";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <IntegralStandard />
+        <SystemSandbox />
         <ProjectShowcase />
         <Process />
         <WhyUs />
