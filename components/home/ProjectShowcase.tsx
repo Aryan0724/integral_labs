@@ -168,9 +168,36 @@ export default function ProjectShowcase() {
   });
 
   return (
-    <section ref={containerRef} className="relative py-20 md:py-24 overflow-visible bg-transparent">
+    <section ref={containerRef} className="relative py-20 md:py-24 overflow-visible bg-transparent z-10">
+      {/* Tech Graphic Background Separator - Fills the gap between sections */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-24 w-full max-w-[800px] h-[300px] pointer-events-none opacity-20 hidden md:block z-0">
+        <svg viewBox="0 0 800 300" className="w-full h-full text-white">
+          {/* Static crosshair lines */}
+          <line x1="200" y1="150" x2="600" y2="150" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+          <line x1="400" y1="20" x2="400" y2="280" stroke="currentColor" strokeWidth="0.5" className="opacity-10" />
+          <circle cx="400" cy="150" r="3" fill="#a855f7" className="animate-pulse opacity-45" />
+          
+          {/* Rotating details */}
+          <motion.g
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            style={{ transformOrigin: "400px 150px" }}
+          >
+            <circle cx="400" cy="150" r="90" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" className="opacity-10" />
+            <circle cx="400" cy="150" r="130" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="20 30" className="opacity-5" />
+            <line x1="400" y1="50" x2="400" y2="250" stroke="currentColor" strokeWidth="0.3" strokeDasharray="2 2" className="opacity-10" />
+          </motion.g>
+
+          {/* Text markings */}
+          <text x="415" y="45" fill="currentColor" fontSize="7" fontFamily="monospace" className="opacity-25">NODE_ALIGN_VAL_01</text>
+          <text x="415" y="265" fill="currentColor" fontSize="7" fontFamily="monospace" className="opacity-25">NODE_ALIGN_VAL_02</text>
+          <text x="220" y="140" fill="currentColor" fontSize="6" fontFamily="monospace" className="opacity-20">ROTATION_ANGLE: 360°</text>
+          <text x="510" y="140" fill="currentColor" fontSize="6" fontFamily="monospace" className="opacity-20">GRID_STATUS: LOCK_ON</text>
+        </svg>
+      </div>
+
       {content && (
-        <div className="container">
+        <div className="container relative z-10">
           {/* Section Header */}
           <div className="mb-16 md:mb-20 flex flex-col items-center">
             <div className="measure-bar mb-8 opacity-20">
