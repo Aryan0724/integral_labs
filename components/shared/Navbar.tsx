@@ -333,7 +333,7 @@ export default function Navbar() {
             </Link>
 
             <Link 
-              href="/team" 
+              href="/#about" 
               className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
               About
@@ -424,7 +424,7 @@ export default function Navbar() {
                   PROCESS
                 </Link>
                 <Link
-                  href="/team"
+                  href="/#about"
                   className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
                 >
                   ABOUT US
