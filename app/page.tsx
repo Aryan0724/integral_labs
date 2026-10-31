@@ -1,9 +1,9 @@
 import Hero from "@/components/home/Hero";
 import Services from "@/components/home/Services";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
+import WhyUs from "@/components/home/WhyUs";
 import Industries from "@/components/home/Industries";
 import Process from "@/components/home/Process";
-import WhyUs from "@/components/home/WhyUs";
 import Founders from "@/components/home/Founders";
 import FAQ from "@/components/home/FAQ";
 import CTA from "@/components/home/CTA";
@@ -17,9 +17,9 @@ export default function Home() {
         <Hero />
         <Services />
         <ProjectShowcase />
+        <WhyUs />
         <Industries />
         <Process />
-        <WhyUs />
         <Founders />
         <FAQ />
         <CTA />

@@ -1,197 +1,258 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, Globe } from "lucide-react";
+import { ArrowRight, Send, CheckCircle2 } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
   return (
-    <footer className="relative overflow-hidden bg-[#080808] border-t border-white/[0.08] text-white">
-      {/* Hairline subtle top background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none" />
-
-      {/* Main Multi-Column Sitemap */}
-      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8 py-20 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
-          {/* Col 1 & 2: Brand & Contact Info */}
-          <div className="lg:col-span-2 max-w-[380px]">
-            <Link href="/" className="flex items-center gap-2 mb-6 group inline-block">
-              <span className="font-display italic text-3xl text-purple-400 group-hover:text-purple-300 transition-colors">∫</span>
-              <div className="flex flex-col">
-                <span className="text-[15px] font-bold tracking-[0.16em] text-white">INTEGRAL LABS</span>
-                <span className="text-[8px] font-mono tracking-[0.25em] text-purple-400 uppercase">
-                  ENGINEERING STUDIO
-                </span>
-              </div>
+    <footer className="bg-[#0B1120] text-white pt-20 pb-12 border-t border-slate-800">
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        
+        {/* Main 5-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-slate-800/80">
+          
+          {/* Col 1: Brand & Tagline */}
+          <div className="lg:col-span-3">
+            <Link href="/" className="inline-block mb-4">
+              <Logo dark={true} />
             </Link>
+            <p className="text-xs text-slate-400 leading-relaxed max-w-[240px] mb-6">
+              Building digital products, AI systems, and scalable web platforms for forward-thinking organizations.
+            </p>
+            <div className="text-[11px] font-mono text-slate-500">
+              © 2026 Integral Labs. All rights reserved.
+            </div>
+          </div>
 
-            <p className="text-[13px] text-white/50 leading-relaxed font-light mb-6">
-              The creative engineering and intelligent systems studio under Integral Group. We build high-performance web applications, machine learning tools, and resilient software infrastructure.
+          {/* Col 2: Services */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+              Services
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  AI & Automation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  E-Commerce
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Mobile Apps
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
+                  Cloud & DevOps
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Industries */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+              Industries
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Retail & E-commerce
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Hospitality & Dining
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Education
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Healthcare
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Finance
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Logistics & Mobility
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Company & Legal */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+              Company
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400 mb-6">
+              <li>
+                <Link href="/team" className="hover:text-blue-400 transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-blue-400 transition-colors">
+                  Our Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/team" className="hover:text-blue-400 transition-colors">
+                  Team
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-blue-400 transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
+              Legal
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/legal" className="hover:text-blue-400 transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal" className="hover:text-blue-400 transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal" className="hover:text-blue-400 transition-colors">
+                  Cookies
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 5: Stay Updated (Newsletter & Socials) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-2">
+              Stay Updated
+            </h4>
+            <p className="text-xs text-slate-400 mb-4">
+              Get the latest engineering insights, architecture patterns, and product updates.
             </p>
 
-            <div className="space-y-2.5 text-[12px] font-mono text-white/40 mb-8">
-              <div className="flex items-center gap-2">
-                <Mail size={13} className="text-purple-400" />
-                <a href="mailto:contact@integralgroups.in" className="hover:text-white transition-colors">
-                  contact@integralgroups.in
-                </a>
+            {subscribed ? (
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400">
+                <CheckCircle2 size={16} />
+                <span>Thank you for subscribing!</span>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin size={13} className="text-purple-400" />
-                <span>Bhimtal, Uttarakhand, India</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe size={13} className="text-purple-400" />
-                <Link href="/groups" className="hover:text-white transition-colors">
-                  A Division of Integral Groups
-                </Link>
-              </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="relative mb-6">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-4 pr-11 py-2.5 rounded-full bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe"
+                  className="absolute right-1.5 top-1.5 w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-colors shadow-xs"
+                >
+                  <ArrowRight size={13} />
+                </button>
+              </form>
+            )}
 
-            <Link
-              href="/groups"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] font-mono text-purple-300 tracking-wider hover:bg-purple-500/20 transition-all"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-              <span>PARENT CONGLOMERATE // INTEGRAL GROUPS</span>
-            </Link>
+            {/* Social Links */}
+            <div className="flex items-center gap-3 text-slate-400">
+              <a 
+                href="https://github.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label="GitHub"
+                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-slate-700 transition-colors"
+              >
+                <span className="font-mono text-xs font-bold">gh</span>
+              </a>
+              <a 
+                href="https://x.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label="X (Twitter)"
+                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-slate-700 transition-colors"
+              >
+                <span className="font-bold text-xs">𝕏</span>
+              </a>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label="LinkedIn"
+                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-slate-700 transition-colors"
+              >
+                <span className="font-bold text-xs">in</span>
+              </a>
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label="YouTube"
+                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-slate-700 transition-colors"
+              >
+                <span className="font-bold text-xs">yt</span>
+              </a>
+            </div>
           </div>
 
-          {/* Col 3: Services Hub */}
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
-              Capabilities
-            </div>
-            <ul className="space-y-3 text-[13px] text-white/60 font-light">
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  Custom SaaS &amp; Web Apps
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  AI &amp; Machine Learning
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  E-Commerce Storefronts
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  UI/UX Design Systems
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  Workflow Automation
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  Cloud Architecture &amp; DevOps
-                </Link>
-              </li>
-            </ul>
+            Integral Labs Studio // Modern Fullstack &amp; Intelligent Systems
           </div>
 
-          {/* Col 4: Verticals & Industries */}
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
-              Domain Verticals
-            </div>
-            <ul className="space-y-3 text-[13px] text-white/60 font-light">
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  EdTech &amp; Learning Suites
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  E-Commerce &amp; Retail
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  Hospitality &amp; Dining
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  Tech Research Foundries
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  Enterprise Advisory
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  Mobility &amp; Logistics
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: Company & Ecosystem */}
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
-              Company
-            </div>
-            <ul className="space-y-3 text-[13px] text-white/60 font-light">
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors">
-                  Case Studies &amp; Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/process" className="hover:text-white transition-colors">
-                  Engineering Workflow
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  About &amp; Leadership
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Start a Project
-                </Link>
-              </li>
-              <li>
-                <Link href="/groups" className="hover:text-white transition-colors">
-                  Integral Groups
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin" className="text-white/30 hover:text-white transition-colors">
-                  Studio Admin
-                </Link>
-              </li>
-            </ul>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-slate-400 font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+            <span>A Division of <strong className="text-white font-medium">Integral Groups</strong></span>
           </div>
         </div>
 
-        {/* Sub-footer Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] font-mono text-white/40">
-          <div>
-            <span>© {new Date().getFullYear()} Integral Labs. All rights reserved.</span>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Notice
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
-            <span className="text-white/20">|</span>
-            <span className="text-purple-400/80">Integral Groups Entity</span>
-          </div>
-        </div>
       </div>
     </footer>
   );

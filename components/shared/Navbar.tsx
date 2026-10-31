@@ -9,326 +9,248 @@ import {
   Menu, 
   ChevronDown, 
   ArrowRight, 
-  Cpu, 
   Code2, 
-  ShoppingBag, 
+  Smartphone, 
   Palette, 
-  Zap, 
-  Cloud,
-  GraduationCap,
-  Store,
-  UtensilsCrossed,
-  Microscope,
-  Building2,
+  Sparkles, 
+  Cloud, 
+  Rocket, 
+  ShoppingBag, 
+  UtensilsCrossed, 
+  GraduationCap, 
+  HeartPulse, 
+  ShieldCheck, 
+  Truck,
   ExternalLink,
-  LucideIcon
+  CornerDownLeft
 } from "lucide-react";
+import Logo from "./Logo";
 
 export interface ServiceCategory {
   id: string;
   title: string;
   shortDesc: string;
-  icon: LucideIcon;
-  sublinks: string[];
+  icon: any;
   href: string;
 }
 
-const serviceCategories: ServiceCategory[] = [
+const servicesList: ServiceCategory[] = [
   {
-    id: "custom-software",
-    title: "Custom Web & SaaS Development",
-    shortDesc: "End-to-end fullstack platforms, scalable microservices, and bespoke cloud architectures.",
+    id: "web-dev",
+    title: "Web Development",
+    shortDesc: "Custom websites and web applications built for performance, scalability and business growth.",
     icon: Code2,
-    sublinks: [
-      "Custom SaaS Platforms",
-      "Fullstack Web Applications",
-      "API & Microservice Design",
-      "Database Optimization & Architecture"
-    ],
     href: "/services"
   },
   {
-    id: "ai-ml",
-    title: "AI & Machine Learning Solutions",
-    shortDesc: "Integrating predictive models, generative AI pipelines, and custom neural workflows.",
-    icon: Cpu,
-    sublinks: [
-      "Predictive Analytics & Forecasting",
-      "LLM & RAG Pipeline Engineering",
-      "Automated Vision & Data Extraction",
-      "Custom Model Training & Fine-Tuning"
-    ],
-    href: "/services"
-  },
-  {
-    id: "ecommerce",
-    title: "E-Commerce & Digital Storefronts",
-    shortDesc: "High-speed conversion engines, headless shopping experiences, and catalog systems.",
-    icon: ShoppingBag,
-    sublinks: [
-      "Headless E-Commerce Solutions",
-      "Custom Marketplace Architectures",
-      "Payment & Checkout Optimization",
-      "Real-time Inventory Synchronization"
-    ],
+    id: "mobile-dev",
+    title: "Mobile Applications",
+    shortDesc: "Native and cross-platform mobile apps for iOS and Android.",
+    icon: Smartphone,
     href: "/services"
   },
   {
     id: "ui-ux",
-    title: "UI/UX Design Systems & Motion",
-    shortDesc: "Pixel-perfect interface design, interactive design systems, and fluid micro-interactions.",
+    title: "UI/UX Design",
+    shortDesc: "User-centred design for better engagement and conversion.",
     icon: Palette,
-    sublinks: [
-      "Design Systems & Token Architecture",
-      "High-Fidelity Interactive Prototypes",
-      "Motion Design & Smooth Physics",
-      "Accessibility & Multi-device UX"
-    ],
     href: "/services"
   },
   {
-    id: "automation",
-    title: "Intelligent Workflow Automation",
-    shortDesc: "Self-healing cron infrastructure, cross-platform webhook pipes, and business engines.",
-    icon: Zap,
-    sublinks: [
-      "Autonomous Workflow Engines",
-      "Custom Webhook & API Pipes",
-      "Operational ETL Pipelines",
-      "Legacy Process Modernization"
-    ],
+    id: "ai-ml",
+    title: "AI & Machine Learning",
+    shortDesc: "Intelligent systems with cutting-edge machine learning.",
+    icon: Sparkles,
     href: "/services"
   },
   {
     id: "cloud-devops",
-    title: "Cloud Infrastructure & DevOps",
-    shortDesc: "Production-ready deployments, containerization, real-time observability, and security.",
+    title: "Cloud & DevOps",
+    shortDesc: "Scalable infrastructure and seamless deployment pipelines.",
     icon: Cloud,
-    sublinks: [
-      "Zero-downtime CI/CD Pipelines",
-      "AWS & Cloudflare Edge Routing",
-      "Infrastructure Monitoring & Logging",
-      "Security Auditing & Hardening"
-    ],
+    href: "/services"
+  },
+  {
+    id: "product-strategy",
+    title: "Product Strategy & MVP",
+    shortDesc: "From idea to launch, build the right product with a lean roadmap.",
+    icon: Rocket,
     href: "/services"
   }
 ];
 
-const industries = [
+const industriesList = [
   {
-    name: "EdTech & Learning Platforms",
-    desc: "Virtual classrooms, student portals, and course analytics.",
-    icon: GraduationCap,
+    id: "retail",
+    title: "Retail & E-commerce",
+    shortDesc: "Scale your online business with modern platforms.",
+    icon: ShoppingBag,
     href: "/work"
   },
   {
-    name: "E-Commerce & Retail",
-    desc: "Modern digital stores, dynamic pricing, and inventory flows.",
-    icon: Store,
-    href: "/work"
-  },
-  {
-    name: "Hospitality & Booking Systems",
-    desc: "Interactive menus, table reservations, and guest management.",
+    id: "hospitality",
+    title: "Hospitality & Dining",
+    shortDesc: "Enhance guest experiences with digital solutions.",
     icon: UtensilsCrossed,
     href: "/work"
   },
   {
-    name: "Tech Research & Scientific Foundries",
-    desc: "Deep tech research portals, data simulators, and portals.",
-    icon: Microscope,
+    id: "education",
+    title: "Education",
+    shortDesc: "Build better learning experiences with technology.",
+    icon: GraduationCap,
     href: "/work"
   },
   {
-    name: "Enterprise SaaS & Business Advisory",
-    desc: "Multi-tenant cloud suites, dashboards, and automated ops.",
-    icon: Building2,
+    id: "healthcare",
+    title: "Healthcare",
+    shortDesc: "Improve patient care with smart systems.",
+    icon: HeartPulse,
+    href: "/work"
+  },
+  {
+    id: "finance",
+    title: "Finance",
+    shortDesc: "Secure and scalable financial solutions.",
+    icon: ShieldCheck,
+    href: "/work"
+  },
+  {
+    id: "logistics",
+    title: "Logistics & Mobility",
+    shortDesc: "Optimize operations and delivery pipelines.",
+    icon: Truck,
     href: "/work"
   }
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<"services" | "industries" | null>(null);
-  const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
-  const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Close menus when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setActiveMenu(null);
-      }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close on route change
   useEffect(() => {
-    setActiveMenu(null);
-    setMobileOpen(false);
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
   }, [pathname]);
 
-  const currentService = serviceCategories[selectedServiceIndex];
-  const CurrentServiceIcon = currentService.icon;
+  const handleMouseEnter = (menu: string) => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setActiveDropdown(menu);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  const openContact = () => {
+    window.dispatchEvent(new CustomEvent("open-contact-modal"));
+  };
 
   return (
     <>
-      <div ref={navRef} className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-6 pointer-events-none">
-        <motion.header
-          initial={{ y: -60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between w-full max-w-[1260px] h-16 md:h-[68px] px-5 sm:px-8 rounded-2xl border transition-all duration-300 shadow-2xl ${
-            scrolled
-              ? "bg-[#0a0a0a]/90 backdrop-blur-xl border-white/10 shadow-black/80 scale-[0.99]"
-              : "bg-[#0e0e0e]/80 backdrop-blur-md border-white/[0.08]"
-          }`}
-        >
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled 
+            ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3" 
+            : "bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4"
+        }`}
+      >
+        <div className="max-w-[1240px] mx-auto px-5 sm:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
-            <span className="font-display italic text-2xl md:text-3xl text-purple-400 group-hover:text-purple-300 transition-colors">∫</span>
-            <div className="flex flex-col">
-              <span className="text-[13px] md:text-[14px] font-bold tracking-[0.16em] text-white">INTEGRAL</span>
-              <span className="text-[8px] font-mono tracking-[0.25em] text-white/40 -mt-1 group-hover:text-purple-400 transition-colors">LABS // STUDIO</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Logo />
           </Link>
 
-          {/* Desktop Navigation Links with Mega-Menu */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {/* Services with Mega Menu */}
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-7">
+            {/* Services Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveMenu("services")}
+              onMouseEnter={() => handleMouseEnter("services")}
+              onMouseLeave={handleMouseLeave}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "services" ? null : "services")}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[11px] font-bold tracking-[0.12em] uppercase transition-colors ${
-                  activeMenu === "services" || pathname.startsWith("/services")
-                    ? "text-white bg-white/5"
-                    : "text-white/60 hover:text-white hover:bg-white/[0.02]"
+              <button 
+                className={`flex items-center gap-1.5 text-[13px] font-semibold tracking-wider uppercase transition-colors py-2 ${
+                  activeDropdown === "services" ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
                 }`}
+                aria-expanded={activeDropdown === "services"}
               >
-                Services
-                <ChevronDown 
-                  size={13} 
-                  className={`transition-transform duration-200 ${activeMenu === "services" ? "rotate-180 text-purple-400" : "text-white/40"}`} 
-                />
+                <span>Services</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === "services" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
-              {/* Services Mega-Menu Dropdown */}
               <AnimatePresence>
-                {activeMenu === "services" && (
+                {activeDropdown === "services" && (
                   <motion.div
-                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    onMouseLeave={() => setActiveMenu(null)}
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[780px]"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute top-full -left-20 w-[720px] bg-white rounded-2xl border border-slate-200 shadow-xl p-6 mt-1 z-50 grid grid-cols-12 gap-6"
                   >
-                    <div className="rounded-2xl border border-white/10 bg-[#0d0d0d]/95 backdrop-blur-2xl p-6 shadow-2xl shadow-black/90 grid grid-cols-[1.25fr_1fr] gap-6">
-                      {/* Left: Category List */}
-                      <div className="flex flex-col gap-1 pr-4 border-r border-white/5">
-                        <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/5">
-                          <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-white/40">Capabilities Hub</span>
-                          <Link 
-                            href="/services" 
-                            className="text-[10px] font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1 uppercase tracking-wider"
-                            onClick={() => setActiveMenu(null)}
-                          >
-                            All Services <ArrowRight size={11} />
-                          </Link>
+                    {/* Featured Highlight Card */}
+                    <div className="col-span-5 bg-slate-900 rounded-xl p-6 text-white flex flex-col justify-between">
+                      <div>
+                        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-400 text-[10px] font-mono uppercase tracking-wider mb-4">
+                          <Code2 size={12} />
+                          <span>Core Capability</span>
                         </div>
-
-                        {serviceCategories.map((service, index) => {
-                          const Icon = service.icon;
-                          const isSelected = selectedServiceIndex === index;
-                          return (
-                            <div
-                              key={service.id}
-                              onMouseEnter={() => setSelectedServiceIndex(index)}
-                              className={`group flex items-start gap-3 p-2.5 rounded-xl transition-all cursor-pointer ${
-                                isSelected 
-                                  ? "bg-white/[0.06] text-white border border-white/5" 
-                                  : "text-white/60 hover:text-white hover:bg-white/[0.02]"
-                              }`}
-                            >
-                              <div className={`p-2 rounded-lg shrink-0 transition-colors ${
-                                isSelected ? "bg-purple-500/20 text-purple-400" : "bg-white/5 text-white/50 group-hover:text-white"
-                              }`}>
-                                <Icon size={16} />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <Link 
-                                  href={service.href}
-                                  onClick={() => setActiveMenu(null)}
-                                  className="text-[13px] font-semibold tracking-tight text-white block hover:text-purple-300 transition-colors"
-                                >
-                                  {service.title}
-                                </Link>
-                                <p className="text-[11px] text-white/40 line-clamp-1 font-light mt-0.5">
-                                  {service.shortDesc}
-                                </p>
-                              </div>
-                            </div>
-                          );
-                        })}
+                        <h4 className="text-lg font-bold text-white mb-2">Web Development</h4>
+                        <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                          Custom websites and web applications built for performance, scalability and business growth.
+                        </p>
+                        <ul className="space-y-1.5 text-[11px] text-slate-300">
+                          <li className="flex items-center gap-2">• Business Websites</li>
+                          <li className="flex items-center gap-2">• Web Applications</li>
+                          <li className="flex items-center gap-2">• API Integrations</li>
+                          <li className="flex items-center gap-2">• Maintenance & Support</li>
+                        </ul>
                       </div>
+                      <Link 
+                        href="/services" 
+                        className="inline-flex items-center gap-1.5 text-xs text-blue-400 font-semibold hover:text-blue-300 mt-6"
+                      >
+                        View all services <ArrowRight size={13} />
+                      </Link>
+                    </div>
 
-                      {/* Right: Sub-services Preview Panel */}
-                      <div className="flex flex-col justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-purple-400">Featured Delivery Focus</span>
-                          </div>
-                          
-                          <div className="flex items-center gap-2 mb-3">
-                            <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400">
-                              <CurrentServiceIcon size={18} />
-                            </div>
-                            <h4 className="text-[14px] font-bold text-white tracking-tight leading-tight">
-                              {currentService.title}
-                            </h4>
-                          </div>
-
-                          <p className="text-[12px] text-white/50 leading-relaxed font-light mb-5">
-                            {currentService.shortDesc}
-                          </p>
-
-                          <div className="space-y-2">
-                            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">Core Deliverables</span>
-                            {currentService.sublinks.map((sublink) => (
-                              <div key={sublink} className="flex items-center gap-2 text-[12px] text-white/70">
-                                <div className="w-1 h-1 rounded-full bg-purple-400" />
-                                <span>{sublink}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="pt-5 mt-4 border-t border-white/5">
+                    {/* Services Grid List */}
+                    <div className="col-span-7 grid grid-cols-2 gap-3.5">
+                      {servicesList.slice(1).map((s) => {
+                        const Icon = s.icon;
+                        return (
                           <Link
-                            href="/contact"
-                            onClick={() => setActiveMenu(null)}
-                            className="btn-sweep btn-sweep-outline w-full py-2.5 text-[11px] font-bold tracking-[0.1em] uppercase"
+                            key={s.id}
+                            href={s.href}
+                            className="p-3 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-all group flex flex-col justify-between"
                           >
-                            <span>Consult on this scope</span>
-                            <ArrowRight size={13} />
+                            <div className="flex items-center gap-2.5 mb-1.5">
+                              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <Icon size={14} />
+                              </div>
+                              <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                {s.title}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">
+                              {s.shortDesc}
+                            </p>
                           </Link>
-                        </div>
-                      </div>
+                        );
+                      })}
                     </div>
                   </motion.div>
                 )}
@@ -338,65 +260,57 @@ export default function Navbar() {
             {/* Industries Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveMenu("industries")}
+              onMouseEnter={() => handleMouseEnter("industries")}
+              onMouseLeave={handleMouseLeave}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "industries" ? null : "industries")}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-[11px] font-bold tracking-[0.12em] uppercase transition-colors ${
-                  activeMenu === "industries" 
-                    ? "text-white bg-white/5" 
-                    : "text-white/60 hover:text-white hover:bg-white/[0.02]"
+              <button 
+                className={`flex items-center gap-1.5 text-[13px] font-semibold tracking-wider uppercase transition-colors py-2 ${
+                  activeDropdown === "industries" ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
                 }`}
+                aria-expanded={activeDropdown === "industries"}
               >
-                Industries
-                <ChevronDown 
-                  size={13} 
-                  className={`transition-transform duration-200 ${activeMenu === "industries" ? "rotate-180 text-purple-400" : "text-white/40"}`} 
-                />
+                <span>Industries</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === "industries" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
               </button>
 
               <AnimatePresence>
-                {activeMenu === "industries" && (
+                {activeDropdown === "industries" && (
                   <motion.div
-                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    onMouseLeave={() => setActiveMenu(null)}
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[460px]"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute top-full -left-10 w-[540px] bg-white rounded-2xl border border-slate-200 shadow-xl p-5 mt-1 z-50"
                   >
-                    <div className="rounded-2xl border border-white/10 bg-[#0d0d0d]/95 backdrop-blur-2xl p-5 shadow-2xl shadow-black/90">
-                      <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/5">
-                        <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-white/40">Domain Specialization</span>
-                        <span className="text-[9px] font-mono text-purple-400 uppercase tracking-widest">Active Verticals</span>
-                      </div>
-
-                      <div className="flex flex-col gap-1">
-                        {industries.map((ind) => {
-                          const Icon = ind.icon;
-                          return (
-                            <Link
-                              key={ind.name}
-                              href={ind.href}
-                              onClick={() => setActiveMenu(null)}
-                              className="group flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-white/[0.04] transition-all"
-                            >
-                              <div className="p-2 rounded-lg bg-white/5 text-white/50 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
-                                <Icon size={16} />
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      {industriesList.map((ind) => {
+                        const Icon = ind.icon;
+                        return (
+                          <Link
+                            key={ind.id}
+                            href={ind.href}
+                            className="p-3 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-all group flex items-start gap-3"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0 mt-0.5">
+                              <Icon size={15} />
+                            </div>
+                            <div>
+                              <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                {ind.title}
                               </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="text-[13px] font-medium text-white group-hover:text-purple-300 transition-colors">
-                                  {ind.name}
-                                </div>
-                                <div className="text-[11px] text-white/40 font-light truncate">
-                                  {ind.desc}
-                                </div>
+                              <div className="text-[11px] text-slate-500 leading-tight mt-0.5">
+                                {ind.shortDesc}
                               </div>
-                              <ArrowRight size={13} className="text-white/20 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                            </Link>
-                          );
-                        })}
-                      </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs text-slate-400 font-medium">Bespoke software across industry verticals</span>
+                      <Link href="/work" className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                        View all industries <ArrowRight size={12} />
+                      </Link>
                     </div>
                   </motion.div>
                 )}
@@ -404,218 +318,148 @@ export default function Navbar() {
             </div>
 
             {/* Direct Links */}
-            <Link
-              href="/work"
-              className={`px-3 py-2 rounded-lg text-[11px] font-bold tracking-[0.12em] uppercase transition-colors ${
-                pathname.startsWith("/work")
-                  ? "text-white bg-white/5"
-                  : "text-white/60 hover:text-white hover:bg-white/[0.02]"
-              }`}
+            <Link 
+              href="/work" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
               Work
             </Link>
 
-            <Link
-              href="/process"
-              className={`px-3 py-2 rounded-lg text-[11px] font-bold tracking-[0.12em] uppercase transition-colors ${
-                pathname === "/process"
-                  ? "text-white bg-white/5"
-                  : "text-white/60 hover:text-white hover:bg-white/[0.02]"
-              }`}
+            <Link 
+              href="/#process" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
               Process
             </Link>
 
-            <Link
-              href="/about"
-              className={`px-3 py-2 rounded-lg text-[11px] font-bold tracking-[0.12em] uppercase transition-colors ${
-                pathname === "/about"
-                  ? "text-white bg-white/5"
-                  : "text-white/60 hover:text-white hover:bg-white/[0.02]"
-              }`}
+            <Link 
+              href="/team" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
               About
             </Link>
-
-            {/* Integral Groups Parent Link */}
-            <Link
-              href="/groups"
-              className="ml-2 px-3 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-[9px] font-bold tracking-[0.14em] text-purple-300 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all flex items-center gap-1.5"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-              INTEGRAL GROUPS
-            </Link>
           </nav>
 
-          {/* Right Action: CTA Button with Zentix-Style Bottom-to-Top Sweep */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Link
-              href="/contact"
-              className="btn-sweep btn-sweep-primary hidden sm:inline-flex px-5 py-2.5 text-[11px] font-bold tracking-[0.12em] uppercase"
-            >
-              <span>Start Project</span>
-              <ArrowRight size={14} />
-            </Link>
+          {/* Right Action Elements */}
+          <div className="hidden sm:flex items-center gap-3.5">
+            {/* Dark Pill Badge: INTEGRAL GROUPS */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-mono tracking-wider shadow-xs select-none">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              <span className="font-semibold uppercase tracking-wider text-[10px]">Integral Groups</span>
+            </div>
 
-            {/* Mobile Hamburger Button */}
+            {/* Start Project CTA Button */}
             <button
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open navigation menu"
-              className="lg:hidden p-2 rounded-lg bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+              onClick={openContact}
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-[0.98]"
             >
-              <Menu size={20} />
+              <span>START PROJECT</span>
+              <ArrowRight size={14} />
             </button>
           </div>
-        </motion.header>
-      </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <button
+              onClick={openContact}
+              className="sm:hidden bg-blue-600 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full"
+            >
+              START
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+      </header>
 
       {/* Mobile Drawer Menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-[#0a0a0a]/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-white pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto lg:hidden"
           >
-            {/* Header in Drawer */}
-            <div className="flex justify-between items-center pb-6 border-b border-white/10">
-              <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-                <span className="font-display italic text-2xl text-purple-400">∫</span>
-                <span className="text-[14px] font-bold tracking-[0.18em] text-white">INTEGRAL LABS</span>
-              </Link>
-              <button 
-                onClick={() => setMobileOpen(false)}
-                aria-label="Close navigation menu" 
-                className="p-2 rounded-full bg-white/5 text-white/70 hover:text-white"
-              >
-                <X size={22} />
-              </button>
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <Logo />
+                <button 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 text-slate-400 hover:text-slate-900"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <Link
+                  href="/services"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  SERVICES
+                </Link>
+                <Link
+                  href="/work"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  CASES & WORK
+                </Link>
+                <Link
+                  href="/work"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  INDUSTRIES
+                </Link>
+                <Link
+                  href="/#process"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  PROCESS
+                </Link>
+                <Link
+                  href="/team"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  ABOUT US
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                >
+                  CONTACT
+                </Link>
+              </div>
             </div>
 
-            {/* Drawer Navigation Links */}
-            <nav className="py-8 flex flex-col gap-5">
-              {/* Parent Group Badge */}
-              <Link
-                href="/groups"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] font-bold tracking-[0.15em] text-purple-300 w-fit"
+            <div className="pt-8 space-y-3">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openContact();
+                }}
+                className="w-full py-3.5 rounded-full bg-[#BBF7D0] hover:bg-[#A7F3D0] text-emerald-950 font-bold text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-                INTEGRAL GROUPS CONGLOMERATE
-              </Link>
+                <span>Let's connect</span>
+                <CornerDownLeft size={16} />
+              </button>
 
-              {/* Services Accordion */}
-              <div>
-                <button
-                  onClick={() => setMobileExpandedSection(mobileExpandedSection === "services" ? null : "services")}
-                  className="flex items-center justify-between w-full text-left py-2 text-2xl font-display text-white"
-                >
-                  <span>Services</span>
-                  <ChevronDown size={18} className={`transition-transform ${mobileExpandedSection === "services" ? "rotate-180 text-purple-400" : "text-white/40"}`} />
-                </button>
-                <AnimatePresence>
-                  {mobileExpandedSection === "services" && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden pl-4 py-2 flex flex-col gap-2.5 border-l border-white/10 mt-2"
-                    >
-                      {serviceCategories.map((s) => (
-                        <Link
-                          key={s.id}
-                          href={s.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="text-[13px] text-white/70 hover:text-white"
-                        >
-                          {s.title}
-                        </Link>
-                      ))}
-                      <Link
-                        href="/services"
-                        onClick={() => setMobileOpen(false)}
-                        className="text-[12px] font-mono uppercase tracking-wider text-purple-400 mt-1 flex items-center gap-1"
-                      >
-                        All Capabilities <ArrowRight size={12} />
-                      </Link>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Industries Accordion */}
-              <div>
-                <button
-                  onClick={() => setMobileExpandedSection(mobileExpandedSection === "industries" ? null : "industries")}
-                  className="flex items-center justify-between w-full text-left py-2 text-2xl font-display text-white"
-                >
-                  <span>Industries</span>
-                  <ChevronDown size={18} className={`transition-transform ${mobileExpandedSection === "industries" ? "rotate-180 text-purple-400" : "text-white/40"}`} />
-                </button>
-                <AnimatePresence>
-                  {mobileExpandedSection === "industries" && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden pl-4 py-2 flex flex-col gap-2.5 border-l border-white/10 mt-2"
-                    >
-                      {industries.map((ind) => (
-                        <Link
-                          key={ind.name}
-                          href={ind.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="text-[13px] text-white/70 hover:text-white"
-                        >
-                          {ind.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <Link
-                href="/work"
-                onClick={() => setMobileOpen(false)}
-                className="text-2xl font-display text-white/70 hover:text-white py-1"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openContact();
+                }}
+                className="w-full py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-colors"
               >
-                Work & Cases
-              </Link>
-
-              <Link
-                href="/process"
-                onClick={() => setMobileOpen(false)}
-                className="text-2xl font-display text-white/70 hover:text-white py-1"
-              >
-                Process
-              </Link>
-
-              <Link
-                href="/about"
-                onClick={() => setMobileOpen(false)}
-                className="text-2xl font-display text-white/70 hover:text-white py-1"
-              >
-                About & Philosophy
-              </Link>
-            </nav>
-
-            {/* Bottom Contact & Action */}
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="btn-sweep btn-sweep-primary w-full py-4 text-center font-bold tracking-[0.15em] uppercase text-xs rounded-xl"
-              >
-                <span>Start A Project</span>
-                <ArrowRight size={14} />
-              </Link>
-
-              <div className="flex flex-col sm:flex-row justify-between text-[11px] text-white/40 font-mono gap-1">
-                <span>contact@integralgroups.in</span>
-                <span>Bhimtal, Uttarakhand, India</span>
-              </div>
+                <span>START PROJECT</span>
+                <ArrowRight size={16} />
+              </button>
             </div>
           </motion.div>
         )}

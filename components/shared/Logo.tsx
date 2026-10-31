@@ -1,43 +1,36 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export const Logo = ({ className }: { className?: string }) => {
+export const Logo = ({ className, dark = false }: { className?: string; dark?: boolean }) => {
   return (
-    <div className={cn("flex items-center gap-4 group", className)}>
-      <div className="relative w-12 h-12 flex items-center justify-center">
-        {/* Outer structural hexagon */}
-        <div className="absolute inset-0 bg-white/10 rounded-[18px] rotate-45 group-hover:rotate-[135deg] transition-all duration-700 blur-[2px]" />
-        
-        {/* Main logo mark */}
-        <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:scale-95 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-          <svg
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-7 h-7 text-black group-hover:rotate-90 transition-transform duration-700"
-          >
-            {/* Structural "I" and "L" intersection */}
-            <path
-              d="M12 8V32M12 32H28M20 8V24M28 8V32"
-              stroke="currentColor"
-              strokeWidth="4"
-              strokeLinecap="square"
-              className="opacity-90"
-            />
-            {/* Node indicator */}
-            <rect x="18" y="28" width="4" height="4" fill="#7C3AED" />
-          </svg>
-        </div>
+    <div className={cn("flex items-center gap-3 group select-none", className)}>
+      {/* Structural minimalist geometric monogram */}
+      <div className="relative w-8 h-8 flex items-center justify-center">
+        <svg
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={cn("w-7 h-7 transition-transform duration-300 group-hover:scale-105", dark ? "text-white" : "text-slate-900")}
+        >
+          {/* Two elegant vertical studio pillars */}
+          <rect x="6" y="5" width="4.5" height="22" rx="1.5" fill="currentColor" />
+          <rect x="14" y="5" width="4.5" height="15" rx="1.5" fill="currentColor" />
+          <rect x="22" y="12" width="4.5" height="15" rx="1.5" fill={dark ? "#60A5FA" : "#2563EB"} />
+        </svg>
       </div>
       
       <div className="flex flex-col">
-        <span className="text-2xl font-black text-white uppercase tracking-tighter italic leading-none group-hover:text-purple-400 transition-colors">
-          Integral
-        </span>
-        <span className="text-[10px] uppercase tracking-[0.5em] text-purple-500 font-black leading-none">
-          Labs
+        <div className="flex items-center gap-1.5 leading-none">
+          <span className={cn("text-[17px] font-extrabold tracking-tight uppercase", dark ? "text-white" : "text-slate-900")}>
+            Integral
+          </span>
+        </div>
+        <span className={cn("text-[8.5px] font-mono tracking-[0.2em] uppercase font-semibold mt-0.5", dark ? "text-slate-400" : "text-slate-500")}>
+          Labs // Studio
         </span>
       </div>
     </div>
   );
 };
+
+export default Logo;

@@ -1,84 +1,65 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   Compass, 
-  Layout, 
-  Code2, 
-  ShieldCheck, 
+  Layers, 
+  Cpu, 
+  CheckCircle2, 
   Rocket, 
-  RefreshCw,
-  CheckCircle2,
-  ArrowRight,
-  LucideIcon
+  Activity,
+  ArrowRight
 } from "lucide-react";
-import Link from "next/link";
 
-interface ProcessStep {
-  index: string;
-  title: string;
-  subtitle: string;
-  icon: LucideIcon;
-  description: string;
-  deliverables: string[];
-  duration: string;
-}
-
-const steps: ProcessStep[] = [
+const processSteps = [
   {
-    index: "01",
-    title: "Discovery & Architecture",
-    subtitle: "System Scoping & Tech Stack Selection",
+    step: "01",
+    phase: "Week 1",
+    title: "Discovery & Strategy",
+    description: "Deep dive into business goals, system requirements, architecture mapping, and user journey definition.",
     icon: Compass,
-    description: "Deep dive into business logic, user flows, database constraints, and API dependencies to define a bulletproof architectural blueprint.",
-    deliverables: ["Technical specification doc", "Database schema & ERD", "Sprint milestones & roadmap"],
-    duration: "Week 1"
+    deliverables: ["Product Roadmap", "Tech Stack Decision", "Scope Specifications"]
   },
   {
-    index: "02",
-    title: "UI/UX & Prototyping",
-    subtitle: "Design Systems & Token Architecture",
-    icon: Layout,
-    description: "Creating responsive, accessible user interfaces and high-fidelity interactive prototypes tested against real user journeys.",
-    deliverables: ["Figma design system tokens", "Interactive desktop & mobile wireframes", "Micro-interaction specs"],
-    duration: "Week 2 - 3"
+    step: "02",
+    phase: "Week 2-3",
+    title: "Design & Prototyping",
+    description: "High-fidelity Figma wireframes, component design systems, and clickable interactive prototypes.",
+    icon: Layers,
+    deliverables: ["Figma Design System", "Interactive Prototype", "Usability Validation"]
   },
   {
-    index: "03",
-    title: "Sprint-Based Engineering",
-    subtitle: "Production-Grade Codebase Construction",
-    icon: Code2,
-    description: "Rapid, test-driven development using Next.js 16, TypeScript, Python FastAPI, and PostgreSQL with continuous client review demos.",
-    deliverables: ["Modular component library", "Secure API microservices", "Weekly staging environment demos"],
-    duration: "Week 3 - 6"
+    step: "03",
+    phase: "Week 4-8",
+    title: "Development Sprint",
+    description: "Agile engineering sprints, modern frontend, resilient API backend, and clean database integrations.",
+    icon: Cpu,
+    deliverables: ["Fullstack Source Code", "API Documentation", "Staging Environments"]
   },
   {
-    index: "04",
-    title: "QA & Performance Hardening",
-    subtitle: "Security, Latency & a11y Audits",
-    icon: ShieldCheck,
-    description: "Rigorously validating unit tests, cross-browser compatibility, Lighthouse CWV scores, and API security headers.",
-    deliverables: ["Core Web Vitals & performance audit", "Security header verification", "Cross-browser & mobile testing"],
-    duration: "Week 6 - 7"
+    step: "04",
+    phase: "Week 9-10",
+    title: "Testing & QA",
+    description: "End-to-end automated testing, cross-browser compatibility, security audits, and performance tuning.",
+    icon: CheckCircle2,
+    deliverables: ["Security Regression Suite", "Speed & Core Web Vitals", "QA Sign-off"]
   },
   {
-    index: "05",
-    title: "CI/CD & Edge Deployment",
-    subtitle: "Zero-Downtime Launch Execution",
+    step: "05",
+    phase: "Week 11",
+    title: "Deployment & Launch",
+    description: "Production launch with zero-downtime deployment, DNS configuration, and automated observability.",
     icon: Rocket,
-    description: "Automated deployment to global edge CDN infrastructure with SSL, DNS failover, APM logging, and production database migrations.",
-    deliverables: ["Production edge routing", "Automated deployment pipelines", "System telemetry & error alerts"],
-    duration: "Launch Day"
+    deliverables: ["Production Release", "Edge Routing & CDN", "Monitoring Dashboards"]
   },
   {
-    index: "06",
-    title: "Continuous Evolution",
-    subtitle: "Post-Launch Scaling & Feature Sprints",
-    icon: RefreshCw,
-    description: "Ongoing telemetry monitoring, query optimization, security patches, and iterative feature development as your client base expands.",
-    deliverables: ["Telemetry monitoring", "Post-launch SLA support", "Iterative feature roadmapping"],
-    duration: "Ongoing"
+    step: "06",
+    phase: "Ongoing",
+    title: "Support & Growth",
+    description: "Continuous operational monitoring, feature iteration, model retraining, and scale optimizations.",
+    icon: Activity,
+    deliverables: ["SLA Maintenance", "Performance Telemetry", "Feature Enhancements"]
   }
 ];
 
@@ -87,127 +68,117 @@ export default function Process() {
 
   return (
     <section 
-      id="process-section"
-      className="relative py-28 md:py-36 overflow-hidden bg-transparent border-t border-white/[0.05]"
+      id="process"
+      className="py-24 md:py-32 bg-slate-50/70 border-t border-slate-200/80"
     >
-      <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
-          <div className="max-w-[650px]">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2.5 mb-5"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-400">
-                Engineering Workflow
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[38px] sm:text-[54px] md:text-[62px] text-white tracking-tight leading-[1.0]"
-            >
-              A Step-by-Step Delivery{" "}
-              <span className="italic font-light text-white/50">Roadmap.</span>
-            </motion.h2>
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        {/* Section Header */}
+        <div className="max-w-[720px] mb-16">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
+            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
+              Our Process
+            </span>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[14px] sm:text-[15px] text-white/50 leading-relaxed font-light max-w-[380px]"
-          >
-            We eliminate ambiguity with milestone-driven sprints, continuous client demos, and strict engineering verification at every stage.
-          </motion.p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            From Idea to Impact
+          </h2>
+          <p className="text-base text-slate-500 mt-3 max-w-[620px]">
+            A streamlined approach from idea to impact. Every project moves through structured milestones with complete engineering transparency.
+          </p>
         </div>
 
-        {/* 6-Step Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
-            const isCurrent = activeStep === idx;
+        {/* Timeline Desktop Stepper */}
+        <div className="relative mb-16 hidden lg:block">
+          {/* Connecting Line */}
+          <div className="absolute top-6 left-6 right-6 h-0.5 bg-slate-200 -z-0" />
 
+          <div className="grid grid-cols-6 gap-4 relative z-10">
+            {processSteps.map((step, index) => {
+              const isSelected = activeStep === index;
+              return (
+                <button
+                  key={step.step}
+                  onClick={() => setActiveStep(index)}
+                  className="text-left group focus:outline-none"
+                >
+                  {/* Step Node */}
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-mono font-bold text-sm transition-all duration-300 mb-4 ${
+                    isSelected 
+                      ? "bg-blue-600 text-white shadow-md scale-110 ring-4 ring-blue-100" 
+                      : "bg-white border-2 border-slate-200 text-slate-600 group-hover:border-blue-400 group-hover:text-blue-600"
+                  }`}>
+                    {step.step}
+                  </div>
+
+                  <span className="text-[11px] font-mono text-blue-600 font-bold uppercase tracking-wider block mb-1">
+                    {step.phase}
+                  </span>
+
+                  <h4 className={`text-sm font-bold transition-colors ${
+                    isSelected ? "text-blue-600" : "text-slate-900 group-hover:text-blue-600"
+                  }`}>
+                    {step.title}
+                  </h4>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Process Cards Grid (Mobile + Detail View) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {processSteps.map((step, index) => {
+            const Icon = step.icon;
+            const isHighlight = activeStep === index;
             return (
               <motion.div
-                key={step.index}
-                initial={{ opacity: 0, y: 20 }}
+                key={step.step}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                onClick={() => setActiveStep(idx)}
-                className={`group rounded-2xl p-7 sm:p-8 border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
-                  isCurrent
-                    ? "bg-[#121212] border-purple-500/40 shadow-xl shadow-purple-950/20"
-                    : "bg-[#0b0b0b]/80 border-white/[0.07] hover:border-white/20"
+                transition={{ duration: 0.5, delay: index * 0.06 }}
+                className={`rounded-2xl p-7 transition-all duration-300 border flex flex-col justify-between ${
+                  isHighlight 
+                    ? "bg-white border-blue-500 shadow-md ring-1 ring-blue-500/20" 
+                    : "bg-white border-slate-200/80 hover:border-slate-300 shadow-xs"
                 }`}
               >
                 <div>
-                  {/* Top Bar: Icon, Index & Duration */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className={`p-3 rounded-xl border transition-colors ${
-                      isCurrent 
-                        ? "bg-purple-500/20 text-purple-300 border-purple-500/30" 
-                        : "bg-white/5 text-white/50 border-white/5 group-hover:text-purple-400"
-                    }`}>
-                      <Icon size={20} />
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-purple-300/60 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-                        {step.duration}
-                      </span>
-                      <span className="font-mono text-[12px] font-bold text-white/20">
-                        {step.index}
-                      </span>
-                    </div>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs font-mono">
+                      {step.step}
+                    </span>
+                    <span className="text-xs font-mono font-semibold text-slate-400">
+                      {step.phase}
+                    </span>
                   </div>
 
-                  <h3 className="text-[20px] font-bold text-white tracking-tight leading-snug mb-1 group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
                     {step.title}
                   </h3>
-                  <div className="font-mono text-[11px] text-purple-400/80 uppercase tracking-wider mb-3">
-                    {step.subtitle}
-                  </div>
 
-                  <p className="text-[13px] text-white/50 leading-relaxed font-light mb-6">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                     {step.description}
                   </p>
                 </div>
 
-                {/* Deliverables List */}
-                <div className="pt-4 border-t border-white/5 space-y-2">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">
-                    Phase Milestones
-                  </span>
-                  {step.deliverables.map((deliv) => (
-                    <div key={deliv} className="flex items-center gap-2 text-[12px] text-white/70">
-                      <div className="w-1 h-1 rounded-full bg-purple-400" />
-                      <span>{deliv}</span>
-                    </div>
-                  ))}
+                <div className="pt-4 border-t border-slate-100">
+                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                    Key Deliverables:
+                  </div>
+                  <ul className="space-y-1">
+                    {step.deliverables.map((item) => (
+                      <li key={item} className="text-xs text-slate-600 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Workflow Bottom Bar */}
-        <div className="text-center">
-          <Link
-            href="/contact"
-            className="btn-sweep btn-sweep-primary px-8 py-3.5 text-[11px] font-bold tracking-[0.14em] uppercase"
-          >
-            <span>Initiate Sprint 0 Discovery</span>
-            <ArrowRight size={14} />
-          </Link>
         </div>
       </div>
     </section>

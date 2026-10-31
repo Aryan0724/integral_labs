@@ -2,151 +2,105 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Plus, Minus } from "lucide-react";
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-const faqs: FAQItem[] = [
+const FAQS: FAQItem[] = [
   {
-    question: "What technology stack does Integral Labs specialize in?",
-    answer: "We engineer production systems primarily in the modern TypeScript ecosystem (Next.js 16, React 19, Tailwind CSS v4) paired with Python (FastAPI, PyTorch, Scikit-Learn) for machine learning services, PostgreSQL, Docker, and Cloudflare/AWS edge infrastructure."
+    question: "What technologies do you use?",
+    answer: "We engineer fullstack systems primarily with Next.js 16, React 19, TypeScript, Tailwind CSS, Python/FastAPI for machine learning pipelines, and PostgreSQL or Supabase for relational data architectures. Deployments are orchestrated on Vercel Edge and AWS."
   },
   {
-    question: "How fast can we kick off a new engineering sprint?",
-    answer: "Following our initial technical discovery call, we review requirements and deliver a detailed architecture blueprint, sprint milestones, and launch Sprint 1 within 5 to 7 business days."
+    question: "How long does a project take?",
+    answer: "Typical client projects range from 3 to 10 weeks depending on scope. Lean MVPs can launch within 3–4 weeks, while complex fullstack SaaS platforms with custom AI models or multi-tenant architectures take between 6 to 10 weeks."
   },
   {
-    question: "Who owns the code, intellectual property, and design assets?",
-    answer: "You own 100% of the intellectual property, git repositories, design tokens, database schemas, and documentation from day one. We never lock clients into proprietary closed-source systems."
+    question: "Do you provide post-launch support?",
+    answer: "Yes, every deployment includes 30 days of complimentary post-launch warranty, monitoring, and operational bug-fixing. We also offer ongoing monthly maintenance agreements for infrastructure updates, model fine-tuning, and feature iteration."
   },
   {
-    question: "Can you modernize or integrate with our existing infrastructure?",
-    answer: "Yes. We frequently build headless frontend experiences, integrate custom REST/GraphQL APIs, and optimize slow legacy queries without requiring a total rip-and-replace of your core database."
+    question: "Who owns the code and design?",
+    answer: "You do. Upon project completion and final milestone approval, 100% of the intellectual property, repository access, design assets, and production deployment credentials transfer entirely to your organization with zero lock-in."
   },
   {
-    question: "What engagement models do you support?",
-    answer: "We support both Milestone-Driven Fixed Scopes (ideal for well-defined MVPs and project redesigns) and Dedicated Engineering Retainers (for venture-backed startups and ongoing product iterations)."
-  },
-  {
-    question: "What post-launch maintenance and support do you provide?",
-    answer: "All production deployments include launch monitoring, edge failover configuration, and 30 days of complimentary hyper-care warranty. We also provide ongoing SLA-backed support retainers for continuous feature sprints."
+    question: "Can you help with existing projects?",
+    answer: "Absolutely. We routinely conduct codebase audits, UI/UX redesigns, security hardenings, and legacy migrations to modern Next.js/React architectures without interrupting existing business operations."
   }
 ];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section 
       id="faq-section"
-      className="relative py-28 md:py-36 overflow-hidden bg-transparent border-t border-white/[0.05]"
+      className="py-24 md:py-32 bg-slate-50/70 border-t border-slate-200/80"
     >
-      <div className="container relative z-10 max-w-[1040px] mx-auto px-5 sm:px-8">
-        {/* Header */}
-        <div className="text-center max-w-[650px] mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/5 mb-5"
-          >
-            <HelpCircle size={13} className="text-purple-400" />
-            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-400">
-              Clear Answers
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        <div className="max-w-[720px] mb-14">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
+            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
+              FAQ
             </span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[38px] sm:text-[52px] text-white tracking-tight leading-[1.0] mb-5"
-          >
-            Frequently Asked{" "}
-            <span className="italic font-light text-white/50">Questions.</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[14px] sm:text-[15px] text-white/50 leading-relaxed font-light"
-          >
-            Transparent insights into how we partner, engineer, and deliver software.
-          </motion.p>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Your Questions, Answered
+          </h2>
+          <p className="text-base text-slate-500 mt-3">
+            Find answers to common questions about our engineering process, pricing, and delivery.
+          </p>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-4 mb-16">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-
+        {/* Clean Accordion List */}
+        <div className="max-w-[840px] space-y-3.5">
+          {FAQS.map((faq, index) => {
+            const isOpen = openIndex === index;
             return (
-              <motion.div
+              <div
                 key={faq.question}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen 
-                    ? "bg-[#121212] border-purple-500/30 shadow-lg shadow-purple-950/20" 
-                    : "bg-[#0b0b0b]/80 border-white/[0.07] hover:border-white/20"
-                }`}
+                className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs transition-all duration-200"
               >
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4"
+                  onClick={() => toggle(index)}
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 select-none focus:outline-none"
+                  aria-expanded={isOpen}
                 >
-                  <span className="text-[16px] sm:text-[17px] font-bold text-white tracking-tight leading-snug">
+                  <span className="text-base sm:text-lg font-bold text-slate-900">
                     {faq.question}
                   </span>
-                  <div className={`p-2 rounded-xl shrink-0 transition-colors ${
-                    isOpen ? "bg-purple-500/20 text-purple-300" : "bg-white/5 text-white/40"
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    isOpen ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-500"
                   }`}>
                     {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                   </div>
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
                     >
-                      <div className="px-6 sm:px-7 pb-6 pt-1 text-[14px] text-white/60 leading-relaxed font-light border-t border-white/5">
+                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-50 font-normal">
                         {faq.answer}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
-        </div>
-
-        {/* Extra Question Prompt */}
-        <div className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
-            <h4 className="text-[15px] font-bold text-white tracking-tight">Have a specific question not covered here?</h4>
-            <p className="text-[12px] text-white/40 font-light">Direct engineering inquiries receive responses within 24 hours.</p>
-          </div>
-          <Link
-            href="/contact"
-            className="btn-sweep btn-sweep-outline px-6 py-2.5 text-[11px] font-bold tracking-[0.1em] uppercase shrink-0"
-          >
-            <span>Ask Us Directly</span>
-            <ArrowRight size={13} />
-          </Link>
         </div>
       </div>
     </section>

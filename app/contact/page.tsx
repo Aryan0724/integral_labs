@@ -2,257 +2,257 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Clock, CornerDownLeft, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    company: "",
-    projectType: "SaaS Platform",
-    message: "",
     phone: "",
+    projectType: "Custom Web Application",
+    message: "",
+    agree: true,
+    hp_field: "",
   });
-  const [phoneError, setPhoneError] = useState(false);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.message) return;
+    if (formState.hp_field) return;
 
-    if (formState.phone) {
-      const cleaned = formState.phone.replace(/[\s\-()]/g, "");
-      const phoneRegex = /^(?:\+91|91|0)?[6-9]\d{9}$/;
-      if (!phoneRegex.test(cleaned)) {
-        setPhoneError(true);
-        return;
-      }
-    }
-    setPhoneError(false);
+    setStatus("submitting");
+    setErrorMessage("");
 
-    setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
 
+      const data = await res.json();
       if (res.ok) {
         setStatus("success");
         setFormState({
           name: "",
           email: "",
-          company: "",
-          projectType: "SaaS Platform",
-          message: "",
           phone: "",
+          projectType: "Custom Web Application",
+          message: "",
+          agree: true,
+          hp_field: "",
         });
       } else {
         setStatus("error");
+        setErrorMessage(data.error || "Failed to submit inquiry. Please try again.");
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setStatus("error");
+      setErrorMessage("Network error. Please try again or reach out via email.");
     }
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen flex items-center">
-      <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-          {/* Content */}
-          <div className="max-w-[440px]">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="badge mb-6"
-            >
-              Contact
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-display text-[42px] sm:text-[56px] text-white mb-8"
-            >
-              Start A
-              <br />
-              Project.
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-[#71717a] text-[17px] leading-relaxed mb-12"
-            >
-              Have a software system in mind? We're available for new 
-              collaborations and engineering-led product development.
-            </motion.p>
+    <main className="min-h-screen bg-white pt-36 pb-24 text-slate-900">
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Column: Direct Info */}
+          <div className="lg:col-span-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold mb-6 select-none">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Get in Touch</span>
+            </div>
 
-            <div className="space-y-4 pt-12 border-t border-white/[0.04]">
-              <div className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-[0.2em] mb-4">Direct Inquiries</div>
-              <a href="mailto:contact@integralgroups.in" className="text-[18px] text-white hover:text-white/60 transition-colors block">
-                contact@integralgroups.in
-              </a>
-              <div className="text-[14px] text-[#52525b]">Based in Bhimtal, Uttarakhand, India</div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08] mb-5">
+              Let's Build Something Great Together.
+            </h1>
+
+            <p className="text-base text-slate-600 leading-relaxed font-normal mb-10 max-w-[440px]">
+              Have a project in mind or want to discuss your ideas? We'd love to hear from you. We respond within 24 hours with architectural feedback and initial estimates.
+            </p>
+
+            <div className="space-y-6 pt-6 border-t border-slate-200/80">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Email</div>
+                  <a href="mailto:contact@integralgroups.in" className="text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors">
+                    contact@integralgroups.in
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Location</div>
+                  <div className="text-sm font-bold text-slate-900">
+                    Bhimtal, Uttarakhand, India
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Clock size={18} />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Response Time</div>
+                  <div className="text-sm font-bold text-slate-900">
+                    Within 24 hours
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="surface p-8 md:p-12 border-white/[0.06] bg-[#050505] shadow-2xl rounded-2xl min-h-[460px] flex flex-col justify-center"
-          >
+          {/* Right Column: Contact Form */}
+          <div className="lg:col-span-7 bg-slate-50/80 p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xs">
             {status === "success" ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12 space-y-6"
-              >
-                <div className="flex justify-center">
-                  <CheckCircle className="w-16 h-16 text-green-500 animate-pulse" />
+              <div className="py-12 text-center">
+                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 size={32} />
                 </div>
-                <h3 className="text-2xl font-display text-white italic">Inquiry Received!</h3>
-                <p className="text-sm text-[#71717a] max-w-[320px] mx-auto leading-relaxed">
-                  Thank you. We've routed this proposal straight to our team and we'll be in touch shortly.
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Received!</h3>
+                <p className="text-sm text-slate-600 max-w-md mx-auto mb-6">
+                  Thank you for reaching out. Our engineering team has received your message and will review it shortly.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-xs font-mono text-white/50 hover:text-white border border-white/10 hover:border-white/20 px-4 py-2 rounded-full transition-all"
+                  className="px-6 py-2.5 rounded-full bg-blue-600 text-white font-semibold text-xs hover:bg-blue-700 transition-colors"
                 >
-                  Send another inquiry
+                  Send another message
                 </button>
-              </motion.div>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Honeypot field for bot protection */}
-                <input 
-                  type="text" 
-                  name="hp_field" 
-                  aria-hidden="true" 
-                  tabIndex={-1} 
-                  autoComplete="off" 
-                  className="hidden" 
-                  value={(formState as any).hp_field || ""} 
-                  onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value } as any)} 
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <input
+                  type="text"
+                  name="hp_field"
+                  value={formState.hp_field}
+                  onChange={(e) => setFormState({ ...formState, hp_field: e.target.value })}
+                  className="hidden"
+                  tabIndex={-1}
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label htmlFor="contact-name" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Name</label>
-                    <input 
-                      id="contact-name"
-                      type="text" 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
                       required
-                      placeholder="Aarav Sharma" 
+                      placeholder="Your name or company"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="contact-email" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Email</label>
-                    <input 
-                      id="contact-email"
-                      type="email" 
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
                       required
-                      placeholder="aarav.sharma@example.com" 
+                      placeholder="you@example.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label htmlFor="contact-company" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Company</label>
-                    <input 
-                      id="contact-company"
-                      type="text" 
-                      placeholder="Zenith Tech India" 
-                      value={formState.company}
-                      onChange={(e) => setFormState({ ...formState, company: e.target.value })}
-                      className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="contact-project-type" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Project Type</label>
-                    <div className="relative">
-                      <select 
-                        id="contact-project-type"
-                        value={formState.projectType}
-                        onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
-                        className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none appearance-none cursor-pointer"
-                      >
-                        <option className="bg-black" value="SaaS Platform">SaaS Platform</option>
-                        <option className="bg-black" value="AI System">AI System</option>
-                        <option className="bg-black" value="Automation">Automation</option>
-                        <option className="bg-black" value="Frontend">Frontend</option>
-                        <option className="bg-black" value="Other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label htmlFor="contact-phone" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Mobile Number (Optional)</label>
-                    <input 
-                      id="contact-phone"
-                      type="tel" 
-                      placeholder="+91 99999 99999" 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                      Phone (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+91 / +1 ..."
                       value={formState.phone}
-                      onChange={(e) => {
-                        setFormState({ ...formState, phone: e.target.value });
-                        if (phoneError) setPhoneError(false);
-                      }}
-                      className={`w-full bg-transparent border-b ${phoneError ? 'border-red-500/50' : 'border-white/10'} py-2 text-white focus:border-white transition-colors outline-none`}
+                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     />
-                    {phoneError && (
-                      <span className="text-red-500 text-[10px] font-mono block mt-1" role="alert">Please enter a valid phone number.</span>
-                    )}
                   </div>
-                  <div className="hidden sm:block" />
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                      Project Type
+                    </label>
+                    <select
+                      value={formState.projectType}
+                      onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                    >
+                      <option value="Custom Web Application">Custom Web Application</option>
+                      <option value="AI / ML System">AI / ML System</option>
+                      <option value="Mobile Application">Mobile Application</option>
+                      <option value="UI/UX Redesign">UI/UX Redesign</option>
+                      <option value="MVP Build">MVP Build</option>
+                      <option value="Enterprise Consulting">Enterprise Consulting</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="contact-message" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Message</label>
-                  <textarea 
-                    id="contact-message"
-                    rows={4}
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                    Message *
+                  </label>
+                  <textarea
                     required
-                    placeholder="Tell us about your project..." 
+                    rows={4}
+                    placeholder="Tell us about your project..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
                   />
                 </div>
 
+                <div className="flex items-center gap-2.5">
+                  <input
+                    type="checkbox"
+                    id="page-agree"
+                    checked={formState.agree}
+                    onChange={(e) => setFormState({ ...formState, agree: e.target.checked })}
+                    className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-slate-300"
+                  />
+                  <label htmlFor="page-agree" className="text-xs text-slate-500 select-none">
+                    I agree to the privacy policy and terms.
+                  </label>
+                </div>
+
                 {status === "error" && (
-                  <div className="text-red-500 text-xs font-mono" role="alert">
-                    Something went wrong. Please try again.
+                  <div className="flex items-center gap-2 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 font-medium">
+                    <AlertCircle size={15} />
+                    <span>{errorMessage}</span>
                   </div>
                 )}
 
-                <button 
+                <button
                   type="submit"
-                  disabled={status === "loading"}
-                  className="group flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-[14px] hover:bg-[#f4f4f5] transition-all hover:scale-[1.02] w-full justify-center disabled:opacity-50 cursor-pointer"
+                  disabled={status === "submitting"}
+                  className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-60"
                 >
-                  {status === "loading" ? "Sending..." : "Send Inquiry"}
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>{status === "submitting" ? "Sending..." : "Send Message"}</span>
+                  <CornerDownLeft size={16} />
                 </button>
               </form>
             )}
-          </motion.div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -3,81 +3,58 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { 
-  GraduationCap, 
   ShoppingBag, 
   UtensilsCrossed, 
-  Cpu, 
-  Building2, 
-  Car,
-  ArrowRight,
-  LucideIcon
+  GraduationCap, 
+  HeartPulse, 
+  ShieldCheck, 
+  Truck,
+  ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 
-interface IndustryItem {
-  id: string;
-  title: string;
-  icon: LucideIcon;
-  description: string;
-  provenCase: string;
-  deliverables: string[];
-  link: string;
-}
-
-const industriesList: IndustryItem[] = [
+const industriesData = [
   {
-    id: "edtech",
-    title: "EdTech & Academic Infrastructure",
-    icon: GraduationCap,
-    description: "Virtual learning environments, syllabus tracking platforms, and admissions portals engineered for thousands of concurrent students.",
-    provenCase: "EduReach Suite & Bro University",
-    deliverables: ["Live lecture synchronization", "Student progress dashboards", "Certification verification workflows"],
-    link: "/work"
-  },
-  {
-    id: "ecommerce",
-    title: "E-Commerce & Digital Retail",
+    id: "retail",
     icon: ShoppingBag,
-    description: "High-speed storefront architectures with instant catalog search, low cart abandonment, and automated inventory sync.",
-    provenCase: "AtoZ Platform & UK Drip",
-    deliverables: ["Headless checkout architecture", "Catalog search indexing", "Dynamic product variation state"],
-    link: "/work"
+    title: "Retail & E-commerce",
+    description: "Scale your online business with modern platforms, headless checkouts, and dynamic catalog syncing.",
+    tags: ["Headless Commerce", "Payment Optimization", "Inventory Automation"]
   },
   {
     id: "hospitality",
-    title: "Hospitality & Dining Systems",
     icon: UtensilsCrossed,
-    description: "Sensory digital menus, real-time table booking systems, and walk-in mobile portals that convert casual diners into regulars.",
-    provenCase: "Spice & Fire & Cafe Max",
-    deliverables: ["Interactive digital menus", "Table reservation automation", "Fast mobile-first walk-in pages"],
-    link: "/work"
+    title: "Hospitality & Dining",
+    description: "Enhance guest experiences with digital solutions, contactless ordering, and real-time reservations.",
+    tags: ["Digital Ordering", "Guest Management", "Live Kitchen Sync"]
   },
   {
-    id: "ai-tech",
-    title: "AI, Machine Learning & Analytics",
-    icon: Cpu,
-    description: "Predictive machine learning engines that parse big dataset metadata to deliver real-time simulations and traction forecasting.",
-    provenCase: "Preyt Platform & Nexus Foundry",
-    deliverables: ["Custom ML prediction pipelines", "Video reach simulation", "FastAPI + React analytical suites"],
-    link: "/work"
+    id: "education",
+    icon: GraduationCap,
+    title: "Education",
+    description: "Build better learning experiences with modern technology, student analytics, and curriculum portals.",
+    tags: ["Student Portals", "Course Management", "Real-time Testing"]
   },
   {
-    id: "business-advisory",
-    title: "Enterprise Advisory & SaaS Portals",
-    icon: Building2,
-    description: "High-authority corporate web presences and multi-tenant portals engineered to establish immediate institutional credibility.",
-    provenCase: "Vantage Strategic & Labs Portal",
-    deliverables: ["Investor presentation portals", "Multi-tenant client dashboards", "High-trust conversion pathways"],
-    link: "/work"
+    id: "healthcare",
+    icon: HeartPulse,
+    title: "Healthcare",
+    description: "Improve care with smart systems, HIPAA-compliant patient communication, and telemetry monitoring.",
+    tags: ["Secure Telemetry", "Patient Portals", "Provider Scheduling"]
+  },
+  {
+    id: "finance",
+    icon: ShieldCheck,
+    title: "Finance",
+    description: "Secure and scalable financial solutions, encrypted transaction logs, and fraud detection workflows.",
+    tags: ["FinTech APIs", "Audit Trails", "Multi-factor Vaults"]
   },
   {
     id: "logistics",
-    title: "Mobility & Booking Logistics",
-    icon: Car,
-    description: "Fleet booking dashboards featuring vehicle attribute filtering, live availability scheduling, and friction-free checkouts.",
-    provenCase: "Travicars & Roz Cars",
-    deliverables: ["Fleet telemetry & rate scannability", "Dynamic vehicle search filters", "Sub-minute booking flow"],
-    link: "/work"
+    icon: Truck,
+    title: "Logistics & Mobility",
+    description: "Optimize operations and delivery with route dispatching, fleet telemetry, and automated freight tracking.",
+    tags: ["Fleet Telemetry", "Dispatch Engines", "Warehouse Ops"]
   }
 ];
 
@@ -85,104 +62,70 @@ export default function Industries() {
   return (
     <section 
       id="industries-section"
-      className="relative py-28 md:py-36 overflow-hidden bg-transparent border-t border-white/[0.05]"
+      className="py-24 md:py-32 bg-white border-t border-slate-200/80"
     >
-      <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
-          <div className="max-w-[650px]">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2.5 mb-5"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-400">
-                Domain Versatility
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[38px] sm:text-[54px] md:text-[62px] text-white tracking-tight leading-[1.0]"
-            >
-              One Technical Standard —{" "}
-              <span className="italic font-light text-white/50">Diverse Verticals.</span>
-            </motion.h2>
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        {/* Section Header */}
+        <div className="max-w-[720px] mb-16">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
+            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
+              Industries
+            </span>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-[14px] sm:text-[15px] text-white/50 leading-relaxed font-light max-w-[380px]"
-          >
-            Our core engineering foundation adapts to specialized compliance, operational workflows, and domain expectations across diverse sectors.
-          </motion.p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            One Expertise — Different Industries
+          </h2>
+          <p className="text-base text-slate-500 mt-3 max-w-[620px]">
+            We build solutions for a wide range of industries, understanding their unique challenges and goals.
+          </p>
         </div>
 
-        {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {industriesList.map((ind, index) => {
+        {/* 3x2 Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {industriesData.map((ind, index) => {
             const Icon = ind.icon;
             return (
               <motion.div
                 key={ind.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group rounded-2xl p-7 sm:p-8 border border-white/[0.08] bg-[#0b0b0b]/90 hover:bg-[#121212] hover:border-purple-500/30 transition-all duration-300 flex flex-col justify-between"
+                className="bg-slate-50/70 rounded-2xl border border-slate-200/80 p-7 hover:bg-white hover:shadow-md hover:border-blue-500/40 transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover:scale-110 transition-transform">
-                      <Icon size={22} />
-                    </div>
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                      Live Portfolio Proof
-                    </span>
+                  <div className="w-12 h-12 rounded-xl bg-white border border-slate-200/80 text-slate-700 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all shadow-xs">
+                    <Icon size={22} />
                   </div>
 
-                  <h3 className="text-[20px] font-bold text-white tracking-tight leading-snug mb-3 group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2.5 group-hover:text-blue-600 transition-colors">
                     {ind.title}
                   </h3>
 
-                  <p className="text-[13px] text-white/50 leading-relaxed font-light mb-6">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
                     {ind.description}
                   </p>
 
-                  <div className="space-y-1.5 pt-4 border-t border-white/5 mb-6">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-2">
-                      Key Competencies
-                    </span>
-                    {ind.deliverables.map((deliv) => (
-                      <div key={deliv} className="flex items-center gap-2 text-[12px] text-white/70">
-                        <div className="w-1 h-1 rounded-full bg-purple-400" />
-                        <span>{deliv}</span>
-                      </div>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {ind.tags.map((tag) => (
+                      <span 
+                        key={tag}
+                        className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white border border-slate-200/60 text-slate-600"
+                      >
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-                  <div>
-                    <span className="text-[9px] font-mono text-white/30 uppercase tracking-widest block">Reference Systems</span>
-                    <span className="text-[12px] font-medium text-white/80">{ind.provenCase}</span>
-                  </div>
-
-                  <Link
-                    href={ind.link}
-                    className="p-2 rounded-lg bg-white/5 text-white/40 group-hover:text-white group-hover:bg-purple-500/20 transition-all"
-                  >
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 group-hover:gap-2 transition-all mt-auto"
+                >
+                  <span>Explore industry cases</span>
+                  <ArrowRight size={13} />
+                </Link>
               </motion.div>
             );
           })}

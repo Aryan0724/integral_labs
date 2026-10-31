@@ -8,16 +8,21 @@
 
 @layer base {
   :root {
-    --background: #0f0f0f;
-    --surface: #161616;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-dim: rgba(255, 255, 255, 0.03);
-    --text-primary: #f0f0f0;
-    --text-secondary: #6a6a6a;
-    --text-dim: #3a3a3a;
-    --accent-purple: #8b5cf6;
-    --accent-purple-bright: #a855f7;
-    --accent-gradient: linear-gradient(135deg, #3b0f7a 0%, #8b5cf6 50%, #c084fc 100%);
+    --background: #ffffff;
+    --surface: #f8fafc;
+    --surface-card: #ffffff;
+    --border: #e2e8f0;
+    --border-dim: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-dim: #94a3b8;
+    --accent-blue: #2563eb;
+    --accent-blue-dark: #1d4ed8;
+    --accent-green: #86efac;
+    --accent-green-bg: #f0fdf4;
+    --accent-green-text: #166534;
+    --dark-surface: #0b1120;
+    --dark-card: #0f172a;
   }
 
   * {
@@ -31,7 +36,7 @@
   html {
     background: var(--background);
     color: var(--text-primary);
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -44,7 +49,8 @@
   }
 
   ::selection {
-    background: rgba(139, 92, 246, 0.2);
+    background: rgba(37, 99, 235, 0.15);
+    color: #1d4ed8;
   }
 }
 

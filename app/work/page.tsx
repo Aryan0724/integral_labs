@@ -45,23 +45,18 @@ export default function WorkPage() {
   });
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-24 text-white">
-      {/* Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-purple-600/10 rounded-full blur-[140px]" />
-      </div>
-
+    <main className="min-h-screen bg-white pt-36 pb-24 text-slate-900">
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         {/* Header */}
         <div className="max-w-[760px] mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/5 mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 bg-blue-50/70 mb-6"
           >
-            <Sparkles size={13} className="text-purple-400" />
-            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-300 font-bold">
-              Engineering Portfolio // 20 Production Builds
+            <Sparkles size={13} className="text-blue-600" />
+            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-blue-700 font-bold">
+              Engineering Portfolio // Selected Projects
             </span>
           </motion.div>
 
@@ -69,17 +64,16 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[42px] sm:text-[62px] md:text-[76px] text-white tracking-tight leading-[0.98] mb-8"
+            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.02] mb-6"
           >
-            Real Case Studies &amp;{" "}
-            <span className="italic font-light text-white/50">Delivered Systems.</span>
+            Real Case Studies &amp; Delivered Systems.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-[16px] sm:text-[18px] text-white/50 leading-relaxed font-light"
+            className="text-lg text-slate-600 leading-relaxed font-normal"
           >
             A comprehensive catalog of scalable SaaS platforms, intelligent AI models, e-commerce storefronts, and bespoke digital experiences built by Integral Labs.
           </motion.p>
@@ -93,10 +87,10 @@ export default function WorkPage() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-[11px] font-mono uppercase tracking-wider whitespace-nowrap transition-all border ${
+                className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
                   isActive
-                    ? "bg-purple-500/20 text-purple-300 border-purple-500/40 shadow-lg shadow-purple-950/30 font-bold"
-                    : "bg-white/[0.02] text-white/50 border-white/[0.06] hover:text-white hover:bg-white/[0.05]"
+                    ? "bg-blue-600 text-white border-blue-600 shadow-xs"
+                    : "bg-slate-100 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-200/60"
                 }`}
               >
                 {cat.label}
@@ -116,25 +110,25 @@ export default function WorkPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: i * 0.04 }}
-                className="group rounded-3xl border border-white/[0.08] bg-[#0c0c0c]/90 overflow-hidden hover:border-purple-500/30 transition-all duration-300 flex flex-col justify-between shadow-2xl hover:shadow-purple-950/20"
+                className="group rounded-3xl border border-slate-200/90 bg-white overflow-hidden hover:border-blue-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-xs"
               >
                 <div>
                   {/* Visual Image Preview */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#161616]">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 600px"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-black/30 p-6 flex flex-col justify-between">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-black/20 p-6 flex flex-col justify-between">
                       <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-black/60 text-purple-300 border border-white/10 backdrop-blur-md">
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-slate-900 font-bold backdrop-blur-md">
                           {project.category}
                         </span>
-                        <span className="text-[10px] font-mono text-white/50 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                        <span className="text-[10px] font-mono text-white/90 bg-slate-900/60 px-2.5 py-1 rounded-full backdrop-blur-md">
                           {project.year}
                         </span>
                       </div>
@@ -150,11 +144,11 @@ export default function WorkPage() {
 
                   {/* Project Details */}
                   <div className="p-8">
-                    <h2 className="text-[26px] font-bold text-white tracking-tight leading-tight mb-3 group-hover:text-purple-300 transition-colors">
+                    <h2 className="text-2xl font-bold text-slate-900 tracking-tight leading-tight mb-3 group-hover:text-blue-600 transition-colors">
                       {project.title}
                     </h2>
 
-                    <p className="text-[14px] text-white/50 leading-relaxed font-light mb-6 line-clamp-3">
+                    <p className="text-sm text-slate-600 leading-relaxed font-normal mb-6 line-clamp-3">
                       {project.intro}
                     </p>
 
@@ -162,7 +156,7 @@ export default function WorkPage() {
                       {project.techStack.map((tech: string) => (
                         <span
                           key={tech}
-                          className="text-[9px] font-mono px-2.5 py-0.5 rounded bg-white/[0.04] text-white/40 border border-white/5"
+                          className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 border border-slate-200"
                         >
                           {tech}
                         </span>
@@ -170,9 +164,9 @@ export default function WorkPage() {
                     </div>
 
                     {project.founderQuote?.text && (
-                      <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-[12px] italic text-white/40 mb-2 font-light">
+                      <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-xs italic text-slate-600 mb-2 font-normal">
                         "{project.founderQuote.text}"
-                        <span className="not-italic font-mono text-[10px] text-purple-400 block mt-1">
+                        <span className="not-italic font-bold text-blue-600 block mt-1">
                           — {project.founderQuote.name}, {project.founderQuote.role}
                         </span>
                       </div>
@@ -180,10 +174,10 @@ export default function WorkPage() {
                   </div>
                 </div>
 
-                <div className="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                <div className="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href={`/work/${project.id}`}
-                    className="inline-flex items-center gap-1.5 text-[11px] font-mono text-purple-400 hover:text-purple-300 uppercase tracking-wider font-bold transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 uppercase tracking-wider transition-colors"
                   >
                     <span>Read Architecture Spec</span>
                     <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
@@ -194,7 +188,7 @@ export default function WorkPage() {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-mono text-white/40 hover:text-white transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 hover:text-slate-900 transition-colors"
                     >
                       <span>Live Site</span>
                       <ExternalLink size={12} />
@@ -207,14 +201,14 @@ export default function WorkPage() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="text-center rounded-3xl border border-white/10 bg-[#0d0d0d] p-12 max-w-[800px] mx-auto">
-          <h3 className="text-3xl font-display text-white mb-4">Want to build something similar?</h3>
-          <p className="text-white/50 text-[14px] max-w-[500px] mx-auto mb-8 font-light leading-relaxed">
+        <div className="text-center rounded-3xl border border-slate-200 bg-slate-50 p-12 max-w-[800px] mx-auto shadow-xs">
+          <h3 className="text-3xl font-extrabold text-slate-900 mb-4">Want to build something similar?</h3>
+          <p className="text-slate-600 text-base max-w-[500px] mx-auto mb-8 font-normal leading-relaxed">
             We partner with ambitious startups and enterprises to architect custom digital systems.
           </p>
           <Link
             href="/contact"
-            className="btn-sweep btn-sweep-primary px-8 py-4 text-[12px] font-bold tracking-[0.14em] uppercase"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
           >
             <span>Discuss A Project</span>
             <ArrowRight size={14} />

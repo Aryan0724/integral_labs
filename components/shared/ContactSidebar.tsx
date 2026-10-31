@@ -1,54 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Briefcase, Globe, Phone, Calendar, Mail, X, CheckCircle } from "lucide-react";
+import { Send, Mail, X, CheckCircle, Phone, CornerDownLeft, MessageSquare } from "lucide-react";
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [formState, setFormState] = useState({ name: "", email: "", message: "", phone: "" });
+  const [formState, setFormState] = useState({ name: "", email: "", message: "", phone: "", hp_field: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [phoneError, setPhoneError] = useState(false);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("open-contact-modal", handleOpen);
+    return () => window.removeEventListener("open-contact-modal", handleOpen);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formState.hp_field) return; // honeypot
     if (!formState.name || !formState.email || !formState.message) return;
 
-    if (formState.phone) {
-      const cleaned = formState.phone.replace(/[\s\-()]/g, "");
-      const phoneRegex = /^(?:\+91|91|0)?[6-9]\d{9}$/;
-      if (!phoneRegex.test(cleaned)) {
-        setPhoneError(true);
-        return;
-      }
-    }
-    setPhoneError(false);
-    
     setLoading(true);
     setError(false);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
 
       if (res.ok) {
         setIsSubmitted(true);
-        setFormState({ name: "", email: "", message: "", phone: "" });
-        // Auto-hide success page after 3.5 seconds
+        setFormState({ name: "", email: "", message: "", phone: "", hp_field: "" });
         setTimeout(() => {
           setIsSubmitted(false);
-        }, 3500);
+          setIsOpen(false);
+        }, 4000);
       } else {
         setError(true);
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setError(true);
     } finally {
       setLoading(false);
@@ -56,181 +49,187 @@ export default function ContactSidebar() {
   };
 
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col items-end">
-      {/* The "Pill" Trigger - Glassmorphism, premium dark styling */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-[#050505]/75 border-l border-y border-white/10 backdrop-blur-xl text-white/80 py-8 px-2.5 flex flex-col items-center gap-4 rounded-l-2xl shadow-3xl hover:bg-white/[0.03] hover:text-white hover:border-white/20 transition-all duration-300 group"
-      >
-        <span className="font-bold text-xl tracking-tighter leading-none group-hover:scale-110 transition-transform text-purple-400">∫</span>
-        <div className="h-px w-6 bg-white/10" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-bold py-2">
-          Contact Agency
-        </span>
-      </motion.button>
+    <>
+      {/* Side Tab Trigger */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[90] hidden md:flex flex-col items-end">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-white border-l border-y border-slate-200/90 text-slate-800 py-6 px-2.5 flex flex-col items-center gap-3 rounded-l-2xl shadow-md hover:shadow-lg hover:border-blue-400 hover:text-blue-600 transition-all duration-300 group"
+          aria-label="Open contact form"
+        >
+          <span className="font-bold text-lg text-blue-600 group-hover:scale-110 transition-transform">
+            ∫
+          </span>
+          <div className="h-px w-5 bg-slate-200" />
+          <span className="font-mono text-[9px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-bold py-1 text-slate-500 group-hover:text-blue-600">
+            START PROJECT
+          </span>
+        </button>
+      </div>
 
-      {/* Expanded Contact Panel */}
+      {/* Floating Chat Widget in Bottom Right (Image 3) */}
+      <div className="fixed bottom-6 right-6 z-[90]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          onClick={() => setIsOpen(true)}
+          className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-3.5 pr-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-3 group"
+        >
+          <div className="relative">
+            <div className="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              <MessageSquare size={17} />
+            </div>
+            <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white animate-pulse" />
+          </div>
+
+          <div className="text-left">
+            <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              Have a project in mind?
+            </div>
+            <div className="text-[11px] text-slate-500 font-medium">
+              Let's discuss it!
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Expanded Modal / Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 mr-2 sm:mr-12 w-[calc(100vw-32px)] sm:w-[340px] max-h-[85vh] overflow-y-auto bg-[#080808]/90 border border-white/10 rounded-3xl p-6 md:p-8 shadow-3xl backdrop-blur-2xl scrollbar-none"
-          >
-            {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-display text-white italic">Let's build.</h3>
-              <button 
-                onClick={() => {
-                  setIsOpen(false);
-                  setIsSubmitted(false);
-                }} 
-                className="text-white/20 hover:text-white transition-colors"
-              >
-                <X size={18} />
-              </button>
-            </div>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center md:justify-end md:p-6 p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="absolute inset-0 bg-slate-950/40 backdrop-blur-xs"
+            />
 
-            {isSubmitted ? (
-              /* Success State */
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="py-12 flex flex-col items-center text-center space-y-4"
-              >
-                <CheckCircle size={44} className="text-green-500 animate-pulse" />
-                <h4 className="font-display text-xl text-white italic">Inquiry Received!</h4>
-                <p className="text-xs text-white/40 max-w-[200px] leading-relaxed">
-                  Our engineering team will review your project and get back to you shortly.
-                </p>
-              </motion.div>
-            ) : (
-              /* Form State */
-              <div className="space-y-6">
+            {/* Modal Dialog Card */}
+            <motion.div
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "100%", opacity: 0 }}
+              transition={{ type: "spring", damping: 26, stiffness: 240 }}
+              className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-200 z-10 scrollbar-none"
+            >
+              {/* Header */}
+              <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900">
+                    Let's Build Together
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Integral Labs // Engineering &amp; Design Studio
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                  aria-label="Close"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {isSubmitted ? (
+                <div className="py-12 text-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle size={28} />
+                  </div>
+                  <h4 className="text-base font-bold text-slate-900">Inquiry Received</h4>
+                  <p className="text-xs text-slate-500 max-w-[240px] mx-auto mt-2 leading-relaxed">
+                    Our lead architects will review your specifications and get in touch within 24 hours.
+                  </p>
+                </div>
+              ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-1.5">
-                    <label htmlFor="sidebar-name" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Name</label>
-                    <input 
-                      id="sidebar-name"
-                      type="text" 
+                  <input
+                    type="text"
+                    name="hp_field"
+                    value={formState.hp_field}
+                    onChange={(e) => setFormState({ ...formState, hp_field: e.target.value })}
+                    className="hidden"
+                    tabIndex={-1}
+                  />
+
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
                       required
-                      placeholder="Aarav Sharma"
+                      placeholder="e.g. Rahul Sharma"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/10 focus:border-purple-500/50 outline-none transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="sidebar-email" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Email</label>
-                    <input 
-                      id="sidebar-email"
-                      type="email" 
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Business Email *
+                    </label>
+                    <input
+                      type="email"
                       required
-                      placeholder="aarav@example.com"
+                      placeholder="rahul@company.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/10 focus:border-purple-500/50 outline-none transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="sidebar-phone" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Phone (Optional)</label>
-                    <input 
-                      id="sidebar-phone"
-                      type="tel" 
-                      placeholder="+91 99999 99999"
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Phone (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+91 / +1 ..."
                       value={formState.phone}
-                      onChange={(e) => {
-                        setFormState({ ...formState, phone: e.target.value });
-                        if (phoneError) setPhoneError(false);
-                      }}
-                      className={`w-full bg-white/[0.02] border ${phoneError ? 'border-red-500/50' : 'border-white/5'} rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/10 focus:border-purple-500/50 outline-none transition-all`}
+                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                     />
-                    {phoneError && (
-                      <span className="text-red-500 text-[9px] font-mono block mt-1" role="alert">Please enter a valid phone number.</span>
-                    )}
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="sidebar-message" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Message</label>
-                    <textarea 
-                      id="sidebar-message"
-                      rows={3}
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Project Scope &amp; Vision *
+                    </label>
+                    <textarea
                       required
-                      placeholder="Briefly describe your project details..."
+                      rows={3}
+                      placeholder="Briefly describe what you want to build..."
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                      className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/10 focus:border-purple-500/50 outline-none transition-all resize-none"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none"
                     />
                   </div>
 
                   {error && (
-                    <div className="text-red-500 text-[11px] font-mono" role="alert">
-                      Something went wrong. Please try again.
+                    <div className="text-[11px] text-rose-600 bg-rose-50 p-2 rounded-lg">
+                      Failed to send. Please retry or email contact@integralgroups.in
                     </div>
                   )}
 
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     disabled={loading}
-                    className="w-full btn-gradient py-3 rounded-xl text-center text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-opacity cursor-pointer"
+                    className="w-full py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-60"
                   >
-                    {loading ? "Sending..." : "Send Quick Inquiry"}
-                    {!loading && <Send size={12} />}
+                    <span>{loading ? "Sending..." : "Submit Inquiry"}</span>
+                    <CornerDownLeft size={14} />
                   </button>
                 </form>
-
-                {/* Divider */}
-                <div className="relative flex py-2 items-center">
-                  <div className="flex-grow border-t border-white/5"></div>
-                  <span className="flex-shrink mx-4 text-[9px] font-mono text-white/20 uppercase tracking-widest">Or Reach Directly</span>
-                  <div className="flex-grow border-t border-white/5"></div>
-                </div>
-
-                {/* Direct Options */}
-                <div className="space-y-3">
-                  <a href="mailto:contact@integralgroups.in" className="flex items-center gap-3 p-3.5 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.01] transition-all text-white/50 hover:text-white">
-                    <Mail size={16} className="text-purple-400" />
-                    <span className="text-xs font-mono">contact@integralgroups.in</span>
-                  </a>
-                  
-                  <a href="tel:+919470650991" className="flex items-center gap-3 p-3.5 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.01] transition-all text-white/50 hover:text-white">
-                    <Phone size={16} className="text-blue-400" />
-                    <span className="text-xs font-mono">+91 94706 50991</span>
-                  </a>
-                  <a href="tel:+919389307062" className="flex items-center gap-3 p-3.5 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/[0.01] transition-all text-white/50 hover:text-white">
-                    <Phone size={16} className="text-blue-400" />
-                    <span className="text-xs font-mono">+91 93893 07062</span>
-                  </a>
-
-                  <a 
-                    href="https://calendly.com" 
-                    target="_blank" 
-                    className="flex items-center justify-between p-3.5 rounded-xl bg-white text-black hover:bg-white/90 transition-all font-bold"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Calendar size={16} />
-                      <span className="text-xs tracking-tight">Book Strategy Call</span>
-                    </div>
-                    <span className="text-xs">→</span>
-                  </a>
-                </div>
-              </div>
-            )}
-
-            {/* Footer indicator */}
-            <div className="mt-8 pt-4 border-t border-white/5">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[9px] text-white/20 font-mono uppercase tracking-widest">Active Response State</span>
-              </div>
-            </div>
-          </motion.div>
+              )}
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

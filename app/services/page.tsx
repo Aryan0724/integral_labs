@@ -110,23 +110,18 @@ const detailedCapabilities = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-24 text-white">
-      {/* Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-purple-600/10 rounded-full blur-[140px]" />
-      </div>
-
+    <main className="min-h-screen bg-white pt-36 pb-24 text-slate-900">
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         {/* Page Header */}
-        <div className="max-w-[760px] mb-24">
+        <div className="max-w-[760px] mb-20">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/5 mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200/80 bg-blue-50/70 mb-6"
           >
-            <Sparkles size={13} className="text-purple-400" />
-            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-300 font-bold">
-              Fullstack Engineering Capabilities
+            <Sparkles size={13} className="text-blue-600" />
+            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-blue-700 font-bold">
+              Software Development Services
             </span>
           </motion.div>
 
@@ -134,24 +129,23 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[42px] sm:text-[62px] md:text-[76px] text-white tracking-tight leading-[0.98] mb-8"
+            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.02] mb-6"
           >
-            Engineering Systems For{" "}
-            <span className="italic font-light text-white/50">Modern Enterprise.</span>
+            Engineering Systems For Modern Enterprise.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-[16px] sm:text-[18px] text-white/50 leading-relaxed font-light"
+            className="text-lg text-slate-600 leading-relaxed font-normal"
           >
             From bespoke SaaS platforms and machine learning analytics to headless storefronts, we deliver battle-tested software designed for longevity and extreme reliability.
           </motion.p>
         </div>
 
         {/* Detailed Services Vertical Stack */}
-        <div className="space-y-12 mb-28">
+        <div className="space-y-10 mb-24">
           {detailedCapabilities.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -161,36 +155,36 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="rounded-3xl border border-white/[0.08] bg-[#0d0d0d]/90 p-8 sm:p-12 backdrop-blur-xl hover:border-purple-500/30 transition-all duration-300 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-start"
+                className="rounded-3xl border border-slate-200/90 bg-slate-50/60 p-8 sm:p-12 hover:bg-white hover:border-blue-400/60 hover:shadow-lg transition-all duration-300 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 items-start"
               >
                 <div>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3.5 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                    <div className="p-3.5 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100">
                       <Icon size={26} />
                     </div>
                     <div>
-                      <span className="font-mono text-[10px] text-purple-400 uppercase tracking-widest block">
+                      <span className="font-mono text-[10px] text-blue-600 uppercase tracking-widest font-bold block">
                         0{index + 1} // {service.subtitle}
                       </span>
-                      <h2 className="text-[24px] sm:text-[30px] font-bold text-white tracking-tight leading-tight">
+                      <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
                         {service.title}
                       </h2>
                     </div>
                   </div>
 
-                  <p className="text-[15px] text-white/60 leading-relaxed font-light mb-8">
+                  <p className="text-base text-slate-600 leading-relaxed font-normal mb-8">
                     {service.description}
                   </p>
 
-                  <div className="pt-6 border-t border-white/5">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-3">
+                  <div className="pt-6 border-t border-slate-200/80">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold block mb-3">
                       Technology Ecosystem
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {service.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="text-[10px] font-mono px-3 py-1 rounded-lg bg-white/[0.03] text-white/60 border border-white/5"
+                          className="text-xs font-medium px-3 py-1 rounded-lg bg-white text-slate-700 border border-slate-200 shadow-2xs"
                         >
                           {tech}
                         </span>
@@ -200,15 +194,15 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Right: Deliverables & Action */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col justify-between h-full">
+                <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-2xs flex flex-col justify-between h-full">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-purple-300 block mb-4">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-600 font-bold block mb-4">
                       Core Phase Deliverables
                     </span>
                     <div className="space-y-3 mb-8">
                       {service.deliverables.map((deliv) => (
-                        <div key={deliv} className="flex items-start gap-2.5 text-[13px] text-white/70">
-                          <CheckCircle2 size={15} className="text-purple-400 shrink-0 mt-0.5" />
+                        <div key={deliv} className="flex items-start gap-2.5 text-sm text-slate-700">
+                          <CheckCircle2 size={16} className="text-blue-600 shrink-0 mt-0.5" />
                           <span className="leading-snug">{deliv}</span>
                         </div>
                       ))}
@@ -217,7 +211,7 @@ export default function ServicesPage() {
 
                   <Link
                     href="/contact"
-                    className="btn-sweep btn-sweep-primary w-full py-3.5 text-[11px] font-bold tracking-[0.14em] uppercase text-center"
+                    className="w-full py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all"
                   >
                     <span>Scope {service.title}</span>
                     <ArrowRight size={14} />
@@ -229,14 +223,14 @@ export default function ServicesPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center rounded-3xl border border-white/10 bg-[#0d0d0d] p-12 max-w-[800px] mx-auto">
-          <h3 className="text-3xl font-display text-white mb-4">Have an unlisted requirement?</h3>
-          <p className="text-white/50 text-[14px] max-w-[500px] mx-auto mb-8 font-light leading-relaxed">
-            We architect bespoke solutions across diverse programming languages and database topologies.
+        <div className="text-center rounded-3xl border border-slate-200 bg-slate-50 p-12 max-w-[800px] mx-auto shadow-xs">
+          <h3 className="text-3xl font-extrabold text-slate-900 mb-4">Have an unlisted requirement?</h3>
+          <p className="text-slate-600 text-base max-w-[500px] mx-auto mb-8 font-normal leading-relaxed">
+            We architect bespoke solutions across diverse programming languages, custom neural pipelines, and scalable database topologies.
           </p>
           <Link
             href="/contact"
-            className="btn-sweep btn-sweep-primary px-8 py-4 text-[12px] font-bold tracking-[0.14em] uppercase"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
           >
             <span>Consult With Founders</span>
             <ArrowRight size={14} />

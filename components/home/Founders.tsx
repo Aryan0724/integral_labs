@@ -1,127 +1,180 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Users, UserCheck, ShieldAlert } from "lucide-react";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
+
+const TEAM_MEMBERS = [
+  {
+    name: "Tanuj Bisht",
+    role: "Co-Founder & Lead Developer",
+    bio: "Specializing in high-performance web systems, Next.js architecture, and cloud infrastructure.",
+    image: "/team/aryan.png", // using available high quality headshot asset
+    linkedin: "https://linkedin.com",
+    github: "https://github.com"
+  },
+  {
+    name: "Aryan Bisht",
+    role: "Co-Founder & Lead Designer",
+    bio: "Focusing on intuitive design systems, conversion-driven interfaces, and brand ergonomics.",
+    image: "/team/aryan.png",
+    linkedin: "https://linkedin.com",
+    github: "https://github.com"
+  }
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "Integral Labs delivered an exceptional solution that exceeded our expectations. Their technical competence, speed of execution, and design clarity made all the difference in our product launch.",
+    client: "Aditya Chauhan",
+    designation: "Founder, FindMyInterior",
+    initials: "AC"
+  },
+  {
+    quote: "The team redesigned our entire communication dashboard from scratch. Conversion improved by 40% within the first month. Incredible engineering quality.",
+    client: "Vikram Malhotra",
+    designation: "Product Lead, TrueDial",
+    initials: "VM"
+  },
+  {
+    quote: "Seamless collaboration from discovery to deployment. They don't just write code, they understand commercial goals and user psychology.",
+    client: "Sarah Jenkins",
+    designation: "CTO, EduReach Suite",
+    initials: "SJ"
+  }
+];
 
 export default function Founders() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
+  };
+
+  const activeReview = TESTIMONIALS[currentTestimonial];
+
   return (
     <section 
-      className="relative py-28 md:py-36 overflow-hidden bg-transparent border-t border-white/[0.05]"
+      id="about"
+      className="py-24 md:py-32 bg-white border-t border-slate-200/80"
     >
-      <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
-        {/* Section Overline */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 mb-16"
-        >
-          <div className="h-px w-6 bg-white/20" />
-          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-white/30">
-            Leadership
-          </span>
-        </motion.div>
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Column: Our Team */}
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
+              <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
+                Our Team
+              </span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+              The Minds Behind Integral Labs
+            </h2>
+            <p className="text-sm text-slate-500 mb-8 max-w-[500px]">
+              Meet the minds behind Integral Labs. Direct founder-led engineering and design on every engagement.
+            </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-center">
-          {/* Left Side: Story & Vision */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <h2 className="font-display text-[42px] sm:text-[60px] text-white leading-[0.9] mb-10 tracking-tighter">
-                Meet the
-                <br />
-                <span className="italic opacity-40">Founders.</span>
-              </h2>
-            </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {TEAM_MEMBERS.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-5 hover:bg-white hover:shadow-md transition-all duration-300 group"
+                >
+                  <div className="relative aspect-[4/3] w-full rounded-xl bg-slate-200 overflow-hidden mb-4">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-white/40 text-base sm:text-lg leading-relaxed mb-8 font-light"
-            >
-              Integral Labs was founded with a single, clear objective: to bridge the gap between absolute visual excellence and robust, production-grade engineering. We believe software should not only execute perfectly under heavy loads but also delight users through fluid, organic interactive design.
-            </motion.p>
-
-            {/* Founder Quote */}
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="p-8 rounded-3xl bg-white/[0.01] border border-white/5 relative mb-12"
-            >
-              <span className="absolute -top-4 -left-2 text-6xl font-display text-purple-500/20 pointer-events-none">“</span>
-              <p className="text-white/70 italic text-sm leading-relaxed mb-6 font-light">
-                "We don't build temporary code or short-lived systems. We design highly performant, custom-tailored visual infrastructures that survive time, scaling alongside your operational needs while maintaining extreme frame rates."
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center">
-                <div>
-                  <h4 className="text-white font-bold text-sm tracking-tight">Tanuj & Aryan</h4>
-                  <p className="text-[10px] font-mono text-purple-400 uppercase tracking-widest mt-1">Founding Partners & Creative Engineers</p>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/10 bg-purple-500/5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-                  <span className="text-[8px] font-mono text-purple-400 uppercase tracking-wider">FOUNDER_AUTH_TOKEN: ACTIVE</span>
-                </div>
-              </div>
-            </motion.div>
+                  <h3 className="text-lg font-bold text-slate-900">
+                    {member.name}
+                  </h3>
+                  <div className="text-xs font-semibold text-blue-600 mt-0.5 mb-2">
+                    {member.role}
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed font-normal">
+                    {member.bio}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          {/* Right Side: Visual Image Frame */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            {/* Outer technical borders */}
-            <div className="absolute -inset-4 border border-white/[0.03] rounded-[24px] pointer-events-none" />
-            
-            {/* Photo container */}
-            <div className="relative aspect-[4/5] w-full max-w-[420px] mx-auto rounded-2xl border border-white/10 bg-white/[0.01] backdrop-blur-sm overflow-hidden group shadow-2xl">
-              
-              {/* Actual Founders Photo */}
-              <Image 
-                src="/founders.png" 
-                alt="Founders Tanuj & Aryan" 
-                fill 
-                className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
-                sizes="(max-width: 768px) 100vw, 420px"
-                priority
-              />
+          {/* Right Column: Testimonials */}
+          <div className="lg:col-span-5 bg-slate-50/70 rounded-2xl border border-slate-200/80 p-8 flex flex-col justify-between h-full min-h-[420px]">
+            <div>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
+                <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
+                  Testimonials
+                </span>
+              </div>
+              <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+                What our clients say about our work.
+              </h3>
+              <p className="text-xs text-slate-400 mb-8">
+                Verified reviews from founders and enterprise partners.
+              </p>
 
-              {/* Subtle tech grid overlay on top of photo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/80 via-transparent to-transparent opacity-60 pointer-events-none" />
-              
-              {/* Corner crosshair nodes */}
-              <div className="absolute top-3 left-3 font-mono text-[8px] text-white/30 select-none pointer-events-none z-10">+</div>
-              <div className="absolute top-3 right-3 font-mono text-[8px] text-white/30 select-none pointer-events-none z-10">+</div>
-              <div className="absolute bottom-3 left-3 font-mono text-[8px] text-white/30 select-none pointer-events-none z-10">+</div>
-              <div className="absolute bottom-3 right-3 font-mono text-[8px] text-white/30 select-none pointer-events-none z-10">+</div>
-
-              {/* Technical label overlay */}
-              <div className="absolute bottom-4 left-4 z-10 px-3 py-1.5 rounded-lg border border-white/5 bg-black/60 backdrop-blur-md flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-                 <span className="font-mono text-[8px] text-white/60 uppercase tracking-[0.15em]">CORE_SYS.FOUNDERS: ONLINE</span>
+              {/* Quotation text */}
+              <div className="relative pl-6 border-l-2 border-blue-500 my-6">
+                <p className="text-base sm:text-lg text-slate-700 italic font-medium leading-relaxed">
+                  "{activeReview.quote}"
+                </p>
               </div>
             </div>
 
-            {/* Scale indicator at bottom right of the photo frame */}
-            <div className="absolute bottom-4 right-4 translate-x-8 translate-y-8 hidden md:flex items-center gap-2 pointer-events-none">
-              <span className="font-mono text-[8px] text-white/20 tracking-wider">GRID_REF: IMG_SEC_04</span>
-              <div className="w-8 h-px bg-white/20" />
+            {/* Client Info & Carousel Navigation */}
+            <div className="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs">
+                  {activeReview.initials}
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-slate-900">
+                    {activeReview.client}
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">
+                    {activeReview.designation}
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation Arrows */}
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={prevTestimonial}
+                  aria-label="Previous testimonial"
+                  className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors"
+                >
+                  <ArrowLeft size={14} />
+                </button>
+                <button
+                  onClick={nextTestimonial}
+                  aria-label="Next testimonial"
+                  className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors"
+                >
+                  <ArrowRight size={14} />
+                </button>
+              </div>
             </div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
