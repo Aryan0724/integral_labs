@@ -1,0 +1,101 @@
+[
+  {
+    "id": "edu-platform-accessible",
+    "title": "EduReach Lite",
+    "category": "EdTech Platform",
+    "liveLink": "https://education-easy.vercel.app/",
+    "notes": "Lightweight educational site optimized for low bandwidth and accessibility.",
+    "techStack": ["Next.js", "React", "CSS Modules", "TypeScript"],
+    "screenshot": "/projects/real/edu-platform-accessible.png"
+  },
+  {
+    "id": "business-consulting-mid",
+    "title": "Vantage Consulting Mid",
+    "category": "Corporate Consulting",
+    "liveLink": "https://business-med.vercel.app/",
+    "notes": "Corporate advisory layout with capability cards and testimonial sections.",
+    "techStack": ["HTML5", "CSS3", "JavaScript"],
+    "screenshot": "/projects/real/business-consulting-mid.png"
+  },
+  {
+    "id": "business-solutions-lite",
+    "title": "Vantage Solutions Lite",
+    "category": "Business Advisory",
+    "liveLink": "https://business-low.vercel.app/",
+    "notes": "Single-page corporate consultation landing page with direct inquiry form.",
+    "techStack": ["HTML5", "CSS3"],
+    "screenshot": "/projects/real/business-solutions-lite.png"
+  },
+  {
+    "id": "integral-labs-v1",
+    "title": "Integral Labs Studio v1",
+    "category": "Heritage Studio",
+    "liveLink": "https://integral-labs1.vercel.app/",
+    "notes": "Previous dark-mode creative studio portfolio explore.",
+    "techStack": ["Next.js", "TailwindCSS"],
+    "screenshot": "/projects/real/integral-labs-v1.png"
+  },
+  {
+    "id": "labs-portal",
+    "title": "Integral Labs R&D Portal",
+    "category": "Research Sandbox",
+    "liveLink": "https://labs.integralgroups.in/",
+    "notes": "Internal R&D directory mapping experimental systems and internal tooling.",
+    "techStack": ["Next.js", "Framer Motion"],
+    "screenshot": "/projects/real/labs-portal.png"
+  },
+  {
+    "id": "rozcars",
+    "title": "Rozcars Mobility",
+    "category": "Vehicle Rental Demo",
+    "liveLink": "https://roz-car-demo.vercel.app/",
+    "notes": "Automotive booking and fleet rental prototype.",
+    "techStack": ["React", "Node.js"],
+    "screenshot": "/projects/real/rozcars.png"
+  },
+  {
+    "id": "cafe-max-lite",
+    "title": "Cafe Max Lite",
+    "category": "Hospitality Landing",
+    "liveLink": "https://portfoliosite-labs-cafe-max.vercel.app/",
+    "notes": "Single-page bistro menu and hours showcase.",
+    "techStack": ["HTML5", "CSS3"],
+    "screenshot": "/projects/real/cafe-max-lite.png"
+  },
+  {
+    "id": "integral-cafe",
+    "title": "Integral Cafe Bistro",
+    "category": "Artisan Hospitality",
+    "liveLink": "https://portfoliosite-integral-labs-cafe-ba-tau.vercel.app/",
+    "notes": "Specialty cafe website with artisan typography and online table booking.",
+    "techStack": ["Next.js", "TailwindCSS"],
+    "screenshot": "/projects/real/integral-cafe.png"
+  },
+  {
+    "id": "edu-reach-max",
+    "title": "EduReach Max LMS",
+    "category": "LMS Platform",
+    "liveLink": "https://portfoliosite-labs-edu-max.vercel.app/",
+    "notes": "Curriculum management and syllabus tracking prototype.",
+    "techStack": ["Next.js", "TypeScript"],
+    "screenshot": "/projects/real/edu-reach-max.png"
+  },
+  {
+    "id": "aurya-products",
+    "title": "Aurya Products Catalog",
+    "category": "Product Catalog",
+    "liveLink": "https://auryahproductsadd.vercel.app/",
+    "notes": "Client catalog prototype (currently 404 pending custom domain linking).",
+    "techStack": ["React", "Vite", "TailwindCSS"],
+    "screenshot": "/projects/real/business-solutions-lite.png"
+  },
+  {
+    "id": "atoz-vercel-dev",
+    "title": "AtoZ Vercel Dev Build",
+    "category": "Staging Environment",
+    "liveLink": "https://atoz-git-main-aryan0724s-projects.vercel.app/",
+    "notes": "Protected Vercel preview build (requires team authentication; replaced by public atozprints.com).",
+    "techStack": ["Next.js", "PostgreSQL"],
+    "screenshot": "/projects/real/atoz-ecommerce.png"
+  }
+]
