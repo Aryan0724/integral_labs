@@ -33,7 +33,7 @@ export const projects: Project[] = [
     techStack: ["Python", "FastAPI", "React", "TypeScript", "Scikit-Learn"],
     founderQuote: {
       text: "Preyt takes the guesswork out of publishing. We built it to let creators optimize their content strategy through machine learning before hitting upload.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Node.js"],
     founderQuote: {
       text: "Integral Labs built exactly what we envisioned — a cutting-edge platform that made our educational content feel as premium as it is.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "React", "CSS Modules", "TypeScript"],
     founderQuote: {
       text: "This project proved that simplicity and elegance can coexist. The result was a website that just works, beautifully.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "EmailJS", "Font Awesome"],
     founderQuote: {
       text: "We built this to show what a restaurant website can feel like — warm, immersive, and alive. Food deserves a digital experience as rich as the flavours.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "Bootstrap", "CSS3", "JavaScript", "Swiper.js", "FancyBox"],
     founderQuote: {
       text: "Every restaurant has a soul. This project was about translating decades of tradition and warmth into a digital experience that felt just as inviting.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "Font Awesome"],
     founderQuote: {
       text: "The website Integral Labs built for us is exactly what we needed — it commands respect the moment you land on it.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "Lucide Icons", "Google Fonts"],
     founderQuote: {
       text: "A tech research company's website should make visitors feel like they're stepping into the future. That was our only brief — and we delivered it.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "Phosphor Icons", "Google Fonts"],
     founderQuote: {
       text: "The best tech sites don't try to explain everything. They make you feel the intelligence. This one does exactly that.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "This portal maps out our active R&D. It's the sandbox where our next decade of systems starts.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Higher education websites should feel academic but forward-looking. We merged academic structured layouts with a premium digital design.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -243,7 +243,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "PostgreSQL", "Framer Motion"],
     founderQuote: {
       text: "Speed is the number one metric in e-commerce. AtoZ was built to display catalog changes instantly and check out faster.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -264,7 +264,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "Framer Motion", "Lucide Icons"],
     founderQuote: {
       text: "Getting a car rental should be as fast as buying coffee. We stripped out the administrative friction from the front end.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -285,7 +285,7 @@ export const projects: Project[] = [
     techStack: ["React", "TailwindCSS", "Node.js", "Express"],
     founderQuote: {
       text: "We wanted a dashboard that felt like a control deck — simple, direct, and showing exactly what you need at a glance.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -306,7 +306,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "CSS Modules", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Fashion is all about presentation. We built UK Drip to present street collections in a way that feels curated and premium.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -327,7 +327,7 @@ export const projects: Project[] = [
     techStack: ["React", "Vite", "TailwindCSS", "Lucide Icons"],
     founderQuote: {
       text: "We built Aurya to solve standard catalog listings — keeping them fast, minimal, and completely search-friendly.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -348,7 +348,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "Google Fonts"],
     founderQuote: {
       text: "A hospitality site is the visual appetizer. We wanted it to look premium and feel incredibly easy to book a table.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -369,7 +369,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "LMS panels are usually cluttered. We reimagined EduReach Max to make virtual curriculum steps feel organized.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     techStack: ["React", "TailwindCSS", "Framer Motion", "Lucide Icons"],
     founderQuote: {
       text: "Study systems should keep you focused, not add task friction. This scheduler makes planning routine milestones visual.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -411,7 +411,7 @@ export const projects: Project[] = [
     techStack: ["HTML5", "CSS3", "JavaScript", "Google Fonts"],
     founderQuote: {
       text: "Good restaurants need instant load speeds. We designed this to get menus onto user screens without delay.",
-      name: "Aryan Bisht",
+      name: "Aryan Tiwari",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
@@ -432,7 +432,7 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "TypeScript", "Framer Motion"],
     founderQuote: {
       text: "We blended artisan visual aesthetics with swift booking triggers to create a digital door for the cafe.",
-      name: "Tanuj Bisht",
+      name: "Tanuj Pargai",
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [

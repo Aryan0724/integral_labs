@@ -8,13 +8,13 @@ import Image from "next/image";
 
 const leadership = [
   {
-    name: "Tanuj Bisht",
+    name: "Tanuj Pargai",
     role: "Co-Founder & Creative Systems Architect",
     image: "/founders.png",
     bio: "Focused on high-performance web systems, interface ergonomics, and robust application architecture. Leads frontend engineering, design systems, and client delivery across Integral Labs.",
   },
   {
-    name: "Aryan Bisht",
+    name: "Aryan Tiwari",
     role: "Co-Founder & Lead Systems Engineer",
     image: "/founders.png",
     bio: "Specialized in scalable backend architectures, machine learning model integration, and cloud data infrastructure. Directs technical roadmap and algorithmic development.",

@@ -19,14 +19,14 @@ import {
 
 const FOUNDERS = [
   {
-    name: "Tanuj Bisht",
+    name: "Tanuj Pargai",
     role: "Co-Founder & Lead Developer",
     focus: "Full-Stack Architecture & Cloud Infrastructure",
     bio: "Specializing in high-throughput Next.js systems, serverless microservices, distributed security models, and sub-second web performance. Oversees all engineering pipelines and production deployments.",
     skills: ["Next.js 16", "TypeScript", "Node.js", "Cloud Architecture", "System Security"]
   },
   {
-    name: "Aryan Bisht",
+    name: "Aryan Tiwari",
     role: "Co-Founder & Lead Designer",
     focus: "Design Systems & Interactive UX Architecture",
     bio: "Pioneering conversion-driven UI systems, motion design ergonomics, and brand identity. Crafts interfaces that turn complex business workflows into seamless, tactile user experiences.",
@@ -131,7 +131,7 @@ export default function Founders() {
               <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-900 group">
                 <Image
                   src="/founders.png"
-                  alt="Tanuj Bisht and Aryan Bisht - Founders of Integral Labs"
+                  alt="Tanuj Pargai and Aryan Tiwari - Founders of Integral Labs"
                   fill
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 450px"
@@ -154,7 +154,7 @@ export default function Founders() {
                       Founding Partners
                     </div>
                     <div className="text-sm font-bold text-white mt-0.5">
-                      Tanuj Bisht &amp; Aryan Bisht
+                      Tanuj Pargai &amp; Aryan Tiwari
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30">
@@ -191,7 +191,7 @@ export default function Founders() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-slate-100">
                 <div>
                   <h4 className="text-base font-bold text-slate-900">
-                    Tanuj Bisht &amp; Aryan Bisht
+                    Tanuj Pargai &amp; Aryan Tiwari
                   </h4>
                   <p className="text-xs font-mono text-blue-600 font-semibold uppercase tracking-wider mt-0.5">
                     Founding Partners &amp; Creative Engineers
@@ -242,8 +242,8 @@ export default function Founders() {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-sm">
-                    {founder.name[0]}B
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-xs font-mono">
+                    {founder.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-mono uppercase font-semibold">
                     {founder.focus}
