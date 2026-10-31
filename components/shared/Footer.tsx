@@ -17,7 +17,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0B1120] text-white pt-20 pb-12 border-t border-slate-800">
+    <footer 
+      style={{ backgroundColor: "#0b1120", color: "#ffffff" }}
+      className="relative z-20 bg-slate-950 text-white pt-20 pb-12 border-t border-slate-800"
+    >
       <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
         
         {/* Main 5-Column Grid */}

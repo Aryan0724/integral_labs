@@ -89,7 +89,8 @@ export default function Founders() {
   return (
     <section 
       id="about"
-      className="relative py-24 md:py-36 bg-slate-50/60 border-t border-slate-200/90 overflow-hidden"
+      style={{ backgroundColor: "#f8fafc", color: "#0f172a" }}
+      className="relative z-10 py-24 md:py-36 bg-slate-50 border-t border-slate-200/90 overflow-hidden"
     >
       {/* Background Decorative Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
