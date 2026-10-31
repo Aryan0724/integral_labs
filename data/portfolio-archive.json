@@ -1,5 +1,50 @@
 [
   {
+    "id": "edu-platform-premium",
+    "title": "EduReach Premium",
+    "category": "EdTech Platform",
+    "liveLink": "https://education-med.vercel.app/",
+    "notes": "Multi-cohort learning architecture with live mentor sessions, course progress tracking, and verification.",
+    "techStack": ["Next.js", "TailwindCSS", "Node.js"],
+    "screenshot": "/projects/real/edu-platform-premium.png"
+  },
+  {
+    "id": "integral-labs-v2",
+    "title": "Spice & Fire",
+    "category": "Restaurant Website",
+    "liveLink": "https://integral-labs2-mcaf.vercel.app/",
+    "notes": "Indian dining web experience with dynamic menu engine and EmailJS reservation integration.",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "EmailJS"],
+    "screenshot": "/projects/real/integral-labs-v2.png"
+  },
+  {
+    "id": "business-consulting-premium",
+    "title": "Vantage Strategic",
+    "category": "Business Advisory",
+    "liveLink": "https://business-top.vercel.app/",
+    "notes": "Corporate advisory presence featuring case study portfolios and executive consultation scheduling.",
+    "techStack": ["HTML5", "CSS3", "JavaScript"],
+    "screenshot": "/projects/real/business-consulting-premium.png"
+  },
+  {
+    "id": "cafe-max-premium",
+    "title": "Cafe Max Premium",
+    "category": "Hospitality Web App",
+    "liveLink": "https://portfoliosite-labs-cafe-max-4dls.vercel.app/",
+    "notes": "Luxury cafe website with digital table ordering, dynamic menu filtering, and custom event booking.",
+    "techStack": ["HTML5", "CSS3", "JavaScript"],
+    "screenshot": "/projects/real/cafe-max-premium.png"
+  },
+  {
+    "id": "travicars",
+    "title": "Travicars Fleet",
+    "category": "Vehicle Rental Platform",
+    "liveLink": "https://travicars-demo-3wa9.vercel.app/",
+    "notes": "Automotive rental platform with fleet catalogs, vehicle spec filters, and automated reservation steps.",
+    "techStack": ["Next.js", "TailwindCSS", "Framer Motion"],
+    "screenshot": "/projects/real/travicars.png"
+  },
+  {
     "id": "edu-platform-accessible",
     "title": "EduReach Lite",
     "category": "EdTech Platform",

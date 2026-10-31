@@ -9,29 +9,21 @@ import { projects } from "@/lib/data/projects";
 
 const CATEGORIES = [
   { id: "all", label: "All Work" },
-  { id: "ai-tech", label: "AI & Tech" },
-  { id: "edtech", label: "EdTech" },
-  { id: "ecommerce", label: "E-Commerce" },
-  { id: "hospitality", label: "Hospitality" },
-  { id: "business", label: "Business Advisory" },
+  { id: "ai-tech", label: "Flagship AI" },
+  { id: "education", label: "EdTech & University" },
+  { id: "ecommerce", label: "E-Commerce & Apparel" },
 ];
 
 const getProjectCategoryId = (category: string): string => {
   const cat = category.toLowerCase();
-  if (cat.includes("machine learning") || cat.includes("ai") || cat.includes("tech research") || cat.includes("studio portal") || cat.includes("productivity")) {
+  if (cat.includes("machine learning") || cat.includes("ai")) {
     return "ai-tech";
   }
-  if (cat.includes("edtech") || cat.includes("university")) {
-    return "edtech";
+  if (cat.includes("university") || cat.includes("productivity") || cat.includes("academic")) {
+    return "education";
   }
-  if (cat.includes("e-commerce") || cat.includes("car") || cat.includes("apparel") || cat.includes("catalog")) {
+  if (cat.includes("e-commerce") || cat.includes("streetwear") || cat.includes("merch") || cat.includes("print")) {
     return "ecommerce";
-  }
-  if (cat.includes("restaurant") || cat.includes("hospitality") || cat.includes("cafe")) {
-    return "hospitality";
-  }
-  if (cat.includes("business") || cat.includes("consulting")) {
-    return "business";
   }
   return "other";
 };
