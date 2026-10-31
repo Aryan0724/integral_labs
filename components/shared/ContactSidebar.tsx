@@ -111,8 +111,9 @@ export default function ContactSidebar() {
               <div className="space-y-6">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Name</label>
+                    <label htmlFor="sidebar-name" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Name</label>
                     <input 
+                      id="sidebar-name"
                       type="text" 
                       required
                       placeholder="Aarav Sharma"
@@ -123,8 +124,9 @@ export default function ContactSidebar() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Email</label>
+                    <label htmlFor="sidebar-email" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Email</label>
                     <input 
+                      id="sidebar-email"
                       type="email" 
                       required
                       placeholder="aarav@example.com"
@@ -135,8 +137,9 @@ export default function ContactSidebar() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Phone (Optional)</label>
+                    <label htmlFor="sidebar-phone" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Phone (Optional)</label>
                     <input 
+                      id="sidebar-phone"
                       type="tel" 
                       placeholder="+91 99999 99999"
                       value={formState.phone}
@@ -147,13 +150,14 @@ export default function ContactSidebar() {
                       className={`w-full bg-white/[0.02] border ${phoneError ? 'border-red-500/50' : 'border-white/5'} rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/10 focus:border-purple-500/50 outline-none transition-all`}
                     />
                     {phoneError && (
-                      <span className="text-red-500 text-[9px] font-mono block mt-1">Please enter a valid phone number.</span>
+                      <span className="text-red-500 text-[9px] font-mono block mt-1" role="alert">Please enter a valid phone number.</span>
                     )}
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Message</label>
+                    <label htmlFor="sidebar-message" className="text-[10px] font-mono text-white/30 uppercase tracking-widest block">Message</label>
                     <textarea 
+                      id="sidebar-message"
                       rows={3}
                       required
                       placeholder="Briefly describe your project details..."
@@ -164,7 +168,7 @@ export default function ContactSidebar() {
                   </div>
 
                   {error && (
-                    <div className="text-red-500 text-[11px] font-mono">
+                    <div className="text-red-500 text-[11px] font-mono" role="alert">
                       Something went wrong. Please try again.
                     </div>
                   )}
@@ -172,7 +176,7 @@ export default function ContactSidebar() {
                   <button 
                     type="submit" 
                     disabled={loading}
-                    className="w-full btn-gradient py-3 rounded-xl text-center text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-opacity"
+                    className="w-full btn-gradient py-3 rounded-xl text-center text-xs font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-opacity cursor-pointer"
                   >
                     {loading ? "Sending..." : "Send Quick Inquiry"}
                     {!loading && <Send size={12} />}

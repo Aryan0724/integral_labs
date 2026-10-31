@@ -25,8 +25,6 @@ export default function AdminLogin() {
       });
 
       if (res.ok) {
-        // httpOnly cookie is set by server response headers, but we also set document.cookie to align with local client redirect & routing expectation
-        document.cookie = "admin_auth=authenticated; path=/; max-age=86400";
         window.location.href = "/admin";
       } else {
         setError(true);

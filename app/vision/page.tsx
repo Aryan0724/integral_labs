@@ -1,1 +1,6 @@
-"use client"; export default function Page() { return <div>Vision</div> }
+import { redirect } from "next/navigation";
+
+export default function VisionPage() {
+  redirect("/groups");
+}
+

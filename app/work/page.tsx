@@ -1,193 +1,225 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/data/projects";
 
-// ── Responsive iframe thumbnail ──────────────────────────────────────────────
-function IframePreview({ src, title, fallback }: { src: string; title: string; fallback: string }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0.35);
-  const [failed, setFailed] = useState(false);
+const CATEGORIES = [
+  { id: "all", label: "All Work" },
+  { id: "ai-tech", label: "AI & Tech" },
+  { id: "edtech", label: "EdTech" },
+  { id: "ecommerce", label: "E-Commerce" },
+  { id: "hospitality", label: "Hospitality" },
+  { id: "business", label: "Business Advisory" },
+];
 
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const update = () => setScale(el.offsetWidth / 1440);
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+const getProjectCategoryId = (category: string): string => {
+  const cat = category.toLowerCase();
+  if (cat.includes("machine learning") || cat.includes("ai") || cat.includes("tech research") || cat.includes("studio portal") || cat.includes("productivity")) {
+    return "ai-tech";
+  }
+  if (cat.includes("edtech") || cat.includes("university")) {
+    return "edtech";
+  }
+  if (cat.includes("e-commerce") || cat.includes("car") || cat.includes("apparel") || cat.includes("catalog")) {
+    return "ecommerce";
+  }
+  if (cat.includes("restaurant") || cat.includes("hospitality") || cat.includes("cafe")) {
+    return "hospitality";
+  }
+  if (cat.includes("business") || cat.includes("consulting")) {
+    return "business";
+  }
+  return "other";
+};
 
-  return (
-    <div ref={wrapRef} className="absolute inset-0 overflow-hidden bg-[#111]">
-      {failed ? (
-        <Image src={fallback} alt={title} fill className="object-cover" />
-      ) : (
-        <iframe
-          src={src}
-          title={title}
-          scrolling="no"
-          onError={() => setFailed(true)}
-          style={{
-            width: "1440px",
-            height: "900px",
-            transform: `scale(${scale})`,
-            transformOrigin: "top left",
-            pointerEvents: "none",
-            border: "none",
-            display: "block",
-          }}
-        />
-      )}
-    </div>
-  );
-}
-
-// ── Work Page ─────────────────────────────────────────────────────────────────
 export default function WorkPage() {
-  return (
-    <main className="min-h-screen bg-[#0f0f0f] pt-28 pb-16">
-      {/* Blueprint Header */}
-      <div className="container relative mb-16 md:mb-20">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200vw] h-px bg-white/[0.03] pointer-events-none" />
+  const [activeCategory, setActiveCategory] = useState("all");
 
-        <div className="max-w-[700px]">
+  const filteredProjects = projects.filter((p) => {
+    if (activeCategory === "all") return true;
+    return getProjectCategoryId(p.category) === activeCategory;
+  });
+
+  return (
+    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-24 text-white">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-purple-600/10 rounded-full blur-[140px]" />
+      </div>
+
+      <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
+        {/* Header */}
+        <div className="max-w-[760px] mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="measure-bar mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/5 mb-6"
           >
-            <div className="measure-line w-12" />
-            <span className="blueprint-label uppercase tracking-[0.3em]">Engineering Portfolio</span>
+            <Sparkles size={13} className="text-purple-400" />
+            <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-purple-300 font-bold">
+              Engineering Portfolio // 20 Production Builds
+            </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[60px] md:text-[90px] font-display text-white mb-10 tracking-tighter leading-[0.85]"
+            transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-[42px] sm:text-[62px] md:text-[76px] text-white tracking-tight leading-[0.98] mb-8"
           >
-            Case{" "}
-            <br />
-            <span className="italic opacity-40">Studies.</span>
+            Real Case Studies &amp;{" "}
+            <span className="italic font-light text-white/50">Delivered Systems.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-white/30 text-lg leading-relaxed max-w-[500px] font-light"
+            transition={{ delay: 0.2 }}
+            className="text-[16px] sm:text-[18px] text-white/50 leading-relaxed font-light"
           >
-            A collection of high-performance software systems and intelligent interfaces built for
-            the next generation of digital infrastructure.
+            A comprehensive catalog of scalable SaaS platforms, intelligent AI models, e-commerce storefronts, and bespoke digital experiences built by Integral Labs.
           </motion.p>
         </div>
 
-        {/* Decorative corner node */}
-        <div className="absolute top-0 right-0 p-8 border-l border-b border-white/5 hidden lg:block">
-          <span className="blueprint-label opacity-20">LOC: PORTFOLIO_V2.4</span>
+        {/* Filter Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-16 scrollbar-none">
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-xl text-[11px] font-mono uppercase tracking-wider whitespace-nowrap transition-all border ${
+                  isActive
+                    ? "bg-purple-500/20 text-purple-300 border-purple-500/40 shadow-lg shadow-purple-950/30 font-bold"
+                    : "bg-white/[0.02] text-white/50 border-white/[0.06] hover:text-white hover:bg-white/[0.05]"
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Projects Grid */}
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="group relative"
-            >
-              {/* Image / iframe Container */}
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/5 bg-[#111] shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:border-white/10">
-                <IframePreview
-                  src={project.liveLink}
-                  title={project.title}
-                  fallback={project.image}
-                />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" />
-
-                {/* Hover arrow icon */}
-                <Link href={`/work/${project.id}`} className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
-                    <ArrowUpRight size={24} />
-                  </div>
-                </Link>
-
-                {/* Corner nodes */}
-                <div className="absolute top-4 left-4 w-1 h-1 bg-white/20 pointer-events-none" />
-                <div className="absolute top-4 right-4 w-1 h-1 bg-white/20 pointer-events-none" />
-                <div className="absolute bottom-4 left-4 w-1 h-1 bg-white/20 pointer-events-none" />
-                <div className="absolute bottom-4 right-4 w-1 h-1 bg-white/20 pointer-events-none" />
-              </div>
-
-              {/* Info row */}
-              <div className="mt-8 flex justify-between items-start">
+        {/* Case Studies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mb-20">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                className="group rounded-3xl border border-white/[0.08] bg-[#0c0c0c]/90 overflow-hidden hover:border-purple-500/30 transition-all duration-300 flex flex-col justify-between shadow-2xl hover:shadow-purple-950/20"
+              >
                 <div>
-                  <div className="flex items-center gap-4 mb-3 opacity-30">
-                    <span className="font-mono text-[10px] tracking-widest uppercase">
-                      {project.category}
-                    </span>
-                    <div className="h-px w-8 bg-white" />
-                    <span className="font-mono text-[10px] tracking-widest uppercase">
-                      {project.year}
-                    </span>
+                  {/* Visual Image Preview */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#161616]">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700"
+                      sizes="(max-width: 768px) 100vw, 600px"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-black/30 p-6 flex flex-col justify-between">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-black/60 text-purple-300 border border-white/10 backdrop-blur-md">
+                          {project.category}
+                        </span>
+                        <span className="text-[10px] font-mono text-white/50 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                          {project.year}
+                        </span>
+                      </div>
+
+                      {project.impact && (
+                        <div className="flex items-center gap-2 w-fit bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-lg backdrop-blur-md text-[11px] font-mono">
+                          <CheckCircle2 size={13} />
+                          <span className="line-clamp-1">{project.impact}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <h2 className="text-3xl font-display text-white group-hover:italic transition-all">
-                    {project.title}
-                  </h2>
+
+                  {/* Project Details */}
+                  <div className="p-8">
+                    <h2 className="text-[26px] font-bold text-white tracking-tight leading-tight mb-3 group-hover:text-purple-300 transition-colors">
+                      {project.title}
+                    </h2>
+
+                    <p className="text-[14px] text-white/50 leading-relaxed font-light mb-6 line-clamp-3">
+                      {project.intro}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {project.techStack.map((tech: string) => (
+                        <span
+                          key={tech}
+                          className="text-[9px] font-mono px-2.5 py-0.5 rounded bg-white/[0.04] text-white/40 border border-white/5"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.founderQuote?.text && (
+                      <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-[12px] italic text-white/40 mb-2 font-light">
+                        "{project.founderQuote.text}"
+                        <span className="not-italic font-mono text-[10px] text-purple-400 block mt-1">
+                          — {project.founderQuote.name}, {project.founderQuote.role}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Case study link */}
-                <Link
-                  href={`/work/${project.id}`}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:border-white group/btn transition-all duration-500"
-                >
-                  <ArrowUpRight
-                    size={16}
-                    className="text-white/40 group-hover/btn:text-black transition-colors"
-                  />
-                </Link>
-              </div>
+                <div className="px-8 pb-8 pt-4 border-t border-white/5 flex items-center justify-between">
+                  <Link
+                    href={`/work/${project.id}`}
+                    className="inline-flex items-center gap-1.5 text-[11px] font-mono text-purple-400 hover:text-purple-300 uppercase tracking-wider font-bold transition-colors"
+                  >
+                    <span>Read Architecture Spec</span>
+                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
 
-              <p className="mt-4 text-white/30 text-sm leading-relaxed max-w-[340px] font-light">
-                {project.intro.split(".")[0]}.
-              </p>
-
-              {/* Live Site button */}
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-purple-400 hover:text-white border border-purple-500/30 hover:border-white/30 px-4 py-2 rounded-full transition-all duration-300"
-              >
-                VISIT LIVE SITE
-                <ExternalLink size={12} />
-              </a>
-            </motion.div>
-          ))}
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-mono text-white/40 hover:text-white transition-colors"
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
-      </div>
 
-      {/* Background blueprint dots */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
+        {/* Bottom Banner */}
+        <div className="text-center rounded-3xl border border-white/10 bg-[#0d0d0d] p-12 max-w-[800px] mx-auto">
+          <h3 className="text-3xl font-display text-white mb-4">Want to build something similar?</h3>
+          <p className="text-white/50 text-[14px] max-w-[500px] mx-auto mb-8 font-light leading-relaxed">
+            We partner with ambitious startups and enterprises to architect custom digital systems.
+          </p>
+          <Link
+            href="/contact"
+            className="btn-sweep btn-sweep-primary px-8 py-4 text-[12px] font-bold tracking-[0.14em] uppercase"
+          >
+            <span>Discuss A Project</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
     </main>
   );

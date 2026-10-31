@@ -2,176 +2,194 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-
-const footerLinks = [
-  {
-    label: "Product",
-    links: [
-      { label: "Work", href: "/work" },
-      { label: "Services", href: "/services" },
-      { label: "Process", href: "/process" },
-    ],
-  },
-  {
-    label: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/contact" },
-    ],
-  },
-  {
-    label: "Legal",
-    links: [
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
-    ],
-  },
-];
+import { ArrowUpRight, Mail, MapPin, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer
-      className="relative overflow-hidden"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.04)", background: "#0a0a0a" }}
-    >
-      {/* Top section */}
-      <div className="container py-20">
-        <div className="flex flex-col md:flex-row justify-between gap-16">
-          {/* Brand */}
-          <div className="max-w-[260px]">
-            <Link href="/" className="flex items-center gap-2.5 mb-6 group">
-              <div
-                className="w-6 h-6 rounded-md flex items-center justify-center"
-                style={{
-                  background: "rgba(139, 92, 246, 0.1)",
-                  border: "1px solid rgba(139, 92, 246, 0.25)",
-                }}
-              >
-                <svg viewBox="0 0 12 12" fill="none" className="w-3.5 h-3.5">
-                  <path d="M2 2H5V10H2z" fill="#8b5cf6" opacity="0.8" />
-                  <path d="M6.5 6.5H9.5V10H6.5z" fill="#8b5cf6" />
-                  <path d="M6.5 2H9.5V5.5H6.5z" fill="rgba(255,255,255,0.2)" />
-                </svg>
+    <footer className="relative overflow-hidden bg-[#080808] border-t border-white/[0.08] text-white">
+      {/* Hairline subtle top background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none" />
+
+      {/* Main Multi-Column Sitemap */}
+      <div className="container max-w-[1240px] mx-auto px-5 sm:px-8 py-20 lg:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
+          {/* Col 1 & 2: Brand & Contact Info */}
+          <div className="lg:col-span-2 max-w-[380px]">
+            <Link href="/" className="flex items-center gap-2 mb-6 group inline-block">
+              <span className="font-display italic text-3xl text-purple-400 group-hover:text-purple-300 transition-colors">∫</span>
+              <div className="flex flex-col">
+                <span className="text-[15px] font-bold tracking-[0.16em] text-white">INTEGRAL LABS</span>
+                <span className="text-[8px] font-mono tracking-[0.25em] text-purple-400 uppercase">
+                  ENGINEERING STUDIO
+                </span>
               </div>
-              <span
-                className="text-[14px] font-medium tracking-tight"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                Integral Labs
-              </span>
             </Link>
-            <p
-              className="text-[13px] leading-[1.65]"
-              style={{ color: "rgba(255,255,255,0.2)", fontWeight: 300 }}
-            >
-              Modern engineering studio building the next generation of software systems.
+
+            <p className="text-[13px] text-white/50 leading-relaxed font-light mb-6">
+              The creative engineering and intelligent systems studio under Integral Group. We build high-performance web applications, machine learning tools, and resilient software infrastructure.
             </p>
-          </div>
 
-          {/* Nav columns */}
-          <div className="flex gap-16 md:gap-20">
-            {footerLinks.map((col) => (
-              <div key={col.label}>
-                <div
-                  className="font-mono text-[9px] tracking-[0.25em] uppercase mb-6"
-                  style={{ color: "rgba(255,255,255,0.2)" }}
-                >
-                  {col.label}
-                </div>
-                <ul className="space-y-3.5">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-[13px] transition-colors duration-200"
-                        style={{ color: "rgba(255,255,255,0.25)", fontWeight: 300 }}
-                        onMouseEnter={(e) =>
-                          ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)")
-                        }
-                        onMouseLeave={(e) =>
-                          ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.25)")
-                        }
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            <div className="space-y-2.5 text-[12px] font-mono text-white/40 mb-8">
+              <div className="flex items-center gap-2">
+                <Mail size={13} className="text-purple-400" />
+                <a href="mailto:contact@integralgroups.in" className="hover:text-white transition-colors">
+                  contact@integralgroups.in
+                </a>
               </div>
-            ))}
+              <div className="flex items-center gap-2">
+                <MapPin size={13} className="text-purple-400" />
+                <span>Bhimtal, Uttarakhand, India</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe size={13} className="text-purple-400" />
+                <Link href="/groups" className="hover:text-white transition-colors">
+                  A Division of Integral Groups
+                </Link>
+              </div>
+            </div>
+
+            <Link
+              href="/groups"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] font-mono text-purple-300 tracking-wider hover:bg-purple-500/20 transition-all"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+              <span>PARENT CONGLOMERATE // INTEGRAL GROUPS</span>
+            </Link>
+          </div>
+
+          {/* Col 3: Services Hub */}
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
+              Capabilities
+            </div>
+            <ul className="space-y-3 text-[13px] text-white/60 font-light">
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  Custom SaaS &amp; Web Apps
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  AI &amp; Machine Learning
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  E-Commerce Storefronts
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  UI/UX Design Systems
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  Workflow Automation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  Cloud Architecture &amp; DevOps
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Verticals & Industries */}
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
+              Domain Verticals
+            </div>
+            <ul className="space-y-3 text-[13px] text-white/60 font-light">
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  EdTech &amp; Learning Suites
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  E-Commerce &amp; Retail
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Hospitality &amp; Dining
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Tech Research Foundries
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Enterprise Advisory
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Mobility &amp; Logistics
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 5: Company & Ecosystem */}
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40 mb-6 font-bold">
+              Company
+            </div>
+            <ul className="space-y-3 text-[13px] text-white/60 font-light">
+              <li>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  Case Studies &amp; Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/process" className="hover:text-white transition-colors">
+                  Engineering Workflow
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About &amp; Leadership
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Start a Project
+                </Link>
+              </li>
+              <li>
+                <Link href="/groups" className="hover:text-white transition-colors">
+                  Integral Groups
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="text-white/30 hover:text-white transition-colors">
+                  Studio Admin
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Divider with measurement label */}
-      <div
-        className="relative"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
-      >
-        <div
-          className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 px-4"
-          style={{ background: "#0a0a0a" }}
-        >
-          <span className="blueprint-label">integral-labs.io</span>
-        </div>
-      </div>
+        {/* Sub-footer Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] font-mono text-white/40">
+          <div>
+            <span>© {new Date().getFullYear()} Integral Labs. All rights reserved.</span>
+          </div>
 
-      {/* Massive wordmark */}
-      <div className="relative overflow-hidden py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center select-none"
-        >
-          <span
-            className="font-display inline-block"
-            style={{
-              fontSize: "clamp(80px, 18vw, 240px)",
-              fontWeight: 300,
-              letterSpacing: "-0.05em",
-              lineHeight: "0.85",
-              color: "rgba(255,255,255,0.05)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            INTEGRAL
-          </span>
-        </motion.div>
-      </div>
-
-      {/* Bottom bar */}
-      <div
-        className="relative"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.03)" }}
-      >
-        <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p
-            className="font-mono text-[10px]"
-            style={{ color: "rgba(255,255,255,0.15)" }}
-          >
-            © 2026 Integral Labs. All rights reserved.
-          </p>
           <div className="flex items-center gap-6">
-            {["GitHub", "LinkedIn", "Twitter"].map((social) => (
-              <Link
-                key={social}
-                href="#"
-                className="font-mono text-[10px] transition-colors duration-200"
-                style={{ color: "rgba(255,255,255,0.15)" }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.5)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.15)")
-                }
-              >
-                {social}
-              </Link>
-            ))}
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy Notice
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <span className="text-white/20">|</span>
+            <span className="text-purple-400/80">Integral Groups Entity</span>
           </div>
         </div>
       </div>

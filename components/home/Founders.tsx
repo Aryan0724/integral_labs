@@ -8,10 +8,9 @@ import Image from "next/image";
 export default function Founders() {
   return (
     <section 
-      className="relative py-32 overflow-hidden bg-transparent"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
+      className="relative py-28 md:py-36 overflow-hidden bg-transparent border-t border-white/[0.05]"
     >
-      <div className="container relative z-10">
+      <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         {/* Section Overline */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}

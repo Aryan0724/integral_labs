@@ -1,18 +1,31 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { AUTH_COOKIE_NAME, verifySessionToken } from '@/lib/auth';
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Protect /admin routes
   if (pathname.startsWith('/admin')) {
-    const authCookie = request.cookies.get('admin_auth')?.value;
-    
-    // In production, you would check this against an ENV variable
-    // For now, we'll allow a simple "admin" password check in a login sub-route or similar
-    // But since we want to "secure" it, we'll redirect to /login if no cookie exists
-    if (authCookie !== 'authenticated' && pathname !== '/admin/login') {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+    const authCookie = request.cookies.get(AUTH_COOKIE_NAME)?.value;
+    const session = verifySessionToken(authCookie);
+
+    // Allow access to login page
+    if (pathname === '/admin/login') {
+      if (session.valid) {
+        return NextResponse.redirect(new URL('/admin', request.url));
+      }
+      return NextResponse.next();
+    }
+
+    // Redirect unauthenticated or forged sessions to /admin/login
+    if (!session.valid) {
+      const loginUrl = new URL('/admin/login', request.url);
+      const response = NextResponse.redirect(loginUrl);
+      if (authCookie) {
+        response.cookies.delete(AUTH_COOKIE_NAME);
+      }
+      return response;
     }
   }
 
@@ -22,3 +35,4 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: ['/admin/:path*'],
 };
+

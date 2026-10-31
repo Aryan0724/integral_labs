@@ -119,9 +119,13 @@ export default function AdminDashboard() {
               <span className="text-[10px] font-mono tracking-widest uppercase">System: Local_Store</span>
            </div>
            <button 
-             onClick={() => {
-                document.cookie = "admin_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-                window.location.href = "/";
+             onClick={async () => {
+                try {
+                  await fetch("/api/admin/logout", { method: "POST" });
+                } catch (e) {
+                  console.error("Logout request failed:", e);
+                }
+                window.location.href = "/admin/login";
              }}
              className="flex items-center gap-3 text-white/20 hover:text-red-400 transition-colors"
            >

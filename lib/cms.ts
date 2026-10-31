@@ -1,8 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
-const CONTENT_PATH = path.join(process.cwd(), 'data', 'content.json');
-
 export interface SiteContent {
   hero: {
     title: string;
@@ -85,11 +80,16 @@ export function getSiteContent(): SiteContent {
   if (memoryCache) return memoryCache;
 
   try {
-    // Only use fs on local dev or server environments that support it
-    if (typeof window === 'undefined' && fs.existsSync(CONTENT_PATH)) {
-      const data = fs.readFileSync(CONTENT_PATH, 'utf8');
-      memoryCache = JSON.parse(data);
-      return memoryCache!;
+    // Only use fs on server environments that support it
+    if (typeof window === 'undefined') {
+      const fs = require('fs');
+      const path = require('path');
+      const contentPath = path.join(process.cwd(), 'data', 'content.json');
+      if (fs.existsSync(contentPath)) {
+        const data = fs.readFileSync(contentPath, 'utf8');
+        memoryCache = JSON.parse(data);
+        return memoryCache!;
+      }
     }
   } catch (error) {
     console.warn('CMS: Falling back to default content (Filesystem read failed)');
@@ -104,11 +104,14 @@ export function saveSiteContent(content: SiteContent) {
   try {
     // Only attempt write in environments where it's possible
     if (typeof window === 'undefined') {
-      const dir = path.dirname(CONTENT_PATH);
+      const fs = require('fs');
+      const path = require('path');
+      const contentPath = path.join(process.cwd(), 'data', 'content.json');
+      const dir = path.dirname(contentPath);
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      fs.writeFileSync(CONTENT_PATH, JSON.stringify(content, null, 2));
+      fs.writeFileSync(contentPath, JSON.stringify(content, null, 2));
       return true;
     }
   } catch (error) {

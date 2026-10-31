@@ -43,12 +43,12 @@ export const projects: Project[] = [
     title: "EduReach Premium",
     category: "EdTech Platform",
     year: "2025",
-    image: "/projects/edu-med.png",
+    image: "/projects/vortex.png",
     liveLink: "https://education-med.vercel.app/",
     intro: "A premium educational platform engineered for high-performance learning, combining expert mentorship, interactive live classes, and a global community for academic and professional growth.",
     challenge: "Creating a scalable and visually engaging educational platform that works seamlessly across devices, with smooth performance for live sessions and course management.",
     solution: "Built a feature-rich Next.js platform with glassmorphism UI, dark/light mode, real-time course tracking, live class integration, and verified certification workflows.",
-    impact: "The platform enables institutions to host 200+ courses, manage 10,000+ students, and track progress in real time — resulting in a 98% student satisfaction rate.",
+    impact: "Engineered a scalable multi-cohort learning architecture supporting interactive course catalogs, verified certification pathways, and streamlined student-instructor engagement.",
     techStack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Node.js"],
     founderQuote: {
       text: "Integral Labs built exactly what we envisioned — a cutting-edge platform that made our educational content feel as premium as it is.",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/edu-med.png",
+      "/projects/vortex.png",
     ],
   },
   {
@@ -64,12 +64,12 @@ export const projects: Project[] = [
     title: "EduReach Lite",
     category: "EdTech Platform",
     year: "2025",
-    image: "/projects/edu-easy.png",
+    image: "/projects/lumina.png",
     liveLink: "https://education-easy.vercel.app/",
     intro: "A clean, accessible educational website built for institutions that need simplicity and performance. Optimized for conversions, clear navigation, and fast load times.",
     challenge: "Many educational institutions needed a web presence that was fast, accessible, and easy to maintain without a large development team.",
     solution: "Designed a clean, conversion-optimized educational site with clear CTAs, accessible design patterns, and a lightweight architecture for maximum performance.",
-    impact: "Delivered a fully functional educational web presence with a Lighthouse performance score of 97+ and a 40% improvement in user engagement over prior sites.",
+    impact: "Delivered a clean, conversion-focused educational web presence emphasizing accessibility, instant loading performance, and high user retention across low-bandwidth environments.",
     techStack: ["Next.js", "React", "CSS Modules", "TypeScript"],
     founderQuote: {
       text: "This project proved that simplicity and elegance can coexist. The result was a website that just works, beautifully.",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/edu-easy.png",
+      "/projects/lumina.png",
     ],
   },
   {
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     title: "Spice & Fire",
     category: "Restaurant Website",
     year: "2025",
-    image: "/projects/il2.png",
+    image: "/projects/aether.png",
     liveLink: "https://integral-labs2-mcaf.vercel.app/",
     intro: "A vibrant, full-featured Indian restaurant website with a loading screen, interactive digital menu, table reservation system, gallery, testimonials, and EmailJS-powered contact — all built for an immersive dining experience.",
     challenge: "The client needed a rich, modern restaurant web presence that could handle menu browsing, table reservations, and customer communication without a backend — all in a static deployment.",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/il2.png",
+      "/projects/aether.png",
     ],
   },
   {
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     title: "Mamta Bhojnalaya",
     category: "Restaurant Website",
     year: "2024",
-    image: "/projects/il1.png",
+    image: "/work/nexus.png",
     liveLink: "https://integral-labs1.vercel.app/",
     intro: "A feature-rich Indian food restaurant website with a filterable menu (Breakfast, Lunch, Dinner), swiper-powered gallery and team sliders, table booking section, and a fancybox video player — showcasing authentic home-style Indian cuisine.",
     challenge: "The client, a cherished Indian eatery established since 1976, needed a modern, engaging web presence that honoured their heritage while offering features like online menu browsing and table booking.",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/il1.png",
+      "/work/nexus.png",
     ],
   },
   {
@@ -127,12 +127,12 @@ export const projects: Project[] = [
     title: "Vantage Strategic",
     category: "Business Website",
     year: "2025",
-    image: "/projects/biz-top.png",
+    image: "/projects/lumina.png",
     liveLink: "https://business-top.vercel.app/",
     intro: "An ultra-premium investment and strategic consulting website with a luxury black-and-gold aesthetic, designed for a high-end global advisory firm targeting fortune-level clientele.",
     challenge: "Conveying trust, authority, and extreme prestige through a digital presence that matches the caliber of a world-class investment advisory firm.",
     solution: "Crafted a bespoke dark luxury website with gold gradient typography, cinematic hero sections, a refined services grid, and an elite inquiry form — all optimized for high-net-worth client conversions.",
-    impact: "The site elevated the firm's digital presence, reflecting its stature in managing $12B+ in assets across 45+ countries.",
+    impact: "Elevated the firm's digital brand presence with bespoke typography and luxury interaction states tailored for institutional investors and high-net-worth strategic clientele.",
     techStack: ["HTML5", "CSS3", "JavaScript", "Font Awesome"],
     founderQuote: {
       text: "The website Integral Labs built for us is exactly what we needed — it commands respect the moment you land on it.",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/biz-top.png",
+      "/projects/lumina.png",
     ],
   },
   {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     title: "Nexus Foundry",
     category: "Tech Research Website",
     year: "2025",
-    image: "/projects/biz-med.png",
+    image: "/projects/vortex.png",
     liveLink: "https://business-med.vercel.app/",
     intro: "A premium dark-mode technology research foundry website for an AI and advanced computing company, featuring a futuristic hero, capabilities grid (Cognitive AI, Adaptive Robotics, Quantum Security, Bio-Computation), and a project showcase.",
     challenge: "The client, a cutting-edge tech research firm, needed a site that projected authority and scientific gravitas — something that felt as advanced as their actual research.",
@@ -161,7 +161,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/biz-med.png",
+      "/projects/vortex.png",
     ],
   },
   {
@@ -169,9 +169,9 @@ export const projects: Project[] = [
     title: "Quantum Integral",
     category: "Tech Research Website",
     year: "2024",
-    image: "/projects/biz-low.png",
+    image: "/projects/aether.png",
     liveLink: "https://business-low.vercel.app/",
-    intro: "A sleek, minimal dark-mode website for an AI and quantum computing research company, featuring a bold hero, a Core Disciplines section (Neural Architectures, Quantum Ledger, Digital Twins), and an About section highlighting 50+ PhD researchers.",
+    intro: "A sleek, minimal dark-mode website for an AI and quantum computing research company, featuring a bold hero, a Core Disciplines section (Neural Architectures, Quantum Ledger, Digital Twins), and an About section highlighting specialized multidisciplinary researchers.",
     challenge: "Designing a minimal yet technically impressive site for a research company that needed to communicate expertise and vision without overwhelming visitors with complexity.",
     solution: "Built a clean, scroll-driven single-page site using the Outfit typeface and Phosphor icons, with a glass-morphism card layout, a striking hero gradient, and a focused contact CTA that emphasises collaboration.",
     impact: "Delivered a sharp, credibility-building site that communicates high-level research capabilities at a glance — ideal for attracting institutional partnerships and top-tier engineering talent.",
@@ -182,7 +182,7 @@ export const projects: Project[] = [
       role: "Co-Founder, Integral Labs",
     },
     screenshots: [
-      "/projects/biz-low.png",
+      "/projects/aether.png",
     ],
   },
   {
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     intro: "A comprehensive academic portal for soon-to-be universities, featuring course management, student admission pathways, and faculty systems.",
     challenge: "Designing an elegant, highly structured portal capable of handling diverse content ranging from academic papers to online admissions without clutter.",
     solution: "Crafted a custom dark-mode typography-first academic portal focusing on clarity, clean spacing, and intuitive form pathways.",
-    impact: "Delivered a prestige-focused university layout optimized for laptops and desktops, driving a 50% increase in online prospectus requests.",
+    impact: "Delivered an authoritative academic layout optimized across form factors, driving consistent prospectus inquiries and streamlined program exploration.",
     techStack: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Higher education websites should feel academic but forward-looking. We merged academic structured layouts with a premium digital design.",
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     intro: "An all-in-one e-commerce platform built to streamline product distribution, catalog management, and seamless payments.",
     challenge: "Architecting a fast-loading shop experience that displays thousands of product variations with immediate state updates.",
     solution: "Implemented Next.js static generation backed by incremental client-side cache queries to maintain updated inventory counts.",
-    impact: "Boosted page speed metrics by 35%, helping reduce cart drop-off rates on high-volume product launches.",
+    impact: "Optimized catalog query caching and checkout workflows, ensuring high responsiveness and reduced cart drop-off friction during high-volume product drops.",
     techStack: ["Next.js", "TailwindCSS", "PostgreSQL", "Framer Motion"],
     founderQuote: {
       text: "Speed is the number one metric in e-commerce. AtoZ was built to display catalog changes instantly and check out faster.",
@@ -290,7 +290,7 @@ export const projects: Project[] = [
     intro: "A premium street fashion and apparel e-commerce experience showcasing dynamic cart features and product category mapping.",
     challenge: "Creating a highly immersive, catalog-focused design that matches the bold, aesthetic expectations of street fashion brands.",
     solution: "Built a high-contrast dark theme apparel portal with layout grids, sizing selection logic, and sliding checkout sidebars.",
-    impact: "Successfully hosted regional seasonal collections, yielding a 2.5x increase in user scroll depth.",
+    impact: "Successfully launched regional seasonal collections, delivering an engaging storefront experience with fluid category navigation and elevated product discovery.",
     techStack: ["Next.js", "CSS Modules", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Fashion is all about presentation. We built UK Drip to present street collections in a way that feels curated and premium.",
@@ -305,11 +305,11 @@ export const projects: Project[] = [
     category: "Product Catalog",
     year: "2025",
     image: "/projects/lumina.png",
-    liveLink: "https://auryahproductsadd.vercel.app/",
+    liveLink: "", // Disabled: https://auryahproductsadd.vercel.app/ returned 404 (pending client domain verification)
     intro: "A collaborative portal for managing product listings, specifications, and client inquiries.",
     challenge: "Building a lightweight product database search frontend that updates instantaneously on text queries.",
     solution: "Configured local client-side array search logic with sliding detail panels for catalog navigation.",
-    impact: "Provided product administrators with a simple, secure interface to exhibit items and address inquiries.",
+    impact: "Provided product administrators with a clean, responsive interface to manage items, exhibit catalog specifications, and address client inquiries.",
     techStack: ["React", "Vite", "TailwindCSS", "Lucide Icons"],
     founderQuote: {
       text: "We built Aurya to solve standard catalog listings — keeping them fast, minimal, and completely search-friendly.",
@@ -328,7 +328,7 @@ export const projects: Project[] = [
     intro: "A luxury cafe website featuring interactive digital table ordering, dynamic menus, and reservation workflows.",
     challenge: "Conveying the culinary style of a luxury brand while providing complex reservation and digital menu filtering features.",
     solution: "Implemented custom typography grids, fancy galleries, and dynamic menu tab state mapping.",
-    impact: "Elevated online bookings and dinner table reserves, improving digital customer engagement by 45%.",
+    impact: "Elevated table reservation conversions and brand engagement through interactive digital menus and an intuitive booking interface.",
     techStack: ["HTML5", "CSS3", "JavaScript", "Google Fonts"],
     founderQuote: {
       text: "A hospitality site is the visual appetizer. We wanted it to look premium and feel incredibly easy to book a table.",
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     intro: "A clean, fast-loading digital web presence for Cafe Max, focusing on menu accessibility and operating hour updates.",
     challenge: "Ensuring menu discovery and opening details load instantly under poor mobile network settings.",
     solution: "Delivered a lightweight, mobile-first single-page menu with optimized image sizes and contact triggers.",
-    impact: "Achieved perfect PageSpeed scores, helping walk-in clients scan menus and contact locations on the fly.",
+    impact: "Achieved rapid mobile load times, allowing walk-in customers and mobile visitors to scan menu sections and access contact details effortlessly.",
     techStack: ["HTML5", "CSS3", "JavaScript", "Google Fonts"],
     founderQuote: {
       text: "Good restaurants need instant load speeds. We designed this to get menus onto user screens without delay.",
@@ -404,7 +404,7 @@ export const projects: Project[] = [
     intro: "A modern bistro and coffee shop web experience designed with smooth transitions, table booking alerts, and menu details.",
     challenge: "Developing a bistro site that captures the artisan culture of the cafe while retaining reservation conversion tools.",
     solution: "Designed a dark modern interface with sliding panels, menu categories, and a booking form.",
-    impact: "Increased online table booking inquiries by 30% and improved customer menu retention rates.",
+    impact: "Streamlined the guest reservation workflow and digital menu exploration, boosting customer conversion from initial page visit to table booking.",
     techStack: ["Next.js", "TailwindCSS", "TypeScript", "Framer Motion"],
     founderQuote: {
       text: "We blended artisan visual aesthetics with swift booking triggers to create a digital door for the cafe.",
@@ -414,3 +414,4 @@ export const projects: Project[] = [
     screenshots: ["/projects/aether.png"],
   },
 ];
+

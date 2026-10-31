@@ -130,10 +130,23 @@ export default function ContactPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Honeypot field for bot protection */}
+                <input 
+                  type="text" 
+                  name="hp_field" 
+                  aria-hidden="true" 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  className="hidden" 
+                  value={(formState as any).hp_field || ""} 
+                  onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value } as any)} 
+                />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Name</label>
+                    <label htmlFor="contact-name" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Name</label>
                     <input 
+                      id="contact-name"
                       type="text" 
                       required
                       placeholder="Aarav Sharma" 
@@ -143,8 +156,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Email</label>
+                    <label htmlFor="contact-email" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Email</label>
                     <input 
+                      id="contact-email"
                       type="email" 
                       required
                       placeholder="aarav.sharma@example.com" 
@@ -157,8 +171,9 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Company</label>
+                    <label htmlFor="contact-company" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Company</label>
                     <input 
+                      id="contact-company"
                       type="text" 
                       placeholder="Zenith Tech India" 
                       value={formState.company}
@@ -167,9 +182,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Project Type</label>
+                    <label htmlFor="contact-project-type" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Project Type</label>
                     <div className="relative">
                       <select 
+                        id="contact-project-type"
                         value={formState.projectType}
                         onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
                         className="w-full bg-transparent border-b border-white/10 py-2 text-white focus:border-white transition-colors outline-none appearance-none cursor-pointer"
@@ -186,8 +202,9 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Mobile Number (Optional)</label>
+                    <label htmlFor="contact-phone" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Mobile Number (Optional)</label>
                     <input 
+                      id="contact-phone"
                       type="tel" 
                       placeholder="+91 99999 99999" 
                       value={formState.phone}
@@ -198,15 +215,16 @@ export default function ContactPage() {
                       className={`w-full bg-transparent border-b ${phoneError ? 'border-red-500/50' : 'border-white/10'} py-2 text-white focus:border-white transition-colors outline-none`}
                     />
                     {phoneError && (
-                      <span className="text-red-500 text-[10px] font-mono block mt-1">Please enter a valid phone number.</span>
+                      <span className="text-red-500 text-[10px] font-mono block mt-1" role="alert">Please enter a valid phone number.</span>
                     )}
                   </div>
                   <div className="hidden sm:block" />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Message</label>
+                  <label htmlFor="contact-message" className="text-[11px] font-mono text-[#3f3f46] uppercase tracking-wider">Message</label>
                   <textarea 
+                    id="contact-message"
                     rows={4}
                     required
                     placeholder="Tell us about your project..." 
@@ -217,7 +235,7 @@ export default function ContactPage() {
                 </div>
 
                 {status === "error" && (
-                  <div className="text-red-500 text-xs font-mono">
+                  <div className="text-red-500 text-xs font-mono" role="alert">
                     Something went wrong. Please try again.
                   </div>
                 )}
@@ -225,7 +243,7 @@ export default function ContactPage() {
                 <button 
                   type="submit"
                   disabled={status === "loading"}
-                  className="group flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-[14px] hover:bg-[#f4f4f5] transition-all hover:scale-[1.02] w-full justify-center disabled:opacity-50"
+                  className="group flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-[14px] hover:bg-[#f4f4f5] transition-all hover:scale-[1.02] w-full justify-center disabled:opacity-50 cursor-pointer"
                 >
                   {status === "loading" ? "Sending..." : "Send Inquiry"}
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
