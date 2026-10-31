@@ -71,8 +71,8 @@ test('Security Regression Suite: Hardened Administrative Authentication & Sessio
 
     const [payloadB64, sigB64] = validToken.split('.');
 
-    // Case A: altered characters in signature
-    const corruptedSig = sigB64.slice(0, -2) + (sigB64.endsWith('A') ? 'B' : 'A') + sigB64.slice(-1);
+    // Case A: altered characters in signature (guaranteed to differ)
+    const corruptedSig = (sigB64[0] === 'X' ? 'Y' : 'X') + sigB64.slice(1);
     const tamperedTokenSig = `${payloadB64}.${corruptedSig}`;
     const resCorrupted = verifySessionToken(tamperedTokenSig);
     assert.equal(resCorrupted.valid, false);
