@@ -59,7 +59,7 @@ const FEATURED_PLATFORMS: ProjectItem[] = [
     description: "Full-scale custom printing and merchandise e-commerce platform offering online apparel customization, commercial print quotes, and rapid checkout.",
     image: "/projects/real/atozprints.png",
     caseStudyLink: "/work/atozprints",
-    liveLink: "https://atozprints.com",
+    liveLink: "https://atozprints.in",
     tech: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
     stats: "Custom Print Portal"
   },

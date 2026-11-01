@@ -88,7 +88,7 @@ export const projects: Project[] = [
     category: "E-Commerce & Merch",
     year: "2025",
     image: "/projects/real/atozprints.png",
-    liveLink: "https://atozprints.com",
+    liveLink: "https://atozprints.in",
     intro: "A custom printing and merchandise e-commerce platform offering personalized apparel, commercial print orders, and rapid checkout.",
     challenge: "Developing a streamlined ordering experience for customized print runs, merchandise previews, and transparent pricing tiers.",
     solution: "Built a responsive online storefront with real-time product previews, dynamic quantity discount calculators, and seamless ordering flows.",

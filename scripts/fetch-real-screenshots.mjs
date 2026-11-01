@@ -23,7 +23,7 @@ const projects = [
   { id: "business-solutions-lite", url: "https://business-low.vercel.app/" },
   { id: "labs-portal", url: "https://labs.integralgroups.in/" },
   { id: "bro-uni", url: "https://bro-uni-2.vercel.app/" },
-  { id: "atoz-ecommerce", url: "https://atoz-git-main-aryan0724s-projects.vercel.app/" },
+  { id: "atozprints", url: "https://atozprints.in" },
   { id: "travicars", url: "https://travicars-demo-3wa9.vercel.app/" },
   { id: "rozcars", url: "https://roz-car-demo.vercel.app/" },
   { id: "ukdrip", url: "https://ukdrip-seven.vercel.app/" },

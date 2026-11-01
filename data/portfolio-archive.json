@@ -139,7 +139,7 @@
     "title": "AtoZ Vercel Dev Build",
     "category": "Staging Environment",
     "liveLink": "https://atoz-git-main-aryan0724s-projects.vercel.app/",
-    "notes": "Protected Vercel preview build (requires team authentication; replaced by public atozprints.com).",
+    "notes": "Protected Vercel preview build (requires team authentication; replaced by public atozprints.in).",
     "techStack": ["Next.js", "PostgreSQL"],
     "screenshot": "/projects/real/atoz-ecommerce.png"
   }
