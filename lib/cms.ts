@@ -27,10 +27,10 @@ export interface SiteContent {
 
 export const defaultContent: SiteContent = {
   hero: {
-    title: "Digital products for world-class agencies.",
-    subtext: "We are the Creative Engineering Department of Integral Groups. Crafting high-performance websites, bespoke SaaS, and intelligent automation systems.",
-    primaryCta: "Start a project —>",
-    secondaryCta: "See Portfolio"
+    title: "Custom Software, Web Platforms & Modern Search.",
+    subtext: "We build scalable web applications, bespoke software systems, and search architectures engineered for modern search engines and AI discoverability (AEO) — turning digital presence into qualified business enquiries.",
+    primaryCta: "Discuss Your Project",
+    secondaryCta: "View Portfolio"
   },
   services: {
     title: "Capabilities",

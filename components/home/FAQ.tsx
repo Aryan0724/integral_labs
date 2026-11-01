@@ -23,6 +23,14 @@ const FAQS: FAQItem[] = [
     answer: "Yes, every deployment includes 30 days of complimentary post-launch warranty, monitoring, and operational bug-fixing. We also offer ongoing monthly maintenance agreements for infrastructure updates, model fine-tuning, and feature iteration."
   },
   {
+    question: "What is Answer Engine Optimization (AEO), and how is it different from SEO?",
+    answer: "Traditional SEO focuses on ranking blue links on search results pages through keywords, technical speed, and markup. Answer Engine Optimization (AEO) structures your data, semantic entities, and technical architecture so conversational AI models (such as ChatGPT, Perplexity, Claude, and Gemini) synthesize and directly cite your business as the authoritative answer to user queries. We engineer both simultaneously."
+  },
+  {
+    question: "What is the relationship between Integral Labs and Integral Groups?",
+    answer: "Integral Labs is the specialized software engineering and search architecture division within Integral Groups. While Labs focuses exclusively on custom codebases, web platforms, and discoverability, our parent ecosystem encompasses Integral Media (content & branding), Integral Marketing (performance & CRO), and Department of Products (proprietary SaaS incubation)."
+  },
+  {
     question: "Who owns the code and design?",
     answer: "You do. Upon project completion and final milestone approval, 100% of the intellectual property, repository access, design assets, and production deployment credentials transfer entirely to your organization with zero lock-in."
   },

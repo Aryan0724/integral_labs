@@ -7,15 +7,15 @@ import SmoothScroll from "@/components/shared/SmoothScroll";
 import ContactSidebar from "@/components/shared/ContactSidebar";
 
 export const metadata: Metadata = {
-  title: "Integral Labs | Modern Software Engineering & Intelligent Systems",
+  title: "Integral Labs | Custom Software, Web Platforms & Modern Search (SEO & AEO)",
   description:
-    "Integral Labs is a modern engineering and intelligent systems studio. We build scalable SaaS platforms, AI products, automation infrastructure, and premium digital interfaces.",
+    "Integral Labs is a custom software engineering and digital discoverability consultancy. We engineer scalable web platforms, bespoke business software, and organic & AI search architectures (SEO & AEO) that drive qualified business enquiries.",
   keywords:
-    "Software Engineering, SaaS, AI Products, Automation, Machine Learning, Frontend Systems, Product Design",
+    "Custom Software Development, Web Development, Technical SEO, Answer Engine Optimization, AEO, Next.js Engineering, SaaS Systems, AI Search Optimization",
   openGraph: {
-    title: "Integral Labs | Modern Software Engineering",
+    title: "Integral Labs | Custom Software, Web Platforms & Modern Search",
     description:
-      "Modern engineering and intelligent systems studio focused on SaaS platforms, AI products, and automation infrastructure.",
+      "Custom software engineering and digital discoverability consultancy. Engineering Next.js web applications, bespoke business platforms, and organic & AI search architectures.",
     type: "website",
   },
 };

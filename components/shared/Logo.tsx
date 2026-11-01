@@ -34,7 +34,7 @@ export const Logo = ({ className, dark = false }: { className?: string; dark?: b
           "text-[9px] font-mono tracking-[0.1em] font-medium hidden sm:inline select-none",
           dark ? "text-slate-500" : "text-slate-400"
         )}>
-          // STUDIO
+          {"// STUDIO"}
         </span>
       </div>
     </div>

@@ -10,126 +10,69 @@ import {
   ChevronDown, 
   ArrowRight, 
   Code2, 
-  Smartphone, 
-  Palette, 
+  Cpu, 
+  Search, 
   Sparkles, 
-  Cloud, 
-  Rocket, 
-  ShoppingBag, 
-  UtensilsCrossed, 
-  GraduationCap, 
-  HeartPulse, 
-  ShieldCheck, 
-  Truck,
-  ExternalLink,
-  CornerDownLeft
+  ArrowUpRight
 } from "lucide-react";
 import Logo from "./Logo";
 
 export interface ServiceCategory {
   id: string;
   title: string;
+  badge: string;
   shortDesc: string;
-  icon: any;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
   href: string;
 }
 
-const servicesList: ServiceCategory[] = [
+const CORE_PILLARS: ServiceCategory[] = [
   {
     id: "web-dev",
     title: "Web Development",
-    shortDesc: "Custom websites and web applications built for performance, scalability and business growth.",
+    badge: "Next.js & Frontend",
+    shortDesc: "High-performance marketing sites, web applications, and headless e-commerce.",
     icon: Code2,
-    href: "/services"
+    href: "/#services-section"
   },
   {
-    id: "mobile-dev",
-    title: "Mobile Applications",
-    shortDesc: "Native and cross-platform mobile apps for iOS and Android.",
-    icon: Smartphone,
-    href: "/services"
+    id: "custom-software",
+    title: "Custom Software",
+    badge: "Cloud SaaS & APIs",
+    shortDesc: "Bespoke business platforms, multi-tenant SaaS, and resilient API architectures.",
+    icon: Cpu,
+    href: "/#services-section"
   },
   {
-    id: "ui-ux",
-    title: "UI/UX Design",
-    shortDesc: "User-centred design for better engagement and conversion.",
-    icon: Palette,
-    href: "/services"
+    id: "seo",
+    title: "Technical SEO",
+    badge: "Organic Search",
+    shortDesc: "Core Web Vitals tuning, semantic schema graphs, and crawler architecture.",
+    icon: Search,
+    href: "/#services-section"
   },
   {
-    id: "ai-ml",
-    title: "AI & Machine Learning",
-    shortDesc: "Intelligent systems with cutting-edge machine learning.",
+    id: "aeo",
+    title: "Answer Engine Optimization (AEO)",
+    badge: "AI Discoverability",
+    shortDesc: "Semantic structuring for citations on ChatGPT, Perplexity, Claude, and Gemini.",
     icon: Sparkles,
-    href: "/services"
-  },
-  {
-    id: "cloud-devops",
-    title: "Cloud & DevOps",
-    shortDesc: "Scalable infrastructure and seamless deployment pipelines.",
-    icon: Cloud,
-    href: "/services"
-  },
-  {
-    id: "product-strategy",
-    title: "Product Strategy & MVP",
-    shortDesc: "From idea to launch, build the right product with a lean roadmap.",
-    icon: Rocket,
-    href: "/services"
-  }
-];
-
-const industriesList = [
-  {
-    id: "retail",
-    title: "Retail & E-commerce",
-    shortDesc: "Scale your online business with modern platforms.",
-    icon: ShoppingBag,
-    href: "/work"
-  },
-  {
-    id: "hospitality",
-    title: "Hospitality & Dining",
-    shortDesc: "Enhance guest experiences with digital solutions.",
-    icon: UtensilsCrossed,
-    href: "/work"
-  },
-  {
-    id: "education",
-    title: "Education",
-    shortDesc: "Build better learning experiences with technology.",
-    icon: GraduationCap,
-    href: "/work"
-  },
-  {
-    id: "healthcare",
-    title: "Healthcare",
-    shortDesc: "Improve patient care with smart systems.",
-    icon: HeartPulse,
-    href: "/work"
-  },
-  {
-    id: "finance",
-    title: "Finance",
-    shortDesc: "Secure and scalable financial solutions.",
-    icon: ShieldCheck,
-    href: "/work"
-  },
-  {
-    id: "logistics",
-    title: "Logistics & Mobility",
-    shortDesc: "Optimize operations and delivery pipelines.",
-    icon: Truck,
-    href: "/work"
+    href: "/#services-section"
   }
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMobileMenuOpen(false);
+    setServicesDropdownOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -139,24 +82,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setActiveDropdown(null);
-  }, [pathname]);
-
-  const handleMouseEnter = (menu: string) => {
+  const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setActiveDropdown(menu);
+    setServicesDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150);
+      setServicesDropdownOpen(false);
+    }, 180);
   };
 
   const openContact = () => {
     window.dispatchEvent(new CustomEvent("open-contact-modal"));
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -164,152 +103,92 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3" 
-            : "bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4"
+            ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3.5" 
+            : "bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4.5"
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-5 sm:px-8 flex items-center justify-between">
-          {/* Brand Logo */}
+          
+          {/* Brand Logo (Authentic Integral Logo Mark) */}
           <Link href="/" className="flex items-center">
             <Logo />
           </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7">
-            {/* Services Dropdown */}
+            
+            {/* Services Dropdown (4 Pillars) */}
             <div 
               className="relative"
-              onMouseEnter={() => handleMouseEnter("services")}
+              onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <button 
-                className={`flex items-center gap-1.5 text-[13px] font-semibold tracking-wider uppercase transition-colors py-2 ${
-                  activeDropdown === "services" ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
+                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                className={`text-[13px] font-semibold tracking-wider uppercase flex items-center gap-1.5 transition-colors cursor-pointer ${
+                  servicesDropdownOpen ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
                 }`}
-                aria-expanded={activeDropdown === "services"}
+                aria-expanded={servicesDropdownOpen}
               >
                 <span>Services</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === "services" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
+                <ChevronDown 
+                  size={14} 
+                  className={`transition-transform duration-200 ${
+                    servicesDropdownOpen ? "rotate-180 text-blue-600" : "text-slate-400"
+                  }`} 
+                />
               </button>
 
               <AnimatePresence>
-                {activeDropdown === "services" && (
+                {servicesDropdownOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute top-full -left-20 w-[720px] bg-white rounded-2xl border border-slate-200 shadow-xl p-6 mt-1 z-50 grid grid-cols-12 gap-6"
-                  >
-                    {/* Featured Highlight Card */}
-                    <div className="col-span-5 bg-slate-900 rounded-xl p-6 text-white flex flex-col justify-between">
-                      <div>
-                        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-400 text-[10px] font-mono uppercase tracking-wider mb-4">
-                          <Code2 size={12} />
-                          <span>Core Capability</span>
-                        </div>
-                        <h4 className="text-lg font-bold text-white mb-2">Web Development</h4>
-                        <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                          Custom websites and web applications built for performance, scalability and business growth.
-                        </p>
-                        <ul className="space-y-1.5 text-[11px] text-slate-300">
-                          <li className="flex items-center gap-2">• Business Websites</li>
-                          <li className="flex items-center gap-2">• Web Applications</li>
-                          <li className="flex items-center gap-2">• API Integrations</li>
-                          <li className="flex items-center gap-2">• Maintenance & Support</li>
-                        </ul>
-                      </div>
-                      <Link 
-                        href="/services" 
-                        className="inline-flex items-center gap-1.5 text-xs text-blue-400 font-semibold hover:text-blue-300 mt-6"
-                      >
-                        View all services <ArrowRight size={13} />
-                      </Link>
-                    </div>
-
-                    {/* Services Grid List */}
-                    <div className="col-span-7 grid grid-cols-2 gap-3.5">
-                      {servicesList.slice(1).map((s) => {
-                        const Icon = s.icon;
-                        return (
-                          <Link
-                            key={s.id}
-                            href={s.href}
-                            className="p-3 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-all group flex flex-col justify-between"
-                          >
-                            <div className="flex items-center gap-2.5 mb-1.5">
-                              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <Icon size={14} />
-                              </div>
-                              <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                                {s.title}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">
-                              {s.shortDesc}
-                            </p>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Industries Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleMouseEnter("industries")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button 
-                className={`flex items-center gap-1.5 text-[13px] font-semibold tracking-wider uppercase transition-colors py-2 ${
-                  activeDropdown === "industries" ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
-                }`}
-                aria-expanded={activeDropdown === "industries"}
-              >
-                <span>Industries</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === "industries" ? "rotate-180 text-blue-600" : "text-slate-400"}`} />
-              </button>
-
-              <AnimatePresence>
-                {activeDropdown === "industries" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute top-full -left-10 w-[540px] bg-white rounded-2xl border border-slate-200 shadow-xl p-5 mt-1 z-50"
+                    className="absolute top-full -left-12 w-[620px] bg-white rounded-2xl border border-slate-200 shadow-xl p-5 mt-2 z-50"
                   >
                     <div className="grid grid-cols-2 gap-3 mb-4">
-                      {industriesList.map((ind) => {
-                        const Icon = ind.icon;
+                      {CORE_PILLARS.map((pillar) => {
+                        const Icon = pillar.icon;
                         return (
                           <Link
-                            key={ind.id}
-                            href={ind.href}
-                            className="p-3 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50/80 transition-all group flex items-start gap-3"
+                            key={pillar.id}
+                            href={pillar.href}
+                            onClick={() => setServicesDropdownOpen(false)}
+                            className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group flex flex-col justify-between"
                           >
-                            <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0 mt-0.5">
-                              <Icon size={15} />
-                            </div>
                             <div>
-                              <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                                {ind.title}
+                              <div className="flex items-center justify-between mb-2">
+                                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                  <Icon size={16} />
+                                </div>
+                                <span className="text-[9px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+                                  {pillar.badge}
+                                </span>
                               </div>
-                              <div className="text-[11px] text-slate-500 leading-tight mt-0.5">
-                                {ind.shortDesc}
-                              </div>
+                              <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                {pillar.title}
+                              </h4>
+                              <p className="text-[11px] text-slate-500 leading-snug mt-1">
+                                {pillar.shortDesc}
+                              </p>
                             </div>
                           </Link>
                         );
                       })}
                     </div>
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs text-slate-400 font-medium">Bespoke software across industry verticals</span>
-                      <Link href="/work" className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
-                        View all industries <ArrowRight size={12} />
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between px-1">
+                      <span className="text-xs text-slate-400 font-medium">
+                        Custom software engineering & AI discoverability
+                      </span>
+                      <Link 
+                        href="/#services-section" 
+                        onClick={() => setServicesDropdownOpen(false)}
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
+                      >
+                        Explore all capabilities <ArrowRight size={12} />
                       </Link>
                     </div>
                   </motion.div>
@@ -317,7 +196,7 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Direct Links */}
+            {/* Direct Navigation Links */}
             <Link 
               href="/work" 
               className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
@@ -333,7 +212,14 @@ export default function Navbar() {
             </Link>
 
             <Link 
-              href="/#about" 
+              href="/#ecosystem" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
+            >
+              Ecosystem
+            </Link>
+
+            <Link 
+              href="/about" 
               className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
               About
@@ -342,124 +228,116 @@ export default function Navbar() {
 
           {/* Right Action Elements */}
           <div className="hidden sm:flex items-center gap-3.5">
-            {/* Dark Pill Badge: INTEGRAL GROUPS */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-mono tracking-wider shadow-xs select-none">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              <span className="font-semibold uppercase tracking-wider text-[10px]">Integral Groups</span>
-            </div>
+            {/* Pill Link to Parent: INTEGRAL GROUPS */}
+            <Link 
+              href="/groups"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 transition-all select-none"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-400 group-hover:bg-blue-600 transition-colors" />
+              <span className="text-[11px] font-mono tracking-wider font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
+                INTEGRAL GROUPS
+              </span>
+              <ArrowUpRight size={12} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
+            </Link>
 
-            {/* Start Project CTA Button */}
+            {/* Primary Action Button */}
             <button
               onClick={openContact}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold tracking-wider uppercase shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
             >
-              <span>START PROJECT</span>
-              <ArrowRight size={14} />
+              <span>Discuss Project</span>
+              <ArrowRight size={13} />
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={openContact}
-              className="sm:hidden bg-blue-600 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full"
-            >
-              START
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-slate-700 hover:text-slate-950 hover:bg-slate-100 rounded-lg transition-colors focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto lg:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="lg:hidden fixed top-[69px] left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-xl overflow-hidden"
           >
-            <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <Logo />
-                <button 
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-slate-400 hover:text-slate-900"
-                >
-                  <X size={20} />
-                </button>
+            <div className="max-w-[1240px] mx-auto px-6 py-6 flex flex-col gap-5">
+              
+              <div className="text-[11px] font-mono uppercase tracking-wider font-bold text-slate-400">
+                Core Services
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {CORE_PILLARS.map((pillar) => (
+                  <Link
+                    key={pillar.id}
+                    href={pillar.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-semibold text-slate-800 flex items-center justify-between"
+                  >
+                    <span>{pillar.title}</span>
+                    <span className="text-[10px] font-mono text-blue-600">{pillar.badge}</span>
+                  </Link>
+                ))}
               </div>
 
-              <div className="space-y-4">
-                <Link
-                  href="/services"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
-                >
-                  SERVICES
-                </Link>
+              <div className="pt-2 border-t border-slate-100 flex flex-col gap-3">
                 <Link
                   href="/work"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
-                  CASES & WORK
-                </Link>
-                <Link
-                  href="/work"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
-                >
-                  INDUSTRIES
+                  Portfolio & Work
                 </Link>
                 <Link
                   href="/#process"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
-                  PROCESS
+                  Our Process
                 </Link>
                 <Link
-                  href="/#about"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                  href="/#ecosystem"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
-                  ABOUT US
+                  Integral Groups Ecosystem
                 </Link>
                 <Link
-                  href="/contact"
-                  className="block text-lg font-bold text-slate-900 py-2 border-b border-slate-50"
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
-                  CONTACT
+                  About Founders
                 </Link>
               </div>
-            </div>
 
-            <div className="pt-8 space-y-3">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openContact();
-                }}
-                className="w-full py-3.5 rounded-full bg-[#BBF7D0] hover:bg-[#A7F3D0] text-emerald-950 font-bold text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
-              >
-                <span>Let's connect</span>
-                <CornerDownLeft size={16} />
-              </button>
+              <div className="pt-3 border-t border-slate-100 flex flex-col gap-3">
+                <button
+                  onClick={openContact}
+                  className="w-full py-3 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wider text-center shadow-sm"
+                >
+                  Discuss Project
+                </button>
+                <Link
+                  href="/groups"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-center text-xs font-mono text-slate-500 hover:text-slate-800"
+                >
+                  Part of Integral Groups ↗
+                </Link>
+              </div>
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openContact();
-                }}
-                className="w-full py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-colors"
-              >
-                <span>START PROJECT</span>
-                <ArrowRight size={16} />
-              </button>
             </div>
           </motion.div>
         )}

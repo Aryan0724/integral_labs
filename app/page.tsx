@@ -4,6 +4,7 @@ import ProjectShowcase from "@/components/home/ProjectShowcase";
 import WhyUs from "@/components/home/WhyUs";
 import Industries from "@/components/home/Industries";
 import Process from "@/components/home/Process";
+import Ecosystem from "@/components/home/Ecosystem";
 import Founders from "@/components/home/Founders";
 import FAQ from "@/components/home/FAQ";
 import CTA from "@/components/home/CTA";
@@ -18,8 +19,9 @@ export default function Home() {
         <Services />
         <ProjectShowcase />
         <WhyUs />
-        <Industries />
         <Process />
+        <Ecosystem />
+        <Industries />
         <Founders />
         <FAQ />
         <CTA />

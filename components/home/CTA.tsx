@@ -9,7 +9,7 @@ export default function CTA() {
     name: "",
     email: "",
     phone: "",
-    projectType: "Custom Web Application",
+    projectType: "Web Development",
     message: "",
     agree: true,
     hp_field: "", // honeypot
@@ -204,12 +204,12 @@ export default function CTA() {
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                     >
-                      <option value="Custom Web Application">Custom Web Application</option>
-                      <option value="AI / ML System">AI / ML System</option>
-                      <option value="Mobile Application">Mobile Application</option>
-                      <option value="UI/UX Redesign">UI/UX Redesign</option>
-                      <option value="MVP Build">MVP Build</option>
-                      <option value="Enterprise Consulting">Enterprise Consulting</option>
+                      <option value="Web Development">Web Development (Next.js / Full-Stack)</option>
+                      <option value="Custom Software Development">Custom Software Development (SaaS / APIs)</option>
+                      <option value="Technical SEO">Search Engine Optimization (Technical SEO & CWV)</option>
+                      <option value="Answer Engine Optimization (AEO)">Answer Engine Optimization (AEO & AI Search)</option>
+                      <option value="Complete Platform Build">Complete Platform (Development + SEO/AEO)</option>
+                      <option value="Architecture Consultation">Architecture Consultation & Audit</option>
                     </select>
                   </div>
                 </div>
