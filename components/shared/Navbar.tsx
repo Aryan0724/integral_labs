@@ -224,6 +224,13 @@ export default function Navbar() {
             >
               About
             </Link>
+
+            <Link 
+              href="/blog" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Right Action Elements */}
@@ -319,6 +326,13 @@ export default function Navbar() {
                   className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
                   About Founders
+                </Link>
+                <Link
+                  href="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
+                >
+                  Engineering Blog
                 </Link>
               </div>
 

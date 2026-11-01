@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Left: Content Website -->
+  <g transform="translate(140, 150)">
+    <rect width="400" height="330" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <text x="30" y="50" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="2">MARKETING WEBSITE</text>
+    <text x="30" y="85" fill="#ffffff" font-family="system-ui, sans-serif" font-size="22" font-weight="700">Content & Authority</text>
+    <path d="M 30 115 L 370 115" stroke="#1e293b" stroke-width="1"/>
+
+    <circle cx="55" cy="155" r="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="85" y="160" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Static Pre-rendering (SSG)</text>
+
+    <circle cx="55" cy="205" r="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="85" y="210" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Global Edge CDN Delivery</text>
+
+    <circle cx="55" cy="255" r="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="85" y="260" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Lead Conversion Focus</text>
+
+    <text x="30" y="312" fill="#64748b" font-family="system-ui, sans-serif" font-size="12">Objective: Inform, Establish Trust, Generate Leads</text>
+  </g>
+
+  <!-- VS divider -->
+  <g transform="translate(575, 290)">
+    <rect x="0" y="5" width="50" height="34" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="27" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="800">VS</text>
+  </g>
+
+  <!-- Right: Custom Web Application -->
+  <g transform="translate(660, 150)">
+    <rect width="400" height="330" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2" />
+    <text x="30" y="50" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="2">WEB APPLICATION</text>
+    <text x="30" y="85" fill="#ffffff" font-family="system-ui, sans-serif" font-size="22" font-weight="700">State & Logic Execution</text>
+    <path d="M 30 115 L 370 115" stroke="#1e293b" stroke-width="1"/>
+
+    <circle cx="55" cy="155" r="14" fill="#1e293b" stroke="#2563eb" stroke-width="2"/>
+    <text x="85" y="160" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">User Auth & RBAC Security</text>
+
+    <circle cx="55" cy="205" r="14" fill="#1e293b" stroke="#2563eb" stroke-width="2"/>
+    <text x="85" y="210" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Transactional Database State</text>
+
+    <circle cx="55" cy="255" r="14" fill="#1e293b" stroke="#2563eb" stroke-width="2"/>
+    <text x="85" y="260" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Multi-tenant API Workflows</text>
+
+    <text x="30" y="312" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Objective: Solve Complex Operational Problems</text>
+  </g>
+
+  <text x="600" y="570" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // WEB ARCHITECTURE ANALYSIS</text>
+</svg>
