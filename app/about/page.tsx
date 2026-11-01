@@ -13,14 +13,16 @@ import {
   CheckCircle2, 
   Cpu, 
   Layout, 
-  Database 
+  Database,
+  Search,
+  Globe 
 } from "lucide-react";
 
 const PILLARS = [
   {
     icon: Code2,
     title: "Dedicated Senior Engineering",
-    description: "Every engagement is architected and executed directly by senior software engineers and interface architects. We eliminate the telephone game of account managers and junior subcontractors."
+    description: "Every engagement is architected and executed directly by senior software engineers and search architects. We eliminate the telephone game of account managers and junior subcontractors."
   },
   {
     icon: ShieldCheck,
@@ -33,26 +35,40 @@ const PILLARS = [
     description: "Every repository, design asset, and cloud infrastructure blueprint belongs completely to you. We deliver clean, modular code with zero vendor lock-in."
   },
   {
-    icon: Sparkles,
-    title: "Tactile Ergonomics",
-    description: "Visual polish and interaction speed go hand-in-hand. We build interfaces with micro-interactions, smooth state changes, and intuitive commercial funnels."
+    icon: Search,
+    title: "Co-Equal Discoverability",
+    description: "We give identical technical priority to Technical SEO and Answer Engine Optimization (AEO), ensuring your software ranks authoritatively across Google and AI assistants."
   }
 ];
 
 const STUDIO_PRACTICES = [
   {
-    title: "Full-Stack Systems & Cloud Infrastructure",
-    role: "Engineering Division",
-    focus: "Cloud Systems & Next.js Architecture",
+    title: "Full-Stack Web & Systems Architecture",
+    role: "Development Division // Pillar 01",
+    focus: "Next.js Systems & Cloud Infrastructure",
     bio: "Focuses on high-throughput fullstack systems, Next.js performance, microservices, and secure session architectures. Oversees production builds from foundation to cloud deployment.",
     icon: Cpu
   },
   {
-    title: "Design Systems & User Ergonomics",
-    role: "Creative Division",
-    focus: "Design Systems & Interaction Ergonomics",
-    bio: "Specializes in conversion-focused UI/UX design, interactive motion systems, and brand ergonomics. Translates complex business requirements into fluid digital interfaces.",
-    icon: Layout
+    title: "Custom Software & Bespoke SaaS Engineering",
+    role: "Development Division // Pillar 02",
+    focus: "Bespoke Systems & Multi-Tenant SaaS",
+    bio: "Designs and builds tailored business software, automated workflow engines, and scalable SaaS platforms with 100% proprietary code ownership.",
+    icon: Code2
+  },
+  {
+    title: "Technical Search Engine Optimization (SEO)",
+    role: "Discoverability Division // Pillar 01",
+    focus: "Crawlability & Web Vitals",
+    bio: "Structures semantic HTML5, high-efficiency crawler pathways, automated XML sitemaps, and sub-second Core Web Vitals to win competitive Google rankings.",
+    icon: Globe
+  },
+  {
+    title: "Answer Engine Optimization (AEO & AI Search)",
+    role: "Discoverability Division // Pillar 02",
+    focus: "Generative AI Citations",
+    bio: "Architects machine-readable knowledge graphs and authority datasets so conversational AI platforms (ChatGPT, Perplexity, Claude, Gemini) cite and recommend your brand.",
+    icon: Sparkles
   }
 ];
 
@@ -80,8 +96,8 @@ export default function AboutPage() {
             transition={{ delay: 0.1, duration: 0.8 }}
             className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.05] mb-6"
           >
-            Bridging Pure Engineering <br />
-            <span className="text-slate-400 font-light">&amp; Visual Mastery.</span>
+            Engineering Precision &amp; <br />
+            <span className="text-blue-600 font-extrabold">Search Dominance.</span>
           </motion.h1>
 
           <motion.p
@@ -90,7 +106,7 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-xl text-slate-600 leading-relaxed max-w-[660px] mx-auto font-normal"
           >
-            Integral Labs was founded with a single, clear objective: to bridge the gap between absolute visual excellence and robust, production-grade engineering.
+            Integral Labs was founded on a single, clear objective: to bridge the gap between high-performance software engineering and dominant digital discoverability. We engineer web platforms and custom software while giving equal technical priority to Technical SEO and Answer Engine Optimization (AEO).
           </motion.p>
         </div>
 

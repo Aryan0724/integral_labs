@@ -8,9 +8,9 @@ export const SITE_CONFIG = {
   parentOrganization: "Integral Groups",
   domain: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || "https://labs.integralgroups.in",
   contactEmail: "contact@integralgroups.in",
-  tagline: "Custom Software, Web Platforms & Modern Search (SEO & AEO)",
+  tagline: "Collective Development, Custom Software Systems & Search Dominance",
   description:
-    "Integral Labs is a custom software engineering and digital discoverability consultancy. We engineer scalable web applications, bespoke business platforms, and search architectures engineered for traditional search engines and AI citations.",
+    "Integral Labs provides collective digital engineering with equal weight given to code and discoverability. We engineer high-performance web applications, custom software platforms, and authoritative Technical SEO and Answer Engine Optimization (AEO).",
   team: "Integral Labs Engineering Collective",
   socials: {
     github: "https://github.com/Aryan0724/integral_labs",

@@ -5,91 +5,76 @@ import { motion } from "framer-motion";
 import { 
   Code2, 
   Cpu, 
-  ShoppingBag, 
-  Palette, 
-  Zap, 
+  Search, 
+  Sparkles, 
   Cloud, 
+  Palette, 
   ArrowRight, 
   CheckCircle2, 
-  Sparkles 
+  Globe 
 } from "lucide-react";
 import Link from "next/link";
 
 const detailedCapabilities = [
   {
-    id: "web-saas",
+    id: "web-development",
     icon: Code2,
-    title: "Custom Web & SaaS Development",
-    subtitle: "Enterprise Applications & Cloud Architecture",
-    description: "We architect, build, and deploy production-grade software platforms tailored to complex business models. Our engineering standards prioritize code maintainability, clean domain boundaries, and sub-second load times.",
+    title: "Web Development & Digital Platforms",
+    subtitle: "High-Performance Next.js & Headless Architecture",
+    description: "We collectively engineer blazing-fast, responsive web platforms and digital flagship products utilizing Next.js, React, and modern CSS architecture. Built for sub-second load times, total brand authority, and seamless user conversion.",
     deliverables: [
-      "Fullstack Next.js 16 & React 19 app architectures",
-      "High-throughput RESTful & GraphQL microservice APIs",
-      "Multi-tenant PostgreSQL schema design & indexing",
-      "Role-based authentication & session security",
-      "Client administrative panels & real-time analytics"
+      "Production-ready Next.js 16 & React 19 web applications",
+      "Custom component design systems & fluid responsive layouts",
+      "Edge network routing, asset optimization & sub-second TTFB",
+      "Headless CMS, payment processing & third-party API integrations",
+      "Complete WCAG 2.1 AA accessibility & semantic HTML auditing"
     ],
-    techStack: ["Next.js", "React 19", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS"]
+    techStack: ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Edge Networks"]
   },
   {
-    id: "ai-ml",
+    id: "custom-software",
     icon: Cpu,
-    title: "AI / Machine Learning Systems",
-    subtitle: "Predictive Analytics & Model Pipelines",
-    description: "We design and integrate custom machine learning workflows directly into business products. From algorithmic reach simulation to LLM-powered context engines, we convert raw datasets into operational advantages.",
+    title: "Custom Software & SaaS Development",
+    subtitle: "Scalable Cloud SaaS & Tailored Business Systems",
+    description: "When off-the-shelf software falls short, our engineering collective designs and builds bespoke business systems, internal operational tools, and multi-tenant SaaS platforms tailored to your exact workflows with 100% proprietary code ownership.",
     deliverables: [
-      "Custom predictive regression & classification pipelines",
-      "LLM orchestration with retrieval-augmented generation (RAG)",
-      "Automated document processing & content extraction",
-      "FastAPI inference microservices running on edge nodes",
-      "Model accuracy monitoring & telemetry logging"
+      "Fullstack cloud architecture (Next.js / Node.js / PostgreSQL)",
+      "Resilient RESTful & GraphQL microservice APIs",
+      "Multi-tenant schema design, relational indexing & data isolation",
+      "Role-based access control (RBAC) & enterprise session security",
+      "Automated workflow engines & administrative analytics dashboards"
     ],
-    techStack: ["Python", "FastAPI", "PyTorch", "Scikit-Learn", "Vector Databases", "NumPy", "Pandas"]
+    techStack: ["PostgreSQL", "Node.js", "TypeScript", "Prisma", "Docker", "REST / GraphQL", "Redis"]
   },
   {
-    id: "ecommerce",
-    icon: ShoppingBag,
-    title: "High-Performance E-Commerce",
-    subtitle: "Headless Storefronts & Rapid Checkout",
-    description: "Speed is the foremost conversion metric. We engineer lightweight, headless e-commerce storefronts that display thousands of catalog SKUs instantaneously, eliminate cart friction, and streamline checkout.",
+    id: "technical-seo",
+    icon: Search,
+    title: "Search Engine Optimization (SEO)",
+    subtitle: "Technical SEO, Core Web Vitals & Organic Search Visibility",
+    description: "Technical search optimization engineered directly into your source code as an equal discipline. We structure semantic HTML5, implement Schema.org JSON-LD graphs, and optimize performance metrics so search engine crawlers rank your pages authoritatively.",
     deliverables: [
-      "Headless storefront architecture with instant state updates",
-      "Instant client-side catalog search & facet filtering",
-      "Secure Stripe & localized payment gateway integrations",
-      "Automated inventory tracking & order dispatch hooks",
-      "Mobile Core Web Vitals performance optimization"
+      "Comprehensive technical SEO, crawlability & indexation auditing",
+      "Sub-second Core Web Vitals optimization (LCP, INP, CLS)",
+      "Automated XML sitemap & robots protocol orchestration",
+      "Schema.org structured data (Organization, SoftwareApplication, FAQ)",
+      "Canonical link routing, Open Graph, and Twitter metadata automation"
     ],
-    techStack: ["Next.js", "Stripe API", "Tailwind CSS", "Redis", "Edge Caching", "Webhook Pipelines"]
+    techStack: ["Schema.org", "JSON-LD", "Core Web Vitals", "XML Sitemaps", "Google Search Console", "Lighthouse"]
   },
   {
-    id: "ui-ux",
-    icon: Palette,
-    title: "UI/UX Design Systems & Motion",
-    subtitle: "Digital Design Systems & Micro-Interactions",
-    description: "Technical software does not have to be cumbersome. We craft bespoke design systems with systematic color tokens, fluid typography, and cinematic motion design that turn complex tasks into joyful user experiences.",
+    id: "aeo-ai-search",
+    icon: Sparkles,
+    title: "Answer Engine Optimization (AEO)",
+    subtitle: "Semantic Data Structuring for Generative AI (ChatGPT, Perplexity, Claude)",
+    description: "The search paradigm has evolved to generative AI assistants. We optimize your digital presence so AI engines (ChatGPT, Perplexity, Claude, Gemini) accurately discover, understand, and cite your business as the definitive recommendation.",
     deliverables: [
-      "Complete Figma component libraries & tokens",
-      "High-fidelity desktop & mobile interactive wireframes",
-      "Fluid micro-interactions and layout transitions",
-      "WCAG 2.1 AA accessibility & semantic HTML auditing",
-      "Cross-device responsive design verification"
+      "Entity mapping & knowledge graph semantic structuring",
+      "Conversational natural language Q&A and documentation architecture",
+      "Machine-readable citation datasets & authority verification",
+      "High-confidence brand footprint for LLM retrieval (RAG) & AI indexing",
+      "Periodic generative AI citation monitoring & citation gap analysis"
     ],
-    techStack: ["Figma", "Design Tokens", "Framer Motion", "Tailwind v4", "Lucide", "a11y Standards"]
-  },
-  {
-    id: "automation",
-    icon: Zap,
-    title: "Intelligent Workflow Automation",
-    subtitle: "Autonomous Cron Networks & API Pipes",
-    description: "We eliminate repetitive administrative overhead by connecting fragmented software tools into unified, automated execution pipelines that heal themselves and alert your team on anomalies.",
-    deliverables: [
-      "Self-healing cron & background job runners",
-      "Multi-service webhook pipes (Discord, Slack, CRMs)",
-      "Automated email & customer lifecycle dispatchers",
-      "Data synchronization & reconciliation scripts",
-      "Operational dashboards for monitoring background pipelines"
-    ],
-    techStack: ["Node.js", "Python Scripts", "Webhooks", "Serverless Functions", "Queues", "REST APIs"]
+    techStack: ["Knowledge Graphs", "Entity Linking", "Perplexity Index", "ChatGPT Search", "Claude Citations", "RAG Semantics"]
   },
   {
     id: "cloud-devops",
@@ -105,6 +90,21 @@ const detailedCapabilities = [
       "Database backup automation & disaster recovery plans"
     ],
     techStack: ["Docker", "AWS", "Vercel", "Cloudflare", "GitHub Actions", "Sentry", "PostgreSQL"]
+  },
+  {
+    id: "ui-ux",
+    icon: Palette,
+    title: "UI/UX Design Systems & Micro-Interactions",
+    subtitle: "Digital Design Systems & Tactile Ergonomics",
+    description: "Technical software does not have to be cumbersome. We craft bespoke design systems with systematic color tokens, fluid typography, and cinematic motion design that turn complex tasks into joyful user experiences.",
+    deliverables: [
+      "Complete Figma component libraries & tokens",
+      "High-fidelity desktop & mobile interactive wireframes",
+      "Fluid micro-interactions and layout transitions",
+      "WCAG 2.1 AA accessibility & semantic HTML auditing",
+      "Cross-device responsive design verification"
+    ],
+    techStack: ["Figma", "Design Tokens", "Framer Motion", "Tailwind v4", "Lucide", "a11y Standards"]
   }
 ];
 
@@ -113,7 +113,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white pt-36 pb-24 text-slate-900">
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         {/* Page Header */}
-        <div className="max-w-[760px] mb-20">
+        <div className="max-w-[780px] mb-20">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function ServicesPage() {
           >
             <Sparkles size={13} className="text-blue-600" />
             <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-blue-700 font-bold">
-              Software Development Services
+              What We Provide // Engineering &amp; Search Authority
             </span>
           </motion.div>
 
@@ -131,7 +131,7 @@ export default function ServicesPage() {
             transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.02] mb-6"
           >
-            Engineering Systems For Modern Enterprise.
+            High-Impact Development &amp; Search Dominance.
           </motion.h1>
 
           <motion.p
@@ -140,7 +140,7 @@ export default function ServicesPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 leading-relaxed font-normal"
           >
-            From bespoke SaaS platforms and machine learning analytics to headless storefronts, we deliver battle-tested software designed for longevity and extreme reliability.
+            Integral Labs provides end-to-end digital creation with equal weight given to code and discoverability. We architect high-performance web applications and custom software platforms while engineering deep Technical SEO and Answer Engine Optimization (AEO) — delivering digital products that perform flawlessly and capture high-intent demand.
           </motion.p>
         </div>
 

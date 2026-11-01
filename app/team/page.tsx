@@ -2,30 +2,37 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, Mail, ArrowRight, ShieldCheck, Terminal, Award, Cpu, Layout, Search } from "lucide-react";
+import { Users, Mail, ArrowRight, ShieldCheck, Terminal, Award, Cpu, Layout, Search, Sparkles, Code2, Globe } from "lucide-react";
 import Link from "next/link";
 
 const DISCIPLINES = [
   {
     title: "Systems Architecture & Cloud Infrastructure",
-    role: "Core Engineering Division",
+    role: "Development Division // Pillar 01",
     icon: Cpu,
     focus: "Next.js Turbopack, Cloud Infrastructure, Database Design, System Security",
     bio: "Responsible for high-throughput fullstack services, API resilience, zero-downtime deployment pipelines, and sub-second TTFB optimization across all client platforms.",
   },
   {
-    title: "Interface Ergonomics & Design Systems",
-    role: "Creative Engineering Division",
-    icon: Layout,
-    focus: "Design Systems, Motion Ergonomics, Interactive UX, Commercial Conversion",
-    bio: "Pioneering conversion-focused design systems, typography hierarchy, fluid micro-interactions, and tactile interfaces that turn complex business workflows into seamless experiences.",
+    title: "Custom Software & Bespoke SaaS Engineering",
+    role: "Development Division // Pillar 02",
+    icon: Code2,
+    focus: "Multi-Tenant Architecture, Relational Databases, Automated Workflows, 100% IP",
+    bio: "Designing and engineering tailored enterprise software systems, automated workflow engines, and scalable SaaS platforms with zero vendor lock-in.",
   },
   {
-    title: "Search & Answer Engine Optimization (SEO & AEO)",
-    role: "Discoverability Engineering Division",
-    icon: Search,
-    focus: "Schema.org Graphs, Knowledge Base Entity Alignment, Core Web Vitals",
-    bio: "Architecting machine-readable semantic structures, JSON-LD graphs, and vector-aligned documentation engineered for algorithmic search crawlers and AI answer engines.",
+    title: "Technical Search Engine Optimization (SEO)",
+    role: "Discoverability Division // Pillar 01",
+    icon: Globe,
+    focus: "Schema.org Graphs, Semantic DOM, Core Web Vitals, Crawl Efficiency",
+    bio: "Structuring semantic HTML5, high-efficiency crawler pathways, automated XML sitemaps, and sub-second Core Web Vitals that systematically win top Google search rankings.",
+  },
+  {
+    title: "Answer Engine Optimization (AEO & AI Search)",
+    role: "Discoverability Division // Pillar 02",
+    icon: Sparkles,
+    focus: "Entity Knowledge Graphs, Perplexity Indexing, ChatGPT Citations, Vector Authority",
+    bio: "Architecting machine-readable semantic structures, JSON-LD graphs, and vector-aligned documentation engineered for conversational AI assistants and LLM retrieval.",
   }
 ];
 
@@ -35,7 +42,7 @@ export default function TeamPage() {
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         
         {/* Header */}
-        <div className="max-w-[720px] mb-20">
+        <div className="max-w-[760px] mb-20">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,12 +69,12 @@ export default function TeamPage() {
             transition={{ duration: 0.6, delay: 0.16 }}
             className="text-lg text-slate-600 leading-relaxed font-normal"
           >
-            Integral Labs operates as a dedicated multidisciplinary engineering collective. We do not pass client projects off to junior subcontractors; every system is designed, audited, and deployed by our senior engineering leads.
+            Integral Labs operates as a dedicated multidisciplinary engineering collective. We build web platforms and custom software while giving equal technical priority to Technical SEO and Answer Engine Optimization (AEO).
           </motion.p>
         </div>
 
         {/* Disciplines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           {DISCIPLINES.map((discipline, i) => {
             const Icon = discipline.icon;
             return (

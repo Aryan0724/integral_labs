@@ -6,11 +6,11 @@ import { CornerDownLeft, ArrowRight, Code2, Cpu, Search, Sparkles } from "lucide
 import Link from "next/link";
 
 const DEFAULT_HERO = {
-  badge: "Software Engineering & Search Architecture",
-  titlePart1: "Custom Software,",
-  titlePart2: "Web Platforms",
-  titlePart3: "& Modern Search.",
-  subtext: "We build scalable web applications, bespoke software systems, and search architectures engineered for modern search engines and AI discoverability (AEO) — turning digital presence into qualified business enquiries.",
+  badge: "Collective Development & Search Architecture",
+  titlePart1: "Collective Engineering,",
+  titlePart2: "Custom Software Systems",
+  titlePart3: "& Search Dominance.",
+  subtext: "Integral Labs provides end-to-end digital creation with equal weight given to code and discoverability. Our collective engineers high-performance web platforms and custom software systems alongside deep Technical SEO and Answer Engine Optimization (AEO) — building software that runs at sub-second speeds and dominates search engines and AI assistants.",
   primaryCta: "Discuss Your Project",
   secondaryCta: "View Portfolio",
 };
@@ -110,31 +110,35 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-14 pt-8 border-t border-slate-200/80"
           >
-            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-slate-50/80 border border-slate-200/60">
-              <Code2 size={16} className="text-blue-600 shrink-0" />
-              <div className="text-xs font-semibold text-slate-800 leading-tight">
-                Web Development
+            <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50/80 border border-slate-200/60">
+              <Code2 size={18} className="text-blue-600 shrink-0" />
+              <div className="leading-tight">
+                <div className="text-xs font-bold text-slate-900">Web Development</div>
+                <div className="text-[10px] text-slate-500 font-mono">Next.js &amp; Fast Platforms</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-slate-50/80 border border-slate-200/60">
-              <Cpu size={16} className="text-blue-600 shrink-0" />
-              <div className="text-xs font-semibold text-slate-800 leading-tight">
-                Custom Software
+            <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50/80 border border-slate-200/60">
+              <Cpu size={18} className="text-blue-600 shrink-0" />
+              <div className="leading-tight">
+                <div className="text-xs font-bold text-slate-900">Custom Software</div>
+                <div className="text-[10px] text-slate-500 font-mono">Tailored SaaS &amp; Systems</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-slate-50/80 border border-slate-200/60">
-              <Search size={16} className="text-blue-600 shrink-0" />
-              <div className="text-xs font-semibold text-slate-800 leading-tight">
-                Technical SEO
+            <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50/80 border border-slate-200/60">
+              <Search size={18} className="text-blue-600 shrink-0" />
+              <div className="leading-tight">
+                <div className="text-xs font-bold text-slate-900">Technical SEO</div>
+                <div className="text-[10px] text-slate-500 font-mono">Google SERP Ranking</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-slate-50/80 border border-slate-200/60">
-              <Sparkles size={16} className="text-blue-600 shrink-0" />
-              <div className="text-xs font-semibold text-slate-800 leading-tight">
-                AEO (AI Search)
+            <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50/80 border border-slate-200/60">
+              <Sparkles size={18} className="text-blue-600 shrink-0" />
+              <div className="leading-tight">
+                <div className="text-xs font-bold text-slate-900">AEO (AI Search)</div>
+                <div className="text-[10px] text-slate-500 font-mono">Perplexity &amp; AI Citations</div>
               </div>
             </div>
           </motion.div>

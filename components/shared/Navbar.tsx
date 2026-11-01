@@ -181,7 +181,7 @@ export default function Navbar() {
 
                     <div className="pt-3 border-t border-slate-100 flex items-center justify-between px-1">
                       <span className="text-xs text-slate-400 font-medium">
-                        Custom software engineering & AI discoverability
+                        Collective development &amp; search authority
                       </span>
                       <Link 
                         href="/#services-section" 

@@ -24,8 +24,8 @@ export default function Footer() {
               <Logo dark={true} />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed font-normal">
-              The custom software engineering and digital discoverability division of{" "}
-              <strong className="text-white font-semibold">Integral Groups</strong>. Architecting scalable web applications, bespoke business software, and search systems engineered for traditional search and generative AI citations.
+              The collective software engineering and search discoverability division of{" "}
+              <strong className="text-white font-semibold">Integral Groups</strong>. Architecting high-performance web applications, bespoke business platforms, and search architectures engineered for Google SERPs and generative AI citations.
             </p>
           </div>
 

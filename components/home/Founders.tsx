@@ -31,19 +31,35 @@ interface StudioDiscipline {
 const STUDIO_DISCIPLINES: StudioDiscipline[] = [
   {
     title: "Full-Stack Architecture & Cloud Infrastructure",
-    role: "Engineering Division",
+    role: "Development Division // Pillar 01",
     focus: "Cloud Systems & Next.js Stacks",
     description: "Specializing in high-throughput Next.js systems, serverless microservices, distributed security models, and sub-second web performance. Engineering scalable database schemas and production deployment pipelines.",
     skills: ["Next.js Turbopack", "TypeScript", "Node.js", "Cloud Infrastructure", "System Security"],
     icon: Cpu
   },
   {
-    title: "Design Systems & Interactive UX Architecture",
-    role: "Creative Division",
-    focus: "Interface & Interaction Design",
-    description: "Pioneering conversion-driven UI systems, motion design ergonomics, and brand identity. Crafting interfaces that turn complex business workflows into seamless, tactile user experiences.",
-    skills: ["Design Systems", "Figma", "Interaction Design", "Motion UI", "Brand Ergonomics"],
-    icon: Layout
+    title: "Custom Software & Bespoke SaaS Engineering",
+    role: "Development Division // Pillar 02",
+    focus: "Bespoke Systems & Multi-Tenant SaaS",
+    description: "Designing and engineering tailored enterprise software systems, automated workflow engines, and scalable SaaS platforms with 100% proprietary source code ownership.",
+    skills: ["PostgreSQL", "REST & GraphQL", "Multi-Tenant Architecture", "100% IP Ownership", "RBAC"],
+    icon: Code2
+  },
+  {
+    title: "Technical Search Engine Optimization (SEO)",
+    role: "Discoverability Division // Pillar 01",
+    focus: "Crawlability & Web Vitals",
+    description: "Structuring semantic HTML5, high-efficiency crawler pathways, automated XML sitemaps, and sub-second Core Web Vitals that systematically secure top Google search rankings.",
+    skills: ["Semantic DOM", "Schema.org Graphs", "Core Web Vitals", "Crawl Architecture", "SERP Authority"],
+    icon: Globe
+  },
+  {
+    title: "Answer Engine Optimization (AEO & AI Search)",
+    role: "Discoverability Division // Pillar 02",
+    focus: "Generative AI Citations",
+    description: "Structuring machine-readable knowledge graphs and authority datasets so conversational AI platforms (ChatGPT, Perplexity, Claude, Gemini) cite and recommend your brand.",
+    skills: ["Entity Knowledge Graphs", "Perplexity Indexing", "ChatGPT Citations", "RAG Semantics", "Vector Authority"],
+    icon: Sparkles
   }
 ];
 
@@ -115,17 +131,17 @@ export default function Founders() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50/80 mb-5">
             <span className="w-2 h-2 rounded-full bg-blue-600 inline-block" />
             <span className="text-xs font-mono uppercase tracking-widest text-blue-700 font-bold">
-              About Integral Labs // Creative Engineering Studio
+              About Integral Labs // Engineering &amp; Search Collective
             </span>
           </div>
           
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08] mb-6">
-            Bridging Pure Engineering <br className="hidden sm:block" />
-            <span className="text-slate-400 font-light">&amp; Visual Mastery.</span>
+            Engineering Precision &amp; <br className="hidden sm:block" />
+            <span className="text-blue-600">Organic Search Dominance.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Integral Labs was founded with a single, clear objective: to bridge the gap between absolute visual excellence and robust, production-grade engineering. We believe software should not only execute flawlessly under high load, but also delight users through fluid, organic, intuitive design.
+            Integral Labs operates on a definitive principle: software engineering and discoverability must be developed together as equal forces. We build resilient web applications and custom software platforms while engineering deep Technical SEO and Answer Engine Optimization (AEO) into every layer of the codebase.
           </p>
         </div>
 
@@ -191,17 +207,20 @@ export default function Founders() {
 
                   <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
                     <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5">
-                      Core Disciplines
+                      Co-Equal Core Disciplines
                     </div>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="grid grid-cols-2 gap-1.5">
                       <span className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-300">
-                        Next.js Systems
+                        01. Web Platforms
                       </span>
                       <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-mono text-indigo-300">
-                        Custom SaaS
+                        02. Custom Software
                       </span>
                       <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-300">
-                        Technical SEO &amp; AEO
+                        03. Technical SEO
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-[10px] font-mono text-amber-300">
+                        04. AEO &amp; AI Citations
                       </span>
                     </div>
                   </div>
@@ -246,7 +265,7 @@ export default function Founders() {
               <Quote size={40} className="text-blue-500/20 absolute top-6 right-6" />
 
               <p className="text-lg sm:text-xl text-slate-800 italic leading-relaxed font-normal mb-8">
-                &ldquo;We don&apos;t build temporary code or short-lived systems. We design highly performant, custom-tailored visual infrastructures that survive time, scaling alongside your operational needs while maintaining extreme frame rates.&rdquo;
+                &ldquo;We don&apos;t separate building software from being discovered. A beautifully engineered application is useless if invisible on Google and AI assistants, and search optimization fails without high-performance software architecture. We build both with equal technical rigor from the very first line of code.&rdquo;
               </p>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-slate-100">
@@ -255,7 +274,7 @@ export default function Founders() {
                     Integral Labs Collective
                   </h4>
                   <p className="text-xs font-mono text-blue-600 font-semibold uppercase tracking-wider mt-0.5">
-                    Systems Architecture &amp; Creative Engineering
+                    Senior Engineering &amp; Search Architecture
                   </p>
                 </div>
 

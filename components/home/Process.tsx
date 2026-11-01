@@ -15,50 +15,50 @@ const processSteps = [
   {
     step: "01",
     phase: "Week 1",
-    title: "Discovery & Strategy",
-    description: "Deep dive into business goals, system requirements, architecture mapping, and user journey definition.",
+    title: "Discovery & Search Architecture",
+    description: "Deep dive into business goals, system schema, entity keyword mapping, competitor search landscape, and AI citation benchmarks.",
     icon: Compass,
-    deliverables: ["Product Roadmap", "Tech Stack Decision", "Scope Specifications"]
+    deliverables: ["Product Roadmap", "Tech Stack Architecture", "Keyword & Entity Blueprint"]
   },
   {
     step: "02",
     phase: "Week 2-3",
-    title: "Design & Prototyping",
-    description: "High-fidelity Figma wireframes, component design systems, and clickable interactive prototypes.",
+    title: "Design & Semantic Ergonomics",
+    description: "High-fidelity Figma wireframes, component design systems, accessible semantic DOM hierarchies, and interactive UX prototypes.",
     icon: Layers,
-    deliverables: ["Figma Design System", "Interactive Prototype", "Usability Validation"]
+    deliverables: ["Figma Design System", "Semantic DOM Wireframe", "Usability Validation"]
   },
   {
     step: "03",
     phase: "Week 4-8",
-    title: "Development Sprint",
-    description: "Agile engineering sprints, modern frontend, resilient API backend, and clean database integrations.",
+    title: "Collective Development Sprint",
+    description: "Agile full-stack engineering sprints, type-safe Next.js frontend, resilient backend APIs, and clean relational database integration.",
     icon: Cpu,
-    deliverables: ["Fullstack Source Code", "API Documentation", "Staging Environments"]
+    deliverables: ["Fullstack Source Code", "REST / GraphQL APIs", "Semantic HTML5 Markup"]
   },
   {
     step: "04",
     phase: "Week 9-10",
-    title: "Testing & QA",
-    description: "End-to-end automated testing, cross-browser compatibility, security audits, and performance tuning.",
+    title: "QA, Security & Technical SEO",
+    description: "End-to-end automated testing, sub-second Core Web Vitals optimization, Schema.org JSON-LD graph generation, and security audit.",
     icon: CheckCircle2,
-    deliverables: ["Security Regression Suite", "Speed & Core Web Vitals", "QA Sign-off"]
+    deliverables: ["Security Regression Suite", "Sub-Second Core Web Vitals", "Schema.org Structured Data"]
   },
   {
     step: "05",
     phase: "Week 11",
-    title: "Deployment & Launch",
-    description: "Production launch with zero-downtime deployment, DNS configuration, and automated observability.",
+    title: "Deployment & Search Indexing",
+    description: "Production launch with zero-downtime edge routing, automated XML sitemaps, robots protocol, and search console verification.",
     icon: Rocket,
-    deliverables: ["Production Release", "Edge Routing & CDN", "Monitoring Dashboards"]
+    deliverables: ["Production Release", "Edge Routing & CDN", "Search Console & AI Indexing"]
   },
   {
     step: "06",
     phase: "Ongoing",
-    title: "Support & Growth",
-    description: "Continuous operational monitoring, feature iteration, model retraining, and scale optimizations.",
+    title: "Scale, SLA & AI Citation Growth",
+    description: "Continuous operational monitoring, feature iterations, search ranking defense, and generative AI citation expansion (Perplexity, ChatGPT).",
     icon: Activity,
-    deliverables: ["SLA Maintenance", "Performance Telemetry", "Feature Enhancements"]
+    deliverables: ["SLA Maintenance", "Performance Telemetry", "AI Citation Expansion"]
   }
 ];
 
@@ -119,14 +119,14 @@ export default function Process() {
             <div className="inline-flex items-center gap-2 mb-2.5">
               <span className="w-2.5 h-2.5 rounded-xs bg-blue-600 inline-block" />
               <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
-                Our Process
+                Execution Methodology // Co-Engineered Delivery
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              From Idea to Impact
+              Collective Engineering &amp; Search Dominance in Tandem
             </h2>
-            <p className="text-sm sm:text-base text-slate-500 mt-2 max-w-[620px] leading-relaxed">
-              A streamlined approach from idea to impact. Every project moves through structured milestones with complete engineering transparency.
+            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-[620px] leading-relaxed">
+              We do not build software first and scramble for SEO later. Every engagement weaves full-stack architecture, security, technical SEO, and AI search discoverability together across structured weekly milestones.
             </p>
           </div>
 

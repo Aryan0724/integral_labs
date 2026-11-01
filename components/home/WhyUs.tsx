@@ -14,8 +14,13 @@ import Link from "next/link";
 const DIFFERENTIATORS = [
   {
     icon: Layers,
-    title: "Connected Code & Discoverability",
+    title: "Co-Equal: Code & Discoverability",
     description: "We do not treat engineering and SEO as separate silos. Every web platform and software system is architected from day one with semantic markup, fast Core Web Vitals, and machine-readable data for search engines and AI answer systems."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Dedicated Senior Engineering",
+    description: "No disconnected account executives or junior outsourcing. Our dedicated senior software architects and search engineers directly oversee and implement your system architecture with complete accountability."
   },
   {
     icon: Lock,
@@ -26,11 +31,6 @@ const DIFFERENTIATORS = [
     icon: Zap,
     title: "Sub-Second Production Standards",
     description: "Modern web users and search crawlers demand extreme responsiveness. We engineer on Next.js Turbopack with server-side rendering, edge caching, and optimized database queries to deliver sub-second response times."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Dedicated Senior Engineering",
-    description: "No disconnected account executives or junior outsourcing. Our dedicated senior software architects and interaction designers directly oversee and implement your system architecture with complete accountability."
   }
 ];
 
@@ -46,16 +46,16 @@ export default function WhyUs() {
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-xs bg-blue-600 inline-block" />
               <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
-                Why Integral Labs
+                Why Integral Labs // The Purpose
               </span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Engineering with Architectural Discipline & Search Authority.
+              What We Provide: Full-Stack Engineering &amp; Organic Search Dominance.
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed font-normal">
-              Most agencies build either visual designs that cannot scale or backends that remain invisible on search engines. Integral Labs unites high-performance full-stack engineering with deep SEO and Answer Engine Optimization (AEO).
+              Most agencies build either visual designs that cannot scale, or backends that remain completely invisible on Google and AI assistants. Integral Labs provides collective development paired with deep SEO and Answer Engine Optimization (AEO) as equal disciplines — delivering high-performance products that capture market demand.
             </p>
 
             {/* Core Values Checklist */}

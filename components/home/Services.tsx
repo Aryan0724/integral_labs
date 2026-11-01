@@ -32,7 +32,7 @@ const PILLARS: ServicePillar[] = [
     icon: Code2,
     title: "Web Development",
     tagline: "High-Performance Modern Web Platforms & Headless Architecture",
-    overview: "We engineer blazing-fast, responsive web applications and marketing flagships utilizing Next.js, React, and modern CSS architecture. Built for sub-second load times, total brand authority, and seamless user conversion.",
+    overview: "Our collective engineers blazing-fast, responsive web platforms and flagship digital products using Next.js, React, and modern edge architecture. Built for sub-second load times, total brand authority, and high-conversion commercial funnels.",
     problemsSolved: [
       "Sluggish legacy websites causing visitor drop-off and high bounce rates",
       "Cluttered, unmaintainable frontend codebases that hinder rapid feature releases",
@@ -45,7 +45,7 @@ const PILLARS: ServicePillar[] = [
       "Headless CMS, E-Commerce & Third-Party API Integrations"
     ],
     businessImpact: "Fast, reliable web platforms that establish immediate credibility and turn organic traffic into engaged prospects.",
-    badge: "Core Engineering"
+    badge: "Development Pillar 01"
   },
   {
     id: "custom-software",
@@ -53,7 +53,7 @@ const PILLARS: ServicePillar[] = [
     icon: Cpu,
     title: "Custom Software Development",
     tagline: "Scalable SaaS Applications, Custom Business Systems & APIs",
-    overview: "When off-the-shelf software falls short, we design and build bespoke software systems, internal tools, and multi-tenant SaaS platforms tailored to your exact operational workflows and growth requirements.",
+    overview: "When off-the-shelf software falls short, our engineering collective designs and deploys bespoke business systems, internal operational tools, and multi-tenant SaaS platforms tailored to your workflows with 100% proprietary code ownership.",
     problemsSolved: [
       "Off-the-shelf SaaS tools with rigid limitations that constrain your workflow",
       "Manual administrative bottlenecks and error-prone spreadsheet tracking",
@@ -66,7 +66,7 @@ const PILLARS: ServicePillar[] = [
       "Automated Workflow Engines & Relational Database Schemas"
     ],
     businessImpact: "Operational efficiency, automated workflows, and high-value proprietary IP you own 100% without recurring per-seat fees.",
-    badge: "Bespoke Systems"
+    badge: "Development Pillar 02"
   },
   {
     id: "seo",
@@ -74,7 +74,7 @@ const PILLARS: ServicePillar[] = [
     icon: Search,
     title: "Search Engine Optimization (SEO)",
     tagline: "Technical SEO, Core Web Vitals & Organic Search Visibility",
-    overview: "Technical search optimization engineered directly into your codebase. We structure semantic HTML5, implement Schema.org JSON-LD graphs, and optimize performance metrics so search engine crawlers rank your pages authoritatively.",
+    overview: "Search engine optimization engineered directly into your source code as an equal discipline. We structure semantic HTML5, implement Schema.org JSON-LD graphs, and optimize performance metrics so search engine crawlers rank your product authoritatively.",
     problemsSolved: [
       "Websites invisible on Google search engine results pages (SERPs)",
       "Technical crawler errors, indexing failures, and crawl budget waste",
@@ -87,7 +87,7 @@ const PILLARS: ServicePillar[] = [
       "Schema.org Structured Data (Organization, Product, Service, FAQ)"
     ],
     businessImpact: "Sustainable, compounding organic inbound discovery from intent-driven buyers searching for your exact services.",
-    badge: "Search Authority"
+    badge: "Discoverability Pillar 01"
   },
   {
     id: "aeo",
@@ -95,7 +95,7 @@ const PILLARS: ServicePillar[] = [
     icon: Sparkles,
     title: "Answer Engine Optimization (AEO)",
     tagline: "Semantic Data Structuring for Generative AI (ChatGPT, Perplexity, Claude)",
-    overview: "The search paradigm has shifted from keywords to conversational AI engines. We optimize your digital presence so AI assistants (ChatGPT, Perplexity, Claude, Gemini) accurately discover, understand, and cite your business as the definitive answer.",
+    overview: "The search paradigm has shifted to conversational AI assistants. We optimize your digital presence so AI engines (ChatGPT, Perplexity, Claude, Gemini) accurately discover, understand, and cite your business as the definitive recommendation.",
     problemsSolved: [
       "Total absence when potential clients research vendors via ChatGPT or Perplexity",
       "AI models hallucinating inaccurate facts or confusing your brand's offerings",
@@ -108,7 +108,7 @@ const PILLARS: ServicePillar[] = [
       "High-Confidence Brand Footprint for LLM Training & Retrieval (RAG)"
     ],
     businessImpact: "Positioning your organization as the trusted, cited recommendation when buyers use generative AI for decision-making.",
-    badge: "Next-Gen AI Search"
+    badge: "Discoverability Pillar 02"
   }
 ];
 
@@ -126,16 +126,16 @@ export default function Services() {
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-xs bg-blue-600 inline-block" />
               <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
-                Core Capabilities
+                What We Provide // Development &amp; Search As Co-Equals
               </span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Four Connected Engineering Pillars
+              Collective Engineering &amp; Search Dominance Built as Equals
             </h2>
             
-            <p className="text-base text-slate-500 mt-3.5 leading-relaxed max-w-[660px]">
-              We merge bespoke software engineering with modern organic and AI discoverability. Every line of code is structured to perform reliably and attract qualified business enquiries.
+            <p className="text-base text-slate-600 mt-3.5 leading-relaxed max-w-[660px]">
+              We don&apos;t separate building software from being discovered. Our collective develops high-performance web platforms and custom software systems while giving identical technical weight to SEO and Answer Engine Optimization (AEO) — delivering digital products that perform flawlessly and capture high-intent demand.
             </p>
           </div>
 

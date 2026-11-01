@@ -1,13 +1,13 @@
 {
   "hero": {
-    "title": "Custom Software, Web Platforms & Modern Search.",
-    "subtext": "We build scalable web applications, bespoke software systems, and search architectures engineered for modern search engines and AI discoverability (AEO) — turning digital presence into qualified business enquiries.",
+    "title": "Collective Development, Custom Software Systems & Search Dominance.",
+    "subtext": "Integral Labs provides end-to-end digital creation with equal weight given to code and discoverability. Our collective engineers high-performance web platforms and custom software systems alongside deep Technical SEO and Answer Engine Optimization (AEO) — building software that runs at sub-second speeds and dominates search engines and AI assistants.",
     "primaryCta": "Discuss Your Project",
     "secondaryCta": "View Portfolio"
   },
   "services": {
-    "title": "Capabilities",
-    "description": "Scalable digital systems designed with usability, performance, and long-term adaptability in mind.",
+    "title": "Collective Capabilities",
+    "description": "Production-grade engineering and search authority built as co-equal disciplines from day one.",
     "list": [
       {
         "id": "web-dev",
