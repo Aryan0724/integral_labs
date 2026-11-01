@@ -47,9 +47,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Traditional search engines index pages based on keywords and crawl paths. Answer engines like ChatGPT, Perplexity, and Claude synthesize direct answers from structured entity relationships. Here is how modern technical teams adapt.",
     author: {
-      name: "Tanuj Pargai",
-      role: "Co-Founder & Lead Engineer",
-      avatar: "/team/tanuj.png"
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-01-15T09:00:00.000Z",
     updatedAt: "2025-02-10T11:00:00.000Z",
@@ -124,9 +124,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "A marketing website communicates information; a web application executes transactions, workflows, and stateful logic. Knowing the architectural differences prevents costly over-engineering or premature platform limitations.",
     author: {
-      name: "Tanuj Pargai",
-      role: "Co-Founder & Lead Engineer",
-      avatar: "/team/tanuj.png"
+      name: "Integral Labs Engineering",
+      role: "Web Systems Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-01-22T10:00:00.000Z",
     category: "Web Architecture",
@@ -193,9 +193,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Launching a software-as-a-service product involves far more than coding features. Technical leaders must evaluate multi-tenancy models, billing lifecycles, operational observability, and code ownership.",
     author: {
-      name: "Aryan Tiwari",
-      role: "Co-Founder & Lead Designer",
-      avatar: "/team/aryan.png"
+      name: "Integral Labs Architecture",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-01-28T14:30:00.000Z",
     category: "SaaS Development",
@@ -263,9 +263,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Google's Core Web Vitals directly connect user experience metrics to search visibility. Understanding LCP, INP, and CLS allows engineering teams to optimize render paths and eliminate sluggish interactions.",
     author: {
-      name: "Tanuj Pargai",
-      role: "Co-Founder & Lead Engineer",
-      avatar: "/team/tanuj.png"
+      name: "Integral Labs Engineering",
+      role: "Performance Architecture Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-02-04T12:00:00.000Z",
     category: "Performance",
@@ -327,9 +327,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Search engines and AI answer engines do not understand your brand through prose alone. Implementing explicit JSON-LD schema graphs provides the machine-readable foundation for search visibility and entity authority.",
     author: {
-      name: "Tanuj Pargai",
-      role: "Co-Founder & Lead Engineer",
-      avatar: "/team/tanuj.png"
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-02-12T16:00:00.000Z",
     category: "Search Engineering",
@@ -353,7 +353,7 @@ export const ARTICLES: Article[] = [
         heading: "The Shift to Entity-Based Search",
         paragraphs: [
           "Early search engines operated purely on strings of text. If a page contained the string 'Next.js software development', the crawler assumed the page was relevant to those words. Today, modern search engines and AI models operate on things, not strings: interconnected knowledge graphs where entities have verified attributes, relationships, and organizational contexts.",
-          "Establishing entity authority means communicating clearly: who your organization is, who founded it, what parent company it belongs to, what software products it publishes, and what verified subjects its articles address."
+          "Establishing entity authority means communicating clearly: who your organization is, what parent company it belongs to, what software products it publishes, and what verified subjects its articles address."
         ]
       },
       {
@@ -366,17 +366,17 @@ export const ARTICLES: Article[] = [
         heading: "Core Schema Types for Technology Companies",
         paragraphs: [
           "A robust technical organization should implement four fundamental Schema.org types:",
-          "1. Organization: Identifies legal name, parent company, founders, verified logo URL, and contact points.",
+          "1. Organization: Identifies legal name, parent company, verified logo URL, and contact points.",
           "2. WebSite: Defines the primary domain, canonical name, and potential site search action.",
-          "3. BlogPosting / Article: Details the author identity, publication timestamp, modification history, headline, and associated topic entities.",
+          "3. BlogPosting / Article: Details the publication timestamp, modification history, headline, and associated topic entities.",
           "4. SoftwareApplication: Documents proprietary platforms, operating requirements, and application categories."
         ]
       },
       {
         heading: "Interconnecting Schema Entities with @id",
         paragraphs: [
-          "The most common mistake in structured data implementation is creating isolated, disconnected schemas. Instead of outputting an Article schema that defines an anonymous author string, use explicit `@id` URIs to link the Article's `author` to a defined `Person` entity and its `publisher` to the canonical `Organization` entity.",
-          "This interconnected graph enables search engines and LLM answer systems to trace lineage: this article was written by a verified founder, published by Integral Labs, which operates as the engineering division of Integral Groups."
+          "The most common mistake in structured data implementation is creating isolated, disconnected schemas. Instead of outputting an Article schema that defines an anonymous author string, use explicit `@id` URIs to link the Article's `publisher` to the canonical `Organization` entity.",
+          "This interconnected graph enables search engines and LLM answer systems to trace lineage: this article was published by Integral Labs, which operates as the creative engineering division of Integral Groups."
         ],
         callout: {
           type: "tip",
@@ -397,9 +397,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       "An internal architectural review draft documenting gRPC vs REST benchmarks for internal services. This article is unpublished to test publication status gating.",
     author: {
-      name: "Tanuj Pargai",
-      role: "Co-Founder & Lead Engineer",
-      avatar: "/team/tanuj.png"
+      name: "Integral Labs Architecture",
+      role: "Internal Systems Division",
+      avatar: "/integral-logo.png"
     },
     publishedAt: "2025-02-20T08:00:00.000Z",
     category: "Web Architecture",

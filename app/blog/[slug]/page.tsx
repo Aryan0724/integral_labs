@@ -362,14 +362,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             )}
 
-            {/* Author Biography */}
+            {/* Author / Editorial Division */}
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
               <div className="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold mb-3">
-                About the Author
+                Publishing Division
               </div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm">
-                  {article.author.name.charAt(0)}
+                  ∫
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-slate-950">
@@ -381,7 +381,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               </div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Co-Founder at Integral Labs, overseeing core systems engineering, search architecture, and high-performance digital infrastructure.
+                Published by Integral Labs, overseeing core systems engineering, search architecture, and high-performance digital infrastructure across Integral Groups.
               </p>
             </div>
           </aside>

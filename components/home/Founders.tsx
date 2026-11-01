@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { 
   ArrowRight, 
@@ -14,31 +13,45 @@ import {
   CheckCircle2, 
   Quote, 
   Layers,
-  Cpu
+  Cpu,
+  Layout,
+  Globe,
+  Database
 } from "lucide-react";
 
-const FOUNDERS = [
+interface StudioDiscipline {
+  title: string;
+  role: string;
+  focus: string;
+  description: string;
+  skills: string[];
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
+
+const STUDIO_DISCIPLINES: StudioDiscipline[] = [
   {
-    name: "Tanuj Pargai",
-    role: "Co-Founder & Lead Developer",
-    focus: "Full-Stack Architecture & Cloud Infrastructure",
-    bio: "Specializing in high-throughput Next.js systems, serverless microservices, distributed security models, and sub-second web performance. Oversees all engineering pipelines and production deployments.",
-    skills: ["Next.js 16", "TypeScript", "Node.js", "Cloud Architecture", "System Security"]
+    title: "Full-Stack Architecture & Cloud Infrastructure",
+    role: "Engineering Division",
+    focus: "Cloud Systems & Next.js Stacks",
+    description: "Specializing in high-throughput Next.js systems, serverless microservices, distributed security models, and sub-second web performance. Engineering scalable database schemas and production deployment pipelines.",
+    skills: ["Next.js Turbopack", "TypeScript", "Node.js", "Cloud Infrastructure", "System Security"],
+    icon: Cpu
   },
   {
-    name: "Aryan Tiwari",
-    role: "Co-Founder & Lead Designer",
-    focus: "Design Systems & Interactive UX Architecture",
-    bio: "Pioneering conversion-driven UI systems, motion design ergonomics, and brand identity. Crafts interfaces that turn complex business workflows into seamless, tactile user experiences.",
-    skills: ["Design Systems", "Figma", "Interaction Design", "Motion UI", "Brand Ergonomics"]
+    title: "Design Systems & Interactive UX Architecture",
+    role: "Creative Division",
+    focus: "Interface & Interaction Design",
+    description: "Pioneering conversion-driven UI systems, motion design ergonomics, and brand identity. Crafting interfaces that turn complex business workflows into seamless, tactile user experiences.",
+    skills: ["Design Systems", "Figma", "Interaction Design", "Motion UI", "Brand Ergonomics"],
+    icon: Layout
   }
 ];
 
 const STUDIO_PILLARS = [
   {
     icon: Code2,
-    title: "Direct Founder Execution",
-    description: "No account managers or junior developers in between. Tanuj and Aryan personally architect, design, and code every single client engagement."
+    title: "Dedicated Senior Execution",
+    description: "No account managers or junior subcontractors in between. Senior software architects and interaction designers directly engineer, review, and deploy every client engagement."
   },
   {
     icon: ShieldCheck,
@@ -102,7 +115,7 @@ export default function Founders() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50/80 mb-5">
             <span className="w-2 h-2 rounded-full bg-blue-600 inline-block" />
             <span className="text-xs font-mono uppercase tracking-widest text-blue-700 font-bold">
-              About Us // Leadership &amp; Engineering
+              About Integral Labs // Creative Engineering Studio
             </span>
           </div>
           
@@ -116,10 +129,10 @@ export default function Founders() {
           </p>
         </div>
 
-        {/* Main Two-Column Showcase: Founders Story & Authentic Photo */}
+        {/* Main Two-Column Showcase: Studio Architecture & Philosophy */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24">
           
-          {/* Left Column: Authentic Founders Photo with Technical Framing */}
+          {/* Left Column: Studio Technical Architecture Blueprint Panel */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -129,33 +142,79 @@ export default function Founders() {
           >
             {/* Outer technical accent frame */}
             <div className="relative rounded-3xl p-3 bg-white border border-slate-200/90 shadow-2xl">
-              <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-900 group">
-                <Image
-                  src="/founders.png"
-                  alt="Tanuj Pargai and Aryan Tiwari - Founders of Integral Labs"
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 450px"
-                  priority
-                />
+              <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-950 p-6 sm:p-8 flex flex-col justify-between text-white border border-slate-800">
                 
-                {/* Tech overlay grad */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                {/* Tech Terminal Header */}
+                <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
+                    CORE_SYS // ARCHITECTURE
+                  </span>
+                </div>
 
-                {/* Corner Crosshairs */}
-                <span className="absolute top-3 left-3 font-mono text-[9px] text-white/40 select-none pointer-events-none">+</span>
-                <span className="absolute top-3 right-3 font-mono text-[9px] text-white/40 select-none pointer-events-none">+</span>
-                <span className="absolute bottom-16 left-3 font-mono text-[9px] text-white/40 select-none pointer-events-none">+</span>
-                <span className="absolute bottom-16 right-3 font-mono text-[9px] text-white/40 select-none pointer-events-none">+</span>
+                {/* System Specs Blueprint */}
+                <div className="space-y-4 my-auto py-4">
+                  <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div className="text-[10px] font-mono text-blue-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                      <Code2 size={12} /> DIVISION SPECIFICATION
+                    </div>
+                    <div className="text-sm font-bold text-white">
+                      Integral Labs Studio
+                    </div>
+                    <div className="text-xs text-slate-400 mt-0.5">
+                      Creative Engineering Department of Integral Groups
+                    </div>
+                  </div>
 
-                {/* Bottom Overlay Label */}
-                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10 flex items-center justify-between">
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                      <div className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">
+                        Performance
+                      </div>
+                      <div className="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                        Sub-Second TTFB
+                      </div>
+                    </div>
+                    <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                      <div className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">
+                        Code Ownership
+                      </div>
+                      <div className="text-xs font-bold text-blue-400 flex items-center gap-1">
+                        100% Client IP
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5">
+                      Core Disciplines
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-300">
+                        Next.js Systems
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-mono text-indigo-300">
+                        Custom SaaS
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-300">
+                        Technical SEO &amp; AEO
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Status Card */}
+                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 flex items-center justify-between">
                   <div>
                     <div className="text-[10px] font-mono uppercase tracking-widest text-blue-400 font-bold">
-                      Founding Partners
+                      Deployment Status
                     </div>
-                    <div className="text-sm font-bold text-white mt-0.5">
-                      Tanuj Pargai &amp; Aryan Tiwari
+                    <div className="text-xs font-semibold text-white mt-0.5">
+                      Production Runtime Active
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30">
@@ -163,19 +222,20 @@ export default function Founders() {
                     <span className="text-[9px] font-mono text-emerald-300 font-bold uppercase">Online</span>
                   </div>
                 </div>
+
               </div>
             </div>
 
-            {/* Subtle decorative caption */}
+            {/* Decorative caption */}
             <div className="flex items-center justify-between text-xs text-slate-400 font-mono mt-3 px-2">
-              <span>REF: CORE_SYS // FOUNDERS</span>
-              <span>VERIFIED LEADERSHIP</span>
+              <span>REF: CORE_SYS // SPEC_2025</span>
+              <span>VERIFIED ARCHITECTURE</span>
             </div>
           </motion.div>
 
-          {/* Right Column: Authentic Philosophy & Founders Quote */}
+          {/* Right Column: Studio Philosophy & Operating Manifesto */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            {/* Founders Direct Quote Card */}
+            {/* Direct Studio Manifesto Card */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -192,37 +252,37 @@ export default function Founders() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-slate-100">
                 <div>
                   <h4 className="text-base font-bold text-slate-900">
-                    Tanuj Pargai &amp; Aryan Tiwari
+                    Integral Labs Collective
                   </h4>
                   <p className="text-xs font-mono text-blue-600 font-semibold uppercase tracking-wider mt-0.5">
-                    Founding Partners &amp; Creative Engineers
+                    Systems Architecture &amp; Creative Engineering
                   </p>
                 </div>
 
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-mono text-blue-700 font-bold uppercase">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                  FOUNDER_AUTH_TOKEN: ACTIVE
+                  STUDIO_AUTH_TOKEN: ACTIVE
                 </div>
               </div>
             </motion.div>
 
-            {/* Operating Manifesto / Short Paragraphs */}
+            {/* Operating Manifesto Paragraphs */}
             <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed">
               <p>
                 From fast-growing SaaS startups to established corporate enterprises, clients partner with Integral Labs because we eliminate the friction between creative concept and production execution. 
               </p>
               <p>
-                Every project benefits from direct founder attention. We inspect your data models, design your interaction flows, test edge cases under latency stress, and deliver turnkey solutions ready to scale.
+                Every project benefits from direct senior attention. We inspect your data models, design your interaction flows, test edge cases under latency stress, and deliver turnkey solutions ready to scale.
               </p>
             </div>
 
             {/* Direct Action Link */}
             <div className="mt-8 flex items-center gap-4">
               <Link
-                href="/team"
+                href="/about"
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors group"
               >
-                <span>Read Full Engineering Roadmap &amp; Team Page</span>
+                <span>Read Full Studio Principles &amp; Roadmap</span>
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
@@ -230,56 +290,59 @@ export default function Founders() {
 
         </div>
 
-        {/* Individual Founder Profiles: Tanuj & Aryan */}
+        {/* Studio Engineering Disciplines Grid (Zero Individual Profiles) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          {FOUNDERS.map((founder, index) => (
-            <motion.div
-              key={founder.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-xs font-mono">
-                    {founder.name.split(" ").map(n => n[0]).join("")}
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-mono uppercase font-semibold">
-                    {founder.focus}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {founder.name}
-                </h3>
-                <div className="text-xs font-semibold text-blue-600 font-mono mt-1 mb-4">
-                  {founder.role}
-                </div>
-
-                <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-                  {founder.bio}
-                </p>
-              </div>
-
-              <div>
-                <div className="text-[11px] font-mono uppercase text-slate-400 font-semibold tracking-wider mb-2">
-                  Specialized Competencies
-                </div>
-                <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100">
-                  {founder.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-700"
-                    >
-                      {skill}
+          {STUDIO_DISCIPLINES.map((discipline, index) => {
+            const Icon = discipline.icon;
+            return (
+              <motion.div
+                key={discipline.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black">
+                      <Icon size={20} />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-mono uppercase font-semibold">
+                      {discipline.focus}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                    {discipline.title}
+                  </h3>
+                  <div className="text-xs font-semibold text-blue-600 font-mono mt-1 mb-4">
+                    {discipline.role}
+                  </div>
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    {discipline.description}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                <div>
+                  <div className="text-[11px] font-mono uppercase text-slate-400 font-semibold tracking-wider mb-2">
+                    Specialized Competencies
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100">
+                    {discipline.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-700"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* 3 Studio Operating Pillars */}
@@ -294,7 +357,7 @@ export default function Founders() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {STUDIO_PILLARS.map((pillar, i) => {
+            {STUDIO_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               return (
                 <div 
@@ -339,14 +402,14 @@ export default function Founders() {
                 <button
                   onClick={prevTestimonial}
                   aria-label="Previous Testimonial"
-                  className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white transition-colors border border-slate-700"
+                  className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white transition-colors border border-slate-700 cursor-pointer"
                 >
                   <ArrowLeft size={15} />
                 </button>
                 <button
                   onClick={nextTestimonial}
                   aria-label="Next Testimonial"
-                  className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white transition-colors border border-slate-700"
+                  className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white transition-colors border border-slate-700 cursor-pointer"
                 >
                   <ArrowRight size={15} />
                 </button>

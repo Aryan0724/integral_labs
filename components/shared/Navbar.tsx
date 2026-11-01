@@ -325,7 +325,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
-                  About Founders
+                  About Studio
                 </Link>
                 <Link
                   href="/blog"

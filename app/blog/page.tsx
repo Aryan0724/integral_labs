@@ -77,7 +77,7 @@ export default function BlogPage() {
             Technical Insights for High-Performance Teams
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Deep architectural analyses, Core Web Vitals benchmarks, custom software design principles, and evolving Answer Engine Optimization (AEO) frameworks written directly by our founders and engineering team.
+            Deep architectural analyses, Core Web Vitals benchmarks, custom software design principles, and evolving Answer Engine Optimization (AEO) frameworks written directly by our senior engineering collective.
           </p>
         </div>
 
@@ -94,7 +94,7 @@ export default function BlogPage() {
               Build your next web platform or custom software with Integral Labs
             </h2>
             <p className="text-sm text-slate-400">
-              Direct founder execution across Next.js engineering, bespoke software development, and modern SEO/AEO architectures.
+              Direct senior execution across Next.js engineering, bespoke software development, and modern SEO/AEO architectures.
             </p>
           </div>
           <div className="shrink-0">

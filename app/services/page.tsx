@@ -232,7 +232,7 @@ export default function ServicesPage() {
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
           >
-            <span>Consult With Founders</span>
+            <span>Consult With Our Engineering Team</span>
             <ArrowRight size={14} />
           </Link>
         </div>

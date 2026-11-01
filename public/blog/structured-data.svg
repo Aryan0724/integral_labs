@@ -30,18 +30,18 @@
     <text x="25" y="75" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">labs.integralgroups.in</text>
     <text x="25" y="98" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">canonical publisher node</text>
 
-    <!-- Node 3: Founders -->
+    <!-- Node 3: Engineering Collective -->
     <rect x="360" y="160" width="220" height="110" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
-    <text x="25" y="195" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">@type: Person[]</text>
-    <text x="25" y="225" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Founders Graph</text>
-    <text x="25" y="248" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Tanuj Pargai &amp; Aryan Tiwari</text>
+    <text x="25" y="195" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">@type: Organization</text>
+    <text x="25" y="225" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Engineering Collective</text>
+    <text x="25" y="248" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Integral Labs Core Team</text>
 
     <!-- Node 4: Article -->
     <path d="M 580 65 L 670 140" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 2"/>
     <rect x="670" y="80" width="240" height="120" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
     <text x="25" y="115" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">@type: BlogPosting</text>
     <text x="25" y="145" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Structured Data Guide</text>
-    <text x="25" y="175" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">author: #founder / publisher: #org</text>
+    <text x="25" y="175" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">author: #collective / publisher: #org</text>
   </g>
 
   <text x="600" y="570" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // SCHEMA &amp; KNOWLEDGE GRAPH ARCHITECTURE</text>

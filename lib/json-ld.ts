@@ -20,11 +20,6 @@ export function getOrganizationJsonLd() {
       name: SITE_CONFIG.parentOrganization,
       url: "https://integralgroups.in/",
     },
-    founders: SITE_CONFIG.founders.map((founder) => ({
-      "@type": "Person",
-      name: founder.name,
-      jobTitle: founder.role,
-    })),
     sameAs: [
       SITE_CONFIG.socials.github,
     ],

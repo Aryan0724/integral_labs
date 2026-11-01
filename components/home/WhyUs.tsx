@@ -29,8 +29,8 @@ const DIFFERENTIATORS = [
   },
   {
     icon: ShieldCheck,
-    title: "Direct Founder Execution",
-    description: "No disconnected account executives or junior outsourcing. Co-founders Tanuj Pargai (Lead Engineering) and Aryan Tiwari (Lead Design) personally oversee and implement your system architecture."
+    title: "Dedicated Senior Engineering",
+    description: "No disconnected account executives or junior outsourcing. Our dedicated senior software architects and interaction designers directly oversee and implement your system architecture with complete accountability."
   }
 ];
 

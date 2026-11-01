@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "SaaS Systems",
     "AI Search Optimization",
   ],
-  authors: [{ name: "Tanuj Pargai" }, { name: "Aryan Tiwari" }],
+  authors: [{ name: "Integral Labs Engineering Collective" }],
   creator: "Integral Labs",
   publisher: "Integral Groups",
   alternates: {

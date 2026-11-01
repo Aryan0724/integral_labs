@@ -2,15 +2,25 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Code2, ShieldCheck, Layers, Sparkles, Terminal, CheckCircle2 } from "lucide-react";
+import { 
+  ArrowRight, 
+  Code2, 
+  ShieldCheck, 
+  Layers, 
+  Sparkles, 
+  Terminal, 
+  CheckCircle2, 
+  Cpu, 
+  Layout, 
+  Database 
+} from "lucide-react";
 
 const PILLARS = [
   {
     icon: Code2,
-    title: "Direct Founder Engineering",
-    description: "Every engagement is architected and executed directly by Tanuj Pargai and Aryan Tiwari. We eliminate the telephone game of account managers and junior subcontractors."
+    title: "Dedicated Senior Engineering",
+    description: "Every engagement is architected and executed directly by senior software engineers and interface architects. We eliminate the telephone game of account managers and junior subcontractors."
   },
   {
     icon: ShieldCheck,
@@ -29,18 +39,20 @@ const PILLARS = [
   }
 ];
 
-const LEADERSHIP = [
+const STUDIO_PRACTICES = [
   {
-    name: "Tanuj Pargai",
-    role: "Co-Founder & Lead Developer",
+    title: "Full-Stack Systems & Cloud Infrastructure",
+    role: "Engineering Division",
     focus: "Cloud Systems & Next.js Architecture",
-    bio: "Focuses on high-throughput fullstack systems, Next.js performance, microservices, and secure session architectures. Oversees production builds from foundation to cloud deployment."
+    bio: "Focuses on high-throughput fullstack systems, Next.js performance, microservices, and secure session architectures. Oversees production builds from foundation to cloud deployment.",
+    icon: Cpu
   },
   {
-    name: "Aryan Tiwari",
-    role: "Co-Founder & Lead Designer",
-    focus: "Design Systems & User Ergonomics",
-    bio: "Specializes in conversion-focused UI/UX design, interactive motion systems, and brand ergonomics. Translates complex business requirements into fluid digital interfaces."
+    title: "Design Systems & User Ergonomics",
+    role: "Creative Division",
+    focus: "Design Systems & Interaction Ergonomics",
+    bio: "Specializes in conversion-focused UI/UX design, interactive motion systems, and brand ergonomics. Translates complex business requirements into fluid digital interfaces.",
+    icon: Layout
   }
 ];
 
@@ -82,7 +94,7 @@ export default function AboutPage() {
           </motion.p>
         </div>
 
-        {/* Founders Spotlight Banner */}
+        {/* Studio Spotlight Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,26 +102,60 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-8 sm:p-12 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm mb-24"
         >
-          {/* Framed Photo */}
+          {/* Technical Terminal Visual */}
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full max-w-[420px] mx-auto rounded-2xl overflow-hidden bg-slate-900 shadow-xl border border-slate-200">
-              <Image
-                src="/founders.png"
-                alt="Tanuj Pargai and Aryan Tiwari - Founders of Integral Labs"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 420px"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/10 text-white flex items-center justify-between">
+            <div className="relative aspect-[4/5] w-full max-w-[420px] mx-auto rounded-2xl overflow-hidden bg-slate-950 p-6 sm:p-8 flex flex-col justify-between text-white border border-slate-800 shadow-xl">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                </div>
+                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
+                  CORE_SYS // MATRIX
+                </span>
+              </div>
+
+              <div className="space-y-4 my-auto py-4">
+                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+                  <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block mb-1">
+                    DIVISION SPECIFICATION
+                  </span>
+                  <div className="text-sm font-bold text-white">Integral Labs Studio</div>
+                  <div className="text-xs text-slate-400 mt-0.5">Creative Engineering Department of Integral Groups</div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <div className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">Execution</div>
+                    <div className="text-xs font-bold text-emerald-400">Direct Senior Team</div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <div className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">Ownership</div>
+                    <div className="text-xs font-bold text-blue-400">100% Client IP</div>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest block mb-1.5">
+                    Engineering Stack
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-300 text-[10px] font-mono">Next.js 16</span>
+                    <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 text-[10px] font-mono">TypeScript</span>
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-300 text-[10px] font-mono">SEO &amp; AEO</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-white/10 text-white flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-blue-400 font-bold block">Leadership</span>
-                  <span className="text-sm font-bold">Tanuj Pargai &amp; Aryan Tiwari</span>
+                  <span className="text-[10px] font-mono uppercase text-blue-400 font-bold block">Status</span>
+                  <span className="text-xs font-bold">Production Runtime Active</span>
                 </div>
                 <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[9px] font-mono font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  FOUNDERS
+                  ONLINE
                 </div>
               </div>
             </div>
@@ -122,7 +168,7 @@ export default function AboutPage() {
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-              Direct Founder Commitment on Every Engagement.
+              Direct Senior Engineering Commitment on Every Engagement.
             </h3>
 
             <p className="text-slate-600 leading-relaxed font-normal mb-6 text-sm sm:text-base">
@@ -134,13 +180,21 @@ export default function AboutPage() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-slate-200">
-              {LEADERSHIP.map((leader) => (
-                <div key={leader.name} className="p-4 rounded-xl bg-white border border-slate-200/80">
-                  <h4 className="font-bold text-slate-900 text-sm">{leader.name}</h4>
-                  <p className="text-xs font-mono text-blue-600 font-semibold mb-2">{leader.role}</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">{leader.bio}</p>
-                </div>
-              ))}
+              {STUDIO_PRACTICES.map((practice) => {
+                const Icon = practice.icon;
+                return (
+                  <div key={practice.title} className="p-4 rounded-xl bg-white border border-slate-200/80">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <Icon size={14} />
+                      </div>
+                      <span className="text-xs font-mono text-blue-600 font-bold uppercase">{practice.role}</span>
+                    </div>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">{practice.title}</h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">{practice.bio}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </motion.div>

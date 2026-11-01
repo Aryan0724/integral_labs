@@ -33,8 +33,8 @@ export const projects: Project[] = [
     techStack: ["Python", "FastAPI", "React", "TypeScript", "Scikit-Learn"],
     founderQuote: {
       text: "Preyt takes the guesswork out of publishing. We built it to let creators optimize their content strategy through machine learning before hitting upload.",
-      name: "Aryan Tiwari",
-      role: "Co-Founder, Integral Labs",
+      name: "Engineering Collective",
+      role: "Integral Labs Core",
     },
     screenshots: [
       "/projects/real/preyt-platform.png",
@@ -54,8 +54,8 @@ export const projects: Project[] = [
     techStack: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Higher education websites should feel academic but forward-looking. We merged academic structured layouts with a premium digital design.",
-      name: "Tanuj Pargai",
-      role: "Co-Founder, Integral Labs",
+      name: "Creative Engineering Team",
+      role: "Integral Labs Core",
     },
     screenshots: [
       "/projects/real/bro-uni.png",
@@ -75,8 +75,8 @@ export const projects: Project[] = [
     techStack: ["Next.js", "CSS Modules", "TailwindCSS", "Framer Motion"],
     founderQuote: {
       text: "Fashion is all about presentation. We built UK Drip to present street collections in a way that feels curated and premium.",
-      name: "Tanuj Pargai",
-      role: "Co-Founder, Integral Labs",
+      name: "Interface Design Team",
+      role: "Integral Labs Core",
     },
     screenshots: [
       "/projects/real/ukdrip.png",
@@ -96,8 +96,8 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
     founderQuote: {
       text: "AtoZ Prints makes ordering custom merchandise effortless. We engineered the platform for instant product visualization and painless checkouts.",
-      name: "Aryan Tiwari",
-      role: "Co-Founder, Integral Labs",
+      name: "Systems Engineering Team",
+      role: "Integral Labs Core",
     },
     screenshots: [
       "/projects/real/atozprints.png",
@@ -117,8 +117,8 @@ export const projects: Project[] = [
     techStack: ["React", "TailwindCSS", "Framer Motion", "Lucide Icons"],
     founderQuote: {
       text: "Study systems should keep you focused, not add task friction. This scheduler makes planning routine milestones visual.",
-      name: "Tanuj Pargai",
-      role: "Co-Founder, Integral Labs",
+      name: "Frontend Architecture Team",
+      role: "Integral Labs Core",
     },
     screenshots: [
       "/projects/real/exam-planner.png",

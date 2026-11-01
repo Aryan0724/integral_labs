@@ -131,7 +131,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/about" className="hover:text-blue-400 transition-colors">
-                  Founders & Principles
+                  About Studio &amp; Principles
                 </Link>
               </li>
               <li>
