@@ -104,6 +104,8 @@ const TESTIMONIALS = [
 
 export default function Founders() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [activeDiscipline, setActiveDiscipline] = useState(0);
+  const [activePillar, setActivePillar] = useState(0);
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
@@ -309,8 +311,137 @@ export default function Founders() {
 
         </div>
 
-        {/* Studio Engineering Disciplines Grid (Zero Individual Profiles) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+        {/* Studio Engineering Disciplines Header / Introduction */}
+        <div className="mb-6">
+          <div className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold mb-1">
+            Specialized Disciplines //
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Co-Equal Core Engineering Disciplines
+          </h3>
+        </div>
+
+        {/* Mobile Disciplines Dropdown & Selector (Visible on < md, reduces scroll height drastically) */}
+        <div className="block md:hidden mb-16">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <label htmlFor="mobile-discipline-select" className="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+              Select Discipline:
+            </label>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setActiveDiscipline((prev) => Math.max(0, prev - 1))}
+                disabled={activeDiscipline === 0}
+                aria-label="Previous Discipline"
+                className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+              >
+                ← Prev
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveDiscipline((prev) => Math.min(STUDIO_DISCIPLINES.length - 1, prev + 1))}
+                disabled={activeDiscipline === STUDIO_DISCIPLINES.length - 1}
+                aria-label="Next Discipline"
+                className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+              >
+                Next →
+              </button>
+            </div>
+          </div>
+
+          {/* Dropdown Menu */}
+          <div className="relative mb-3">
+            <select
+              id="mobile-discipline-select"
+              value={activeDiscipline}
+              onChange={(e) => setActiveDiscipline(Number(e.target.value))}
+              className="w-full appearance-none bg-white border border-slate-300 rounded-xl px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xs"
+            >
+              {STUDIO_DISCIPLINES.map((discipline, idx) => (
+                <option key={discipline.title} value={idx}>
+                  0{idx + 1}. {discipline.title}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Quick Discipline Pills */}
+          <div className="grid grid-cols-4 gap-1.5 mb-4">
+            {STUDIO_DISCIPLINES.map((discipline, idx) => (
+              <button
+                key={discipline.title}
+                type="button"
+                onClick={() => setActiveDiscipline(idx)}
+                className={`py-1.5 rounded-lg text-center font-mono text-[11px] font-bold transition-all ${
+                  activeDiscipline === idx
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-white border border-slate-200 text-slate-600 hover:border-slate-300"
+                }`}
+              >
+                0{idx + 1}
+              </button>
+            ))}
+          </div>
+
+          {/* Single Active Discipline Card on Mobile */}
+          {(() => {
+            const discipline = STUDIO_DISCIPLINES[activeDiscipline];
+            const Icon = discipline.icon;
+            return (
+              <div className="bg-white rounded-3xl border-2 border-blue-500/80 p-6 shadow-lg flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black">
+                      <Icon size={20} />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-mono uppercase font-bold border border-blue-100">
+                      {discipline.focus}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-slate-900 tracking-tight mb-1">
+                    {discipline.title}
+                  </h3>
+                  <div className="text-xs font-semibold text-blue-600 font-mono mb-3">
+                    {discipline.role}
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 font-normal">
+                    {discipline.description}
+                  </p>
+                </div>
+
+                <div>
+                  <div className="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider mb-2">
+                    Specialized Competencies:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100 mb-3">
+                    {discipline.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-mono text-slate-700 font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-100">
+                    <span>Discipline 0{activeDiscipline + 1} of 0{STUDIO_DISCIPLINES.length}</span>
+                    <span className="text-blue-600 font-semibold">Swipe or tap Next →</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+
+        {/* Studio Engineering Disciplines Grid (Visible on md and desktop, untouched 2x2) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           {STUDIO_DISCIPLINES.map((discipline, index) => {
             const Icon = discipline.icon;
             return (
@@ -366,7 +497,7 @@ export default function Founders() {
 
         {/* 3 Studio Operating Pillars */}
         <div className="mb-24">
-          <div className="text-center max-w-[600px] mx-auto mb-12">
+          <div className="text-center max-w-[600px] mx-auto mb-8 md:mb-12">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Our Operating Standards
             </h3>
@@ -375,7 +506,52 @@ export default function Founders() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Mobile Operating Pillars Switcher (Visible on < md) */}
+          <div className="block md:hidden">
+            <div className="grid grid-cols-3 gap-1.5 mb-3">
+              {STUDIO_PILLARS.map((pillar, idx) => (
+                <button
+                  key={pillar.title}
+                  type="button"
+                  onClick={() => setActivePillar(idx)}
+                  className={`py-2 px-1 rounded-xl text-center font-mono text-[10px] font-bold transition-all truncate ${
+                    activePillar === idx
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "bg-white border border-slate-200 text-slate-600 hover:border-slate-300"
+                  }`}
+                >
+                  0{idx + 1}. {pillar.title.split(" ")[0]}
+                </button>
+              ))}
+            </div>
+
+            {/* Single active pillar on mobile */}
+            {(() => {
+              const pillar = STUDIO_PILLARS[activePillar];
+              const Icon = pillar.icon;
+              return (
+                <div className="bg-white rounded-2xl p-6 border-2 border-blue-500/80 shadow-md">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                      <Icon size={20} />
+                    </div>
+                    <span className="text-[10px] font-mono text-blue-600 font-bold uppercase tracking-wider bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
+                      Standard 0{activePillar + 1}
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-slate-900 mb-2">
+                    {pillar.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    {pillar.description}
+                  </p>
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* Desktop Operating Pillars (Visible on md and desktop, untouched 3-col) */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6">
             {STUDIO_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               return (

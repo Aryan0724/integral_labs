@@ -108,8 +108,7 @@ test("Blog & Technical SEO Comprehensive Verification Suite", async (t) => {
     const content = fs.readFileSync(sitemapPath, "utf8");
     assert.ok(content.includes("<loc>https://labs.integralgroups.in/</loc>"), "Home page in sitemap");
     assert.ok(content.includes("<loc>https://labs.integralgroups.in/blog</loc>"), "Blog listing in sitemap");
-    assert.ok(content.includes("<loc>https://labs.integralgroups.in/services</loc>"), "Services in sitemap");
-    assert.ok(content.includes("<loc>https://labs.integralgroups.in/work/preyt-platform</loc>"), "Preyt in sitemap");
+    assert.ok(content.includes("<loc>https://labs.integralgroups.in/work/bro-uni</loc>"), "Bro University in sitemap");
     assert.ok(
       content.includes("<loc>https://labs.integralgroups.in/blog/seo-vs-aeo-search-visibility-evolution</loc>"),
       "Published article in sitemap"

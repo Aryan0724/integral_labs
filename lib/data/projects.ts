@@ -20,27 +20,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "preyt-platform",
-    title: "Preyt Platform",
-    category: "Machine Learning / AI",
-    year: "2025",
-    image: "/projects/real/preyt-platform.png",
-    liveLink: "https://preyt.integralgroups.in/",
-    intro: "Flagship AI Work: An intelligent ML forecasting system that predicts the potential reach, audience growth, and performance metrics of a YouTube video before its launch.",
-    challenge: "Designing a predictive model that parses multiple video attributes (such as thumbnail style, title metadata, and tags) and returns performance simulations in real time.",
-    solution: "Engineered an advanced predictive pipeline using custom ML regression models trained on YouTube API data metrics, wrapped in a responsive client panel.",
-    impact: "Provides creators with real-time predictions on video traction and growth potential, boosting pre-launch optimization efficiency.",
-    techStack: ["Python", "FastAPI", "React", "TypeScript", "Scikit-Learn"],
-    founderQuote: {
-      text: "Preyt takes the guesswork out of publishing. We built it to let creators optimize their content strategy through machine learning before hitting upload.",
-      name: "Engineering Collective",
-      role: "Integral Labs Core",
-    },
-    screenshots: [
-      "/projects/real/preyt-platform.png",
-    ],
-  },
-  {
     id: "bro-uni",
     title: "Bro University",
     category: "University Portal",

@@ -35,6 +35,8 @@ const DIFFERENTIATORS = [
 ];
 
 export default function WhyUs() {
+  const [activeDiff, setActiveDiff] = React.useState(0);
+
   return (
     <section className="py-24 md:py-32 bg-slate-50 border-t border-slate-200/80">
       <div className="container max-w-[1240px] mx-auto px-5 sm:px-8">
@@ -91,8 +93,107 @@ export default function WhyUs() {
             </div>
           </div>
 
-          {/* Right Column: 4 Principle Cards Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {/* Right Column: Mobile Principle Switcher (Visible on < sm) */}
+          <div className="lg:col-span-7 block sm:hidden">
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <label htmlFor="mobile-whyus-select" className="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+                Select Standard:
+              </label>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setActiveDiff((prev) => Math.max(0, prev - 1))}
+                  disabled={activeDiff === 0}
+                  aria-label="Previous Standard"
+                  className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+                >
+                  ← Prev
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveDiff((prev) => Math.min(DIFFERENTIATORS.length - 1, prev + 1))}
+                  disabled={activeDiff === DIFFERENTIATORS.length - 1}
+                  aria-label="Next Standard"
+                  className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+                >
+                  Next →
+                </button>
+              </div>
+            </div>
+
+            {/* Dropdown Menu */}
+            <div className="relative mb-3">
+              <select
+                id="mobile-whyus-select"
+                value={activeDiff}
+                onChange={(e) => setActiveDiff(Number(e.target.value))}
+                className="w-full appearance-none bg-white border border-slate-300 rounded-xl px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xs"
+              >
+                {DIFFERENTIATORS.map((diff, idx) => (
+                  <option key={diff.title} value={idx}>
+                    0{idx + 1}. {diff.title}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Quick Pill Tabs */}
+            <div className="grid grid-cols-4 gap-1.5 mb-4">
+              {DIFFERENTIATORS.map((diff, idx) => (
+                <button
+                  key={diff.title}
+                  type="button"
+                  onClick={() => setActiveDiff(idx)}
+                  className={`py-1.5 rounded-lg text-center font-mono text-[11px] font-bold transition-all ${
+                    activeDiff === idx
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "bg-white border border-slate-200 text-slate-600 hover:border-slate-300"
+                  }`}
+                >
+                  0{idx + 1}
+                </button>
+              ))}
+            </div>
+
+            {/* Single Active Card on Mobile */}
+            {(() => {
+              const diff = DIFFERENTIATORS[activeDiff];
+              const Icon = diff.icon;
+              return (
+                <div className="bg-white rounded-2xl p-6 border-2 border-blue-500/80 shadow-md flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <Icon size={20} />
+                      </div>
+                      <span className="text-[10px] font-mono text-blue-600 font-bold uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+                        Standard 0{activeDiff + 1} of 0{DIFFERENTIATORS.length}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold text-slate-900 mb-2">
+                      {diff.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal mb-4">
+                      {diff.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-[11px] font-mono text-slate-400">
+                    <span>Swipe or tap Next →</span>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* Right Column: 4 Principle Cards Grid (Visible on >= sm, untouched) */}
+          <div className="lg:col-span-7 hidden sm:grid sm:grid-cols-2 gap-5">
             {DIFFERENTIATORS.map((diff, index) => {
               const Icon = diff.icon;
               return (

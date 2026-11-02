@@ -189,8 +189,124 @@ export default function Process() {
             </div>
           </div>
 
-          {/* Process Cards Grid (3x2 on desktop, responsive on mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {/* Mobile Phase Dropdown & Step Switcher (Visible on < lg, cuts vertical scroll height by ~75%) */}
+          <div className="block lg:hidden mb-6">
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <label htmlFor="mobile-process-select" className="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+                Select Phase:
+              </label>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
+                  disabled={activeStep === 0}
+                  aria-label="Previous Phase"
+                  className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+                >
+                  ← Prev
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveStep((prev) => Math.min(processSteps.length - 1, prev + 1))}
+                  disabled={activeStep === processSteps.length - 1}
+                  aria-label="Next Phase"
+                  className="px-2.5 py-1 text-xs font-mono font-bold rounded-lg border border-slate-200 bg-white text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition-colors"
+                >
+                  Next →
+                </button>
+              </div>
+            </div>
+
+            {/* Dropdown Menu */}
+            <div className="relative mb-3">
+              <select
+                id="mobile-process-select"
+                value={activeStep}
+                onChange={(e) => setActiveStep(Number(e.target.value))}
+                className="w-full appearance-none bg-white border border-slate-300 rounded-xl px-4 py-2.5 pr-10 text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xs"
+              >
+                {processSteps.map((step, idx) => (
+                  <option key={step.step} value={idx}>
+                    Phase {step.step} ({step.phase}): {step.title}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Quick Step Indicator Pills */}
+            <div className="grid grid-cols-6 gap-1.5">
+              {processSteps.map((step, idx) => (
+                <button
+                  key={step.step}
+                  type="button"
+                  onClick={() => setActiveStep(idx)}
+                  className={`py-1.5 rounded-lg text-center font-mono text-[11px] font-bold transition-all ${
+                    activeStep === idx
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "bg-white border border-slate-200 text-slate-600 hover:border-slate-300"
+                  }`}
+                >
+                  {step.step}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Single Card View (Cuts mobile scroll drastically) */}
+          <div className="block lg:hidden">
+            {(() => {
+              const step = processSteps[activeStep];
+              return (
+                <div className="rounded-2xl p-5 bg-white border-2 border-blue-500/80 shadow-lg flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs font-mono bg-blue-600 text-white shadow-xs">
+                        {step.step}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+                        {step.phase}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold text-slate-900 mb-2">
+                      {step.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4 font-normal">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Key Deliverables:
+                    </div>
+                    <ul className="space-y-1.5">
+                      {step.deliverables.map((item) => (
+                        <li key={item} className="text-xs text-slate-700 flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <span>Phase {activeStep + 1} of {processSteps.length}</span>
+                    <span className="text-blue-600 font-semibold">Swipe or tap Next →</span>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* Desktop Process Cards Grid (3x2 on desktop, hidden on mobile) */}
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {processSteps.map((step, index) => {
               const isHighlight = activeStep === index;
               const isPast = activeStep > index;

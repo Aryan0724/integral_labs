@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Code2, 
   Cpu, 
   Search, 
   Sparkles, 
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 import Link from "next/link";
 
@@ -113,6 +115,19 @@ const PILLARS: ServicePillar[] = [
 ];
 
 export default function Services() {
+  const [activeMobilePillar, setActiveMobilePillar] = useState<string>("web-development");
+  const [expandedPillars, setExpandedPillars] = useState<Record<string, boolean>>({
+    "web-development": true
+  });
+
+  const togglePillarExpand = (id: string) => {
+    setExpandedPillars(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const activeMobileIndex = PILLARS.findIndex(p => p.id === activeMobilePillar);
+  const prevPillar = activeMobileIndex > 0 ? PILLARS[activeMobileIndex - 1] : PILLARS[PILLARS.length - 1];
+  const nextPillar = activeMobileIndex < PILLARS.length - 1 ? PILLARS[activeMobileIndex + 1] : PILLARS[0];
+
   return (
     <section 
       id="services-section"
@@ -121,7 +136,7 @@ export default function Services() {
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16">
           <div className="max-w-[760px]">
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-xs bg-blue-600 inline-block" />
@@ -150,8 +165,183 @@ export default function Services() {
           </div>
         </div>
 
-        {/* 4 Pillars Grid (2x2 on desktop, clean responsive on mobile) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        {/* MOBILE VIEW: Compact Dropdown Menu & Quick Pills (Visible only on < lg screens) */}
+        <div className="block lg:hidden mb-8">
+          <div className="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs mb-6">
+            <label htmlFor="services-mobile-dropdown" className="text-[11px] font-mono uppercase font-bold text-slate-500 mb-2 block">
+              Jump To Engineering Discipline:
+            </label>
+            <div className="relative mb-3">
+              <select
+                id="services-mobile-dropdown"
+                value={activeMobilePillar}
+                onChange={(e) => setActiveMobilePillar(e.target.value)}
+                className="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-900 font-bold text-xs py-3 px-4 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-2xs cursor-pointer"
+              >
+                {PILLARS.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.number}. {p.title} ({p.badge})
+                  </option>
+                ))}
+                <option value="all">View All 4 Pillars (Compact Accordion)</option>
+              </select>
+              <ChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+            </div>
+
+            {/* Quick-switch numbered tabs */}
+            <div className="grid grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl">
+              {PILLARS.map((p) => {
+                const isSelected = activeMobilePillar === p.id;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setActiveMobilePillar(p.id)}
+                    className={`py-2 px-1 text-center rounded-lg text-[11px] font-mono font-bold transition-all ${
+                      isSelected 
+                        ? "bg-blue-600 text-white shadow-xs" 
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    Pillar {p.number}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Render Mobile Pillar Cards (either single selected card or accordion list) */}
+          <div className="space-y-6">
+            {PILLARS.filter((p) => activeMobilePillar === "all" || p.id === activeMobilePillar).map((pillar) => {
+              const Icon = pillar.icon;
+              const isExpanded = !!expandedPillars[pillar.id];
+
+              return (
+                <div
+                  key={pillar.id}
+                  className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-xs"
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 block">
+                          {pillar.badge}
+                        </span>
+                        <h3 className="text-lg font-bold text-slate-900">
+                          {pillar.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <span className="text-sm font-mono font-bold text-slate-400">
+                      {pillar.number}
+                    </span>
+                  </div>
+
+                  <div className="text-xs font-mono font-semibold text-slate-700 mb-2">
+                    {pillar.tagline}
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                    {pillar.overview}
+                  </p>
+
+                  {/* Accordion Toggle for Deliverables & Problems */}
+                  <button
+                    onClick={() => togglePillarExpand(pillar.id)}
+                    className="w-full flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-xs font-bold text-blue-600 transition-colors cursor-pointer my-2"
+                  >
+                    <span>
+                      {isExpanded ? "Hide Deliverables & Details" : `View Deliverables & Solved Problems (${pillar.deliverables.length})`}
+                    </span>
+                    <ChevronDown size={15} className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                  </button>
+
+                  {/* Expandable Accordion Content */}
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden pt-2"
+                      >
+                        {/* Problems Solved */}
+                        <div className="mb-4 bg-slate-50 rounded-xl p-3.5 border border-slate-100">
+                          <div className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
+                            Key Problems Addressed:
+                          </div>
+                          <ul className="space-y-1.5">
+                            {pillar.problemsSolved.map((item, i) => (
+                              <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                                <span className="text-red-500 text-xs shrink-0 mt-0.5">✕</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Deliverables */}
+                        <div className="mb-4">
+                          <div className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
+                            Key Deliverables:
+                          </div>
+                          <ul className="space-y-1.5">
+                            {pillar.deliverables.map((item, i) => (
+                              <li key={i} className="text-xs text-slate-700 flex items-center gap-2 font-medium">
+                                <CheckCircle2 size={13} className="text-blue-600 shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Bottom Impact & Action */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 mt-3">
+                    <div className="text-xs text-slate-500 leading-tight">
+                      <span className="font-semibold text-slate-800">Impact: </span>
+                      {pillar.businessImpact}
+                    </div>
+
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 shrink-0 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100"
+                    >
+                      <span>Inquire</span>
+                      <ArrowRight size={12} />
+                    </Link>
+                  </div>
+
+                  {/* Quick-Prev / Next Bar on Single View */}
+                  {activeMobilePillar !== "all" && (
+                    <div className="flex items-center justify-between pt-3 mt-4 border-t border-slate-100 text-[11px] font-mono">
+                      <button
+                        onClick={() => setActiveMobilePillar(prevPillar.id)}
+                        className="text-slate-500 hover:text-blue-600 flex items-center gap-1 font-semibold cursor-pointer"
+                      >
+                        ← {prevPillar.title.split(" ")[0]}
+                      </button>
+                      <button
+                        onClick={() => setActiveMobilePillar(nextPillar.id)}
+                        className="text-blue-600 hover:text-blue-700 flex items-center gap-1 font-bold cursor-pointer"
+                      >
+                        {nextPillar.title.split(" ")[0]} →
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW: Pristine 2x2 Grid (Unchanged on >= lg screens) */}
+        <div className="hidden lg:grid grid-cols-2 gap-6 sm:gap-8">
           {PILLARS.map((pillar, index) => {
             const Icon = pillar.icon;
             return (

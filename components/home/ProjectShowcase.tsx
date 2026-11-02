@@ -10,7 +10,8 @@ import {
   ArrowUpRight, 
   CheckCircle2, 
   Sparkles,
-  Cpu
+  Cpu,
+  ChevronDown
 } from "lucide-react";
 
 interface ProjectItem {
@@ -97,145 +98,8 @@ export default function ProjectShowcase() {
       className="relative py-24 md:py-32 bg-white border-t border-slate-200/80"
     >
       <div className="container relative z-10 max-w-[1240px] mx-auto px-5 sm:px-8">
-        
-        {/* 1. FLAGSHIP AI WORK SECTION: PREYT PLATFORM */}
-        <div className="mb-20">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-sm bg-blue-600 inline-block" />
-            <span className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
-              Flagship AI Work // Production Machine Learning
-            </span>
-          </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Predictive Intelligence Built by Integral Labs
-          </h2>
-          <p className="text-sm sm:text-base text-slate-500 max-w-[640px] font-normal mb-8">
-            Our premier machine learning deployment in production. Custom regression models serving real-time YouTube audience traction and reach forecasts.
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative bg-gradient-to-br from-[#0B132B] via-[#0F172A] to-[#1E293B] rounded-3xl p-8 sm:p-12 text-white overflow-hidden shadow-2xl border border-slate-800"
-          >
-            {/* Subtle Ambient Glow */}
-            <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              {/* Left Content */}
-              <div className="lg:col-span-5">
-                <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
-                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-blue-400 font-bold">
-                    Flagship AI Deployment // Preyt
-                  </span>
-                </div>
-
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-                  Preyt Platform
-                </h3>
-
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-light mb-6">
-                  An intelligent ML forecasting system that predicts video performance, subscriber growth probability, and thumbnail audience resonance prior to publishing.
-                </p>
-
-                {/* Key Highlights */}
-                <div className="space-y-2.5 mb-8 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-blue-400 shrink-0" />
-                    <span>Real-time YouTube regression model parsing title &amp; thumbnail metadata</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-blue-400 shrink-0" />
-                    <span>FastAPI inference engine serving predictions under 250ms</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-blue-400 shrink-0" />
-                    <span>Interactive simulation sliders with instant curve adjustments</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-4">
-                  <a
-                    href="https://preyt.integralgroups.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full shadow-lg shadow-blue-600/30 transition-all group"
-                  >
-                    <span>Launch Live Platform</span>
-                    <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                  </a>
-
-                  <Link
-                    href="/work/preyt-platform"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-300 hover:text-white px-5 py-3 rounded-full border border-slate-700 hover:border-slate-500 transition-all"
-                  >
-                    <span>Read AI Architecture</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Side: Real-time Screenshot Mockup */}
-              <div className="lg:col-span-7">
-                <div className="bg-slate-900/90 rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
-                  {/* Browser bar */}
-                  <div className="bg-slate-800/80 px-4 py-3 border-b border-slate-700/80 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                      <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                      <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                      <span className="ml-2 text-xs font-mono text-slate-400 font-semibold">
-                        preyt.integralgroups.in
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                        LIVE_PRODUCTION
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Real-time Screenshot */}
-                  <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden group">
-                    <Image
-                      src="/projects/real/preyt-platform.png"
-                      alt="Preyt Platform Live Production Homepage"
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-40 pointer-events-none" />
-                  </div>
-
-                  {/* Real Metrics Banner */}
-                  <div className="grid grid-cols-3 divide-x divide-slate-800 bg-slate-950/90 p-4 text-center">
-                    <div>
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Accuracy Rate</div>
-                      <div className="text-xl sm:text-2xl font-black text-white mt-0.5">98.4%</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Inference Latency</div>
-                      <div className="text-xl sm:text-2xl font-black text-blue-400 mt-0.5">&lt; 250ms</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Core Engine</div>
-                      <div className="text-xl sm:text-2xl font-black text-emerald-400 mt-0.5">FastAPI + ML</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </motion.div>
-        </div>
-
-        {/* 2. VERIFIED CLIENT PORTFOLIOS SECTION */}
-        <div className="pt-8">
+        {/* VERIFIED CLIENT PORTFOLIOS SECTION */}
+        <div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
               <div className="inline-flex items-center gap-2 mb-3">
@@ -244,11 +108,11 @@ export default function ProjectShowcase() {
                   Client Platforms // Live Deployments
                 </span>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
                 Selected Client Work
-              </h3>
-              <p className="text-sm text-slate-500 max-w-[540px] mt-2 font-normal">
-                Production web applications and digital commerce systems shipped by Integral Labs.
+              </h2>
+              <p className="text-sm sm:text-base text-slate-500 max-w-[620px] mt-2 font-normal">
+                High-performance web applications, digital commerce systems, and academic portals shipped by Integral Labs.
               </p>
             </div>
 
@@ -261,8 +125,30 @@ export default function ProjectShowcase() {
             </Link>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+          {/* Mobile Category Dropdown Menu */}
+          <div className="sm:hidden mb-6">
+            <label htmlFor="mobile-category-select" className="text-[11px] font-mono uppercase font-bold text-slate-500 mb-1.5 block">
+              Filter By Category:
+            </label>
+            <div className="relative">
+              <select
+                id="mobile-category-select"
+                value={activeTab}
+                onChange={(e) => setActiveTab(e.target.value)}
+                className="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-900 font-semibold text-xs py-3 px-4 pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 shadow-2xs cursor-pointer"
+              >
+                {CATEGORY_TABS.map((tab) => (
+                  <option key={tab.id} value={tab.id}>
+                    {tab.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Desktop & Tablet Filter Pills */}
+          <div className="hidden sm:flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
             {CATEGORY_TABS.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
