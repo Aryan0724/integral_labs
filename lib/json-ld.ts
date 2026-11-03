@@ -1,8 +1,22 @@
 import { SITE_CONFIG, getAbsoluteUrl } from "./site-config";
 import { Article } from "./data/articles";
+import { FAQS } from "./data/faqs";
+import { SERVICES } from "./data/services";
+import { Project } from "./data/projects";
+
+/**
+ * Canonical physical location used across Organization schema, contact pages, and PR.
+ * Keep in sync with SITE_CONFIG.location.
+ */
+export const ORGANIZATION_ADDRESS = {
+  city: SITE_CONFIG.location.city,
+  region: SITE_CONFIG.location.region,
+  country: SITE_CONFIG.location.country,
+} as const;
 
 /**
  * Generates canonical Organization JSON-LD schema for Integral Labs.
+ * Includes geo anchoring (address + areaServed) for local/entity ranking.
  */
 export function getOrganizationJsonLd() {
   return {
@@ -11,10 +25,37 @@ export function getOrganizationJsonLd() {
     "@id": getAbsoluteUrl("#organization"),
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
+    alternateName: "Integral Labs — Integral Groups Engineering Division",
     url: SITE_CONFIG.domain,
     logo: getAbsoluteUrl("/integral-logo-dark.png"),
     email: SITE_CONFIG.contactEmail,
     description: SITE_CONFIG.description,
+    foundingDate: "2024",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: SITE_CONFIG.location.city,
+      addressRegion: SITE_CONFIG.location.region,
+      addressCountry: SITE_CONFIG.location.country,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: SITE_CONFIG.contactEmail,
+      contactType: "sales",
+      availableLanguage: ["en", "hi"],
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+      },
+    },
+    areaServed: ["IN", "US", "GB", "AE"],
+    knowsAbout: SERVICES.map((service) => service.name),
     parentOrganization: {
       "@type": "Organization",
       name: SITE_CONFIG.parentOrganization,
@@ -22,6 +63,7 @@ export function getOrganizationJsonLd() {
     },
     sameAs: [
       SITE_CONFIG.socials.github,
+      // Add LinkedIn / X / Crunchbase company profile URLs here once published.
     ],
   };
 }
@@ -41,6 +83,86 @@ export function getWebSiteJsonLd() {
       "@id": getAbsoluteUrl("#organization"),
     },
     inLanguage: "en-US",
+  };
+}
+
+/**
+ * Generates FAQPage JSON-LD schema. Eligible for rich results and
+ * direct extraction by answer engines (AEO/GEO).
+ */
+export function getFaqJsonLd(faqs: { question: string; answer: string }[] = FAQS) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": getAbsoluteUrl("/#faq"),
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generates an OfferCatalog + Service graph describing the four
+ * co-equal service pillars direct to /services.
+ */
+export function getServicesJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "@id": getAbsoluteUrl("/services#services"),
+    name: "Integral Labs Service Pillars",
+    url: getAbsoluteUrl("/services"),
+    provider: {
+      "@id": getAbsoluteUrl("#organization"),
+    },
+    itemListElement: SERVICES.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        serviceType: service.serviceType,
+        areaServed: "IN",
+      },
+      url: getAbsoluteUrl("/services"),
+      priceCurrency: "INR",
+    })),
+  };
+}
+
+/**
+ * Generates CreativeWork/CaseStudy JSON-LD for a /work/[id] page.
+ */
+export function getCaseStudyJsonLd(project: Project) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": getAbsoluteUrl(`/work/${project.id}#casestudy`),
+    name: project.title,
+    headline: `${project.title} Case Study`,
+    description: project.intro,
+    abstract: `The challenge: ${project.challenge} The solution: ${project.solution}`,
+    url: getAbsoluteUrl(`/work/${project.id}`),
+    image: getAbsoluteUrl(project.image),
+    datePublished: project.year,
+    dateCreated: project.year,
+    inLanguage: "en-US",
+    creator: {
+      "@id": getAbsoluteUrl("#organization"),
+    },
+    about: {
+      "@type": "Thing",
+      name: project.category,
+    },
+    mentions: project.techStack.map((tech) => ({
+      "@type": "Thing",
+      name: tech,
+    })),
   };
 }
 

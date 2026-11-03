@@ -8,6 +8,15 @@ export const SITE_CONFIG = {
   parentOrganization: "Integral Groups",
   domain: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || "https://labs.integralgroups.in",
   contactEmail: "contact@integralgroups.in",
+  /**
+   * Canonical business location used everywhere (schema, pages, PR).
+   * Consistent NAP data is required for entity resolution and geo ranking.
+   */
+  location: {
+    city: "Bhimtal",
+    region: "Uttarakhand",
+    country: "IN",
+  },
   tagline: "Collective Development, Custom Software Systems & Search Dominance",
   description:
     "Integral Labs provides collective digital engineering with equal weight given to code and discoverability. We engineer high-performance web applications, custom software platforms, and authoritative Technical SEO and Answer Engine Optimization (AEO).",

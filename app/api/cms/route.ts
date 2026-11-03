@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getSiteContent, saveSiteContent, SiteContent } from '@/lib/cms';
 import { AUTH_COOKIE_NAME, verifySessionToken } from '@/lib/auth';
+import { submitToIndexNow, coreContentUrls } from '@/lib/indexnow';
 
 export async function GET() {
   const content = getSiteContent();
@@ -44,6 +45,8 @@ export async function POST(request: Request) {
     const success = saveSiteContent(newContent as SiteContent);
     
     if (success) {
+      // Content changed → nudge Bing/AI search index immediately (non-blocking).
+      void submitToIndexNow(coreContentUrls()).catch(() => {});
       return NextResponse.json({ message: 'Content updated successfully' });
     } else {
       return NextResponse.json({ message: 'Failed to save content' }, { status: 500 });

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/auth';
+import { sendContactEmails, isResendConfigured } from '@/lib/notifications';
 
 export async function POST(request: Request) {
   try {
@@ -43,10 +44,12 @@ export async function POST(request: Request) {
     const safeProjectType = projectType ? String(projectType).trim().slice(0, 100) : undefined;
 
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    const resendConfigured = isResendConfigured();
 
-    // When the webhook is unavailable, do not falsely claim successful delivery
-    if (!webhookUrl) {
-      console.warn('[Contact API] DISCORD_WEBHOOK_URL is not configured.');
+    // When no notification channel is configured at all, do not falsely
+    // claim successful delivery.
+    if (!webhookUrl && !resendConfigured) {
+      console.warn('[Contact API] DISCORD_WEBHOOK_URL and RESEND_API_KEY are both unconfigured.');
       if (process.env.NODE_ENV === 'production') {
         return NextResponse.json(
           { 
@@ -66,10 +69,47 @@ export async function POST(request: Request) {
       });
 
       return NextResponse.json({ 
-        message: 'Inquiry recorded in local development mode (external webhook unconfigured).',
+        message: 'Inquiry recorded in local development mode (external delivery unconfigured).',
         delivered: false,
         devMode: true
       });
+    }
+
+    // Fire every configured channel; deliver the request as long as at
+    // least one succeeds. Email failures never fail the request.
+    const emailDelivery = resendConfigured
+      ? await sendContactEmails({
+          name: safeName,
+          email: safeEmail,
+          phone: safePhone,
+          company: safeCompany,
+          projectType: safeProjectType,
+          message: safeMessage,
+        })
+      : { ownerSent: false, replySent: false };
+
+    console.info('[Contact API channel status]', {
+      emailOwner: emailDelivery.ownerSent,
+      emailReply: emailDelivery.replySent,
+    });
+
+    if (!webhookUrl) {
+      // Email-only mode
+      if (emailDelivery.ownerSent || emailDelivery.replySent) {
+        return NextResponse.json({ 
+          message: 'Inquiry received successfully. Our team will contact you shortly.',
+          delivered: true 
+        });
+      }
+
+      console.error('[Contact API] Resend delivery failed.');
+      return NextResponse.json(
+        { 
+          message: 'Unable to deliver inquiry to notification service. Please email us directly at contact@integralgroups.in.',
+          delivered: false
+        }, 
+        { status: 502 }
+      );
     }
 
     // Build fields array for the embed
@@ -114,18 +154,34 @@ export async function POST(request: Request) {
     if (discordResponse.ok) {
       return NextResponse.json({ 
         message: 'Inquiry received successfully. Our team will contact you shortly.',
-        delivered: true 
+        delivered: true,
+        email: {
+          owner: emailDelivery.ownerSent,
+          reply: emailDelivery.replySent,
+        },
       });
-    } else {
-      console.error('Discord webhook dispatch returned status:', discordResponse.status);
-      return NextResponse.json(
-        { 
-          message: 'Unable to deliver inquiry to notification webhook. Please email us directly at contact@integralgroups.in.',
-          delivered: false
-        }, 
-        { status: 502 }
-      );
+    } 
+
+    // Discord failed — succeed if the email channel delivered anything.
+    if (emailDelivery.ownerSent || emailDelivery.replySent) {
+      return NextResponse.json({ 
+        message: 'Inquiry received successfully. Our team will contact you shortly.',
+        delivered: true,
+        email: {
+          owner: emailDelivery.ownerSent,
+          reply: emailDelivery.replySent,
+        },
+      });
     }
+
+    console.error('Discord webhook dispatch returned status:', discordResponse.status);
+    return NextResponse.json(
+      { 
+        message: 'Unable to deliver inquiry to notification service. Please email us directly at contact@integralgroups.in.',
+        delivered: false
+      }, 
+      { status: 502 }
+    );
   } catch (error: any) {
     console.error('Contact API error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });

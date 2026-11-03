@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, X, CheckCircle, Phone, CornerDownLeft, MessageSquare } from "lucide-react";
+import { trackSidebarContactSubmit } from "@/lib/analytics";
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function ContactSidebar() {
 
       if (res.ok) {
         setIsSubmitted(true);
+        trackSidebarContactSubmit();
         setFormState({ name: "", email: "", message: "", phone: "", hp_field: "" });
         setTimeout(() => {
           setIsSubmitted(false);

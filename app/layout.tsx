@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import SmoothScroll from "@/components/shared/SmoothScroll";
 import ContactSidebar from "@/components/shared/ContactSidebar";
+import Analytics from "@/components/shared/Analytics";
 
 import { SITE_CONFIG } from "@/lib/site-config";
 import { getOrganizationJsonLd, getWebSiteJsonLd, safeJsonLdReplacer } from "@/lib/json-ld";
@@ -41,21 +42,12 @@ export const metadata: Metadata = {
     title: "Integral Labs | Custom Software, Web Platforms & Modern Search",
     description:
       "Custom software engineering and digital discoverability consultancy. Engineering Next.js web applications, bespoke business platforms, and organic & AI search architectures.",
-    images: [
-      {
-        url: "/integral-logo-dark.png",
-        width: 1200,
-        height: 630,
-        alt: "Integral Labs - Custom Software & Modern Search Engineering",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Integral Labs | Custom Software, Web Platforms & Modern Search",
     description:
       "Custom software engineering and digital discoverability consultancy. Engineering Next.js web applications, bespoke business platforms, and organic & AI search architectures.",
-    images: ["/integral-logo-dark.png"],
   },
   robots: {
     index: true,
@@ -67,6 +59,13 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  // Site-owner verification: populated via env vars on the hosting platform.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
   },
 };
 
@@ -97,6 +96,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </Suspense>
+        <Analytics />
       </body>
     </html>
   );

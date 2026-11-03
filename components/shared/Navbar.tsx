@@ -205,6 +205,15 @@ export default function Navbar() {
             </Link>
 
             <Link 
+              href="/pricing" 
+              className={`text-[13px] font-semibold tracking-wider uppercase transition-colors ${
+                pathname === "/pricing" ? "text-blue-600" : "text-slate-700 hover:text-slate-950"
+              }`}
+            >
+              Pricing
+            </Link>
+
+            <Link 
               href="/#process" 
               className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
@@ -305,6 +314,13 @@ export default function Navbar() {
                   className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
                   Portfolio & Work
+                </Link>
+                <Link
+                  href="/pricing"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
+                >
+                  Pricing & Packages
                 </Link>
                 <Link
                   href="/#process"
