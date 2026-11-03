@@ -20,6 +20,8 @@ page.city-dehradun: /dehradun
 page.city-haldwani: /haldwani
 page.city-rudrapur: /rudrapur
 page.city-nainital: /nainital
+page.city-haridwar: /haridwar
+page.aeo: /aeo
 page.process: /process
 page.about: /about
 page.blog: /blog

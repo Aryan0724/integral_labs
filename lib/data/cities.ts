@@ -291,6 +291,70 @@ export const CITIES: City[] = [
       },
     ],
   },
+  {
+    slug: "haridwar",
+    city: "Haridwar",
+    metaTitle: "Web Development Company in Haridwar",
+    metaDescription:
+      "Websites & custom software for Haridwar hotels, retailers and manufacturers — engineered remotely from our Uttarakhand HQ, performance-tuned for pilgrim-season surges. Exact quote within 24 hours.",
+    heroLabel: "Serving Haridwar · Ganga Corridor",
+    h1: "Web & Software Development Company in Haridwar",
+    intro:
+      "Haridwar lives two lives at once: by the Ganga, pilgrims, dharamshalas and shopkeepers ride seasons that can double or triple overnight — from the Kanwar rush to Kumbh years; a few kilometres inland, the industrial belt's plants, dealers and logistics operators run on quotation sheets and delivery challans. Integral Labs engineers software and websites for both economies, delivered remotely from our Uttarakhand HQ with on-site visits when a project genuinely needs them.",
+    pillars: [
+      "Booking engines, multi-language pages and high-traffic websites for hotels, dharamshalas and tour operators — engineered for pilgrim-season surges, not just average Tuesdays.",
+      "Quotation, billing and dealer systems for Haridwar's industries, plus retail and clinic software for the bazaar trade around Har ki Pauri.",
+      "Technical SEO that wins \"in Haridwar\" searches on engineering merit — semantic markup, schema graphs and Core Web Vitals the template shops can't match.",
+      "Structured, machine-readable answers so AI assistants cite your Haridwar business when travellers ask where to stay or buyers ask who supplies.",
+    ],
+    industries: [
+      "Hotels, Dharamshalas & Pilgrim Tourism",
+      "Manufacturers (Haridwar Industrial Belt)",
+      "Retail, Ayurveda & Bazaar Trade",
+      "Schools & Coaching Institutes",
+      "Healthcare & Wellness",
+      "Event & Wedding Services",
+    ],
+    nearbyAreas: [
+      "Har Ki Pauri",
+      "Jwalapur",
+      "Kankhal",
+      "BHEL Industrial Area",
+      "Rishikesh",
+      "Roorkee",
+      "Devpura",
+      "Ranipur More",
+    ],
+    featured: ["bro-uni", "atozprints"],
+    faqs: [
+      {
+        question: "Do you have an office in Haridwar?",
+        answer:
+          "Our engineering HQ is in Bhimtal — on the Kumaon side of Uttarakhand — so we serve Haridwar remotely through scheduled video calls, shared project boards and weekly working demos. When a project needs in-person scoping or on-site training, we plan visits deliberately. You deal directly with the engineers building your product, which is why timing and quality hold.",
+      },
+      {
+        question: "How much does website development in Haridwar cost?",
+        answer:
+          "We don't quote before we understand the problem. Book a discovery call and describe what you're building; within 24 hours you receive a fixed, milestone-based quote covering scope, timeline and number — no package padding, no surprise line items.",
+      },
+      {
+        question: "Can your website handle Kumbh-scale traffic spikes?",
+        answer:
+          "That's an engineering question, and we treat it as one: edge-cached static pages, incremental regeneration and image pipelines sized for surge patterns like the Kanwar rush and festival years. Your site stays fast on the days your entire year depends on.",
+      },
+      {
+        question:
+          "Our current site was built by a local agency in WordPress. Can you take it over?",
+        answer:
+          "Yes. We audit the codebase and performance, then migrate to a modern Next.js build with SEO-preserving redirects, structured data and Core Web Vitals fixes — protecting your accumulated Google rankings through the transition.",
+      },
+      {
+        question: "Will we rank on Google — and in AI assistants' answers?",
+        answer:
+          "Both are engineered into the build: Technical SEO (semantic HTML5, JSON-LD schema, crawl architecture) secures classic rankings, while our Answer Engine Optimization layer — llms.txt, ai.txt and machine-readable Q&A — makes ChatGPT, Perplexity and Gemini able to cite you. No monthly mystery retainers required.",
+      },
+    ],
+  },
 ];
 
 export function getCity(slug: string): City {

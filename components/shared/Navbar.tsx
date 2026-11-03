@@ -226,6 +226,13 @@ export default function Navbar() {
             </Link>
 
             <Link 
+              href="/aeo" 
+              className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
+            >
+              SEO &amp; AEO
+            </Link>
+
+            <Link 
               href="/blog" 
               className="text-[13px] font-semibold tracking-wider uppercase text-slate-700 hover:text-slate-950 transition-colors"
             >
@@ -312,6 +319,13 @@ export default function Navbar() {
                   className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
                 >
                   Our Process
+                </Link>
+                <Link
+                  href="/aeo"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-bold text-slate-800 hover:text-blue-600 py-1"
+                >
+                  SEO &amp; AEO (AI Search)
                 </Link>
                 <Link
                   href="/#ecosystem"

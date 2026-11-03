@@ -174,6 +174,16 @@ export default function Footer() {
                   Website Design in Nainital &amp; Bhimtal
                 </Link>
               </li>
+              <li>
+                <Link href="/haridwar" className="hover:text-blue-400 transition-colors">
+                  Web Development in Haridwar
+                </Link>
+              </li>
+              <li>
+                <Link href="/aeo" className="hover:text-blue-400 transition-colors">
+                  SEO &amp; AEO Services
+                </Link>
+              </li>
             </ul>
           </div>
 

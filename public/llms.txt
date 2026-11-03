@@ -16,7 +16,8 @@ CORE SERVICE PILLARS
 KEY PAGES
 - Services overview: /services
 - Portfolio & live case studies: /work
-- Uttarakhand city coverage: /dehradun · /haldwani · /rudrapur · /nainital
+- Uttarakhand city coverage: /dehradun · /haldwani · /rudrapur · /nainital · /haridwar
+- AEO / AI-search visibility services: /aeo
 - Engineering process: /process
 - About the studio: /about
 - Engineering blog: /blog

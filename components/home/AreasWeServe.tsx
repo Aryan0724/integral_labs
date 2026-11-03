@@ -7,6 +7,7 @@ const CITY_LINK_LABEL: Record<string, string> = {
   haldwani: "App & web development in Haldwani",
   rudrapur: "Custom software in Rudrapur & SIDCUL",
   nainital: "Website design in Nainital & Bhimtal",
+  haridwar: "Web development in Haridwar",
 };
 
 /**
@@ -62,7 +63,7 @@ export default function AreasWeServe() {
           {/* Global reach card */}
           <Link
             href="/contact"
-            className="group rounded-2xl border border-slate-900 bg-gradient-to-r from-slate-900 to-slate-950 p-6 text-white hover:shadow-lg transition-all md:col-span-2 lg:col-span-2"
+            className="group rounded-2xl border border-slate-900 bg-gradient-to-r from-slate-900 to-slate-950 p-6 text-white hover:shadow-lg transition-all"
           >
             <div className="flex items-start justify-between gap-4">
               <div>

@@ -46,7 +46,7 @@ test("Blog & Technical SEO Comprehensive Verification Suite", async (t) => {
 
   await t.test("2. Publication status gating and draft protection", () => {
     const published = getPublishedArticles();
-    assert.equal(published.length, 5, "Expected exactly 5 published starter articles");
+    assert.equal(published.length, 9, "Expected 9 published articles (5 originals + 4-page content cluster)");
 
     // Check that draft article is excluded from public lookups
     const draft = getArticleBySlug("draft-internal-architecture-preview");

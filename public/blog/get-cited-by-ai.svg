@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <g transform="translate(120, 110)">
+    <!-- Buyer prompt -->
+    <rect x="0" y="40" width="300" height="100" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="25" y="75" fill="#64748b" font-family="system-ui, sans-serif" font-size="12" font-weight="600">BUYER PROMPT</text>
+    <text x="25" y="105" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15">"Best agency for X?"</text>
+    <path d="M 300 90 L 380 130" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 2"/>
+
+    <!-- Generated answer card -->
+    <rect x="380" y="80" width="430" height="200" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="405" y="115" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">GENERATIVE ANSWER · ONE VERDICT</text>
+    <rect x="405" y="135" width="380" height="10" rx="5" fill="#1e293b"/>
+    <rect x="405" y="157" width="300" height="10" rx="5" fill="#1e293b"/>
+    <rect x="405" y="179" width="180" height="14" rx="7" fill="#2563eb"/>
+    <text x="415" y="190" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700">YOUR BRAND — CITED</text>
+    <rect x="405" y="215" width="340" height="10" rx="5" fill="#1e293b"/>
+    <rect x="405" y="237" width="120" height="10" rx="5" fill="#1e293b"/>
+
+    <!-- Citation chips -->
+    <rect x="840" y="110" width="180" height="46" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="865" y="138" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="700">[1] source.md</text>
+    <rect x="840" y="170" width="180" height="46" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="865" y="198" fill="#94a3b8" font-family="monospace" font-size="16" font-weight="700">[2] review.org</text>
+    <rect x="840" y="230" width="180" height="46" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="865" y="258" fill="#94a3b8" font-family="monospace" font-size="16" font-weight="700">[3] forum.q</text>
+  </g>
+
+  <text x="600" y="570" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // AEO &amp; GEO CITATION PLAYBOOK</text>
+</svg>

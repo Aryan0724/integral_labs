@@ -39,6 +39,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: getAbsoluteUrl("/haridwar"),
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: getAbsoluteUrl("/aeo"),
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: getAbsoluteUrl("/services"),
       lastModified: new Date(),
       changeFrequency: "weekly",

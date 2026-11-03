@@ -392,6 +392,330 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "how-to-get-cited-by-chatgpt-and-perplexity",
+    title: "How to Get Your Business Cited by ChatGPT and Perplexity",
+    excerpt:
+      "When a buyer asks an AI assistant for a recommendation, the generated answer collapses ten blue links into a single verdict. This is the engineering playbook for becoming the brand inside that verdict — entities, retrieval structure, consensus and measurement.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-09-20T09:00:00.000Z",
+    updatedAt: "2026-10-26T10:30:00.000Z",
+    category: "Search Engineering",
+    tags: ["AEO", "Generative Engine Optimization", "ChatGPT", "Perplexity", "Entity SEO", "llms.txt"],
+    coverImage: "/blog/get-cited-by-ai.svg",
+    coverAlt: "Diagram of a buyer prompt, a generated AI answer containing one recommendation, and the citation sources that produced it",
+    readingTime: "9 min read",
+    seoTitle: "How to Get Cited by ChatGPT & Perplexity: The AEO Engineering Playbook",
+    seoDescription:
+      "A technical playbook for answer engine optimization: entity graphs, retrieval-ready structure, off-site consensus and citation-share measurement across ChatGPT, Perplexity, Gemini and Claude.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-verdict-economy", title: "The Verdict Economy", level: 2 },
+      { id: "how-answer-engines-choose-sources", title: "How Answer Engines Choose Sources", level: 2 },
+      { id: "the-five-lever-citation-playbook", title: "The Five-Lever Citation Playbook", level: 2 },
+      { id: "measuring-citation-share-without-special-tooling", title: "Measuring Citation Share Without Special Tooling", level: 2 },
+      { id: "what-we-run-on-our-own-site", title: "What We Run on Our Own Site", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Verdict Economy",
+        paragraphs: [
+          "Classic search is a choice economy: the engine returns ten links, and the buyer chooses among them. Generative search is a verdict economy: the model assembles one synthesized answer, often naming two or three providers by name, and the buyer moves. The decision moment has migrated upstream — from your website, into the model's answer before the buyer ever reaches it.",
+          "This is why answer engine optimization (AEO) — increasingly called generative engine optimization (GEO) — has become its own engineering discipline. It is not about tricking a model into saying nice things. It is about removing every point of friction between what your business actually is, and what the retrieving, synthesizing machinery can confidently extract and cite about it."
+        ],
+        callout: {
+          type: "note",
+          text: "No agency controls what a model says. Anyone who guarantees an AI recommendation is selling fiction. What you control: entity clarity, retrievable structure, third-party consensus, and measurement. That is the honest scope of this playbook."
+        }
+      },
+      {
+        heading: "How Answer Engines Choose Sources",
+        paragraphs: [
+          "The engines behave differently enough that a one-size strategy underperforms on at least one of them. ChatGPT with search enabled retrieves against an index closely related to Bing's, then synthesizes with strong preference for pages that state facts cleanly and verifiably. Perplexity runs live retrieval at query time and is known to lean on community platforms — Reddit and Quora threads appear as citations with striking regularity. Gemini correlates strongly with Google's own surfaces, including Google Business Profile data for local and commercial queries. Claude behaves like a careful librarian: it prefers unambiguous, well-structured documentation and penalizes marketing vagueness.",
+          "Across all of them, three retrieval constants hold. First, servers must respond fast — live agent fetches run under aggressive latency budgets, so client-rendered JavaScript-only pages are systematically disadvantaged. Second, claims must be extractable: definitive sentences, concrete specifications, numbers where numbers exist. Third, consensus matters: models borrow confidence from the places they already trust, so a brand that appears only on its own site is a brand the model must take on faith."
+        ]
+      },
+      {
+        heading: "The Five-Lever Citation Playbook",
+        paragraphs: [
+          "In production engagements we work five levers, roughly in this order:"
+        ],
+        bulletPoints: [
+          "Entity precision: a canonical Organization definition (legal name, parent company, founding, address, contacts) expressed once in JSON-LD and reused everywhere via stable @id URIs. Inconsistent names and conflicting facts across the web are the single most common reason models hedge around a brand.",
+          "Retrieval-ready structure: server-rendered HTML, semantic headings, and claim-first editorial hierarchy so a live fetch extracts an answer in one pass. FAQPage and Q&A schema convert real buyer questions into machine-readable answers.",
+          "The llms.txt layer: a curated markdown file at the site root that orients AI crawlers — identity, services, priority pages, and canonical facts. Supplementary ai.txt files give assistants a compact structured profile. See our llms.txt implementation guide for the full spec.",
+          "Off-site consensus: coordinated presence on the review platforms, industry roundups and community threads that your category's answers are actually synthesized from. This is where most of the leverage lives, because it is the part your competitors least often do systematically.",
+          "Measurement: a tracked prompt portfolio run across the engines monthly, scoring recommendation and citation share against a documented baseline — so the work proves itself in deltas, not adjectives."
+        ]
+      },
+      {
+        heading: "Measuring Citation Share Without Special Tooling",
+        paragraphs: [
+          "Citation measurement does not require proprietary tooling to start. Build a list of the twenty to fifty prompts a real buyer would type before choosing a provider in your category — problem queries, comparison queries, and recommendation queries. Run each against every tracked engine weekly, and record three outcomes per run: named recommendation (your brand appears in the answer body), cited source (your domain appears in the citation list), or absent.",
+          "The output is a simple per-engine percentage you can trend over weeks: citation share. Treat competitor entries the same way and you get market context for free. The compounding effect of the five levers shows up here first — usually in Perplexity and community-driven results, which respond fastest to the consensus layer, before propagating to the heavier-synthesizing engines."
+        ]
+      },
+      {
+        heading: "What We Run on Our Own Site",
+        paragraphs: [
+          "We hold ourselves to the standard we sell. This publication, for example, is statically prerendered, schema-linked to a canonical Organization entity, and reachable by agents that fetch under latency budgets. The machine-readable layer — llms.txt and ai.txt — is served at the root of this domain, and every publish pings Bing's IndexNow so fresh URLs enter the retrieval indexes within minutes rather than weeks.",
+          "If a piece of AEO advice cannot be demonstrated on the agency's own domain, we treat it with suspicion. Ask us about any of it on a discovery call — pair the audit conversation with the specifics of your category, and you will leave with the three highest-leverage fixes regardless of whether we end up working together."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "llms-txt-implementation-guide",
+    title: "llms.txt: A Complete Implementation Guide for 2026",
+    excerpt:
+      "The llms.txt proposal gives AI assistants a curated, markdown-formatted map of your site — identity, canonical facts, and priority documents — instead of guessing from a sitemap. Here is how to implement it correctly, with a working annotated example.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-10-02T08:00:00.000Z",
+    category: "Search Engineering",
+    tags: ["llms.txt", "AEO", "AI Search", "Markdown", "Crawler Optimization"],
+    coverImage: "/blog/llms-txt-guide.svg",
+    coverAlt: "Terminal-style llms.txt file being read and parsed by an AI assistant that resolves the entity and cites the pages",
+    readingTime: "8 min read",
+    seoTitle: "llms.txt Implementation Guide: Structure, Example, and Common Mistakes",
+    seoDescription:
+      "How to implement llms.txt correctly in 2026: file anatomy, the ai.txt companion, a fully annotated example, validation, and the mistakes that waste the effort.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "what-llmstxt-actually-is", title: "What llms.txt Actually Is", level: 2 },
+      { id: "the-two-file-standard", title: "The Two-File Standard", level: 2 },
+      { id: "an-annotated-working-example", title: "An Annotated Working Example", level: 2 },
+      { id: "common-implementation-mistakes", title: "Common Implementation Mistakes", level: 2 },
+      { id: "validation-and-maintenance", title: "Validation and Maintenance", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "What llms.txt Actually Is",
+        paragraphs: [
+          "llms.txt is a proposed convention — a markdown file served at `/llms.txt` that orients AI crawlers and assistants when they arrive on your domain. Where robots.txt tells crawlers what they may not touch and sitemap.xml lists every indexed URL, llms.txt tells a language model what is actually important: who published this site, what the canonical facts are, and which documents are worth a token budget.",
+          "The premise is simple: an LLM fetching your site has limited attention. Sitemaps are flat and enormous; navigation is presentation, not semantics. A curated markdown file is the cheapest possible way to hand a model a correct, prioritized summary — and despite not being an enforced standard, adoption pressure comes from the consumers: assistants increasingly reward domains that serve one."
+        ]
+      },
+      {
+        heading: "The Two-File Standard",
+        paragraphs: [
+          "In production we deploy llms.txt alongside a companion ai.txt. The pairing covers two consumption patterns. llms.txt is markdown, aimed at assistants that want a browsable map: H1 identity line, blockquote summary, then categorized link sections with descriptive bullets. ai.txt is a flat key-value profile, aimed at retrievers that want scannable facts — name, description, canonical URL, services, response-time expectations, and citation guidelines.",
+          "The two files must never disagree. Every fact that appears in one must match the other, and both must match your JSON-LD Organization entity. Divergent facts across machine-readable surfaces are worse than no files at all, because they actively degrade model confidence in your entity."
+        ],
+        callout: {
+          type: "tip",
+          text: "Serve both files as static assets from the site root, not through a renderer. Static delivery means sub-millisecond fetches for live agents and zero dependency on your application runtime."
+        }
+      },
+      {
+        heading: "An Annotated Working Example",
+        paragraphs: [
+          "This is the structure we ship on our own domain, annotated line by line: the H1 carries the official name; the blockquote is a two-sentence positioning statement an assistant can lift verbatim; CONTACT, RESPONSE TIME and SERVED MARKETS give retrievable operational facts; the KEY PAGES section curates the five to eight URLs that matter; and WELL-KNOWN FACTS encodes the canonical claims a model should attribute to you — stack, delivery timelines, ownership terms. A final CONTENT POLICY section states how you wish to be quoted and how to handle corrections.",
+          "The discipline to note: every claim is short, definite and self-contained. A model cannot cite ambiguity. Write the file as if your audience were a careful but literal librarian with ten seconds to form an opinion of your business."
+        ]
+      },
+      {
+        heading: "Common Implementation Mistakes",
+        paragraphs: [
+          "The failure modes we find in audits are consistent:"
+        ],
+        bulletPoints: [
+          "The brochure copy-paste: llms.txt that contains adjectives instead of facts. 'Industry-leading solutions provider' is not citable; 'custom software engineering division of Integral Groups, HQ Bhimtal' is.",
+          "The facts disagree: file says one email, schema says another, footer says a third. Reconcile before launch — one canonical NAP across every surface.",
+          "The everything-file: forty links and no priority. curation is the entire point; if everything matters, nothing does.",
+          "The stale file: a services line referencing pages retired six months ago. Wire the file into your deploy checklist or CMS save hook so it cannot rot silently.",
+          "The invisible file: llms.txt served behind client-side hydration or with a content-type that forces download instead of text. Text/markdown over plain HTTP GET, statically."
+        ]
+      },
+      {
+        heading: "Validation and Maintenance",
+        paragraphs: [
+          "Validation is manual and fast: fetch the file as a crawler would, confirm content-type and load time, then put every claim in the file under the same accuracy review your public pages receive. Keep one internal owner for the file. In our delivery pipeline, llms.txt and ai.txt are regenerated as part of content deploys and their URLs are included in IndexNow pings, which keeps retrieval indexes synchronized with the entity facts.",
+          "Finally, measure the outcome the same way you would any AEO work: run your tracked prompt panels monthly and note whether your brand's citation share moves after the files and fixes go live. The files are cheap; the measurement discipline is what turns them from a checkbox into a channel."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "nextjs-16-app-router-production-guide",
+    title: "Next.js 16 in Production: What the App Router Demands From Teams",
+    excerpt:
+      "Version numbers on the Next.js framework are not marketing labels — they are material differences in caching semantics, rendering contracts and build tooling. This is what shipping App Router projects on the current major actually requires from an engineering team.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-10-18T08:00:00.000Z",
+    category: "Web Architecture",
+    tags: ["Next.js", "React", "Turbopack", "App Router", "Web Architecture"],
+    coverImage: "/blog/nextjs16-app-router.svg",
+    coverAlt: "A large Next.js 16 numeral beside an app directory file tree and a production rules checklist on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "Next.js 16 in Production: What the App Router Demands From Teams",
+    seoDescription:
+      "An engineering breakdown of Next.js 16 production requirements: React 19 Server Components as the default, Turbopack builds, proxy.ts, async params, and OG image conventions — written from a codebase running it.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "why-version-specificity-matters", title: "Why Version Specificity Matters", level: 2 },
+      { id: "the-app-router-contract", title: "The App Router Contract", level: 2 },
+      { id: "turbopack-and-the-new-build-reality", title: "Turbopack and the New Build Reality", level: 2 },
+      { id: "metadata-and-og-image-conventions", title: "Metadata and OG Image Conventions", level: 2 },
+      { id: "migration-notes-from-earlier-versions", title: "Migration Notes From Earlier Versions", level: 2 },
+      { id: "questions-to-ask-before-you-sign", title: "Questions to Ask Before You Sign", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Why Version Specificity Matters",
+        paragraphs: [
+          "Ask an agency what framework they use and you will hear \"Next.js\" — an answer that has become almost meaningless. The framework has shipped multiple majors in recent years, and the differences between them are not cosmetic: caching semantics changed, the middleware system was replaced, route parameters went async, and the bundler swapped out entirely. A team whose mental model formed on an older major will consciously produce sites that build slowly, cache incorrectly, or break outright on the current release.",
+          "This matters to buyers as much as engineers. If you are commissioning a website, the specificity question is a legitimate hiring screen: ask which major version the team ships on today and what changed in it. A serious team answers with names of the changes, not with reassurances. This article is our own answer, written from a codebase that runs the current major in production right now."
+        ]
+      },
+      {
+        heading: "The App Router Contract",
+        paragraphs: [
+          "Every file in the application directory carries meaning, and every component is a React Server Component by default. That single sentence is the contract. Server Components run on the server, never ship their code to the browser, and can render directly against your database or CMS. The 'use client' directive is an explicit exception you add at the leaf of the tree for the interactive minority — forms, dropdowns, animations.",
+          "The React 19 Server Component model pairs with streaming: a route renders its static skeleton immediately and fills in slower sections as their data resolves, rather than blocking the entire page on the slowest query. This is also why the answer to \"is it fast?\" is architectural rather than configurational — pages that static-render at build time, or stream server-first, arrive under aggressive latency budgets that client-rendered single-page applications cannot meet, which includes the budgets alive AI agents and search crawlers now enforce."
+        ],
+        bulletPoints: [
+          "layout.tsx wraps every route beneath it; page.tsx is a route's entry point. Shared UI lives in layouts, not duplicated in pages.",
+          "Data fetching lives in Server Components by default — no client-side waterfalls unless you deliberately create one.",
+          "Suspense boundaries define what streams first; put them around the slow parts, not around everything.",
+          "Server Actions and route handlers replace hand-rolled API layers for the majority of mutations."
+        ]
+      },
+      {
+        heading: "Turbopack and the New Build Reality",
+        paragraphs: [
+          "On the current major, Turbopack is the default engine for development and production builds — the old bundler is a fallback you must deliberately opt into. In our builds, the immediate observable difference is the dev loop: compilation that used to take tens of seconds on large route trees now lands in a fraction of that, and full production builds of a content-heavy marketing site finish in seconds-to-low-minutes instead of minutes-to-high-minutes.",
+          "The production implication runs deeper than speed. Webpack-era assumptions — plugin ecosystems, exotic loader chains, config files tuned per project — mostly do not transfer. Turbopack expects standards-conformant TypeScript and CSS, which quietly enforces a healthier codebase: fewer build-time hacks, fewer dependency forks, more standard imports. Teams folded into niche webpack gymnastics need to untangle that debt before upgrading, because the tooling will not carry it."
+        ],
+        callout: {
+          type: "note",
+          text: "Our own site — this article included — builds on the current major with Turbopack and deploys statically. Everything described here is verifiable in our source, not hypothetical."
+        }
+      },
+      {
+        heading: "Metadata and OG Image Conventions",
+        paragraphs: [
+          "The metadata system is file-conventional and colocated: a page exports a metadata object, or an async generateMetadata when titles and descriptions depend on fetched data. Two changes bite migrators. First, route parameters and search arguments arrive as Promises — you await them, a typing change that touches every dynamic page. Second, canonical URLs, OpenGraph images and favicons each have dedicated file conventions; a colocated opengraph-image file generates social-card images at build time via ImageResponse from next/og, rendering JSX into a PNG without any external design tooling in the loop.",
+          "That last convention is more valuable than it looks. Social and AI-link previews are generated from the same source of truth as the page content, so they can never drift from it, and they regenerate on every build for free. For a content-led business — the kind running the publication you are reading — it removes an entire class of manual design work."
+        ]
+      },
+      {
+        heading: "Migration Notes From Earlier Versions",
+        paragraphs: [
+          "The upgrade from earlier majors is mechanical where the changes are interface-level, and architectural where they are caching-level. The headline replacements: middleware has been superseded by a proxy convention with different placement and semantics; per-request route data is awaited, not destructured synchronously; and several implicit caching behaviours were tightened so that nothing caches by accident across requests. The framework ships codemods covering most mechanical edits, but codemods cannot decide your packaging boundaries."
+        ],
+        bulletPoints: [
+          "Inventory every middleware usage and decide whether it belongs in the new proxy layer or in the route tree itself.",
+          "Grep for params and searchParams destructuring — every hit needs an await and likely a type update.",
+          "Audit any reliance on implicit caching; make caching deliberate per route, not inherited by accident.",
+          "Check the dependency list for webpack-specific tooling and edge-incompatible packages before the first build attempt.",
+          "Budget a real staging pass on Core Web Vitals after migration — rendering changes can shift LCP element timing even when everything 'works'."
+        ]
+      },
+      {
+        heading: "Questions to Ask Before You Sign",
+        paragraphs: [
+          "If you are the buyer rather than the engineer, the version-specificity discussion compresses into three questions. Which major version is my project shipping on, and what changed in it? Can you show me two live sites you shipped on that major — sites I could run through a performance tool right now? And who owns the code, the domain and the deployment infrastructure when the invoice is paid?",
+          "Teams that ship deliberately answer the first with named changes, the second with working URLs — not screenshots — and the third with a documented handover. Teams that cannot are telling you their framework knowledge predates the rendering model your site will run on. Ask all three on a discovery call; the serious teams will not flinch."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "website-development-cost-uttarakhand",
+    title: "What Does Website Development Cost in Uttarakhand? An Honest Breakdown",
+    excerpt:
+      "Every buyer wants a number before they call, and every local agency publishes a price list that answers the wrong question. Here is what actually moves a website project's cost, why published package lists mislead, and how to get a real, fixed quote within 24 hours.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-01T08:00:00.000Z",
+    category: "Web Architecture",
+    tags: ["Uttarakhand", "Web Development", "Buyer Guide", "Project Scoping"],
+    coverImage: "/blog/website-cost-uttarakhand.svg",
+    coverAlt: "Four scope levers shown as progress bars on a dark blueprint background with a Himalayan ridgeline above",
+    readingTime: "8 min read",
+    seoTitle: "Website Development Cost in Uttarakhand: An Honest Breakdown",
+    seoDescription:
+      "No published price list can tell you what your website will cost. What actually drives website development pricing in Uttarakhand — scope, integrations, content and support — and how to get a fixed quote within 24 hours.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-honest-answer", title: "The Honest Answer", level: 2 },
+      { id: "the-four-levers-that-move-project-cost", title: "The Four Levers That Move Project Cost", level: 2 },
+      { id: "why-published-price-lists-mislead-buyers", title: "Why Published Price Lists Mislead Buyers", level: 2 },
+      { id: "uttarakhand-market-reality-check", title: "Uttarakhand Market Reality Check", level: 2 },
+      { id: "how-to-get-a-real-number-in-24-hours", title: "How to Get a Real Number in 24 Hours", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Honest Answer",
+        paragraphs: [
+          "You are reading a cost breakdown that contains no figures, and that is deliberate. Website development cost is a function of scope — not a menu you pick from. Two local businesses wanting a \"company website\" can hold wholly different amounts of work inside that phrase: one is five content pages and a contact form; the other is a booking engine wired to payments, a staff dashboard and three languages. Quoting both from a package card is either padding the first or lowballing the second.",
+          "So the honest answer is a process, not a number: a discovery call where you describe the business problem, a scope conversation that separates what you need from what a template happens to offer, and a fixed, milestone-based quote delivered within 24 hours of that call. Anyone who quotes you before scoping is guessing — or baiting, and you will find out which at the change-request stage."
+        ],
+        callout: {
+          type: "note",
+          text: "We publish no price list on purpose. A number attached to a scope you have not described is marketing, not an estimate. Everything below explains what an estimate should be built from instead."
+        }
+      },
+      {
+        heading: "The Four Levers That Move Project Cost",
+        paragraphs: [
+          "When we scope a project, the estimate is engineered from four levers. Understanding them tells you where your money goes, and reading them can tell you when an incoming quote is inconsistent with your project."
+        ],
+        bulletPoints: [
+          "Scope: page count and page type. A catalogue site and a transactional site differ by an order of magnitude in flows, states and edge cases — every extra user journey multiplies design, build and test surface.",
+          "Integrations: payment gateways, booking or inventory systems, ERPs, CRMs, shipping providers. Each integration is a negotiation with a third party's documentation and failure modes, and it is the lever most often hidden from advertised starter packages.",
+          "Content: who produces the text, photography and structure. Content authored by the client is effort you save; content production and migration from an old site is real engineering and editorial time, and the lever buyers most often forget to budget.",
+          "Support: what happens after launch. A handover-and-depart engagement, ongoing maintenance, or a monitoring-and-iteration retainer are different commitments — decide deliberately rather than inheriting whatever the invoice implies."
+        ]
+      },
+      {
+        heading: "Why Published Price Lists Mislead Buyers",
+        paragraphs: [
+          "Package price lists are a marketing instrument, and they mislead in consistent ways. The advertised base excludes the integrations almost every real business needs, so the entry price functions as a hook — the actual quote arrives after you have invested attention. The scope language is elastic: \"five pages\" does not say whether it is five bespoke templates or one template stamped five times. And the lifecycle is invisible: hosting renewals, plugin licence fees, content updates and security patches live in fine print or in silence.",
+          "None of this means every agency using a price list is acting in bad faith. It means a list price cannot carry engineering information, because it is set before any scoping conversation. Treat any number you see before a discovery call as an upper bound on the conversation's usefulness and a lower bound on the reflection you should demand."
+        ]
+      },
+      {
+        heading: "Uttarakhand Market Reality Check",
+        paragraphs: [
+          "The regional market has particular characteristics worth knowing before you compare quotes. Much of the established agency supply across Dehradun, Haldwani, Rudrapur and Haridwar grew up in the WordPress template era: strong on quick site assembly, weaker on the modern engineering layer — server rendering, structured data, performance budgets — that now determines whether a site ranks and converts. Template-era incumbency is not automatically a deficiency for a simple brochure site, but it is a real one if search visibility, custom workflows or integration work are among your goals.",
+          "That assessment should be evidence-based rather than based on any shop's claims, and the checks are cheap:"
+        ],
+        bulletPoints: [
+          "Portfolio links: open them. Sites that are dead, broken on mobile, or painfully slow are direct evidence about the QA culture you would be buying.",
+          "Structured data: run the candidate agency's own site through Google's Rich Results test. A firm that neglects its own schema will not treat yours differently.",
+          "Core Web Vitals: check their site and their client sites in PageSpeed Insights. Marketing-speak about \"fast websites\" is only meaningful next to measured numbers.",
+          "IP ownership: ask in writing who owns the code, the domain registration and the hosting account at project end. The answer \"hosted with us\" during a dispute is a hostage situation you want no part of."
+        ]
+      },
+      {
+        heading: "How to Get a Real Number in 24 Hours",
+        paragraphs: [
+          "You describe the product on a discovery call — goals, integrations, content reality, deadline. We scope it and send back a fixed, milestone-based quote within 24 hours: what is included, the build sequence, the delivery date, and one clearly stated number. No package tiers, no padded line items, no discovery invoices.",
+          "If the scope turns out smaller than you assumed, the quote is smaller. If it turns out bigger, you know before committing, with the reasoning visible. That is the whole pitch: an estimate built on engineering, delivered in a day, in writing."
+        ],
+        callout: {
+          type: "tip",
+          text: "Before the call, write one sentence: what must the website do for revenue this year? Bookings? Enquiries? An online catalogue? That sentence scopes the project more precisely than any package description."
+        }
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:
