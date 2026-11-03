@@ -13,20 +13,23 @@ import { getOrganizationJsonLd, getWebSiteJsonLd, safeJsonLdReplacer } from "@/l
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
   title: {
-    default: "Integral Labs | Custom Software, Web Platforms & Modern Search (SEO & AEO)",
+    default:
+      "Integral Labs | Software Development Company in Uttarakhand (SEO & AEO)",
     template: "%s | Integral Labs",
   },
   description:
-    "Integral Labs is a custom software engineering and digital discoverability consultancy. We engineer scalable web platforms, bespoke business software, and organic & AI search architectures (SEO & AEO) that drive qualified business enquiries.",
+    "Integral Labs is a custom software engineering and search discoverability company based in Bhimtal, Uttarakhand. We serve Dehradun, Haldwani, Rudrapur, Nainital & the world with scalable Next.js platforms, bespoke business software, and SEO & AEO architectures.",
   keywords: [
-    "Custom Software Development",
-    "Web Development",
+    "software development company in Uttarakhand",
+    "web development company in Dehradun",
+    "app development company in Haldwani",
+    "software development company in Rudrapur",
+    "website designing company in Nainital",
+    "custom software development",
     "Technical SEO",
     "Answer Engine Optimization",
-    "AEO",
-    "Next.js Engineering",
-    "SaaS Systems",
-    "AI Search Optimization",
+    "AEO agency",
+    "Next.js Development",
   ],
   authors: [{ name: "Integral Labs Engineering Collective" }],
   creator: "Integral Labs",

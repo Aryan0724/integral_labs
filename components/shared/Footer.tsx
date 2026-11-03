@@ -150,6 +150,31 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider mt-6 mb-3">
+              Areas We Serve
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li>
+                <Link href="/dehradun" className="hover:text-blue-400 transition-colors">
+                  Web Development in Dehradun
+                </Link>
+              </li>
+              <li>
+                <Link href="/haldwani" className="hover:text-blue-400 transition-colors">
+                  App &amp; Web Development in Haldwani
+                </Link>
+              </li>
+              <li>
+                <Link href="/rudrapur" className="hover:text-blue-400 transition-colors">
+                  Software Development in Rudrapur
+                </Link>
+              </li>
+              <li>
+                <Link href="/nainital" className="hover:text-blue-400 transition-colors">
+                  Website Design in Nainital &amp; Bhimtal
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Col 4: Verified Contact Coordinates */}

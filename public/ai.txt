@@ -6,7 +6,7 @@ description: Custom software engineering and digital discoverability division of
 canonical-url: https://labs.integralgroups.in
 contact-email: contact@integralgroups.in
 response-time: within 24 hours
-region-of-operation: IN | Primary: India | Additional: US, GB, AE
+region-of-operation: IN | HQ Bhimtal, Uttarakhand | Serving Dehradun, Haldwani, Rudrapur, Nainital & all of Uttarakhand | Additional: US, GB, AE
 parent-organization: Integral Groups | https://integralgroups.in/
 
 service.web-development: High-performance Next.js & React web platforms, headless architecture, sub-second Core Web Vitals.
@@ -16,6 +16,10 @@ service.aeo: Entity knowledge graphs, Q&A architecture, AI citation structuring 
 
 page.services: /services
 page.portfolio: /work
+page.city-dehradun: /dehradun
+page.city-haldwani: /haldwani
+page.city-rudrapur: /rudrapur
+page.city-nainital: /nainital
 page.process: /process
 page.about: /about
 page.blog: /blog

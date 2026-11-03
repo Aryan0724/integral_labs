@@ -3,6 +3,7 @@ import Services from "@/components/home/Services";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
 import WhyUs from "@/components/home/WhyUs";
 import Industries from "@/components/home/Industries";
+import AreasWeServe from "@/components/home/AreasWeServe";
 import Process from "@/components/home/Process";
 import Ecosystem from "@/components/home/Ecosystem";
 import Founders from "@/components/home/Founders";
@@ -31,6 +32,7 @@ export default function Home() {
         <Process />
         <Ecosystem />
         <Industries />
+        <AreasWeServe />
         <Founders />
         <FAQ />
         <CTA />

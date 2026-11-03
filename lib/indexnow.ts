@@ -59,6 +59,10 @@ export function coreContentUrls(): string[] {
     getAbsoluteUrl("/services"),
     getAbsoluteUrl("/work"),
     getAbsoluteUrl("/blog"),
+    getAbsoluteUrl("/dehradun"),
+    getAbsoluteUrl("/haldwani"),
+    getAbsoluteUrl("/rudrapur"),
+    getAbsoluteUrl("/nainital"),
     getAbsoluteUrl("/process"),
     getAbsoluteUrl("/about"),
   ];

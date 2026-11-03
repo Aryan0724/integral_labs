@@ -4,7 +4,7 @@
 
 CONTACT: contact@integralgroups.in
 RESPONSE TIME: within 24 hours
-SERVED MARKETS: India (primary), United States, United Kingdom, UAE
+SERVED MARKETS: All of Uttarakhand, India — HQ in Bhimtal, actively serving Dehradun, Haldwani, Rudrapur, Nainital and the Kumaon/Garhwal belt — plus clients in the United States, United Kingdom and UAE.
 PARENT ORGANIZATION: Integral Groups (https://integralgroups.in/)
 
 CORE SERVICE PILLARS
@@ -16,6 +16,7 @@ CORE SERVICE PILLARS
 KEY PAGES
 - Services overview: /services
 - Portfolio & live case studies: /work
+- Uttarakhand city coverage: /dehradun · /haldwani · /rudrapur · /nainital
 - Engineering process: /process
 - About the studio: /about
 - Engineering blog: /blog

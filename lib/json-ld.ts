@@ -3,6 +3,7 @@ import { Article } from "./data/articles";
 import { FAQS } from "./data/faqs";
 import { SERVICES } from "./data/services";
 import { Project } from "./data/projects";
+import { City } from "./data/cities";
 
 /**
  * Canonical physical location used across Organization schema, contact pages, and PR.
@@ -54,7 +55,19 @@ export function getOrganizationJsonLd() {
         ],
       },
     },
-    areaServed: ["IN", "US", "GB", "AE"],
+    areaServed: [
+      { "@type": "Country", name: "India" },
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "United Arab Emirates" },
+      { "@type": "City", name: "Bhimtal" },
+      { "@type": "City", name: "Nainital" },
+      { "@type": "City", name: "Haldwani" },
+      { "@type": "City", name: "Kathgodam" },
+      { "@type": "City", name: "Dehradun" },
+      { "@type": "City", name: "Rudrapur" },
+      { "@type": "City", name: "Haridwar" },
+    ],
     knowsAbout: SERVICES.map((service) => service.name),
     parentOrganization: {
       "@type": "Organization",
@@ -90,11 +103,14 @@ export function getWebSiteJsonLd() {
  * Generates FAQPage JSON-LD schema. Eligible for rich results and
  * direct extraction by answer engines (AEO/GEO).
  */
-export function getFaqJsonLd(faqs: { question: string; answer: string }[] = FAQS) {
+export function getFaqJsonLd(
+  faqs: { question: string; answer: string }[] = FAQS,
+  id: string = "/#faq"
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": getAbsoluteUrl("/#faq"),
+    "@id": getAbsoluteUrl(id),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -131,6 +147,36 @@ export function getServicesJsonLd() {
       },
       url: getAbsoluteUrl("/services"),
     })),
+  };
+}
+
+/**
+ * Generates a Service graph for an Uttarakhand city landing page (e.g. /dehradun).
+ * Uses Service + areaServed City/State — deliberately NOT LocalBusiness, since
+ * we operate remotely from Bhimtal and must not fabricate city addresses.
+ */
+export function getCityServiceJsonLd(city: City) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": getAbsoluteUrl(`/${city.slug}#service`),
+    name: `Web & Software Development in ${city.city}, Uttarakhand`,
+    url: getAbsoluteUrl(`/${city.slug}`),
+    description: city.metaDescription,
+    provider: {
+      "@id": getAbsoluteUrl("#organization"),
+    },
+    serviceType: [
+      "Web Development",
+      "Custom Software Development",
+      "Search Engine Optimization",
+      "Answer Engine Optimization",
+    ],
+    areaServed: [
+      { "@type": "City", name: city.city },
+      { "@type": "State", name: "Uttarakhand" },
+      { "@type": "Country", name: "India" },
+    ],
   };
 }
 
