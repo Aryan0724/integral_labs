@@ -31,7 +31,7 @@ export default function FAQ() {
             Your Questions, Answered
           </h2>
           <p className="text-base text-slate-500 mt-3">
-            Find answers to common questions about our engineering process, pricing, and delivery.
+            Find answers to common questions about our engineering process, scoping, and delivery.
           </p>
         </div>
 

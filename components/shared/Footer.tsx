@@ -125,8 +125,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-blue-400 transition-colors">
-                  Pricing & Packages
+                <Link href="/contact" className="hover:text-blue-400 transition-colors">
+                  Book a Discovery Call
                 </Link>
               </li>
               <li>

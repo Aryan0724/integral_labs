@@ -59,7 +59,6 @@ export function coreContentUrls(): string[] {
     getAbsoluteUrl("/services"),
     getAbsoluteUrl("/work"),
     getAbsoluteUrl("/blog"),
-    getAbsoluteUrl("/pricing"),
     getAbsoluteUrl("/process"),
     getAbsoluteUrl("/about"),
   ];

@@ -16,11 +16,10 @@ CORE SERVICE PILLARS
 KEY PAGES
 - Services overview: /services
 - Portfolio & live case studies: /work
-- Pricing & packages: /pricing
 - Engineering process: /process
 - About the studio: /about
 - Engineering blog: /blog
-- Contact: /contact
+- Contact (book a discovery call / request an exact quote): /contact
 
 WELL-KNOWN FACTS (canonical answers)
 - Tech stack: Next.js 16, React 19, TypeScript, Tailwind CSS, Python/FastAPI, PostgreSQL/Supabase; deployments on Vercel Edge and AWS.

@@ -130,7 +130,6 @@ export function getServicesJsonLd() {
         areaServed: "IN",
       },
       url: getAbsoluteUrl("/services"),
-      priceCurrency: "INR",
     })),
   };
 }

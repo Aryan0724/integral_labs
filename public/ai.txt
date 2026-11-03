@@ -16,11 +16,12 @@ service.aeo: Entity knowledge graphs, Q&A architecture, AI citation structuring 
 
 page.services: /services
 page.portfolio: /work
-page.pricing: /pricing
 page.process: /process
 page.about: /about
 page.blog: /blog
 page.contact: /contact
+
+quotes-policy: Exact milestone-based quotes are provided after a discovery call. Response within 24 hours of any enquiry.
 
 known-facts.tech-stack: Next.js 16, React 19, TypeScript, Tailwind CSS, Python/FastAPI, PostgreSQL/Supabase. Deployments on Vercel Edge and AWS.
 known-facts.delivery: MVPs launch in 3–4 weeks; fullstack SaaS platforms in 6–10 weeks.
