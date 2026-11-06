@@ -716,6 +716,99 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "saas-mvp-development-guide",
+    title: "SaaS MVP Development: How to Scope, Build and Ship in Weeks",
+    excerpt:
+      "An MVP is not a smaller product — it is an experiment machine. Here is how we scope software so it reaches real users in weeks: the scope cuts that keep launches honest, the stack decisions already made, and the launch metrics that order the next build.",
+    author: {
+      name: "Integral Labs Architecture",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-06T08:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["SaaS Development", "MVP", "Product Scoping", "Next.js", "Launch Metrics"],
+    coverImage: "/blog/saas-mvp-guide.svg",
+    coverAlt: "A five-stage MVP pipeline from riskiest assumption to launch with a feedback loop, above a stack panel listing decisions made before the first call",
+    readingTime: "7 min read",
+    seoTitle: "SaaS MVP Development Guide: Scope, Stack, and Shipping in Weeks",
+    seoDescription:
+      "How to scope and ship a SaaS MVP in weeks: what an MVP is actually for, the scope cuts that keep launches honest, the stack we standardize on, and the launch metrics that steer the next milestone. Fixed milestone quotes within 24 hours.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "what-an-mvp-is-actually-for", title: "What an MVP Is Actually For", level: 2 },
+      { id: "the-scope-cuts-that-keep-launches-honest", title: "The Scope Cuts That Keep Launches Honest", level: 2 },
+      { id: "the-stack-we-standardize-on", title: "The Stack We Standardize On", level: 2 },
+      { id: "from-staging-to-first-users", title: "From Staging to First Users", level: 2 },
+      { id: "launch-metrics-that-steer-the-next-build", title: "Launch Metrics That Steer the Next Build", level: 2 },
+      { id: "scoping-call-checklist", title: "Scoping Call Checklist", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "What an MVP Is Actually For",
+        paragraphs: [
+          "An MVP is not a shrunken version of the product you someday want. It is the smallest real product that a paying customer can use, and its job is to generate evidence about your riskiest assumption — that anyone wants this workflow, done this way, at all. Most failed MVPs fail before any code ships because they were neither minimal nor viable: their scope inflated at the concept stage into a launch-rate version of the full product, or they aimed at polish theatre — dashboards nobody asked for, roles for departments that do not exist yet — instead of testing the one workflow that carries the business.",
+          "This reframing matters commercially. If the MVP exists to collect evidence, then every feature question becomes an experiment question: what does building this teach us that we do not already believe? Features deferred are questions handed to the launch to answer faster and cheaper. Teams that internalize this ship in weeks; teams that do not, ship in quarters — and often learn the same lesson anyway."
+        ],
+        callout: {
+          type: "note",
+          text: "The discipline we sell: a launch you can bring real users to in weeks, and a roadmap ordered by what the launch proves. The MVP is the first instrument panel of the business, not its trophy."
+        }
+      },
+      {
+        heading: "The Scope Cuts That Keep Launches Honest",
+        paragraphs: [
+          "When we scope an MVP, the cuts follow a consistent logic — invest whole in the one workflow that produces value, and be gloriously ruthless everywhere adjacent:"
+        ],
+        bulletPoints: [
+          "One workflow, complete: the end-to-end path by which a user gets the product's value — built fully, with real data handling and edge cases — so evidence from pilots is genuine rather than hypothetical.",
+          "Single role: a plain admin account until a second real user role exists in the wild. Role systems built for future departments ship complexity today that nobody can test.",
+          "Static content first: a CMS is justified by publishing volume, not by the possibility of it. Static pages edited in code are faster to build, impossible to break by misconfiguration, and honest about who updates what.",
+          "Concierge operations: behind the curtain, a human does the unproven process manually until the data says automate. It is faster to change a spreadsheet logic than a shipped module.",
+          "Design system, not bespoke art: coherent, deliberate components styled once and reused. Buyers get real polish where it is felt — typography, spacing, speed — rather than unique illustrations on five screens."
+        ]
+      },
+      {
+        heading: "The Stack We Standardize On",
+        paragraphs: [
+          "The second reason MVPs drift late is stack archaeology — weeks spent evaluating frameworks, databases and hosting before a single feature exists. We standardize those decisions, because the invoice should buy product decisions rather than framework debates: a Next.js app on the App Router with React 19 server components, Postgres as the default store, end-to-end typing, subscription payments wired through a mainstream provider, and an edge-deployed, mostly static frontend whose Core Web Vitals are strong by construction.",
+          "Standardization is also the handover story. From the first milestone you own the code, the domain and the infrastructure accounts — documented, reproducible, without licence hostages. A product you can sell or hand off is a product with a longer life than one that only works while the agency that built it answers the phone. The same choices are written in machine-readable form on the services pages of this site, so any competent engineer can pick up the codebase."
+        ]
+      },
+      {
+        heading: "From Staging to First Users",
+        paragraphs: [
+          "Delivery runs in milestones, and each one ends with something usable rather than something described. The first milestone ends with a staging environment on a real URL, seeded with realistic data — you can log in and click the workflow, and so can we, together on scheduled calls. The second ends with the pilot release: five to twenty of your real prospective users, feedback gathered weekly through working demos, small course corrections folded in while they are cheap.",
+          "The launch milestone turns the pilots into a production deployment with monitoring, backups and analytics from day one — because an MVP that ships without instrumentation is an experiment with no measurement. Delivery is remote-first from our Uttarakhand engineering HQ, with on-site visits planned when a project genuinely needs them, and every engagement begins with a fixed, milestone-based quote delivered within 24 hours of the scoping call."
+        ]
+      },
+      {
+        heading: "Launch Metrics That Steer the Next Build",
+        paragraphs: [
+          "Once pilots convert to users, four numbers decide what gets built next. Activation — the share of signups that complete the core workflow for the first time. Time to first value — how long they wait between arriving and getting that value. Week-four retention — the share still using the product a month in, which separates convenient noise from durable habit. And support signal — the themes in queries and drop-off points, which usually expose more than any feature request form.",
+          "Read as a set, these metrics order the roadmap: retention evidence buys you the right to build the second workflow; activation failure means the first one is not actually complete. Milestone two is quoted on this evidence rather than on the original guess list — which is the quiet advantage of milestone pricing: the second quote is written against data, not ambition."
+        ],
+        callout: {
+          type: "warning",
+          text: "Be suspicious of any studio that promises post-launch numbers in advance. Retention and activation emerge from real users; what can be promised in advance is instrumentation, honest measurement, and a plan that reacts to them."
+        }
+      },
+      {
+        heading: "Scoping Call Checklist",
+        paragraphs: [
+          "Come to the call with these answered and the MVP quote will be materially sharper:"
+        ],
+        bulletPoints: [
+          "The problem sentence: what the user does today that is painful, manual or expensive — one sentence, no adjectives.",
+          "The first ten users: named people or concrete segments, and how you will reach them. Product evidence needs subjects.",
+          "Manual now, automatic later: list the parts you are willing to run by hand at launch — this is where scope money hides.",
+          "Compliance and data expectations: what data exists, where it lives, any regulations it answers to.",
+          "Deadline reality: what month the product must exist by, and what it is driving — a launch date, a tender, a pilot programme."
+        ]
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:
