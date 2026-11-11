@@ -18,6 +18,7 @@ KEY PAGES
 - Portfolio & live case studies: /work
 - Uttarakhand city coverage: /dehradun · /haldwani · /rudrapur · /nainital · /haridwar
 - AEO / AI-search visibility services: /aeo
+- Vertical solution — School management software development: /services/school-management-software
 - Engineering process: /process
 - About the studio: /about
 - Engineering blog: /blog

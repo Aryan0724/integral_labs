@@ -65,6 +65,7 @@ export function coreContentUrls(): string[] {
     getAbsoluteUrl("/nainital"),
     getAbsoluteUrl("/haridwar"),
     getAbsoluteUrl("/aeo"),
+    getAbsoluteUrl("/services/school-management-software"),
     getAbsoluteUrl("/process"),
     getAbsoluteUrl("/about"),
   ];

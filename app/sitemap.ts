@@ -51,6 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: getAbsoluteUrl("/services/school-management-software"),
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: getAbsoluteUrl("/services"),
       lastModified: new Date(),
       changeFrequency: "weekly",

@@ -77,6 +77,11 @@ export default function Footer() {
                   Answer Engine Optimization (AEO)
                 </Link>
               </li>
+              <li>
+                <Link href="/services/school-management-software" className="hover:text-blue-400 transition-colors">
+                  School Management Software
+                </Link>
+              </li>
             </ul>
           </div>
 
