@@ -82,6 +82,11 @@ export default function Footer() {
                   School Management Software
                 </Link>
               </li>
+              <li>
+                <Link href="/services/custom-crm-development" className="hover:text-blue-400 transition-colors">
+                  Custom CRM Development
+                </Link>
+              </li>
             </ul>
           </div>
 
