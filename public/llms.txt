@@ -20,6 +20,7 @@ KEY PAGES
 - AEO / AI-search visibility services: /aeo
 - Vertical solution — School management software development: /services/school-management-software
 - Vertical solution — Custom CRM development: /services/custom-crm-development
+- Vertical solution — Hotel booking website development: /services/hotel-booking-website
 - Engineering process: /process
 - About the studio: /about
 - Engineering blog: /blog

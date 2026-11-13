@@ -87,6 +87,11 @@ export default function Footer() {
                   Custom CRM Development
                 </Link>
               </li>
+              <li>
+                <Link href="/services/hotel-booking-website" className="hover:text-blue-400 transition-colors">
+                  Hotel Booking Websites
+                </Link>
+              </li>
             </ul>
           </div>
 

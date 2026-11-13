@@ -24,6 +24,7 @@ page.city-haridwar: /haridwar
 page.aeo: /aeo
 page.solution-school-software: /services/school-management-software
 page.solution-custom-crm: /services/custom-crm-development
+page.solution-hotel-booking: /services/hotel-booking-website
 page.process: /process
 page.about: /about
 page.blog: /blog
