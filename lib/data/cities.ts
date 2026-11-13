@@ -231,17 +231,17 @@ export const CITIES: City[] = [
   {
     slug: "nainital",
     city: "Nainital",
-    metaTitle: "Website Designing Company in Nainital & Bhimtal",
+    metaTitle: "SEO Services & Website Designing Company in Nainital & Bhimtal",
     metaDescription:
-      "Websites for Nainital's hotels, homestays, tours & schools — designed and engineered in Bhimtal itself. Booking-ready, fast on hill connections, built for Google & AI search.",
+      "SEO services and booking-ready websites for Nainital's hotels, homestays, tours & schools — local SEO, Google Business Profile optimisation and Core Web Vitals, engineered in Bhimtal itself. Exact quote within 24 hours.",
     heroLabel: "Serving Nainital & the Kumaon Lake Circuit",
-    h1: "Website Designing & Web Development Company in Nainital & Bhimtal",
+    h1: "SEO Services & Website Development Company in Nainital & Bhimtal",
     intro:
-      "This is our home turf — our engineering HQ sits in Bhimtal, in the Nainital district itself. Hotels, homestays, tour operators, schools and cafés across the lake circuit get something no out-of-district agency can offer: a local engineering partner with global-grade standards. Every build is engineered for the realities of hill connectivity (sub-second loads matter more here than anywhere) and optimised to win both Google and AI-assistant recommendations when travellers ask.",
+      "This is our home turf — our engineering HQ sits in Bhimtal, in the Nainital district itself. Hotels, homestays, tour operators, schools and cafés across the lake circuit get something no out-of-district agency can offer: a local engineering partner with global-grade standards. We provide SEO services in Nainital — local keyword architecture, Google Business Profile optimisation, technical SEO and AI-answer structuring — alongside booking-ready websites engineered for hill connectivity (sub-second loads matter more here than anywhere) and built to convert the traffic we win.",
     pillars: [
       "Booking-ready websites for hotels, homestays and tour operators — enquiry flows, gallery performance and season-proof architecture.",
       "School portals, admission systems and brand platforms for institutions across the Nainital–Bhimtal–Bhowali belt.",
-      "Performance-first builds tuned for patchy hill bandwidth: aggressive asset budgets, edge delivery, real-device testing.",
+      "SEO services in Nainital: local keyword architecture for Mallital, Tallital, Bhowali and Bhimtal searches, Google Business Profile optimisation, Core Web Vitals engineering and review-driven authority — built to win the buyers already searching in Nainital.",
       "Travellers increasingly ask ChatGPT and Perplexity where to stay — we structure your property so AI cites you, not the aggregator.",
     ],
     industries: [
@@ -268,6 +268,16 @@ export const CITIES: City[] = [
         question: "You're actually based in Bhimtal? Can we meet in person?",
         answer:
           "Yes — Bhimtal is our HQ, minutes from Nainital's lake belt around Bhowali and Sattal. We particularly enjoy projects we can walk through in person; just book a call to schedule a site visit.",
+      },
+      {
+        question: "Do you provide SEO services in Nainital?",
+        answer:
+          "Yes — it is our home market. From our Bhimtal HQ we deliver SEO for Nainital businesses: Google Business Profile optimisation, local keyword architecture for Mallital, Tallital, Bhowali and Bhimtal searches, technical SEO, content and AI-answer structuring. Most clients are minutes away in the lake belt, so strategy calls can be in person.",
+      },
+      {
+        question: "How much do SEO services cost in Nainital?",
+        answer:
+          "We don't publish package rates, because an SEO engagement priced before seeing your site, market and competition is a guess. Book a discovery call and describe what you need to rank for; within 24 hours you receive an exact, fixed quote covering scope — local SEO, technical fixes, content and reporting — with no mystery monthly retainers.",
       },
       {
         question: "How much does a website cost for my hotel, café or shop?",
