@@ -36,7 +36,7 @@ const getArg = (name, dflt) => {
 };
 const DAYS = parseInt(getArg("--days", "28"), 10);
 const QLIMIT = parseInt(getArg("--queries", "25"), 10);
-const MODE = args[0] === "inspect" ? "inspect" : "report";
+const MODE = args[0] === "inspect" ? "inspect" : args[0] === "sites" ? "sites" : "report";
 const INSPECT_URLS = MODE === "inspect" ? args.slice(1).filter((a) => !a.startsWith("--")) : [];
 
 function die(msg) {
@@ -126,7 +126,17 @@ async function inspect(url) {
 }
 
 // --- run ---------------------------------------------------------------------
-if (MODE === "inspect") {
+if (MODE === "sites") {
+  const r = await fetch(endpoint("webmasters/v3/sites"), { headers: auth });
+  if (!r.ok) {
+    const body = await r.text();
+    if (r.status === 403 && /has not been used|disabled/i.test(body))
+      die(`The Search Console API is not enabled on this GCP project yet (step 2 of setup).`);
+    die(`Listing sites failed (${r.status}). If permission denied, the key may not match the granted service account. Details:\n${body}`);
+  }
+  const j = await r.json();
+  console.table((j.siteEntry ?? []).map((s) => ({ site: s.siteUrl, permission: s.permissionLevel })));
+} else if (MODE === "inspect") {
   const results = [];
   for (const u of INSPECT_URLS) results.push(await inspect(u));
   console.table(results);
