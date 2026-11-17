@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Himalayan ridge line (Uttarakhand motif) -->
+  <path d="M 60 230 L 200 130 L 320 200 L 470 100 L 600 190 L 760 120 L 900 210 L 1040 160 L 1140 230" fill="none" stroke="#1e3a5f" stroke-width="3"/>
+  <circle cx="470" cy="100" r="6" fill="#38bdf8"/>
+
+  <text x="140" y="292" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="2">WHAT GETS BUILT - AND WHAT MOVES THE QUOTE</text>
+
+  <!-- Eight module chips -->
+  <g font-family="monospace" font-size="12" text-anchor="middle">
+    <rect x="140" y="320" width="210" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="245" y="351" fill="#94a3b8">ADMISSIONS</text>
+    <rect x="380" y="320" width="210" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="485" y="351" fill="#94a3b8">FEES</text>
+    <rect x="620" y="320" width="210" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="725" y="351" fill="#94a3b8">ATTENDANCE</text>
+    <rect x="860" y="320" width="200" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="960" y="351" fill="#94a3b8">EXAMS</text>
+    <rect x="140" y="400" width="210" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="245" y="431" fill="#94a3b8">TIMETABLE</text>
+    <rect x="380" y="400" width="210" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="485" y="431" fill="#94a3b8">TRANSPORT</text>
+    <rect x="620" y="400" width="210" height="52" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="725" y="431" fill="#22c55e">PARENT APP</text>
+    <rect x="860" y="400" width="200" height="52" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="960" y="431" fill="#94a3b8">HR + PAYROLL</text>
+  </g>
+
+  <text x="140" y="500" fill="#64748b" font-family="monospace" font-size="12">EACH MODULE = DESIGN + BUILD + TEST SURFACE. THE HONEST QUOTE LISTS WHICH ONES YOU NEED.</text>
+
+  <!-- Fixed quote chip -->
+  <rect x="880" y="120" width="220" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="905" y="147" fill="#22c55e" font-family="system-ui, sans-serif" font-size="13" font-weight="700">FIXED MILESTONE QUOTE</text>
+  <text x="905" y="170" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">after discovery call · 24h</text>
+
+  <text x="600" y="590" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // SCHOOL ERP COST DRIVERS · INDIA</text>
+</svg>

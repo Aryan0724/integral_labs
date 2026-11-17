@@ -972,6 +972,89 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "school-management-software-development-cost",
+    title: "What Does School Management Software Development Cost? An Honest Breakdown",
+    excerpt:
+      "Every school wants a number before the call, and every vendor publishes a per-student price list that answers the wrong question. Here is what actually moves a school ERP build's cost — modules, student volume, integrations, migration — why licence lists mislead, and how to get a fixed quote within 24 hours.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-17T08:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["School ERP", "Buyer Guide", "Project Scoping", "India", "Ownership"],
+    coverImage: "/blog/school-erp-cost.svg",
+    coverAlt: "Eight school ERP module chips in a grid on a dark blueprint background with a Himalayan ridgeline above and a fixed milestone quote chip",
+    readingTime: "8 min read",
+    seoTitle: "School Management Software Development Cost: An Honest Breakdown",
+    seoDescription:
+      "No honest school ERP quote comes from a price list. What actually drives school management software development cost — modules, student volume, integrations, data migration — why per-student licence lists mislead, and how to get a fixed, milestone-based quote within 24 hours.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-honest-answer", title: "The Honest Answer", level: 2 },
+      { id: "the-five-levers-that-move-school-erp-cost", title: "The Five Levers That Move School ERP Cost", level: 2 },
+      { id: "per-student-licences-versus-owning-the-system", title: "Per Student Licences Versus Owning the System", level: 2 },
+      { id: "why-school-software-price-lists-mislead-buyers", title: "Why School Software Price Lists Mislead Buyers", level: 2 },
+      { id: "how-to-get-a-real-number-in-24-hours", title: "How to Get a Real Number in 24 Hours", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Honest Answer",
+        paragraphs: [
+          "You are reading a cost breakdown that contains no figures, and that is deliberate. School management software is priced by workflow, not by module count. Two schools asking for \"the same ERP\" can hold wholly different work inside the phrase: one needs fee receipts, attendance and a report-card generator for 400 students; the other runs two branches, 4,000 students, sibling concessions, transport slabs and a parent app in Hindi and English. Quoting both from a package card is either padding the first or lowballing the second.",
+          "So the honest answer is a process, not a number: a discovery call where you describe how your school actually runs — admissions season, fee rules, exam scheme, the transport desk — and a fixed, milestone-based quote delivered within 24 hours. Anyone who quotes an ERP before understanding your workflow is guessing, and you will find out which at the change-request stage."
+        ],
+        callout: {
+          type: "note",
+          text: "We publish no price list on purpose. A number attached to a workflow nobody has described is marketing, not an estimate. Everything below explains what an estimate should be built from instead."
+        }
+      },
+      {
+        heading: "The Five Levers That Move School ERP Cost",
+        paragraphs: [
+          "When we scope a school ERP build, the estimate is engineered from five levers. Reading them tells you where the money in any quote goes — and what an unusually cheap or unusually expensive quote is hiding:"
+        ],
+        bulletPoints: [
+          "Modules: admissions CRM, fee management, attendance, exams and report cards, timetable, transport, parent app, HR and payroll-lite. Each module is design, build and test surface; the honest quote lists which ones your school actually needs rather than bundling all eight into a package.",
+          "Student volume and structure: 400 students on one campus is a different system from 4,000 across branches — more roles, more fee structures, and thousands of parents opening the app during results week.",
+          "Integrations: WhatsApp notifications, biometric attendance devices, online fee payment gateways, SMS fallbacks. Each integration is a negotiation with a third party's documentation and failure modes, and it is the lever package lists hide most often.",
+          "Data migration: years of Excel registers, fee ledgers and previous-year results. Cleaning, mapping and verifying that history before go-live is real engineering time — and the lever schools most often forget to budget.",
+          "Support: staff training, report-card-season help, handover versus ongoing evolution. Decide deliberately; inherited support assumptions are where the invoice grows later."
+        ]
+      },
+      {
+        heading: "Per Student Licences Versus Owning the System",
+        paragraphs: [
+          "The market's default answer is a subscription: pay per student, every year, indefinitely, and bend your fee rules and report-card scheme around someone else's software. For a very small school with genuinely generic needs, that can be the right call — and we say so on the discovery call when it is. The custom route wins when your school has real structure the generic products cannot hold: your concession rules, sibling discounts, transport slabs, grace policy and your exact report-card format.",
+          "Ownership also changes what the system is worth later. An ERP you own is a permanent institutional asset: extend it for a new branch, hand it to your successor, keep every student record on infrastructure the institution controls. A licence is a meter that never stops while the school exists — and the student data, the most valuable record the institution owns, lives on somebody else's platform."
+        ],
+        callout: {
+          type: "note",
+          text: "The comparison we run on every school discovery call: years of per-student fees at your strength, against the one-time build plus support. Both numbers are real; the honest answer depends on how long your institution plans to run."
+        }
+      },
+      {
+        heading: "Why School Software Price Lists Mislead Buyers",
+        paragraphs: [
+          "School software package lists mislead in consistent ways. The advertised entry price counts only the base modules, while fee management with your concession rules or a parent app sits in a higher tier. Per-student maths is quoted on today's strength, not next year's admissions. And the lifecycle is invisible: renewal escalation, per-message SMS costs, add-on modules priced separately, and the data migration everyone discovers they need only after signing.",
+          "None of this means every vendor publishing a list is acting in bad faith. It means a list price cannot carry engineering information, because it is set before anyone has looked at how your school runs. Treat any ERP number you see before a scoping conversation as an upper bound on the conversation's usefulness — and a lower bound on the reflection you should demand."
+        ]
+      },
+      {
+        heading: "How to Get a Real Number in 24 Hours",
+        paragraphs: [
+          "Come to the discovery call with your fee rules written down — concessions, sibling discounts, transport slabs, the exam scheme, who touches attendance and when. That single page scopes more of an ERP than any checklist. We build the estimate from how your school actually runs and send back a fixed, milestone-based quote within 24 hours: modules, integrations, migration scope, delivery dates, one clearly stated number.",
+          "The build itself — the eight modules, the WhatsApp notices, the migration of your registers, the ownership terms — is described in detail on our school management software development service page. If your needs turn out smaller than you assumed, the quote is smaller. That is the whole pitch: an estimate built on your workflow, delivered in a day, in writing."
+        ],
+        callout: {
+          type: "tip",
+          text: "Before the call, write down your one strangest fee rule — the concession or slab that always confuses new staff. If a vendor's software cannot represent it natively, that is your tell."
+        }
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:
