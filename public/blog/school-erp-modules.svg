@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Himalayan ridge line -->
+  <path d="M 60 190 L 200 100 L 320 165 L 470 75 L 600 160 L 760 95 L 900 180 L 1040 130 L 1140 190" fill="none" stroke="#1e3a5f" stroke-width="3"/>
+  <circle cx="470" cy="75" r="6" fill="#38bdf8"/>
+
+  <!-- Scoping checklist -->
+  <g transform="translate(140, 230)">
+    <rect x="0" y="0" width="920" height="270" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="30" y="40" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="2">MARK EACH ONE: MUST-HAVE · NICE-TO-HAVE · NOT-YET</text>
+    <g font-family="monospace" font-size="13" fill="#94a3b8">
+      <rect x="30" y="58" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 34 68 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="66" y="74">ADMISSIONS + ENQUIRY CRM</text>
+      <rect x="370" y="58" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 374 68 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="406" y="74">FEES + YOUR ODD RULES</text>
+      <rect x="640" y="58" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 644 68 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="676" y="74">ATTENDANCE</text>
+      <rect x="30" y="104" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 34 114 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="66" y="120">EXAMS + REPORT CARDS</text>
+      <rect x="370" y="104" width="20" height="20" rx="4" fill="none" stroke="#334155" stroke-width="2"/>
+      <text x="406" y="120">TIMETABLE (SKIP-ABLE)</text>
+      <rect x="640" y="104" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 644 114 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="676" y="120">TRANSPORT</text>
+      <rect x="30" y="150" width="20" height="20" rx="4" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 34 160 l 4 5 l 9 -11" stroke="#22c55e" stroke-width="2" fill="none"/>
+      <text x="66" y="166">PARENT APP + WHATSAPP</text>
+      <rect x="370" y="150" width="20" height="20" rx="4" fill="none" stroke="#334155" stroke-width="2"/>
+      <text x="406" y="166">HR + PAYROLL-LITE</text>
+      <text x="640" y="166" fill="#22c55e">= SCOPE, NOT A PACKAGE</text>
+    </g>
+    <text x="30" y="216" fill="#64748b" font-family="monospace" font-size="12">THE FEE MODULE IS THE PROJECT: BRING YOUR STRANGEST FEE RULE TO ANY DEMO.</text>
+    <text x="30" y="244" fill="#64748b" font-family="monospace" font-size="12">IF IT CANNOT BE CONFIGURED LIVE, THE SPREADSHEET NEVER LEAVES.</text>
+  </g>
+
+  <!-- Fixed quote chip -->
+  <rect x="880" y="60" width="220" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="905" y="87" fill="#22c55e" font-family="system-ui, sans-serif" font-size="13" font-weight="700">FIXED MILESTONE QUOTE</text>
+  <text x="905" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">after discovery call · 24h</text>
+
+  <text x="600" y="590" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // SCHOOL ERP MODULE SCOPING · INDIA</text>
+</svg>

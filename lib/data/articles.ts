@@ -1055,6 +1055,177 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "custom-crm-vs-off-the-shelf-crm",
+    title: "Custom CRM vs Off-the-Shelf CRM: The Honest Comparison for Indian Businesses",
+    excerpt:
+      "Zoho, HubSpot and Salesforce win some teams and lose others. Here is the honest decision framework — where custom builds win, where subscriptions win, and the five-year maths that settles it for your team size.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-17T10:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["Custom CRM", "Buyer Guide", "Ownership", "India"],
+    coverImage: "/blog/crm-rent-vs-own.svg",
+    coverAlt: "A split comparison panel on a dark blueprint background: recurring subscription meter on one side, owned single block on the other, with a fixed milestone quote chip",
+    readingTime: "7 min read",
+    seoTitle: "Custom CRM vs Off-the-Shelf CRM: An Honest Comparison",
+    seoDescription:
+      "Where custom CRM development wins, where Zoho, HubSpot and Salesforce subscriptions win, the five-year cost maths that settles it, and the four questions that decide before you ever talk to a vendor.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "where-custom-wins", title: "Where Custom Wins", level: 2 },
+      { id: "where-subscriptions-win", title: "Where Subscriptions Win", level: 2 },
+      { id: "the-real-cost-maths-over-five-years", title: "The Real Cost Maths Over Five Years", level: 2 },
+      { id: "the-indian-sales-floor-test", title: "The Indian Sales Floor Test", level: 2 },
+      { id: "how-to-decide-before-the-call", title: "How to Decide Before the Call", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Where Custom Wins",
+        paragraphs: [
+          "Custom wins when your sales process has structure a generic product cannot hold. The tell-tale signs: quotations that follow your format and numbering, approval chains where a manager signs off discounts above a threshold, dealer or distributor hierarchies with credit limits, GST-ready invoicing that must export into Tally without re-typing, and WhatsApp as the channel where deals actually move.",
+          "Generic CRMs handle pipelines well — contacts, stages, reminders. What they cannot hold is your business's specific grammar. Teams that force their process into a generic tool end up running the process in spreadsheets anyway, with the CRM reduced to an expensive address book. If that describes your last year, the subscription is not serving you."
+        ],
+        callout: {
+          type: "note",
+          text: "The honest framing: a CRM that fits costs more to build and nothing to rent. A CRM that does not fit costs nothing to build and forever to rent. The whole decision is which failure mode you prefer."
+        }
+      },
+      {
+        heading: "Where Subscriptions Win",
+        paragraphs: [
+          "The subscription route is genuinely better for plenty of teams, and pretending otherwise would be selling. If your process is standard — a few pipeline stages, no custom quotation formats, a small team, no Tally dependency, no dealer network — a mainstream CRM gives you maturity no custom build should try to match in month one: deliverability, mobile apps, ecosystems, uptime and support.",
+          "The rule of thumb we use on calls: if a competent team would configure the subscription in a week and never think about it again, buy the subscription. If configuring it takes longer than building the thin custom layer your process actually needs, or the per-seat maths is already outpacing headcount growth, build."
+        ]
+      },
+      {
+        heading: "The Real Cost Maths Over Five Years",
+        paragraphs: [
+          "Run the five-year comparison with real inputs: seats you will have in year three (not today), the price per seat escalating as vendors move tiers, per-message costs for WhatsApp and SMS add-ons, the integration subscriptions you will still need alongside, and the migration cost you pay whenever the vendor's roadmap disagrees with yours.",
+          "Against that, the custom side carries the build — paid once — plus hosting and support, and it ends. The asset also has succession value: a CRM you own can be handed to a successor or sold with the business; a seat count is an expense line that dies with the renewal. For a team that grows, ownership usually wins inside a few years; for a stable small team with a generic process, renting usually wins. Both outcomes are honest answers."
+        ],
+        callout: {
+          type: "warning",
+          text: "Beware any comparison that quotes today's seat count against a build. Year-three headcount is the number that decides it."
+        }
+      },
+      {
+        heading: "The Indian Sales Floor Test",
+        paragraphs: [
+          "Global CRMs are built for desk-bound teams with stable networks and English-first buyers. Indian field sales runs differently, and the difference is not cosmetic: follow-ups happen on WhatsApp because that is the channel buyers answer; quotations carry GST breakdowns and numbering rules; accounts teams need Tally-compatible exports; and the people updating records are on mid-range Androids between meetings, often on patchy networks.",
+          "A custom build handles these as first-class requirements — WhatsApp-first follow-ups with conversation history attached to records, GST-ready quotations and invoices, exports your accountant accepts, and a mobile experience built for weak bandwidth. A subscription handles them through add-ons, workarounds and third-party glue, each with its own monthly meter."
+        ],
+        callout: {
+          type: "tip",
+          text: "Before any decision, list the three integrations your team cannot live without. If two of them are WhatsApp and Tally, count the glue costs into the subscription side before comparing."
+        }
+      },
+      {
+        heading: "How to Decide Before the Call",
+        paragraphs: [
+          "You can settle most of this yourself with four questions. One: does your process contain structure a generic product cannot represent — custom quotation formats, approval chains, dealer hierarchies? Two: will the team be larger in three years, and at what seat count does renting pass the build cost? Three: which integrations are non-negotiable, and what do they cost on the subscription side? Four: who owns the data when you leave — and could you leave at all?",
+          "The build itself — modules, integrations, ownership terms, the Excel and WhatsApp migration — is described on our custom CRM development service page. Bring your answers to a discovery call and you will receive a fixed, milestone-based quote within 24 hours, including the honest verdict that a subscription suits you better when it does."
+        ],
+        callout: {
+          type: "tip",
+          text: "The one-sentence test: if you can describe your sales process fully using the words pipeline, deal, contact and reminder, buy the subscription. The moment you need the words format, approval, dealer or Tally, talk to us."
+        }
+      }
+    ]
+  },
+  {
+    slug: "school-management-software-modules-checklist",
+    title: "School Management Software Modules: What to Scope Before You Buy",
+    excerpt:
+      "Every school ERP pitch starts with a module diagram and ends with a package. Here is the eight-module anatomy instead — what each one actually does, the fee module that burns most schools, what a parent app must survive, and which modules you can skip.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-17T12:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["School ERP", "Buyer Guide", "Project Scoping", "India"],
+    coverImage: "/blog/school-erp-modules.svg",
+    coverAlt: "A scoping checklist of eight school ERP modules with green checks on a dark blueprint background with a Himalayan ridgeline above",
+    readingTime: "7 min read",
+    seoTitle: "School Management Software Modules: The Scoping Checklist",
+    seoDescription:
+      "The eight school management software modules worth scoping — admissions, fees, attendance, exams, timetable, transport, parent app, HR — the fee rules that break generic products, and which modules small schools can skip.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-eight-modules-worth-scoping", title: "The Eight Modules Worth Scoping", level: 2 },
+      { id: "the-fee-module-is-where-schools-get-burned", title: "The Fee Module Is Where Schools Get Burned", level: 2 },
+      { id: "what-a-parent-app-must-do-in-hill-districts", title: "What a Parent App Must Do in Hill Districts", level: 2 },
+      { id: "which-modules-you-can-skip", title: "Which Modules You Can Skip", level: 2 },
+      { id: "scope-first-then-ask-for-the-quote", title: "Scope First, Then Ask for the Quote", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Eight Modules Worth Scoping",
+        paragraphs: [
+          "Every school ERP conversation should start with the same list, scoped against how your school actually runs rather than a brochure:"
+        ],
+        bulletPoints: [
+          "Admissions and enquiry CRM: every walk-in, call and referral captured and followed to closure, with counsellor-wise pipelines and conversion reports.",
+          "Fee management: class-wise structures, concessions and part payments, due-date tracking, instant receipts and defaulter lists that go out before anyone has to ask.",
+          "Attendance: period-wise or day-wise, under a minute per class, biometric-friendly for staff, with automatic parent notices for absences.",
+          "Exams and report cards: your exact scheme — unit tests, terminals, weightages, grace rules — built once so report cards generate in minutes instead of teacher-weekends.",
+          "Timetable and substitutes: conflict-free teacher load balancing and one-click substitute assignment when someone is on leave.",
+          "Transport and routes: route-wise student mapping, driver and vehicle records, and transport-fee integration.",
+          "Parent app and notices: fees, homework, results and circulars — with WhatsApp delivery because that is what parents actually read.",
+          "HR and payroll-lite: staff records, leave tracking and salary sheets your accountant can use directly."
+        ]
+      },
+      {
+        heading: "The Fee Module Is Where Schools Get Burned",
+        paragraphs: [
+          "Every school has one fee rule that confuses every new staff member: the sibling discount that interacts with the concession, the transport slab that changes mid-route, the mid-session admission charged pro-rata, the waiver the principal grants verbally. Generic products either cannot represent these rules or hide them behind a higher tier — which is exactly when the spreadsheet returns.",
+          "When you evaluate any school software, take your strangest rule with you and ask for a live demonstration of it being configured. If the answer is not possible, that system will coexist with Excel forever, and you will be paying for the privilege."
+        ],
+        callout: {
+          type: "note",
+          text: "This is the module where custom builds earn their keep: your rules are built in exactly, once, and the ledger and report-card outputs match what your auditor expects."
+        }
+      },
+      {
+        heading: "What a Parent App Must Do in Hill Districts",
+        paragraphs: [
+          "A parent app is not a smaller website; it is a promise about reliability under hill conditions. Parents open it during results week, on mid-range Androids, on the network that actually exists between Nainital and Haldwani — and they read notices on WhatsApp, not in app inboxes.",
+          "So the scoping questions that matter: does it work on weak bandwidth, is it Hindi-first, do fee receipts and absence notices arrive on WhatsApp, and can a parent with two children in different classes see both cleanly? An app that answers yes to those gets used; one that answers no becomes a download statistic."
+        ],
+        callout: {
+          type: "tip",
+          text: "Ask any vendor what the app weighs on first install and how it behaves on 3G-grade bandwidth. The answer tells you who built it and where."
+        }
+      },
+      {
+        heading: "Which Modules You Can Skip",
+        paragraphs: [
+          "Small schools are sold the full suite when they need half of it. A school under a few hundred students with one campus and simple transport can often skip timetable optimisation, run attendance day-wise instead of period-wise, and keep payroll in the accountant's existing tooling — cutting both build scope and training load.",
+          "The right cut is decided by your operations, not by a package diagram. Modules you skip at launch can be added as milestones later — which is exactly why milestone-based builds age well: the system grows with the school instead of being paid for twice."
+        ],
+        callout: {
+          type: "note",
+          text: "Skipping is not downgrade thinking; it is scope honesty. Every module skipped at launch is budget available for the modules that actually carry your term."
+        }
+      },
+      {
+        heading: "Scope First, Then Ask for the Quote",
+        paragraphs: [
+          "Before you ask anyone for a number, mark each of the eight modules must-have, nice-to-have or not-yet, and write down your fee rules, exam scheme and the three reports your management actually reads. That one page is the entire scoping input for an honest quote.",
+          "The full build — modules, WhatsApp notices, register migration, ownership terms — is described on our school management software development service page. Bring the marked list to a discovery call and you receive a fixed, milestone-based quote within 24 hours: what is included, the build sequence, and one clearly stated number."
+        ],
+        callout: {
+          type: "warning",
+          text: "Never accept a quote that arrives before anyone has seen your fee rules. In school software, the fee module is the project."
+        }
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:
