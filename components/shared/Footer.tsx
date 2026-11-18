@@ -186,7 +186,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/nainital" className="hover:text-blue-400 transition-colors">
-                  Website Design in Nainital &amp; Bhimtal
+                  SEO &amp; Web Development in Nainital &amp; Bhimtal
                 </Link>
               </li>
               <li>
