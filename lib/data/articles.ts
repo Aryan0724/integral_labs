@@ -1226,6 +1226,245 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "seo-services-cost-uttarakhand",
+    title: "How Much Do SEO Services Cost in Uttarakhand? An Honest Breakdown",
+    excerpt:
+      "Every business owner asks what SEO costs before anything else, and every agency answers with a package card that hides the actual work. Here is what moves the cost of SEO in Uttarakhand — technical gap, competition, content and time — and how to get an honest fixed quote within 24 hours.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-18T08:00:00.000Z",
+    category: "Search Engineering",
+    tags: ["SEO", "Buyer Guide", "Uttarakhand", "Project Scoping"],
+    coverImage: "/blog/seo-cost-uttarakhand.svg",
+    coverAlt: "Four SEO cost lever bars on a dark blueprint background with a Himalayan ridgeline above and a fixed milestone quote chip",
+    readingTime: "8 min read",
+    seoTitle: "SEO Services Cost in Uttarakhand: An Honest Breakdown",
+    seoDescription:
+      "No honest SEO quote comes from a package card. What actually moves the cost of SEO in Uttarakhand — technical gap, competition depth, content and measurement time — and how to get a fixed quote within 24 hours.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-honest-answer", title: "The Honest Answer", level: 2 },
+      { id: "the-four-levers-that-move-seo-cost", title: "The Four Levers That Move SEO Cost", level: 2 },
+      { id: "retainers-versus-project-engagements", title: "Retainers Versus Project Engagements", level: 2 },
+      { id: "why-seo-price-lists-mislead-buyers", title: "Why SEO Price Lists Mislead Buyers", level: 2 },
+      { id: "how-to-get-a-real-number-in-24-hours", title: "How to Get a Real Number in 24 Hours", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Honest Answer",
+        paragraphs: [
+          "You are reading a cost breakdown that contains no figures, and that is deliberate. SEO cost is a function of how far your website is from ranking — not a menu you pick from. Two Uttarakhand businesses can ask for \"SEO\" and need wholly different work: one has a clean, fast site and needs content and citations; the other has a five-year-old WordPress build with broken links, no structured data, six-second load times and a competitor entrenched on page one. Quoting both the same monthly package is either padding the first or abandoning the second.",
+          "So the honest answer is a process: an audit that measures the gap, a scope that lists what closing it takes, and a fixed quote delivered within 24 hours. Anyone selling SEO before looking at your site is selling a calendar, not an outcome."
+        ],
+        callout: {
+          type: "note",
+          text: "We publish no price list on purpose. An SEO retainer priced before seeing your site, market and competition is a guess wearing a number."
+        }
+      },
+      {
+        heading: "The Four Levers That Move SEO Cost",
+        paragraphs: [
+          "When we scope SEO work, the estimate is engineered from four levers. Reading them tells you where the money goes — and why two quotes for the same thing can differ by an order of magnitude:"
+        ],
+        bulletPoints: [
+          "The technical gap: crawlability, indexation, structured data, Core Web Vitals and site architecture. A site that needs a rebuild is a different project from one that needs tuning — and the rebuild is the honest recommendation when it is.",
+          "Competition depth: ranking for a Dehradun service term against ten weak local sites is different work from ranking against national brands with editorial teams. The SERP itself sets the budget.",
+          "Content: what must exist for buyers to trust you and for Google to understand you — service pages, city pages, proof, FAQs. Producing it is engineering and editorial time, not a monthly blog quota.",
+          "Time and measurement: SEO compounds, and the honest scope includes the months of measuring, iterating and reporting that make it compound. Anyone promising a fixed outcome by a fixed date is guessing with your money."
+        ],
+        callout: {
+          type: "tip",
+          text: "Ask any agency what they measured on your site before quoting. If the answer is nothing, the quote is a template."
+        }
+      },
+      {
+        heading: "Retainers Versus Project Engagements",
+        paragraphs: [
+          "Most agencies sell monthly retainers because they are easy to price and easy to renew. But SEO work is not uniformly monthly: a technical fix is a project, a migration is a project, and content architecture is a project. What genuinely belongs on a schedule is iteration — measuring impressions, fixing what the data exposes, strengthening what ranks.",
+          "The structure we use: a scoped project to fix what is broken and build what is missing, then a deliberate decision about ongoing iteration. If your site only needs the project, we say so and you own the result. If ongoing work is where the compounding lives, the quote says exactly what the monthly covers — pages, fixes, links, reports — not a mystery retainer."
+        ],
+        callout: {
+          type: "note",
+          text: "A retainer without a scope is a subscription to hope. The distinction is whether the monthly line item lists deliverables you can audit."
+        }
+      },
+      {
+        heading: "Why SEO Price Lists Mislead Buyers",
+        paragraphs: [
+          "Published SEO packages mislead in consistent ways. The entry tier promises on-page optimisation — usually a checklist run once — while the work that moves rankings (architecture, content depth, links) sits in tiers nobody buys. Keyword-counting targets are picked for winnability rather than commercial value, so the report looks healthy while your phone stays quiet. And the exit clause is invisible: the moment you leave, you discover the site was optimised for the agency's system, not for you.",
+          "None of this means every agency with a price list is bad. It means a number printed before anyone looked at your SERP is a marketing artifact. Treat any SEO price you see before an audit as an upper bound on the conversation's usefulness."
+        ],
+        callout: {
+          type: "warning",
+          text: "The tell: ask which URLs they will fix and why. A real plan names specific pages; a package names activities."
+        }
+      },
+      {
+        heading: "How to Get a Real Number in 24 Hours",
+        paragraphs: [
+          "Come to the discovery call with two things: the search terms your customers actually use, and what a customer is worth to you per year. That second number decides everything — an SEO project that costs less than a handful of customers is a different decision from one that costs years of margin.",
+          "We audit the site — indexation, structure, speed, competition — and send back a fixed, milestone-based quote within 24 hours: what gets fixed, what gets built, what gets measured, and one clearly stated number. Our city pages for Dehradun, Nainital, Haldwani, Haridwar and Rudrapur, and our Answer Engine Optimization page, describe the work itself; the quote prices your version of it."
+        ],
+        callout: {
+          type: "tip",
+          text: "Before the call, write down what one new customer is worth per year. It converts SEO from a cost conversation into an arithmetic one."
+        }
+      }
+    ]
+  },
+  {
+    slug: "how-to-choose-seo-agency-uttarakhand",
+    title: "How to Choose an SEO Agency in Uttarakhand — and What the Cheap Ones Cost You",
+    excerpt:
+      "The Uttarakhand market is full of agencies: most honest, many template shops, a few actively harmful. Here is a ten-minute check that separates them, and the questions that expose what a cheap retainer really costs.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-18T10:00:00.000Z",
+    category: "Search Engineering",
+    tags: ["SEO", "Buyer Guide", "Uttarakhand"],
+    coverImage: "/blog/agency-checks.svg",
+    coverAlt: "An SEO agency vetting checklist with green checks on a dark blueprint background with a Himalayan ridgeline above",
+    readingTime: "7 min read",
+    seoTitle: "How to Choose an SEO Agency in Uttarakhand (Honest Vetting Guide)",
+    seoDescription:
+      "Five ten-minute checks that separate real SEO agencies from template shops, what cheap retainers actually cost, how the local pack really works, and the six questions that expose competence.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-checks-that-take-ten-minutes", title: "The Checks That Take Ten Minutes", level: 2 },
+      { id: "what-cheap-seo-actually-costs", title: "What Cheap SEO Actually Costs", level: 2 },
+      { id: "the-citation-game-and-local-pack-reality", title: "The Citation Game and Local Pack Reality", level: 2 },
+      { id: "questions-that-separate-engineering-from-marketing", title: "Questions That Separate Engineering From Marketing", level: 2 },
+      { id: "what-we-do-differently-and-why-it-funnels-to-a-call", title: "What We Do Differently and Why It Funnels to a Call", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Checks That Take Ten Minutes",
+        paragraphs: [
+          "You do not need a consultant to vet an SEO agency. Five checks, all open to anyone, will separate most of the market:"
+        ],
+        bulletPoints: [
+          "Open their portfolio links. Dead sites, broken mobile layouts and six-second load times are direct evidence of the QA culture you are buying.",
+          "Run their own site through Google's Rich Results test. An agency that neglects its own structured data will treat yours the same way.",
+          "Check their site and two client sites in PageSpeed Insights. We do SEO is a claim; measured Core Web Vitals are evidence.",
+          "Search their brand name and two service terms. If they cannot rank themselves in their own market, the method does not exist.",
+          "Ask who owns the domain, hosting and analytics accounts. The answer hosted with us during a dispute is a hostage situation."
+        ]
+      },
+      {
+        heading: "What Cheap SEO Actually Costs",
+        paragraphs: [
+          "The cheapest retainer in the market is usually the most expensive purchase a business makes. Template SEO — bulk directory submissions, spun content, keyword-stuffed meta — leaves footprints Google has spent a decade learning to discount. The cost arrives later: rankings that plateau, a site pattern that needs cleanup before real work can start, and months spent undoing instead of building.",
+          "The honest arithmetic: a cheap retainer plus a remediation project usually exceeds the price of doing it properly once. The market's real problem is not price; it is that the cheap tier sells activity, and activity is measurable in a report while outcomes are measurable in your bank account."
+        ]
+      },
+      {
+        heading: "The Citation Game and Local Pack Reality",
+        paragraphs: [
+          "For local searches — the ones that matter to a hotel in Nainital or a dealer in Rudrapur — Google does not only rank pages. It ranks businesses: the map pack at the top of local results is driven by Google Business Profile signals, review consistency and citation corroboration across the web.",
+          "So the agency's answer to how will you get me into the map pack is a test of competence. If the reply is only that they will optimise your website, they are answering a different question. The honest answer involves your profile, your reviews, consistent business details and the pages that corroborate them."
+        ]
+      },
+      {
+        heading: "Questions That Separate Engineering From Marketing",
+        paragraphs: [
+          "Ask these on the first call and listen for specifics, not adjectives:"
+        ],
+        bulletPoints: [
+          "What did you measure on our site before this call?",
+          "Which URLs will you change in month one, and why those?",
+          "How will you report progress — impressions and positions per page, or activity lists?",
+          "What happens to the work if we leave? Who keeps the content, the schema, the accounts?",
+          "What do you do when a cluster does not move after six weeks?",
+          "Which part of this is engineering and which part is content, and who does each?"
+        ]
+      },
+      {
+        heading: "What We Do Differently and Why It Funnels to a Call",
+        paragraphs: [
+          "Our answer to the list above: technical SEO is engineered into the build, not bolted on afterwards — semantic markup, structured data, performance budgets and crawl architecture are part of how we ship websites. Local visibility is treated as a system: city pages with real content, honest business data, and reviews earned from work you can point to.",
+          "The measure we hold ourselves to is unglamorous: impressions and positions per page, reviewed weekly, reported plainly. Our own city pages and AEO work are the live demo. If that method fits what you need, a discovery call turns it into a fixed, milestone-based quote within 24 hours. If a template retainer is genuinely right for your stage, we will say so."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "website-not-ranking-diagnostic-checklist",
+    title: "Website Not Ranking? A Diagnostic Checklist Before You Pay Anyone",
+    excerpt:
+      "Before paying anyone to fix rankings, run the diagnosis that explains most failures. Index status, canonical chaos, content-market mismatch, speed debt and the internal links nobody audits — here is the checklist, in the order that matters.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Search Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-18T12:00:00.000Z",
+    category: "Search Engineering",
+    tags: ["SEO", "Technical SEO", "Diagnostics", "Buyer Guide"],
+    coverImage: "/blog/ranking-diagnosis.svg",
+    coverAlt: "A six-step ranking diagnostic flow from index status to measurement on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "Website Not Ranking? A Diagnostic Checklist Before You Pay",
+    seoDescription:
+      "Index status, canonical chaos, content-market mismatch, speed debt and orphan money pages — the diagnostic checklist that explains most ranking failures, in the fix order that actually works.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "start-with-the-index-not-the-dashboard", title: "Start With the Index Not the Dashboard", level: 2 },
+      { id: "the-five-checks-that-explain-most-failures", title: "The Five Checks That Explain Most Failures", level: 2 },
+      { id: "what-to-do-with-what-you-find", title: "What To Do With What You Find", level: 2 },
+      { id: "when-the-problem-is-engineering-not-content", title: "When the Problem Is Engineering Not Content", level: 2 },
+      { id: "the-fix-order-that-actually-works", title: "The Fix Order That Actually Works", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Start With the Index Not the Dashboard",
+        paragraphs: [
+          "The first question is not where do we rank but are we even eligible. Google Search Console's Pages report answers it in one screen: how many URLs are indexed, and what reasons keep the rest out. A site with pages stuck in crawled — currently not indexed has a quality or architecture problem that no amount of new blog posts will fix.",
+          "Then the URL Inspection tool on your three most important pages: is the selected canonical the one you intended, is the page crawlable, and does Google's snapshot match what you actually serve. Most ranking mysteries die here, in the first ten minutes."
+        ]
+      },
+      {
+        heading: "The Five Checks That Explain Most Failures",
+        paragraphs: [
+          "After indexation, these five checks explain the majority of stuck sites:"
+        ],
+        bulletPoints: [
+          "Canonical chaos: staging URLs, tracking parameters or paginated pages competing with the real page. If Google cannot tell which URL is canonical, it ranks none of them confidently.",
+          "Content-market mismatch: a page written about our services competing for a query that wants school ERP price in India. The page must answer the query that exists, not the one the business wishes existed.",
+          "Thin coverage: one page trying to rank for twelve services. Topical authority comes from dedicated pages with real depth, not keyword lists.",
+          "Speed debt: Core Web Vitals failing on mobile — the field data Google actually uses, not a lab score from a laptop on fibre.",
+          "Orphan pages: money pages nobody links to. If the homepage and navigation do not pass authority to them, they compete alone."
+        ]
+      },
+      {
+        heading: "What To Do With What You Find",
+        paragraphs: [
+          "The output of the diagnosis is a ranked fix list, not a feeling. Indexation first — nothing else matters until the right URLs are eligible. Then the canonical and internal-link fixes, because they are cheap and immediate. Then content: consolidate what competes with itself, deepen what is thin, and build the page the query actually wants.",
+          "Speed and structured data come alongside content, not before it. And after the fixes ship, the measurement window is impressions per page per week — the leading indicator that precedes clicks by weeks."
+        ]
+      },
+      {
+        heading: "When the Problem Is Engineering Not Content",
+        paragraphs: [
+          "Some sites are not undertuned; they are built on foundations that fight them: client-rendered pages that Google struggles to parse, plugin stacks that ship half a megabyte of scripts before any text, URL structures from a decade-old CMS, redirect chains nobody has audited.",
+          "When the diagnosis lands there, the honest recommendation is a rebuild — a modern server-rendered build with semantic markup, structured data and a performance budget, migrated with redirects that preserve what rankings exist. That is engineering work, and it is also the cheapest path once the alternative is years of content poured into a leaking bucket."
+        ]
+      },
+      {
+        heading: "The Fix Order That Actually Works",
+        paragraphs: [
+          "Fix order, in one line: make the right pages eligible, make them canonical, link them, deepen them, speed everything, then measure weekly. Skipping steps is how agencies produce activity reports that never move positions.",
+          "If you want the diagnosis done with you rather than guessed at: a discovery call, a site audit, and a fixed, milestone-based plan within 24 hours — including the honest verdict when the fix is a rebuild. The service pages on this site describe how we build; the city pages describe how we compete locally, and our AEO page covers what it takes to be cited by AI assistants."
+        ]
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="150" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="2">THE FIX ORDER THAT ACTUALLY WORKS</text>
+
+  <!-- Diagnostic flow: 6 chips -->
+  <g font-family="monospace" font-size="12" text-anchor="middle">
+    <rect x="80" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="155" y="235" fill="#94a3b8">INDEX</text>
+    <path d="M 230 230 L 260 230" stroke="#334155" stroke-width="2"/>
+    <path d="M 252 224 L 260 230 L 252 236" stroke="#334155" stroke-width="2" fill="none"/>
+
+    <rect x="262" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="337" y="235" fill="#94a3b8">CANONICAL</text>
+    <path d="M 412 230 L 442 230" stroke="#334155" stroke-width="2"/>
+    <path d="M 434 224 L 442 230 L 434 236" stroke="#334155" stroke-width="2" fill="none"/>
+
+    <rect x="444" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="519" y="235" fill="#94a3b8">INTERNAL LINKS</text>
+    <path d="M 594 230 L 624 230" stroke="#334155" stroke-width="2"/>
+    <path d="M 616 224 L 624 230 L 616 236" stroke="#334155" stroke-width="2" fill="none"/>
+
+    <rect x="626" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="701" y="235" fill="#94a3b8">CONTENT</text>
+    <path d="M 776 230 L 806 230" stroke="#334155" stroke-width="2"/>
+    <path d="M 798 224 L 806 230 L 798 236" stroke="#334155" stroke-width="2" fill="none"/>
+
+    <rect x="808" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="883" y="235" fill="#94a3b8">SPEED</text>
+    <path d="M 958 230 L 988 230" stroke="#334155" stroke-width="2"/>
+    <path d="M 980 224 L 988 230 L 980 236" stroke="#334155" stroke-width="2" fill="none"/>
+
+    <rect x="990" y="200" width="150" height="60" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="2.5"/>
+    <text x="1065" y="235" fill="#22c55e">MEASURE</text>
+  </g>
+
+  <text x="600" y="330" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">IMPRESSIONS PER PAGE PER WEEK = THE LEADING INDICATOR BEFORE CLICKS</text>
+
+  <g transform="translate(240, 380)">
+    <rect x="0" y="0" width="720" height="120" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="360" y="38" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">MOST MYSTERIES DIE IN THE FIRST TEN MINUTES</text>
+    <text x="360" y="66" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="11">INDEXED? · CORRECT CANONICAL? · CRAWLABLE? · SNAPSHOT MATCHES?</text>
+    <text x="360" y="96" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="11">EVERYTHING ELSE IS A RANKED FIX LIST, NOT A FEELING</text>
+  </g>
+
+  <text x="600" y="590" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // RANKING DIAGNOSTICS · WEB</text>
+</svg>
