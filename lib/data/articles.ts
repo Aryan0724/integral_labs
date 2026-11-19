@@ -1465,6 +1465,270 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "wordpress-to-nextjs-rebuild-guide",
+    title: "WordPress to Next.js: When a Rebuild Is Worth It, and How to Keep Your Rankings",
+    excerpt:
+      "Most WordPress sites do not need a rebuild, and the ones that do rarely need it for the reason the agency pitches. Here is the honest test, what a migration actually moves, and why the redirect map, not the framework, is the project.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "Web Architecture Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-19T08:00:00.000Z",
+    category: "Web Architecture",
+    tags: ["Next.js", "WordPress", "Migration", "Technical SEO", "Buyer Guide"],
+    coverImage: "/blog/wp-to-nextjs.svg",
+    coverAlt: "A blocky legacy page grid on the left transforming into a fast server-rendered page on the right across a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "WordPress to Next.js Migration: When a Rebuild Pays Off",
+    seoDescription:
+      "The honest test for rebuilding a WordPress site in Next.js, what a migration actually moves, the redirect map that protects your rankings, and what breaks on the way across.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "when-a-rebuild-is-the-honest-answer", title: "When a Rebuild Is the Honest Answer", level: 2 },
+      { id: "what-a-migration-actually-moves", title: "What a Migration Actually Moves", level: 2 },
+      { id: "the-redirect-map-is-the-project", title: "The Redirect Map Is the Project", level: 2 },
+      { id: "what-breaks-on-the-way-across", title: "What Breaks on the Way Across", level: 2 },
+      { id: "how-to-scope-it-without-losing-traffic", title: "How to Scope It Without Losing Traffic", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "When a Rebuild Is the Honest Answer",
+        paragraphs: [
+          "WordPress is not the problem. A well-maintained WordPress site with a clean theme, a caching layer and a disciplined plugin list will serve a small business for years, and rebuilding it would be a way to spend money without buying anything. The honest answer to most rebuild pitches is no.",
+          "The genuine triggers are narrower and mostly structural: the plugin stack ships so much JavaScript that mobile Core Web Vitals cannot pass; the content model cannot express what the business now sells, so editors fight the CMS daily; the site is a security liability because nobody has patched it since 2023; or the requirement is real server-rendered pages at scale with personalisation, which a page-cache plugin cannot deliver.",
+          "Notice what is absent from that list: wanting a modern stack, being bored of the design, or a competitor launching a nicer site. Those are redesign conversations. A rebuild is justified when the foundation blocks something you can measure."
+        ],
+        callout: {
+          type: "warning",
+          text: "Ask any agency quoting a rebuild which measured problem the rebuild fixes. If the answer is speed, ask for the field data, not a lab score."
+        }
+      },
+      {
+        heading: "What a Migration Actually Moves",
+        paragraphs: [
+          "A migration is not a redesign. It is the transfer of a working site from one rendering model to another while preserving every signal Google uses to understand it: URL structure, page titles, headings, internal links, structured data, and the redirects that catch everything you cannot preserve.",
+          "In practice that means the work happens in four layers. Content moves from post types and shortcodes into a typed model. Routes move from WordPress permalinks into file-based routing. Metadata moves from an SEO plugin into the framework's metadata API, including canonical tags and Open Graph. Structured data — article, breadcrumb, FAQ, local business — must be re-emitted as first-class output rather than trusted to a plugin.",
+          "The framework itself is the smallest part. Next.js is not magic: it will happily render a slow, unstructured site if you let it. What it gives you is control over what ships to the browser and when, which is only worth having if someone uses that control deliberately."
+        ]
+      },
+      {
+        heading: "The Redirect Map Is the Project",
+        paragraphs: [
+          "Every ranking a site has earned is attached to a URL. Change the URL without a redirect and you have thrown the ranking away, politely. This is where most migrations lose traffic, and it is entirely avoidable with unglamorous work done before launch.",
+          "Build the map from evidence, not guesswork: export every indexed URL from Search Console, crawl the live site for every internal link, and add the URLs that external sites link to. Then decide, for each one, whether it survives, redirects, or dies. Surviving URLs are the goal — a URL that never changes needs no redirect and carries its history intact.",
+          "Then test it. The map is not done when it is written; it is done when a crawler run shows zero chains, zero loops, and zero internal links pointing at redirects. A 301 that resolves to a 404 is worse than an honest 404, because it wastes crawl budget and signals carelessness at exactly the moment Google is re-evaluating the site."
+        ],
+        callout: {
+          type: "tip",
+          text: "Preserve category and pagination URLs too. They usually carry no traffic of their own, but they are how crawlers discover everything else."
+        }
+      },
+      {
+        heading: "What Breaks on the Way Across",
+        paragraphs: [
+          "The same failures recur on nearly every migration, and each one is cheap to prevent and expensive to discover a month later:"
+        ],
+        bulletPoints: [
+          "Metadata half-migrated: titles moved, canonicals and robots directives did not, so the new pages compete with or deindex themselves.",
+          "Structured data dropped: the WordPress plugin was emitting schema the new build never replaced, quietly removing rich results from the SERP.",
+          "Images unoptimised: original uploads copied across without modern formats or dimensions, reintroducing the layout shift the rebuild was meant to fix.",
+          "Analytics restarted: tags not carried over, so the traffic dip looks catastrophic in reports while the site is actually fine.",
+          "Forms and tracking silently dead: the contact form posts nowhere, or fires no conversion event, for weeks.",
+          "Authors and dates lost: content freshness signals and bylines vanish because the CMS fields had no equivalent in the new model."
+        ]
+      },
+      {
+        heading: "How to Scope It Without Losing Traffic",
+        paragraphs: [
+          "Scope a migration in three milestones: an audit-and-inventory milestone that produces the URL map and the content model, a build milestone that reproduces the site in the new framework behind a staging domain, and a launch milestone with redirect deployment, Search Console verification, sitemap resubmission and a two-week crawl watch.",
+          "Insist that the redirect map is a deliverable you receive, not an internal artifact. Insist too on a rollback path: the old site stays deployable until the new one has survived a full crawl. And measure in impressions per page, not total visits — a migration that keeps impressions flat for three weeks has worked, even if the traffic graph looks scary.",
+          "We scope rebuilds this way, and we say no when the audit shows the current site is fine: the audit, the URL map and the build sequence are described on our services pages. Bring your Search Console export and your two worst Core Web Vitals URLs to a discovery call and you will get a fixed, milestone-based quote within 24 hours, including the verdict that a theme cleanup is the cheaper answer when it is."
+        ],
+        callout: {
+          type: "note",
+          text: "A migration is a surgery, not a haircut. The correct question is never whether Next.js is better, but whether your current foundation is blocking something measurable."
+        }
+      }
+    ]
+  },
+  {
+    slug: "whatsapp-business-api-crm-integration",
+    title: "WhatsApp Business API and Your CRM: What Indian Sales Teams Should Actually Build",
+    excerpt:
+      "In India the deal often lives in a WhatsApp thread that no CRM can see. Here is what integrating the Business API really involves — the three depths of integration, the 24-hour window, template approvals, and what breaks when you bolt it on.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-19T10:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["WhatsApp", "Custom CRM", "Integrations", "India", "Sales"],
+    coverImage: "/blog/whatsapp-crm.svg",
+    coverAlt: "WhatsApp message bubbles flowing into a structured CRM record card on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "WhatsApp Business API CRM Integration: A Practical Guide",
+    seoDescription:
+      "The three depths of WhatsApp Business API integration for a CRM, how the 24-hour service window and template approvals shape your design, and what breaks when WhatsApp is bolted on late.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "why-the-crm-must-meet-whatsapp", title: "Why the CRM Must Meet WhatsApp", level: 2 },
+      { id: "the-three-depths-of-integration", title: "The Three Depths of Integration", level: 2 },
+      { id: "the-24-hour-window-and-templates", title: "The 24-Hour Window and Templates", level: 2 },
+      { id: "what-breaks-when-you-bolt-it-on", title: "What Breaks When You Bolt It On", level: 2 },
+      { id: "how-to-scope-the-build", title: "How to Scope the Build", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Why the CRM Must Meet WhatsApp",
+        paragraphs: [
+          "An Indian sales team runs on WhatsApp: the first reply, the quotation PDF, the follow-up three weeks later, the site visit confirmation. A CRM that records only calls and emails records a fraction of the truth, and the fraction it misses is usually the part where the deal was won or lost.",
+          "This is not a preference, it is where the evidence lives. When a customer disputes what was promised, the answer is in a thread; when a rep leaves, the relationships leave with their phone. Putting WhatsApp into the system of record is less about convenience than about keeping the business's memory inside the business."
+        ],
+        callout: {
+          type: "note",
+          text: "The goal is not to read every message. It is to attach the conversation to the right customer, with the right owner, at the right stage."
+        }
+      },
+      {
+        heading: "The Three Depths of Integration",
+        paragraphs: [
+          "Teams ask for WhatsApp integration as one thing, but it is three different projects with very different costs:"
+        ],
+        bulletPoints: [
+          "Notification depth: the CRM sends transactional messages — quotation sent, payment reminder, appointment confirmed — through approved templates. One-way, cheap, immediately useful.",
+          "Conversation depth: inbound replies land in the CRM against the customer record, so a rep sees the whole thread next to the deal and can reply from inside the system. This is where most teams actually want to be.",
+          "Process depth: WhatsApp becomes a workflow surface — the deal stage updates from the conversation, approvals happen in-thread, and the system nudges the rep when a reply is overdue. This is a product decision, not an integration."
+        ]
+      },
+      {
+        heading: "The 24-Hour Window and Templates",
+        paragraphs: [
+          "The Business API is not the consumer app with a different colour scheme. Meta's rules shape what you can build: you may reply freely inside a customer service window that starts when the customer messages you, but outside that window you must use pre-approved template messages, each of which is reviewed before it can be sent.",
+          "That single constraint decides half your architecture. Reminders, payment nudges and re-engagement campaigns all live outside the window, so they must be templated, categorised and approved — which means the design work happens in advance, in the message copy, not at send time. It also means your CRM needs to track template status, or reps will queue messages that silently fail.",
+          "The practical implication: build the template catalogue as part of the project, with the business owner approving copy in a single sitting. Retrofitting templates after launch is how WhatsApp projects stall."
+        ],
+        callout: {
+          type: "warning",
+          text: "Any design that assumes free-form messaging to a cold contact will fail review. Plan the templated paths first, then the conversational ones."
+        }
+      },
+      {
+        heading: "What Breaks When You Bolt It On",
+        paragraphs: [
+          "Bolting WhatsApp onto an existing CRM — a plugin, a webhook, a spreadsheet in the middle — works until it does not, and it usually fails in predictable places:"
+        ],
+        bulletPoints: [
+          "Duplicate records: the same customer arrives with a phone number in one format and a name in another, so the thread attaches to a new contact instead of the existing deal.",
+          "Ownership confusion: two reps message the same customer from different numbers, and nobody can tell who promised what.",
+          "Lost history: messages live in the provider's dashboard, not the CRM, so the record shows a deal with no conversation and a rep with no context.",
+          "Silent delivery failures: numbers that have opted out or blocked the business disappear into a queue nobody monitors.",
+          "Compliance gaps: no record of consent, no retention policy, and no audit trail when a dispute arrives."
+        ]
+      },
+      {
+        heading: "How to Scope the Build",
+        paragraphs: [
+          "Scope it in three layers and be explicit about which ones you are buying. First the plumbing: a provider account, a verified business, a number that belongs to the company rather than a rep. Second the record: phone-number normalisation, deduplication against existing contacts, and conversation history attached to the deal. Third the workflow: templates for the messages you send most, routing so the right rep answers, and a queue that surfaces unanswered conversations before they go cold.",
+          "Done properly, WhatsApp becomes the CRM's most-used screen, because it is where the work already happens. Done badly, it becomes a second inbox that reps ignore while still messaging from their phones.",
+          "Our custom CRM development page describes how we build the record and workflow layers; the integration itself is scoped against your existing stack, your message catalogue and your team structure. Bring the three messages you send most often to a discovery call and you will get a fixed, milestone-based quote within 24 hours."
+        ],
+        callout: {
+          type: "tip",
+          text: "Measure the integration by one number after launch: the share of customer conversations that exist in the CRM rather than only on a rep's phone."
+        }
+      }
+    ]
+  },
+  {
+    slug: "ota-commission-vs-direct-bookings",
+    title: "OTA Commission vs Direct Bookings: The Arithmetic Every Small Hotel Should Run",
+    excerpt:
+      "Every small hotel knows the OTA takes a slice. Few have run the arithmetic that shows what the slice really costs across a season — or why direct booking websites fail when they do. Here is the three-line model, honestly applied.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-19T12:00:00.000Z",
+    category: "Web Architecture",
+    tags: ["Hotels", "Direct Bookings", "Revenue", "Uttarakhand", "Buyer Guide"],
+    coverImage: "/blog/ota-vs-direct.svg",
+    coverAlt: "Two revenue lines on a dark blueprint chart, one eroded by commission steps and one held flat by direct bookings",
+    readingTime: "7 min read",
+    seoTitle: "OTA Commission vs Direct Bookings: The Hotel Arithmetic",
+    seoDescription:
+      "The three-line revenue model that shows what OTA commission really costs a small hotel across a season, what the OTA genuinely sells you, why direct booking sites fail, and the features that move the number.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "the-three-line-arithmetic", title: "The Three-Line Arithmetic", level: 2 },
+      { id: "what-the-ota-actually-sells-you", title: "What the OTA Actually Sells You", level: 2 },
+      { id: "why-direct-booking-sites-fail", title: "Why Direct Booking Sites Fail", level: 2 },
+      { id: "the-features-that-move-the-number", title: "The Features That Move the Number", level: 2 },
+      { id: "run-the-numbers-before-you-build", title: "Run the Numbers Before You Build", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "The Three-Line Arithmetic",
+        paragraphs: [
+          "Strip away the dashboards and hotel revenue reduces to three lines: what the guest pays, what the channel keeps, and what it costs you to earn the booking in the first place. Net revenue = room rate minus channel commission minus payment processing minus the marketing that produced it.",
+          "The OTA does not hide its commission, but it does hide its compounding. The slice applies to every booking, every season, forever — including repeat guests who would have returned anyway. A guest who books through the OTA in year one and again in year three has paid the commission twice, for a relationship the hotel already owned.",
+          "That is the real argument for direct bookings, and it is an arithmetic one, not an emotional one. The question is never whether the OTA is worth it — for discovery, it usually is — but which bookings should come through it."
+        ],
+        callout: {
+          type: "note",
+          text: "The profitable structure is almost never all-direct or all-OTA. It is OTA for discovery, direct for everything after the first stay."
+        }
+      },
+      {
+        heading: "What the OTA Actually Sells You",
+        paragraphs: [
+          "Honesty in both directions: the OTA sells distribution you cannot replicate. It buys demand on a global marketplace, ranks your property against alternatives travellers are already comparing, handles trust for first-time guests, and absorbs cancellations and payment disputes in markets you have never operated in.",
+          "For a hotel with no digital presence, that is worth a great deal — and pretending a new website replaces it would be selling a fantasy. The correct frame is marginal: what does the OTA cost you for bookings you would not otherwise have, and what does it cost you for bookings you would have won anyway? The first is a customer acquisition cost. The second is rent.",
+          "The transition point is measurable. It arrives when your property's name is being searched directly, when guests ask for the same room again, and when your reviews are strong enough that the OTA's trust layer is no longer what closes the booking. Those are the bookings that should move."
+        ]
+      },
+      {
+        heading: "Why Direct Booking Sites Fail",
+        paragraphs: [
+          "Most small hotels that build a booking website see almost no direct bookings, and the reasons are consistent:"
+        ],
+        bulletPoints: [
+          "No reason to book direct: the site shows the same rate the OTA shows, so the guest takes the familiar option with free cancellation.",
+          "A booking flow that loses people: date pickers that reset, availability that requires a phone call, forms that ask for more than the OTA does.",
+          "Mobile treated as an afterthought: the majority of travellers arrive on a phone, often on weak networks, and the site is a desktop layout squeezed down.",
+          "No visibility: the site is not indexed for the property name, has no structured data, and never appears in the map pack.",
+          "No follow-up: the guest books once and is never contacted again, so the relationship stays with the OTA by default."
+        ],
+        callout: {
+          type: "warning",
+          text: "A booking website without a direct-booking incentive and a reason to return is a brochure with a calendar attached."
+        }
+      },
+      {
+        heading: "The Features That Move the Number",
+        paragraphs: [
+          "The features that actually shift revenue are unglamorous and specific. Real-time availability synced with the channels you already use, so the site never sells a room twice. A booking flow that completes on a phone in under a minute, with payment options Indian guests actually use. A direct-booking advantage — a flexible cancellation, an included breakfast, a room upgrade — that costs you less than the commission it replaces.",
+          "Then the retention layer: a guest record that survives the stay, WhatsApp or email follow-up with a return-guest rate, and reviews that feed both the site and your Google Business Profile. That layer is what converts a first OTA booking into a direct second booking, and it is where the compounding lives.",
+          "None of this requires a large property or a large budget; it requires the site and the guest record to be one system rather than two."
+        ],
+        callout: {
+          type: "tip",
+          text: "Track one number monthly: the share of bookings that arrive direct. It is the cleanest signal that the website is doing revenue work rather than decoration."
+        }
+      },
+      {
+        heading: "Run the Numbers Before You Build",
+        paragraphs: [
+          "Before commissioning anything, write down three numbers: rooms sold per season, the average length of stay, and the share of guests who have stayed before. Multiply the repeat share by your room revenue and you have an honest estimate of what the commission is costing you on guests you already own — the ceiling on what a direct booking site can return.",
+          "If that ceiling is small, stay with the OTA and improve your listing. If it is meaningful, build the thing that captures it: a booking website tied to a guest record, with the retention follow-up included rather than promised.",
+          "That build — availability sync, mobile-first booking, payments, guest records, review flow — is described on our hotel booking website page. Bring your three numbers to a discovery call and you will get a fixed, milestone-based quote within 24 hours, including the honest verdict when your OTA listing is the better investment for another season."
+        ]
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:

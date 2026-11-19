@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Chat thread -->
+  <g transform="translate(90, 160)">
+    <text x="0" y="0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="2">WHERE THE DEAL LIVES</text>
+    <rect x="0" y="22" width="330" height="52" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="54" fill="#cbd5e1" font-family="monospace" font-size="12">quotation bhej diya hai</text>
+    <rect x="60" y="86" width="270" height="52" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="80" y="118" fill="#a7f3d0" font-family="monospace" font-size="12">site visit kal 11 baje?</text>
+    <rect x="0" y="150" width="330" height="52" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="182" fill="#cbd5e1" font-family="monospace" font-size="12">GST number send kar dijiye</text>
+    <rect x="60" y="214" width="270" height="52" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="80" y="246" fill="#a7f3d0" font-family="monospace" font-size="12">advance kal tak</text>
+    <text x="0" y="300" fill="#64748b" font-family="monospace" font-size="11">a rep's phone is not a system of record</text>
+  </g>
+
+  <line x1="450" y1="300" x2="560" y2="300" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- CRM record -->
+  <g transform="translate(590, 150)">
+    <rect x="0" y="0" width="510" height="330" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="26" y="36" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="2">CRM RECORD · ONE CUSTOMER</text>
+    <line x1="26" y1="52" x2="484" y2="52" stroke="#1e293b" stroke-width="1.5"/>
+    <g font-family="monospace" font-size="11" fill="#94a3b8">
+      <text x="26" y="80">DEAL</text>
+      <text x="150" y="80" fill="#cbd5e1">Quotation sent · awaiting advance</text>
+      <text x="26" y="112">OWNER</text>
+      <text x="150" y="112" fill="#cbd5e1">single rep · single company number</text>
+      <text x="26" y="144">THREAD</text>
+      <text x="150" y="144" fill="#cbd5e1">attached, searchable, retained</text>
+      <text x="26" y="176">CONSENT</text>
+      <text x="150" y="176" fill="#cbd5e1">opt-in recorded at first contact</text>
+    </g>
+    <line x1="26" y1="196" x2="484" y2="196" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="26" y="214" width="458" height="40" rx="6" fill="#022c22" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="44" y="240" fill="#22c55e" font-family="monospace" font-size="11">TEMPLATE APPROVED · OUTSIDE 24H WINDOW</text>
+    <rect x="26" y="264" width="458" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="44" y="290" fill="#94a3b8" font-family="monospace" font-size="11">INBOUND REPLY · WINDOW OPEN · FREE-FORM</text>
+  </g>
+
+  <!-- Fixed quote chip -->
+  <rect x="880" y="50" width="220" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="905" y="77" fill="#22c55e" font-family="system-ui, sans-serif" font-size="13" font-weight="700">FIXED MILESTONE QUOTE</text>
+  <text x="905" y="100" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">after discovery call · 24h</text>
+
+  <text x="600" y="545" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">THE BUSINESS MEMORY STAYS IN THE BUSINESS</text>
+  <text x="600" y="585" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // WHATSAPP BUSINESS API + CRM</text>
+</svg>
