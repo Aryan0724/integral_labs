@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="90" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="3">THE PORTAL IS NOT THE FORM · IT IS THE ANSWER</text>
+
+  <!-- Dealer phone -->
+  <g transform="translate(80, 150)">
+    <rect x="0" y="0" width="250" height="390" rx="18" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <rect x="20" y="30" width="210" height="46" rx="8" fill="#1e293b" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="36" y="58" fill="#38bdf8" font-family="monospace" font-size="11">MY RATE TODAY</text>
+    <rect x="20" y="88" width="210" height="46" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="36" y="116" fill="#94a3b8" font-family="monospace" font-size="11">WHERE IS MY ORDER</text>
+    <rect x="20" y="146" width="210" height="46" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="36" y="174" fill="#94a3b8" font-family="monospace" font-size="11">WHAT DO I OWE</text>
+    <rect x="20" y="204" width="210" height="46" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="36" y="232" fill="#94a3b8" font-family="monospace" font-size="11">WHAT DID I EARN</text>
+    <rect x="20" y="278" width="210" height="76" rx="8" fill="#022c22" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="36" y="304" fill="#22c55e" font-family="monospace" font-size="10">RATE EXPLAINABLE</text>
+    <text x="36" y="324" fill="#94a3b8" font-family="monospace" font-size="10">RULE SHOWN, NOT GUESSED</text>
+    <text x="36" y="342" fill="#64748b" font-family="monospace" font-size="10">ONE THUMB · WEAK SIGNAL</text>
+  </g>
+
+  <line x1="360" y1="330" x2="450" y2="330" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Backend stages -->
+  <g transform="translate(470, 150)">
+    <rect x="0" y="0" width="300" height="112" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="22" y="32" fill="#38bdf8" font-family="monospace" font-size="11">PRICE AND SCHEME ENGINE</text>
+    <text x="22" y="58" fill="#94a3b8" font-family="monospace" font-size="10">slabs · territory · festival · early pay</text>
+    <text x="22" y="82" fill="#94a3b8" font-family="monospace" font-size="10">configurable by commercial team</text>
+    <text x="22" y="102" fill="#22c55e" font-family="monospace" font-size="10">THIS IS THE PROJECT</text>
+
+    <rect x="0" y="130" width="300" height="86" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="22" y="162" fill="#94a3b8" font-family="monospace" font-size="11">ORDER AND DISPATCH</text>
+    <text x="22" y="188" fill="#64748b" font-family="monospace" font-size="10">transporter · expected date · history</text>
+
+    <rect x="0" y="234" width="300" height="86" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="22" y="266" fill="#94a3b8" font-family="monospace" font-size="11">LEDGER AND DUES</text>
+    <text x="22" y="292" fill="#64748b" font-family="monospace" font-size="10">credit limit · overdue · from accounts</text>
+
+    <rect x="0" y="338" width="300" height="70" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="22" y="368" fill="#f59e0b" font-family="monospace" font-size="11">WHATSAPP NOTICES</text>
+    <text x="22" y="392" fill="#64748b" font-family="monospace" font-size="10">dispatch and payment confirmation</text>
+  </g>
+
+  <!-- Fixed quote chip -->
+  <rect x="880" y="60" width="220" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="905" y="87" fill="#22c55e" font-family="system-ui, sans-serif" font-size="13" font-weight="700">FIXED MILESTONE QUOTE</text>
+  <text x="905" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">after discovery call · 24h</text>
+
+  <text x="600" y="590" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // DEALER AND DISTRIBUTOR PORTALS · INDIA</text>
+</svg>

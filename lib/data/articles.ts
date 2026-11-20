@@ -1821,6 +1821,175 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "dealer-distributor-portal-development",
+    title: "Dealer and Distributor Portals: What Actually Gets Used in Indian B2B",
+    excerpt:
+      "Most dealer portals are built, launched, and then bypassed within a quarter. The failure is never the login screen — it is that the portal cannot answer the four questions a dealer actually has. Here is the anatomy that survives contact with a field sales team.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-20T10:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["B2B", "Dealer Portal", "Distribution", "India", "Buyer Guide"],
+    coverImage: "/blog/dealer-portal.svg",
+    coverAlt: "A dealer order flowing through price list, dispatch and ledger stages on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "Dealer and Distributor Portal Development: What Works in India",
+    seoDescription:
+      "Why dealer portals get bypassed, the four questions a dealer actually needs answered, why the scheme and price-list engine is the real project, and how to scope a first release that gets adopted.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "why-dealer-portals-get-bypassed", title: "Why Dealer Portals Get Bypassed", level: 2 },
+      { id: "the-four-questions-a-dealer-has", title: "The Four Questions a Dealer Has", level: 2 },
+      { id: "the-scheme-engine-is-the-project", title: "The Scheme Engine Is the Project", level: 2 },
+      { id: "designing-for-the-field-not-the-office", title: "Designing for the Field Not the Office", level: 2 },
+      { id: "how-to-scope-a-first-release", title: "How to Scope a First Release", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Why Dealer Portals Get Bypassed",
+        paragraphs: [
+          "A distributor builds a portal because the order book lives on WhatsApp and the sales team spends its mornings re-typing messages into Tally. Three months later the portal has forty logins and the WhatsApp group is busier than ever. The pattern is so common that it is worth stating plainly: dealers do not resist technology, they resent work that does not pay them back.",
+          "The portal usually fails for a boring reason. The dealer called to ask what his rate would be on a particular scheme, and the portal could not tell him — so he called his sales rep, who told him in thirty seconds. From that day the WhatsApp group is the source of truth, and the portal is a compliance exercise nobody opens.",
+          "Everything that follows is a consequence of that first failure. Adoption is not a training problem. It is a question of whether the system answers faster than the human alternative."
+        ],
+        callout: {
+          type: "note",
+          text: "The competitor is not another portal. It is a phone call to a rep who already knows the answer."
+        }
+      },
+      {
+        heading: "The Four Questions a Dealer Has",
+        paragraphs: [
+          "Strip away the feature lists and every dealer interaction reduces to four questions. A portal that answers all four gets used daily; one that answers three gets used weekly; one that answers two gets abandoned."
+        ],
+        bulletPoints: [
+          "What is my rate today: the price list that actually applies, including schemes, slabs, territory pricing and the effective dates, not a PDF emailed last quarter.",
+          "Where is my order: dispatch status, transporter details and expected delivery, without calling anyone.",
+          "What do I owe: outstanding balance, credit limit remaining, and which invoices are overdue, matching what the accountant has.",
+          "What did I earn: scheme claims, credit notes and returns, settled and pending, with the arithmetic visible."
+        ],
+        callout: {
+          type: "tip",
+          text: "If your portal answers only order placement, expect it to be used for order placement only — and only by the dealers who already liked you."
+        }
+      },
+      {
+        heading: "The Scheme Engine Is the Project",
+        paragraphs: [
+          "Order capture is a form. Pricing is a business logic problem, and it is where these builds succeed or quietly die. Indian distribution runs on layered incentives: quantity slabs, quarterly targets, territory-specific offers, festival schemes, early-payment discounts, and per-product push incentives that change mid-month.",
+          "A generic ecommerce catalogue cannot express this. The portal needs a rules layer where a commercial team can configure a scheme without a developer, and where a dealer can see exactly which rule produced the number on screen. When a dealer disputes a rate, the answer must be auditable — not an argument with the sales rep.",
+          "Build this first, before the pretty dashboard. A portal with a correct and explainable price engine will survive a bad interface; a beautiful portal with a wrong price is deleted from the browser."
+        ]
+      },
+      {
+        heading: "Designing for the Field Not the Office",
+        paragraphs: [
+          "The people using this are on mid-range Android phones, in a shop with unreliable power, often typing in Hindi, and frequently handling three brands at once. Design decisions follow from that:"
+        ],
+        bulletPoints: [
+          "Weight and bandwidth: the first screen should render on a weak connection, with no dashboard that loads a month of analytics before showing a balance.",
+          "Language: Hindi-first labels with English available, not the reverse.",
+          "One-thumb order entry: reorder from history, saved baskets, and quantity steppers rather than a search-and-add catalogue.",
+          "Offline tolerance: an order drafted on a weak network must not vanish when the signal drops.",
+          "Notifications where they already look: WhatsApp for dispatch and payment confirmation, with the portal as the record rather than the only channel.",
+          "Role clarity: the dealer owner, the counter staff and the field rep need different views, and a portal that shows everyone everything creates disputes."
+        ]
+      },
+      {
+        heading: "How to Scope a First Release",
+        paragraphs: [
+          "Ship the four questions, not the org chart. A first release that covers live pricing, order placement with dispatch tracking, the outstanding ledger, and scheme visibility will earn daily use. Secondary features — claims workflows, secondary sales reporting, target dashboards, loyalty — come after adoption, when the data inside the portal is trustworthy enough to report on.",
+          "Two dependencies decide the timeline more than any feature: where the price master lives, and how the ledger is read. If pricing is decided in spreadsheets by three people, the first milestone is consolidating that into one configurable engine. If outstanding balances come from Tally, the integration depth described in our Tally article applies directly.",
+          "We build dealer portals as part of custom software work rather than on top of a generic ecommerce stack, because the scheme engine and the ledger are the product. Bring your price rules, a recent scheme circular and one dealer's ledger to a discovery call and you will get a fixed, milestone-based quote within 24 hours."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "school-erp-data-migration-checklist",
+    title: "Moving to a New School ERP: The Data Migration Checklist",
+    excerpt:
+      "The software demo is the easy part. The project is getting eight years of registers, fee ledgers and exam records into the new system without losing a single rupee or a single mark. Here is the migration order that works, and the reconciliation that proves it.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-20T12:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["School ERP", "Data Migration", "Project Scoping", "India"],
+    coverImage: "/blog/school-erp-migration.svg",
+    coverAlt: "Three source registers funnelling into a validated school database with a reconciliation check on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "School ERP Data Migration: A Checklist That Prevents Disaster",
+    seoDescription:
+      "What to migrate into a new school ERP and what to leave behind, the three sources of truth, the reconciliation that must pass before switchover, the parallel-run month, and the cutover plan.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "what-migrates-and-what-does-not", title: "What Migrates and What Does Not", level: 2 },
+      { id: "the-three-sources-of-truth", title: "The Three Sources of Truth", level: 2 },
+      { id: "reconcile-before-you-switch", title: "Reconcile Before You Switch", level: 2 },
+      { id: "the-parallel-run-month", title: "The Parallel Run Month", level: 2 },
+      { id: "the-cutover-plan", title: "The Cutover Plan", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "What Migrates and What Does Not",
+        paragraphs: [
+          "Schools choose software on the demo and then discover the project is a data problem. The instinct is to migrate everything, which is both expensive and wrong: a decade of operational history belongs in an archive, not in a system staff use every morning.",
+          "The rule that works: migrate what is live, keep what is legal. Live means current students, staff, fee structures, open dues, current-session attendance and exam data. Legal means the records an auditor or board inspection may ask for — admission registers, fee ledgers, results — which can be retained as readable archives with a search index rather than loaded into the transactional system.",
+          "Deciding this in the first week prevents the most common failure: a migration so large it never finishes, delaying a go-live that everyone had already announced."
+        ],
+        callout: {
+          type: "note",
+          text: "If a record will never be edited again, it is an archive. Migrating it buys nothing and costs weeks."
+        }
+      },
+      {
+        heading: "The Three Sources of Truth",
+        paragraphs: [
+          "Nearly every school runs on three overlapping records, and they rarely agree:"
+        ],
+        bulletPoints: [
+          "Admission registers and student master: names, guardians, addresses, categories, admission numbers and class history. Often the most accurate, because enrolment is audited.",
+          "Fee ledgers: structures, concessions, receipts and defaults. Usually spread across a register, a spreadsheet and the accountant's software, and almost always the messiest source.",
+          "Academic records: exam schemes, marks, report cards and attendance. Frequently the least standardised, with each teacher's format surviving in its own file."
+        ]
+      },
+      {
+        heading: "Reconcile Before You Switch",
+        paragraphs: [
+          "Migration is done when the numbers agree, not when the import finishes. Before go-live, run three reconciliation checks and have them signed off by the people who own each record: total outstanding fees per class must match the legacy ledger to the rupee; student counts per section must match the admission register; and a sample of report cards must reproduce the old marks exactly, including grace and weightage rules.",
+          "Discrepancies found during migration are cheap. The same discrepancy discovered in December, when a parent disputes a receipt, costs credibility with the very staff who have to trust the system. Budget time for this step and treat a mismatch as a blocker, not a rounding issue.",
+          "One practical rule: migrate balances, not histories. Opening balances per student, with a reference to the legacy record, reconcile far more cleanly than replaying eight years of receipts."
+        ],
+        callout: {
+          type: "warning",
+          text: "Never let a vendor declare migration complete on row counts. Rows import easily; rupees do not."
+        }
+      },
+      {
+        heading: "The Parallel Run Month",
+        paragraphs: [
+          "Run one month in parallel: the new system becomes the working record, while the old register continues for a single month as a shadow. This is not nostalgia; it is the cheapest insurance available. Fee collection, attendance and one exam cycle run in both, and the office compares totals weekly.",
+          "Parallel running has a cost — staff do the work twice — so keep it bounded and purposeful. One month, three checkpoints, and a written decision at the end. What you are watching for is not software bugs, which appear immediately, but process mismatches: the concession that only one clerk knows how to apply, the transport slab that changes mid-month, the TC format the office has used for years.",
+          "Those process mismatches are the real migration risk, and they surface only when real work runs through the system."
+        ]
+      },
+      {
+        heading: "The Cutover Plan",
+        paragraphs: [
+          "Cut over on a quiet weekend, not during admissions or results. The sequence that works: freeze legacy entry on Friday evening, take a final export, run the delta import, re-run the three reconciliations, and hold a written go or no-go with the principal and the accountant in the room. If reconciliation fails, the old system stays live and the cutover moves — a decision that is trivial on Sunday and impossible on Monday morning.",
+          "Keep the legacy system readable for at least a full session, with named owners for the archive. Staff will need to answer an audit query about 2021 long after the switch, and 'we migrated' is not an answer an inspector accepts.",
+          "We scope migrations as an explicit milestone with reconciliation and parallel running built in, because a system that goes live with wrong dues destroys trust faster than any missing feature. Our school management software page describes the modules and the build sequence; bring your fee ledger, your admission register and one disputed receipt to a discovery call and you will get a fixed, milestone-based quote within 24 hours."
+        ]
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:

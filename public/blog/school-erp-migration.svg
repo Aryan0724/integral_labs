@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="85" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="3">MIGRATION IS DONE WHEN THE NUMBERS AGREE</text>
+
+  <!-- Sources -->
+  <g transform="translate(70, 140)">
+    <rect x="0" y="0" width="280" height="86" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="22" y="32" fill="#94a3b8" font-family="monospace" font-size="11">ADMISSION REGISTER</text>
+    <text x="22" y="58" fill="#64748b" font-family="monospace" font-size="10">students · guardians · history</text>
+    <text x="22" y="76" fill="#22c55e" font-family="monospace" font-size="10">usually the cleanest</text>
+
+    <rect x="0" y="106" width="280" height="86" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="22" y="138" fill="#94a3b8" font-family="monospace" font-size="11">FEE LEDGER</text>
+    <text x="22" y="164" fill="#64748b" font-family="monospace" font-size="10">structures · receipts · defaults</text>
+    <text x="22" y="182" fill="#f59e0b" font-family="monospace" font-size="10">almost always the messiest</text>
+
+    <rect x="0" y="212" width="280" height="86" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="22" y="244" fill="#94a3b8" font-family="monospace" font-size="11">ACADEMIC RECORDS</text>
+    <text x="22" y="270" fill="#64748b" font-family="monospace" font-size="10">marks · report cards · attendance</text>
+    <text x="22" y="288" fill="#f59e0b" font-family="monospace" font-size="10">least standardised</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="370" y1="183" x2="450" y2="250" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="370" y1="289" x2="450" y2="290" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="370" y1="395" x2="450" y2="330" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Target DB -->
+  <g transform="translate(470, 190)">
+    <rect x="0" y="0" width="290" height="200" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="24" y="34" fill="#38bdf8" font-family="monospace" font-size="11">LIVE SCHOOL DATABASE</text>
+    <g font-family="monospace" font-size="10" fill="#94a3b8">
+      <text x="24" y="64">CURRENT STUDENTS AND STAFF</text>
+      <text x="24" y="88">OPENING BALANCES PER STUDENT</text>
+      <text x="24" y="112">CURRENT SESSION ATTENDANCE</text>
+      <text x="24" y="136">EXAM SCHEME AND MARKS</text>
+      <text x="24" y="160">FEE STRUCTURES AND RULES</text>
+    </g>
+    <text x="24" y="186" fill="#64748b" font-family="monospace" font-size="10">ARCHIVE STAYS READABLE, NOT LOADED</text>
+  </g>
+
+  <!-- Reconciliation -->
+  <line x1="780" y1="290" x2="850" y2="290" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(870, 160)">
+    <rect x="0" y="0" width="260" height="260" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="22" y="34" fill="#22c55e" font-family="monospace" font-size="11">THREE CHECKS, SIGNED</text>
+    <g font-family="monospace" font-size="10" fill="#94a3b8">
+      <circle cx="32" cy="68" r="6" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="52" y="72">DUES MATCH TO THE RUPEE</text>
+      <circle cx="32" cy="106" r="6" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="52" y="110">HEADCOUNT PER SECTION</text>
+      <circle cx="32" cy="144" r="6" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="52" y="148">SAMPLE REPORT CARDS</text>
+    </g>
+    <line x1="22" y1="170" x2="238" y2="170" stroke="#1e293b" stroke-width="1.5"/>
+    <text x="22" y="198" fill="#f59e0b" font-family="monospace" font-size="10">A MISMATCH IS A BLOCKER</text>
+    <text x="22" y="218" fill="#64748b" font-family="monospace" font-size="10">NOT A ROUNDING ISSUE</text>
+    <text x="22" y="242" fill="#64748b" font-family="monospace" font-size="10">PARALLEL RUN: ONE MONTH</text>
+  </g>
+
+  <text x="600" y="560" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="1">ROWS IMPORT EASILY · RUPEES DO NOT</text>
+  <text x="600" y="594" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // SCHOOL ERP DATA MIGRATION</text>
+</svg>
