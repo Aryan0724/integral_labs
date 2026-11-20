@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- CRM card -->
+  <g transform="translate(80, 170)">
+    <rect x="0" y="0" width="380" height="270" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="2"/>
+    <text x="26" y="36" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="2">SALES · CRM</text>
+    <g font-family="monospace" font-size="11" fill="#94a3b8">
+      <text x="26" y="72">DEAL</text>
+      <text x="130" y="72" fill="#cbd5e1">closed · 3 items</text>
+      <text x="26" y="102">CUSTOMER</text>
+      <text x="130" y="102" fill="#cbd5e1">GSTIN verified</text>
+      <text x="26" y="132">INVOICE</text>
+      <text x="130" y="132" fill="#cbd5e1">draft · stable id</text>
+    </g>
+    <line x1="26" y1="156" x2="354" y2="156" stroke="#1e293b" stroke-width="1.5"/>
+    <text x="26" y="186" fill="#64748b" font-family="monospace" font-size="11">owns the relationship</text>
+    <text x="26" y="208" fill="#64748b" font-family="monospace" font-size="11">and the pipeline</text>
+    <rect x="26" y="222" width="328" height="30" rx="6" fill="none" stroke="#334155" stroke-width="1.5"/>
+    <text x="42" y="242" fill="#94a3b8" font-family="monospace" font-size="10">NO STATUTORY NUMBERING HERE</text>
+  </g>
+
+  <!-- Bridge -->
+  <line x1="480" y1="300" x2="600" y2="300" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="540" y="280" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="10">ONE WAY · IDEMPOTENT</text>
+  <text x="540" y="330" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">RECONCILIATION REPORT</text>
+
+  <!-- Tally ledger -->
+  <g transform="translate(640, 170)">
+    <rect x="0" y="0" width="380" height="270" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="26" y="36" fill="#22c55e" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="2">ACCOUNTS · TALLY</text>
+    <g font-family="monospace" font-size="11" fill="#94a3b8">
+      <text x="26" y="72">VOUCHER</text>
+      <text x="130" y="72" fill="#cbd5e1">sales · posted once</text>
+      <text x="26" y="102">LEDGER</text>
+      <text x="130" y="102" fill="#cbd5e1">party · single master</text>
+      <text x="26" y="132">PERIOD</text>
+      <text x="130" y="132" fill="#cbd5e1">open · checked first</text>
+    </g>
+    <line x1="26" y1="156" x2="354" y2="156" stroke="#1e293b" stroke-width="1.5"/>
+    <text x="26" y="186" fill="#64748b" font-family="monospace" font-size="11">owns the statutory record</text>
+    <text x="26" y="208" fill="#64748b" font-family="monospace" font-size="11">and the audit trail</text>
+    <rect x="26" y="222" width="328" height="30" rx="6" fill="#022c22" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="42" y="242" fill="#22c55e" font-family="monospace" font-size="10">OUTSTANDING READS BACK · LATER</text>
+  </g>
+
+  <!-- Fixed quote chip -->
+  <rect x="880" y="50" width="220" height="64" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+  <text x="905" y="77" fill="#22c55e" font-family="system-ui, sans-serif" font-size="13" font-weight="700">FIXED MILESTONE QUOTE</text>
+  <text x="905" y="100" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">after discovery call · 24h</text>
+
+  <text x="600" y="500" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="1">TYPE IT ONCE, IN THE SYSTEM THAT OWNS IT</text>
+  <text x="600" y="580" text-anchor="middle" fill="#475569" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">INTEGRAL LABS // CRM + TALLY INTEGRATION · INDIA</text>
+</svg>

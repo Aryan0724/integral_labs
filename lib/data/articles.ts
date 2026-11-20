@@ -1729,6 +1729,98 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    slug: "crm-with-tally-integration",
+    title: "CRM with Tally Integration: What Indian Businesses Actually Need",
+    excerpt:
+      "Your sales team lives in a CRM and your accountant lives in Tally, and the gap between them is where invoices get re-typed. Here is what integration really means, the four depths you can buy, and where these projects break.",
+    author: {
+      name: "Integral Labs Engineering",
+      role: "SaaS Product Division",
+      avatar: "/integral-logo.png"
+    },
+    publishedAt: "2026-11-20T08:00:00.000Z",
+    category: "SaaS Development",
+    tags: ["Tally", "Custom CRM", "Integrations", "India", "Accounting"],
+    coverImage: "/blog/tally-crm.svg",
+    coverAlt: "A sales record on one side and a ledger on the other joined by a one-way voucher bridge on a dark blueprint background",
+    readingTime: "7 min read",
+    seoTitle: "CRM with Tally Integration: A Practical Guide for Indian SMBs",
+    seoDescription:
+      "What CRM and Tally integration actually means, the four depths from file handoff to two-way sync, the GST and master-data pitfalls that break these projects, and how to scope one properly.",
+    isPublished: true,
+    tableOfContents: [
+      { id: "why-tally-stays-in-the-stack", title: "Why Tally Stays in the Stack", level: 2 },
+      { id: "what-integration-actually-means", title: "What Integration Actually Means", level: 2 },
+      { id: "the-four-integration-depths", title: "The Four Integration Depths", level: 2 },
+      { id: "where-tally-integrations-break", title: "Where Tally Integrations Break", level: 2 },
+      { id: "how-to-scope-the-build", title: "How to Scope the Build", level: 2 },
+    ],
+    sections: [
+      {
+        heading: "Why Tally Stays in the Stack",
+        paragraphs: [
+          "Every CRM-with-accounting pitch eventually meets the same objection: can we replace Tally? Usually no, and asking is the wrong question. Tally is not just software in an Indian business — it is the accountant's instrument, the auditor's expected format, and the system whose GST behaviour has been tested through years of filings. A sales tool that fights it loses.",
+          "The real problem is narrower and more expensive than anyone admits: the same information is typed twice. A deal closes in the CRM, and an invoice is raised again in Tally by accounts. A payment arrives, and the sales rep learns about it three days later, if at all. Order status lives in one system, dues live in another, and the customer experiences the gap as an inaccurate statement or a late follow-up.",
+          "Integration exists to close that gap without asking either side to abandon what it is good at. Sales owns the relationship and the pipeline; accounts owns the statutory record. The job is to make the handoff invisible."
+        ],
+        callout: {
+          type: "note",
+          text: "If your accountant says the ledger must stay in Tally, they are right. The integration should respect that, not quietly work around it."
+        }
+      },
+      {
+        heading: "What Integration Actually Means",
+        paragraphs: [
+          "Integration is not one feature. It is a set of decisions about data, direction and ownership, and most failed projects failed because nobody wrote those decisions down.",
+          "Three questions decide the architecture. First, what is master data and who owns it: customer names, GSTINs, addresses and credit terms should have one home, or you will spend your life reconciling near-duplicates. Second, which direction does each document travel: a sales invoice is created in the CRM and must land in Tally, but a receipt is created in Tally and must surface in the CRM. Third, what happens when the same thing is pushed twice: any retry, timeout or network blip must not create a second voucher.",
+          "That third point is where the engineering lives. Idempotency sounds like jargon; in practice it means every transaction carries a stable identifier from the CRM, and the receiving side refuses duplicates. Without it, a flaky connection produces double invoices, and the accountant stops trusting the system on day two."
+        ],
+        callout: {
+          type: "warning",
+          text: "Two-way sync is the most requested and least understood option. It doubles the surface area for conflicts, so it should be the last thing you add, not the first."
+        }
+      },
+      {
+        heading: "The Four Integration Depths",
+        paragraphs: [
+          "In practice, projects fall into four depths. Each is a legitimate stopping point — the mistake is buying the fourth when the first would have solved your problem."
+        ],
+        bulletPoints: [
+          "File handoff: the CRM exports a structured file that accounts imports. Unglamorous, manual, but cheap and reliable, and often enough for a business raising a few invoices a day.",
+          "One-way push: sales invoices are written into Tally automatically through its XML interface, with a reconciliation report for anything that failed. This is the depth most businesses actually need.",
+          "Read-back: outstanding balances and payment status flow from Tally into the CRM, so a rep sees the truth before promising credit or chasing a customer who has already paid.",
+          "Two-way operational sync: receipts, credit notes and ledger adjustments update the deal automatically, with conflict rules. Powerful, and only worth it once the earlier depths have run cleanly for a month."
+        ]
+      },
+      {
+        heading: "Where Tally Integrations Break",
+        paragraphs: [
+          "The failure modes are consistent enough to predict, which means they are preventable:"
+        ],
+        bulletPoints: [
+          "Party duplication: M/s Sharma Traders, Sharma Traders and Sharma Traders Pvt Ltd arrive as three ledgers because nobody normalised names and GSTINs before the first push.",
+          "Statutory fields invented by the CRM: invoice numbers, HSN codes, place of supply and round-off must follow the accountant's rules, not the sales tool's defaults.",
+          "GST mismatches: tax rates that changed mid-year, or a CRM that hard-codes rates instead of reading them from the item master, produce vouchers the accountant corrects by hand.",
+          "Date and period locks: pushing an invoice into a closed period fails silently unless the integration reports it clearly.",
+          "Cancellation handled as deletion: a cancelled order must generate a credit note, never a vanishing voucher.",
+          "No reconciliation report: without a list of what synced, what failed and why, trust erodes the first time a number does not match."
+        ],
+        callout: {
+          type: "tip",
+          text: "Ask for one report before anything else: every document pushed, its status, and the exact error when it failed. That report is the integration."
+        }
+      },
+      {
+        heading: "How to Scope the Build",
+        paragraphs: [
+          "Scope it in the order that builds trust. Start with one company, one voucher type and one direction: sales invoices from the CRM into Tally, with a reconciliation screen. Run it for a month and compare totals with the accountant every week. When that is boring, add read-back for outstanding balances. Credit notes come next, then — only if the business genuinely needs it — operational two-way sync.",
+          "Two things belong in the scope document regardless of depth: master data ownership (who creates a customer, who edits a GSTIN, and what happens when both sides disagree) and the rollback path (if the integration is switched off for a day, can accounts still work?). A system that cannot be turned off safely is a system nobody will trust.",
+          "We build these alongside custom CRMs rather than as bolt-ons, because the record design decides whether the integration is simple or endless. Our custom CRM development page describes the modules and the ownership model; bring your voucher types, your GST setup and a month of sample invoices to a discovery call and you will get a fixed, milestone-based quote within 24 hours."
+        ]
+      }
+    ]
+  },
+  {
     slug: "draft-internal-architecture-preview",
     title: "Draft: Internal Microservice Communication Guidelines (Unpublished Preview)",
     excerpt:
